@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const projects = [
+  {
+    name: 'Vanya Samriddhi',
+    tagline: 'Food forests on barren land.',
+    body: 'Working with farmers, we turn barren one-acre plots into food forests — mixed-species plantings that restore the soil, provide food year-round, and create a durable new source of livelihood.',
+  },
+  {
+    name: 'Jal Vriddhi',
+    tagline: 'Recharging the groundwater table.',
+    body: 'A village-led programme to recharge groundwater through structures built and maintained by the villages themselves. Currently running in Haliyal, Karnataka.',
+  },
+  {
+    name: 'Yuva Samriddhi',
+    tagline: 'Self-employment for rural youth.',
+    body: 'In collaboration with CBD-RSETI in Haliyal, Karnataka, we train rural youth in self-employment — turning the entrepreneurship mindset our children grow up with into working businesses.',
+  },
+  {
+    name: 'Dhan Kaushal',
+    tagline: 'Financial literacy for children and youth.',
+    body: 'A financial-literacy curriculum delivered alongside the core programme — savings, budgeting, and the basics of running a small enterprise.',
+  },
+];
+---
+
+<Layout title="Projects" description="Active projects that extend NavSahyog Foundation's core programme into livelihood.">
+  <PageHeader
+    eyebrow="Our Programme"
+    title="Projects"
+    subtitle="Extensions of our core life-skills programme, each building a concrete link to livelihood."
+  />
+
+  <div class="container-content py-16 grid md:grid-cols-2 gap-6">
+    {projects.map((p) => (
+      <article class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
+        <h2 class="text-xl md:text-2xl font-bold text-brand">{p.name}</h2>
+        <p class="text-ink/80 italic mt-1 mb-4">{p.tagline}</p>
+        <p class="text-ink/90 leading-relaxed">{p.body}</p>
+      </article>
+    ))}
+  </div>
+</Layout>

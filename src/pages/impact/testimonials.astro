@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+
+const categories = [
+  {
+    title: 'From the Children',
+    body: 'Nityashree from Haralur and Manasa from Thottikuppam share what the programme has meant to them — in their own words.',
+  },
+  {
+    title: 'From Teachers',
+    body: 'How school teachers in our villages see the difference in children who attend the NavSahyog programme.',
+  },
+  {
+    title: 'From Parents',
+    body: 'Parents describe what has changed at home — in confidence, in study habits, in how their children carry themselves.',
+  },
+  {
+    title: 'From Village Coordinators',
+    body: 'Our on-ground facilitators, almost all of them women from the villages themselves, describe the programme from the inside.',
+  },
+];
+---
+
+<Layout title="Testimonials" description="Feedback from children, teachers, parents and village coordinators on NavSahyog Foundation's programme.">
+  <PageHeader
+    eyebrow="Impact"
+    title="Testimonials"
+    subtitle="The programme through the eyes of the people it serves — and the people who run it."
+  />
+
+  <div class="container-content py-16 grid md:grid-cols-2 gap-6">
+    {categories.map((c) => (
+      <article class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
+        <h2 class="text-xl md:text-2xl font-bold mb-2">{c.title}</h2>
+        <p class="text-ink/80 leading-relaxed">{c.body}</p>
+      </article>
+    ))}
+  </div>
+</Layout>

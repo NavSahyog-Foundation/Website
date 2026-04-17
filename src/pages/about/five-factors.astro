@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { Image } from 'astro:assets';
+import img1 from '../../assets/images/factors-1.jpg';
+import img2 from '../../assets/images/factors-2.jpg';
+
+const principles = [
+  'Deep, daily engagement with every child.',
+  'Work in the child\'s own village, in their own language.',
+  'Programme designed by and with the community.',
+  'Measurable outcomes, every year, for every cohort.',
+  'Life skills first; livelihood follows as a consequence.',
+];
+
+const values = [
+  'Integrity in every rupee, every report, every interaction.',
+  'Respect for the child, the family, and the village.',
+  'Humility — we learn before we teach.',
+  'Perseverance — daily, decade-long engagement.',
+  'Joy — programmes children look forward to every day.',
+];
+
+const strengths = [
+  'An on-ground team that is 97% women and 97% from the villages we serve.',
+  'A standard, replicable programme across 15+ village clusters.',
+  'An active community of advisors, donors and partners.',
+  'Measured impact, published in public impact studies.',
+  'Deep understanding of rural entrepreneurship and the gap it needs to bridge.',
+];
+---
+
+<Layout title="The Five Factors" description="The five principles, five values and five strengths that guide NavSahyog Foundation's work.">
+  <PageHeader
+    eyebrow="About"
+    title="The Five Factors"
+    subtitle="Our entire initiative is based on five principles, five values, and five strengths."
+  />
+
+  <div class="container-content py-16 space-y-16">
+    <section class="grid md:grid-cols-2 gap-10 items-center">
+      <Image src={img1} alt="NavSahyog team" class="rounded-xl w-full h-auto" />
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">Grounded in principle, bound by values.</h2>
+        <p class="text-lg text-ink/80 leading-relaxed">
+          NavSahyog Foundation's entire initiative is based on these five principles. We as a team
+          are deeply rooted in our values — they embody our culture and the way we do everything.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Principles</h2>
+      <ul class="grid md:grid-cols-2 gap-4">
+        {principles.map((p, i) => (
+          <li class="flex gap-4 p-5 rounded-xl bg-white border border-slate-200">
+            <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white font-semibold flex items-center justify-center">
+              {i + 1}
+            </span>
+            <span class="text-ink/90">{p}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="bg-surface-soft -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 rounded-xl">
+      <div class="container-content">
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Values</h2>
+        <ul class="grid md:grid-cols-2 gap-4">
+          {values.map((v, i) => (
+            <li class="flex gap-4 p-5 rounded-xl bg-white border border-slate-200">
+              <span class="shrink-0 w-9 h-9 rounded-full bg-brand-100 text-brand font-semibold flex items-center justify-center">
+                {i + 1}
+              </span>
+              <span class="text-ink/90">{v}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Strengths</h2>
+        <ul class="space-y-3">
+          {strengths.map((s, i) => (
+            <li class="flex gap-3">
+              <span class="shrink-0 w-7 h-7 rounded-full bg-brand text-white font-semibold text-sm flex items-center justify-center mt-0.5">
+                {i + 1}
+              </span>
+              <span class="text-ink/90">{s}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <Image src={img2} alt="NavSahyog team at work" class="rounded-xl w-full h-auto" />
+    </section>
+  </div>
+</Layout>

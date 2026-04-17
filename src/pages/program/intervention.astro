@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { Image } from 'astro:assets';
+import storyImg from '../../assets/images/story-longjump.jpg';
+
+const activities = [
+  {
+    title: 'Sports',
+    body: 'Kho-Kho, kabaddi, long jump, high jump, running races, skipping, yoga — strength, endurance and teaming.',
+  },
+  {
+    title: 'Traditional Board Games',
+    body: 'Mental skills, strategy and concentration, through games that grow out of Indian tradition.',
+  },
+  {
+    title: 'Storytelling',
+    body: 'A daily ritual of listening, imagining and retelling — values transmitted the way they always have been in villages.',
+  },
+  {
+    title: 'Creative Activities',
+    body: 'Drawing, thumb painting, crafts with clay, recycled material, leaves, flowers, vegetables.',
+  },
+  {
+    title: 'Experiential Learning',
+    body: 'Project Nature & Nutrition; Jalvriddhi — learning by doing, with the village as the classroom.',
+  },
+];
+---
+
+<Layout title="Intervention" description="The structure and daily activities of NavSahyog Foundation's village programme.">
+  <PageHeader
+    eyebrow="Our Programme"
+    title="The Intervention"
+    subtitle="A standard, daily programme designed to build life skills in village children — Monday to Saturday, every week of the year."
+  />
+
+  <div class="container-content py-16 space-y-16">
+    <section class="grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4">Structure and Process</h2>
+        <p class="text-lg text-ink/80 leading-relaxed mb-4">
+          Every village cluster runs the same core programme, adapted to the local context. The
+          programme runs for one hour Sunday to Friday and two hours on Saturday. Sessions are led
+          by an Area Facilitator from the village itself, supported by a regional Program Lead.
+        </p>
+        <p class="text-lg text-ink/80 leading-relaxed">
+          The repetition is the point. A child in the programme engages for roughly 350 hours a
+          year — and eight to nine years, if they join at age five. That is the scale at which life
+          skills become habits.
+        </p>
+      </div>
+      <Image src={storyImg} alt="Children at a village session" class="rounded-xl w-full h-auto" />
+    </section>
+
+    <section>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Daily Activities</h2>
+      <p class="text-lg text-ink/80 leading-relaxed max-w-3xl mb-8">
+        The daily rhythm rotates between five kinds of activity. Each one targets a different life
+        skill; together they build a whole child.
+      </p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {activities.map((a) => (
+          <div class="rounded-xl border border-slate-200 p-6 bg-white shadow-sm">
+            <h3 class="text-lg font-semibold text-brand mb-2">{a.title}</h3>
+            <p class="text-ink/80">{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bg-surface-soft -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 rounded-xl">
+      <div class="container-content">
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">Experiential Learning — Project Nature &amp; Nutrition</h2>
+        <p class="text-lg text-ink/80 leading-relaxed max-w-3xl">
+          Children grow vegetables, map water flows, and learn the nutrition value of what they
+          eat. The learning sticks because the kitchen, the field and the classroom are the same
+          place.
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

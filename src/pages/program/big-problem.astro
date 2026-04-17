@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { Image } from 'astro:assets';
+import img from '../../assets/images/big-problem.jpg';
+---
+
+<Layout title="The Big Problem" description="Why life skills in village children is the root problem NavSahyog Foundation exists to solve.">
+  <PageHeader
+    eyebrow="Our Programme"
+    title="The Big Problem"
+    subtitle="Rural India does not lack potential. It lacks the life skills that turn potential into livelihood."
+  />
+
+  <div class="container-content py-16 grid lg:grid-cols-5 gap-12">
+    <article class="lg:col-span-3 prose-content">
+      <p>
+        Salaried jobs in Indian villages are scarce and rarely a path to superior livelihood. For
+        rural youth to lift themselves — and their families — out of subsistence, the realistic
+        path is <strong>entrepreneurship</strong>: starting small enterprises that solve real, unmet
+        needs in their own communities.
+      </p>
+      <p>
+        And there are many such needs. Clean drinking water. Affordable nutritious food. Local
+        childcare. Preventive health. Skill services. These are billion-rupee opportunities sitting
+        in plain sight, waiting for people with the right mindset to take them on.
+      </p>
+      <p>
+        The problem is not opportunity. The problem is that when you ask a 20-year-old in a village
+        today to start something, most cannot. They lack well-developed <strong>self-esteem,
+        confidence, the ability to work in teams, a values framework</strong>, and the habits of
+        disciplined daily effort. Not because they are less capable — but because no one ever helped
+        them build these skills at the age they needed to.
+      </p>
+
+      <h2>Why we work with 5–14 year olds</h2>
+      <p>
+        Life skills are most reliably built during a child's most impressionable years — roughly
+        ages 5 to 14. Wait until 18 or 20, and the window has largely closed. Begin at 5, engage
+        <strong>every day for a decade</strong>, and by the time those children are young adults,
+        they are ready to take on opportunities that their parents could not.
+      </p>
+      <p>
+        This is especially true for girls in rural India, who face the additional challenges of
+        being pushed out of school and into early marriages. A girl who has grown up with eight or
+        nine years of daily life-skills engagement stands in a very different place.
+      </p>
+
+      <h2>What we do about it</h2>
+      <p>
+        We run a standard, structured <a href="/program/intervention/">daily programme</a> in over
+        300 villages — Monday to Saturday, an hour most days and two hours on Saturdays. Sports.
+        Storytelling. Experiential learning. Creative activities. Delivered by a team that is 97%
+        women, 97% of whom live in the villages they serve.
+      </p>
+      <p>
+        This is not a short-term intervention. It is a decade-long bet on every single child who
+        joins the programme.
+      </p>
+    </article>
+    <aside class="lg:col-span-2">
+      <Image src={img} alt="Village girl" class="rounded-xl w-full h-auto shadow-md" />
+      <div class="mt-6 rounded-xl border border-slate-200 p-6 bg-surface-soft">
+        <p class="text-brand font-semibold uppercase text-sm mb-2">In one sentence</p>
+        <p class="text-lg text-ink/90">
+          Rural India's opportunity gap is really a life-skills gap. We close it, at the age it can
+          still be closed.
+        </p>
+      </div>
+    </aside>
+  </div>
+</Layout>

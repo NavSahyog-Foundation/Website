@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import StatCard from '../components/StatCard.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero-mission.jpg';
+import linkagesImage from '../assets/images/linkages.png';
+import visionImage from '../assets/images/vision.png';
+import sdg4 from '../assets/images/sdg4.png';
+import sdg5 from '../assets/images/sdg5.jpg';
+---
+
+<Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 — a path from life skills to livelihood.">
+  <Hero
+    eyebrow="Life Skills to Livelihood"
+    title="A world where village children pursue their dreams and create superior livelihoods."
+    subtitle="NavSahyog Foundation engages rural children aged 5–14 every day — through sports, storytelling, experiential learning and creative activities — building the life skills that become the foundation for superior livelihood."
+    image={heroImage}
+    imageAlt="NavSahyog children at a village programme"
+    ctaPrimary={{ label: 'Donate', href: '/donate/' }}
+    ctaSecondary={{ label: 'Our Programme', href: '/program/intervention/' }}
+  />
+
+  <!-- Impact stats -->
+  <section class="container-content py-16">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Our Reach Today</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <StatCard value="9,000+" label="Children engaged" description="Every day, Monday to Saturday." />
+      <StatCard value="300" label="Villages" description="Across Karnataka, Tamil Nadu and Nagaland." />
+      <StatCard value="60%" label="Children are girls" description="Diversity &amp; inclusion at the core." />
+      <StatCard value="97%" label="Women on our team" description="97% of whom live in the villages they serve." />
+    </div>
+  </section>
+
+  <!-- Linkages section -->
+  <section class="bg-surface-soft">
+    <div class="container-content py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">Linkages to Livelihood</p>
+        <h2 class="text-2xl md:text-4xl font-bold mb-4">From life skills to livelihood.</h2>
+        <p class="text-lg text-ink/85 leading-relaxed mb-4">
+          We have added extensions to our core programme of life skills development to address
+          better linkages of life skills to livelihood.
+        </p>
+        <ul class="space-y-3 mt-6">
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span><strong>Dhan Kaushal</strong> — financial literacy for children and youth.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span><strong>Yuva Samriddhi</strong> — self-employment training for rural youth, in collaboration with CBD-RSETI at Haliyal, Karnataka.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span><strong>Vanya Samriddhi</strong> — food forests on one acre or more of barren farmland.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span><strong>Jal Vriddhi</strong> — recharging the groundwater table through village-led action.</span>
+          </li>
+        </ul>
+        <a href="/program/projects/" class="btn-outline mt-8">Explore our projects</a>
+      </div>
+      <div>
+        <Image src={linkagesImage} alt="NavSahyog programme linkages" class="rounded-xl w-full h-auto" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section class="container-content py-16 md:py-20">
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-white shadow-sm">
+        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">Vision</p>
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+          A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
+        </h3>
+        <Image src={visionImage} alt="Vision" class="rounded-xl mt-6 w-full h-auto" />
+      </div>
+      <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-brand text-white shadow-sm">
+        <p class="text-white/80 font-semibold uppercase tracking-wide text-sm mb-3">Mission</p>
+        <h3 class="text-2xl md:text-3xl font-bold mb-4">
+          Impact 100,000 children with life skills &amp; enable superior livelihood for 3,000 youth in villages by 2030.
+        </h3>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/about/our-story/" class="btn bg-white text-brand hover:bg-white/90">Our story</a>
+          <a href="/program/presence/" class="btn border border-white/60 text-white hover:bg-white/10">Where we work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SDG alignment -->
+  <section class="bg-surface-soft">
+    <div class="container-content py-16">
+      <div class="max-w-3xl">
+        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">UN SDG Alignment</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">
+          Aligned to the UN Sustainable Development Goals.
+        </h2>
+        <p class="text-ink/80 text-lg leading-relaxed">
+          NavSahyog Foundation's work is aligned to several sub-goals of select UN SDGs — including
+          increasing the proportion of youth and adults with the skills needed for entrepreneurship.
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-8 mt-10">
+        <Image src={sdg4} alt="UN SDG 4 — Quality Education" class="h-28 w-auto" />
+        <Image src={sdg5} alt="UN SDG 5 — Gender Equality" class="h-28 w-auto" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner CTA -->
+  <section class="container-content py-20 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-3">Want to partner with us?</h2>
+    <p class="text-lg text-ink/80 max-w-2xl mx-auto mb-8">
+      Every rupee, every hour, every connection helps a village child take the first step from life
+      skills to livelihood.
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/donate/" class="btn-primary">Donate</a>
+      <a href="/contact/" class="btn-outline">Get in touch</a>
+    </div>
+  </section>
+</Layout>

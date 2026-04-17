@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+---
+
+<Layout title="Blogs" description="Stories, reflections, and field notes from NavSahyog Foundation.">
+  <PageHeader
+    eyebrow="From the field"
+    title="Blogs"
+    subtitle="Stories and reflections from our villages, our team, and our partners."
+  />
+
+  <div class="container-content py-16">
+    {posts.length === 0 ? (
+      <div class="rounded-xl border border-dashed border-slate-300 p-12 text-center">
+        <p class="text-ink/70 text-lg">New posts are on the way. Check back soon.</p>
+      </div>
+    ) : (
+      <ul class="space-y-4">
+        {posts.map((p) => (
+          <li>
+            <a
+              href={`/blogs/${p.slug}/`}
+              class="block rounded-xl border border-slate-200 p-6 bg-white hover:border-brand hover:bg-brand-50 transition"
+            >
+              <p class="text-xs text-ink/60 uppercase tracking-wide">
+                {p.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <h2 class="text-xl font-bold mt-1 mb-2">{p.data.title}</h2>
+              {p.data.summary && <p class="text-ink/80">{p.data.summary}</p>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</Layout>

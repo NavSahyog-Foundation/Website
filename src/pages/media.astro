@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const items = [
+  { title: 'Gandhi Jayanthi 2024', region: 'Multiple villages', year: '2024' },
+  { title: 'Prakriti Prem at Tumkur', region: 'Tumkur, Karnataka', year: '2024' },
+  { title: 'Tumkur Taluka Inter-Village Kho-Kho & Kabaddi Tournament', region: 'Tumkur, Karnataka', year: '2024' },
+  { title: 'Annual Awards and Women\'s Day Celebration', region: 'Bengaluru', year: '2024' },
+  { title: 'Dhan Kaushal — Financial Literacy Programme', region: 'Madurai, Tamil Nadu', year: '2024' },
+  { title: 'Jal Vriddhi — Groundwater Recharge', region: 'Haliyal, Karnataka', year: '2024' },
+  { title: 'Prakriti Prem — Love for Nature', region: 'Dimapur, Nagaland', year: '2024' },
+  { title: 'Swachh Bharat / Spit-Free India Movement', region: 'Dimapur, Nagaland', year: '2024' },
+  { title: 'Annual Competition', region: 'Madurai, Tamil Nadu', year: '2024' },
+  { title: 'Padaveedu Programme', region: 'Padaveedu, Tamil Nadu', year: '2024' },
+];
+---
+
+<Layout title="Media Coverage" description="Events, awards, and programme highlights from NavSahyog Foundation.">
+  <PageHeader
+    eyebrow="News"
+    title="Media Coverage &amp; Events"
+    subtitle="A running log of celebrations, competitions, and field programmes across our clusters."
+  />
+
+  <div class="container-content py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {items.map((item) => (
+        <article class="rounded-xl border border-slate-200 p-6 bg-white shadow-sm">
+          <p class="text-xs uppercase tracking-wide text-brand font-semibold">{item.year}</p>
+          <h2 class="text-lg font-bold mt-2 mb-2">{item.title}</h2>
+          <p class="text-sm text-ink/70">{item.region}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

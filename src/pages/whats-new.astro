@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const updates = [
+  {
+    title: 'Programme Vanya Samriddhi launched',
+    date: 'Recent',
+    body: 'We have launched Vanya Samriddhi — a food-forest initiative that turns one acre or more of barren farmland into a productive, mixed-species forest that feeds families and regenerates the soil.',
+  },
+];
+---
+
+<Layout title="What's New" description="Recent updates from NavSahyog Foundation.">
+  <PageHeader eyebrow="Updates" title="What's New" subtitle="The latest from our programmes and villages." />
+  <div class="container-content py-16 space-y-6">
+    {updates.map((u) => (
+      <article class="rounded-xl border border-slate-200 p-6 bg-white">
+        <p class="text-xs uppercase tracking-wide text-brand font-semibold">{u.date}</p>
+        <h2 class="text-xl font-bold mt-1 mb-2">{u.title}</h2>
+        <p class="text-ink/80 leading-relaxed">{u.body}</p>
+      </article>
+    ))}
+  </div>
+</Layout>
