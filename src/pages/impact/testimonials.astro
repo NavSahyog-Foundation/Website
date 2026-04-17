@@ -4,22 +4,27 @@ import PageHeader from '../../components/PageHeader.astro';
 
 const categories = [
   {
-    title: 'From the Children',
-    body: 'Nityashree from Haralur and Manasa from Thottikuppam share what the programme has meant to them — in their own words.',
+    title: 'Feedback by children about our program',
+    body: 'Nityashree from Haralur and Manasa from Thottikuppam share their experience of being a part of our program.',
   },
   {
-    title: 'From Teachers',
-    body: 'How school teachers in our villages see the difference in children who attend the NavSahyog programme.',
+    title: 'Feedback by teachers about our program',
+    body: 'School teachers from our village clusters share how they see the NavSahyog programme shaping the children they teach.',
   },
   {
-    title: 'From Parents',
-    body: 'Parents describe what has changed at home — in confidence, in study habits, in how their children carry themselves.',
+    title: 'Feedback by parents about our program',
+    body: 'Feedback by a parent from Samantakottai village, Denkanikottai. Feedback by Anitha (parent) from Enimuchandram village, Denkanikottai.',
+    videos: [
+      '/videos/feedback-by-anitha.mp4',
+    ],
   },
   {
-    title: 'From Village Coordinators',
-    body: 'Our on-ground facilitators, almost all of them women from the villages themselves, describe the programme from the inside.',
+    title: 'Feedback by Village Coordinators about our program',
+    body: 'Village Coordinator Sudha, from Kowthamaranahalli gives her feedback. Village Coordinator Kanaka, from Enimuchandram gives her feedback on working with the foundation.',
   },
 ];
+
+import { url } from '../../utils/url';
 ---
 
 <Layout title="Testimonials" description="Feedback from children, teachers, parents and village coordinators on NavSahyog Foundation's programme.">
@@ -29,12 +34,21 @@ const categories = [
     subtitle="The programme through the eyes of the people it serves — and the people who run it."
   />
 
-  <div class="container-content py-16 grid md:grid-cols-2 gap-6">
+  <div class="container-content py-16 space-y-10">
     {categories.map((c) => (
-      <article class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
-        <h2 class="text-xl md:text-2xl font-bold mb-2">{c.title}</h2>
+      <section class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
+        <h2 class="text-xl md:text-2xl font-bold mb-3">{c.title}</h2>
         <p class="text-ink/80 leading-relaxed">{c.body}</p>
-      </article>
+        {c.videos && c.videos.length > 0 && (
+          <div class="grid md:grid-cols-2 gap-4 mt-6">
+            {c.videos.map((v) => (
+              <video controls class="w-full rounded-lg bg-black">
+                <source src={url(v)} />
+              </video>
+            ))}
+          </div>
+        )}
+      </section>
     ))}
   </div>
 </Layout>

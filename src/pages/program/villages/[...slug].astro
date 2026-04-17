@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PageHeader from '../../../components/PageHeader.astro';
+import Gallery from '../../../components/Gallery.astro';
+import WpImage from '../../../components/WpImage.astro';
+import { url } from '../../../utils/url';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('villages');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'villages'>;
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+---
+
+<Layout title={d.title} description={d.summary}>
+  <PageHeader eyebrow={`${d.region}${d.cluster ? ' · ' + d.cluster : ''}`} title={d.title} subtitle={d.summary} />
+
+  {d.heroImage && (
+    <div class="container-content py-8">
+      <WpImage src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
+    </div>
+  )}
+
+  <div class="container-content py-8 prose-content max-w-3xl">
+    <Content />
+
+    {d.villageNames && d.villageNames.length > 0 && (
+      <div class="not-prose mt-8">
+        <h2 class="text-2xl font-bold mb-4">Villages in this cluster</h2>
+        <ul class="grid sm:grid-cols-2 gap-2">
+          {d.villageNames.map((v) => (
+            <li class="px-4 py-3 bg-white rounded-lg border border-slate-200 text-ink font-medium">{v}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  {d.gallery.length > 0 && (
+    <section class="container-content py-12">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Photo Gallery</h2>
+      <Gallery images={d.gallery} alt={d.title} columns={3} />
+    </section>
+  )}
+
+  <section class="container-content py-12">
+    <a href={url('/program/presence/')} class="btn-outline">← All villages</a>
+  </section>
+</Layout>

@@ -1,43 +1,63 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { getCollection } from 'astro:content';
-import { url } from '../utils/url';
+import WpImage from '../components/WpImage.astro';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const posts = [
+  {
+    title: 'World Water Day, 2026',
+    date: '22 March 2026',
+    summary: 'Water Day celebration across 355 villages.',
+    image: 'wp-content/uploads/2026/04/water.png',
+    video: 'https://youtu.be/ANLfFqblS4k?si=ElCCNqWelVjhle5Z',
+  },
+  {
+    title: 'Republic Day, 2026',
+    date: '26 January 2026',
+    summary: 'Republic Day celebration across 355 villages.',
+    image: 'wp-content/uploads/2026/04/repu.png',
+    video: 'https://youtu.be/abbMI7Era1s?si=UtLp5IQCD3ybVNlC',
+  },
+  {
+    title: 'Testimonials — Dhan Kaushal',
+    date: 'March 2026',
+    summary: 'Financial Literacy Programme testimonials.',
+    image: 'wp-content/uploads/2026/04/llll.png',
+    video: 'https://youtu.be/eS7OOdDzask?si=GkvhFsQqXyHtOnmm',
+  },
+  {
+    title: "Dhan Kaushal — Financial Literacy Children's Roll-out at MASS, Belagavi",
+    date: 'January–February 2026',
+    summary: "Children's roll-out in Belagavi.",
+    image: 'wp-content/uploads/2026/04/wwww.png',
+    video: 'https://youtu.be/Gx5fZ5LqplQ?si=pc90IP6eSm5wIk4a',
+  },
+  {
+    title: "Dhan Kaushal — Financial Literacy Teacher's Roll-out at MASS, Belagavi",
+    date: 'January 2026',
+    summary: "Teacher's roll-out in Belagavi.",
+    image: 'wp-content/uploads/2026/04/aaa-1.png',
+    video: 'https://youtu.be/laJpn1Dtt1w?si=8UbYF7p3aPv26w_J',
+  },
+];
 ---
 
-<Layout title="Blogs" description="Stories, reflections, and field notes from NavSahyog Foundation.">
-  <PageHeader
-    eyebrow="From the field"
-    title="Blogs"
-    subtitle="Stories and reflections from our villages, our team, and our partners."
-  />
+<Layout title="Blogs" description="Stories, reflections and field notes from NavSahyog Foundation.">
+  <PageHeader eyebrow="From the field" title="Blogs" subtitle="Stories and reflections from our villages and our team." />
 
-  <div class="container-content py-16">
-    {posts.length === 0 ? (
-      <div class="rounded-xl border border-dashed border-slate-300 p-12 text-center">
-        <p class="text-ink/70 text-lg">New posts are on the way. Check back soon.</p>
-      </div>
-    ) : (
-      <ul class="space-y-4">
-        {posts.map((p) => (
-          <li>
-            <a
-              href={url(`/blog/${p.slug}/`)}
-              class="block rounded-xl border border-slate-200 p-6 bg-white hover:border-brand hover:bg-brand-50 transition"
-            >
-              <p class="text-xs text-ink/60 uppercase tracking-wide">
-                {p.data.date.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </p>
-              <h2 class="text-xl font-bold mt-1 mb-2">{p.data.title}</h2>
-              {p.data.summary && <p class="text-ink/80">{p.data.summary}</p>}
-            </a>
-          </li>
-        ))}
-      </ul>
-    )}
+  <div class="container-content py-16 space-y-5">
+    {posts.map((p) => (
+      <a href={p.video} target="_blank" rel="noopener" class="group flex flex-col sm:flex-row rounded-xl border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition overflow-hidden">
+        <div class="sm:w-64 shrink-0 aspect-video sm:aspect-auto">
+          <WpImage src={p.image} alt={p.title} class="w-full h-full object-cover" />
+        </div>
+        <div class="p-6 flex-1">
+          <p class="text-xs uppercase tracking-wide text-brand font-semibold">{p.date}</p>
+          <h2 class="text-xl font-bold mt-1 mb-2">▶ {p.title}</h2>
+          <p class="text-ink/80">{p.summary}</p>
+          <p class="mt-3 text-sm text-brand font-semibold">Watch on YouTube →</p>
+        </div>
+      </a>
+    ))}
   </div>
 </Layout>

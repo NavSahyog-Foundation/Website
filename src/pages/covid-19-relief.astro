@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { url } from '../utils/url';
+---
+
+<Layout title="Covid-19 Relief Initiative" description="How NavSahyog Foundation adapted its village programmes during the Covid-19 lockdown, and our relief work for 600+ households across 21 villages.">
+  <PageHeader
+    eyebrow="Initiative"
+    title="Covid-19 Relief Initiative"
+    subtitle="How we adapted during the lockdown — both our programme and our response to families in need."
+  />
+
+  <article class="container-content py-16 prose-content max-w-3xl">
+    <p>
+      When the lockdown was announced, we quickly adapted our program.
+    </p>
+    <p>
+      We introduced strict Covid-appropriate safety norms for our team and the children: mask-wearing,
+      hand-wash with soap before the start and at the end of daily activities, and maintaining safe
+      distances. We suspended all contact sports like Kho-Kho and Kabaddi; instead, we introduced
+      yoga and meditation. We retained creative activities like storytelling, thumb painting, etc.
+      We taught all children how to make and wear masks.
+    </p>
+    <p>
+      During the first wave, not only did the lockdown affect school-going children in villages,
+      but it also had a severe impact on the livelihood of several families in the villages.
+    </p>
+    <p>
+      To mitigate the impact of this situation, we provided kits with essential provisions to
+      <strong>more than 600 households across 21 villages</strong>.
+    </p>
+    <p>
+      The below document gives a more detailed description of our Covid-19 relief initiatives.
+    </p>
+
+    <div class="not-prose my-8">
+      <a
+        href={url('/wp-content/uploads/2021/07/NavSahyog-Covid-19-related-initiatives-.pdf')}
+        class="btn-primary"
+      >
+        NavSahyog Foundation's Covid-19 Relief Initiative (PDF) ↓
+      </a>
+    </div>
+
+    <h2>Videos</h2>
+    <div class="not-prose grid md:grid-cols-2 gap-4">
+      <div class="aspect-video">
+        <iframe
+          class="w-full h-full rounded-lg"
+          src="https://www.youtube-nocookie.com/embed/ikxrxhySN7o"
+          title="Covid-19 Relief Initiative"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <div class="aspect-video">
+        <iframe
+          class="w-full h-full rounded-lg"
+          src="https://www.youtube-nocookie.com/embed/4fvoEeMH4vE"
+          title="Covid-19 Relief Initiative"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </article>
+</Layout>

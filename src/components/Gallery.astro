@@ -1,0 +1,29 @@
+---
+import WpImage from './WpImage.astro';
+
+export interface Props {
+  images: string[];
+  alt?: string;
+  columns?: 2 | 3 | 4;
+}
+
+const { images, alt = '', columns = 3 } = Astro.props;
+
+const colClass = {
+  2: 'sm:grid-cols-2',
+  3: 'sm:grid-cols-2 md:grid-cols-3',
+  4: 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+}[columns];
+---
+
+<div class={`grid grid-cols-1 ${colClass} gap-3`}>
+  {images.map((src, i) => (
+    <a href={src.startsWith('/') ? src : `/${src}`} class="block rounded-lg overflow-hidden bg-surface-soft group">
+      <WpImage
+        src={src}
+        alt={alt ? `${alt} — ${i + 1}` : `Image ${i + 1}`}
+        class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+      />
+    </a>
+  ))}
+</div>

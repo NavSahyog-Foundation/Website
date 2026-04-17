@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Gallery from '../../components/Gallery.astro';
+import WpImage from '../../components/WpImage.astro';
+import { url } from '../../utils/url';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('events');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<'events'>;
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+---
+
+<Layout title={d.title} description={d.summary}>
+  <PageHeader eyebrow={d.date || 'Event'} title={d.title} subtitle={d.summary} />
+
+  {d.heroImage && (
+    <div class="container-content py-8">
+      <WpImage src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
+    </div>
+  )}
+
+  <article class="container-content py-8 prose-content max-w-3xl">
+    <Content />
+  </article>
+
+  {d.videos.length > 0 && (
+    <section class="container-content py-8">
+      <h2 class="text-2xl font-bold mb-4">Videos</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        {d.videos.map((v) => (
+          <video controls class="w-full rounded-lg bg-black">
+            <source src={url(v)} />
+          </video>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {d.gallery.length > 0 && (
+    <section class="container-content py-12">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Photo Gallery</h2>
+      <Gallery images={d.gallery} alt={d.title} columns={3} />
+    </section>
+  )}
+
+  <section class="container-content py-12">
+    <a href={url('/media/')} class="btn-outline">← All events</a>
+  </section>
+</Layout>

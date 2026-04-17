@@ -5,11 +5,11 @@ import { downloads } from '../data/downloads';
 import { url } from '../utils/url';
 ---
 
-<Layout title="Downloads" description="Annual reports, audited financial statements, impact studies and programme literature from NavSahyog Foundation.">
+<Layout title="Downloads" description="Annual reports, audited financials, impact studies and programme literature from NavSahyog Foundation.">
   <PageHeader
     eyebrow="Resources"
     title="Downloads"
-    subtitle="Annual reports, audited financials, impact studies and programme literature — all open and public."
+    subtitle="Find our key reports and updates in downloadable format."
   />
 
   <div class="container-content py-16 space-y-12">
@@ -20,17 +20,21 @@ import { url } from '../utils/url';
           {section.items.map((item) => (
             <li>
               <a
-                href={url(item.file)}
+                href={item.external ? item.file : url(item.file)}
+                target={item.external ? '_blank' : undefined}
+                rel={item.external ? 'noopener' : undefined}
                 class="flex items-center justify-between gap-4 p-4 rounded-lg border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition"
               >
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-3 min-w-0">
                   <svg class="w-6 h-6 text-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                     <polyline points="14 2 14 8 20 8"/>
                   </svg>
-                  <span class="font-medium text-ink">{item.title}</span>
+                  <span class="font-medium text-ink truncate">{item.title}</span>
                 </div>
-                <span class="text-sm text-brand font-semibold">Download PDF →</span>
+                <span class="text-sm text-brand font-semibold shrink-0">
+                  {item.external ? 'Drive ↗' : 'Download ↓'}
+                </span>
               </a>
             </li>
           ))}
