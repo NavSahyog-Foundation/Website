@@ -1,44 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { teamGroups } from '../../data/team';
+import WpImage from '../../components/WpImage.astro';
+import { advisors, founders, functionalLeaders, programTeam, areaFacilitatorPhotos } from '../../data/team';
+
+const sections = [
+  { heading: 'Board of Advisors', members: advisors },
+  { heading: 'Founders', members: founders },
+  { heading: 'Functional Leaders', members: functionalLeaders },
+  { heading: 'Program Team', members: programTeam },
+];
 ---
 
-<Layout title="The Team" description="Meet the advisors, leaders and facilitators of NavSahyog Foundation.">
+<Layout title="The Team" description="Advisors, founders, leaders and 150+ Area Facilitators who run NavSahyog Foundation's daily programme.">
   <PageHeader
     eyebrow="About"
     title="The Team"
-    subtitle="Advisors, leaders and on-ground facilitators who make every programme possible."
+    subtitle="Advisors, founders, leaders and Area Facilitators who make every programme possible."
   />
 
-  <div class="container-content py-16 space-y-16">
-    {teamGroups.map((group) => (
+  <div class="container-content py-16 space-y-14">
+    {sections.map((group) => (
       <section>
-        <div class="mb-6">
-          <h2 class="text-2xl md:text-3xl font-bold">{group.heading}</h2>
-          {group.description && (
-            <p class="text-ink/70 mt-2 max-w-2xl">{group.description}</p>
-          )}
-        </div>
+        <h2 class="text-2xl md:text-3xl font-bold mb-6">{group.heading}</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {group.members.map((m) => (
-            <div class="rounded-xl border border-slate-200 p-5 bg-white shadow-sm">
-              <div class="flex items-start gap-4">
-                <div class="w-12 h-12 rounded-full bg-brand-50 text-brand font-semibold flex items-center justify-center shrink-0">
-                  {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
-                </div>
-                <div>
-                  <p class="font-semibold text-ink">{m.name}</p>
-                  <p class="text-sm text-ink/70 mt-0.5">{m.role}</p>
-                  {m.region && (
-                    <p class="text-xs text-brand mt-1 font-medium">{m.region}</p>
-                  )}
-                </div>
+            <div class="rounded-xl border border-slate-200 p-5 bg-white shadow-sm flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-brand-50 text-brand font-semibold flex items-center justify-center shrink-0">
+                {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
+              </div>
+              <div>
+                <p class="font-semibold text-ink">{m.name}</p>
+                <p class="text-sm text-ink/70 mt-0.5">{m.role}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
     ))}
+
+    <section>
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Area Facilitators</h2>
+      <p class="text-ink/70 mb-6 max-w-3xl">
+        Our on-ground leaders — 150+ women, almost all from the villages they serve — run the
+        daily programme Monday through Saturday, every week of the year.
+      </p>
+      <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+        {areaFacilitatorPhotos.map((src) => (
+          <WpImage src={src} alt="Area Facilitator" class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm" />
+        ))}
+      </div>
+    </section>
   </div>
 </Layout>

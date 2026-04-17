@@ -1,25 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import WpImage from '../components/WpImage.astro';
 
 const updates = [
   {
-    title: 'Programme Vanya Samriddhi launched',
-    date: 'Recent',
-    body: 'We have launched Vanya Samriddhi — a food-forest initiative that turns one acre or more of barren farmland into a productive, mixed-species forest that feeds families and regenerates the soil.',
+    title: 'A Detailed view of our Program Covered by Pragathi TV',
+    image: 'wp-content/uploads/2023/10/Screenshot-902.png',
+    video: 'https://youtu.be/EfpTWtge4uc?si=uqXUIfp2-hh1AbXw',
+  },
+  {
+    title: 'Gandhi Jayanti Celebration in 300 Villages 2023',
+    image: 'wp-content/uploads/2023/10/Gandhi-Jayanti-0223-1536x864.jpg',
+    video: 'https://youtu.be/1m8t5xQU8eQ?si=jhlg8KlHNHkCBYAD',
+  },
+  {
+    title: 'Program Vanya Samriddhi Launch',
+    image: 'wp-content/uploads/2023/10/Vanya-Samriddhi-ENG-2023-1536x864.jpg',
+    video: 'https://youtu.be/QqhHuOMaieQ?si=rezv0zkM2ETSeWG0',
   },
 ];
 ---
 
-<Layout title="What's New" description="Recent updates from NavSahyog Foundation.">
-  <PageHeader eyebrow="Updates" title="What's New" subtitle="The latest from our programmes and villages." />
-  <div class="container-content py-16 space-y-6">
+<Layout title="What's New" description="Latest videos and updates from NavSahyog Foundation's programmes and villages.">
+  <PageHeader eyebrow="Updates" title="What's New" subtitle="Latest videos from our programmes." />
+
+  <div class="container-content py-16 grid md:grid-cols-2 gap-8">
     {updates.map((u) => (
-      <article class="rounded-xl border border-slate-200 p-6 bg-white">
-        <p class="text-xs uppercase tracking-wide text-brand font-semibold">{u.date}</p>
-        <h2 class="text-xl font-bold mt-1 mb-2">{u.title}</h2>
-        <p class="text-ink/80 leading-relaxed">{u.body}</p>
-      </article>
+      <a href={u.video} target="_blank" rel="noopener" class="group rounded-xl overflow-hidden border border-slate-200 bg-white hover:border-brand transition shadow-sm">
+        <div class="relative aspect-video overflow-hidden bg-surface-soft">
+          <WpImage src={u.image} alt={u.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="absolute inset-0 flex items-center justify-center bg-black/30">
+            <div class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
+              <svg class="w-6 h-6 text-brand ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <h2 class="font-bold text-ink group-hover:text-brand">{u.title}</h2>
+          <p class="mt-2 text-sm text-brand font-semibold">Watch on YouTube →</p>
+        </div>
+      </a>
     ))}
   </div>
 </Layout>

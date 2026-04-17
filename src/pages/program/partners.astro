@@ -1,38 +1,34 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { partnerCategories } from '../../data/partners';
+import WpImage from '../../components/WpImage.astro';
+import { partnerLogos } from '../../data/partners';
 import { url } from '../../utils/url';
 ---
 
-<Layout title="Partners" description="The funding and programme partners who make NavSahyog Foundation's work possible.">
+<Layout title="Partners" description="The partners who make NavSahyog Foundation's work possible.">
   <PageHeader
     eyebrow="Our Programme"
-    title="Our Partners"
+    title="Partners"
     subtitle="We are grateful to every organisation that has stood alongside us."
   />
 
-  <div class="container-content py-16 space-y-12">
-    {partnerCategories.map((cat) => (
-      <section>
-        <h2 class="text-2xl font-bold mb-5">{cat.heading}</h2>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {cat.partners.map((p) => (
-            <li class="rounded-xl border border-slate-200 p-5 bg-white">
-              {p.url ? (
-                <a href={p.url} target="_blank" rel="noopener" class="font-semibold text-brand hover:underline">
-                  {p.name}
-                </a>
-              ) : (
-                <p class="font-semibold text-ink">{p.name}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-    ))}
+  <div class="container-content py-16">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+      {partnerLogos.map((p) => (
+        <div class="bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-center aspect-video">
+          {p.url ? (
+            <a href={p.url} target="_blank" rel="noopener" class="block w-full h-full">
+              <WpImage src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+            </a>
+          ) : (
+            <WpImage src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+          )}
+        </div>
+      ))}
+    </div>
 
-    <section class="rounded-xl bg-brand-50 border border-brand-100 p-8">
+    <section class="mt-16 rounded-xl bg-brand-50 border border-brand-100 p-8">
       <h2 class="text-2xl font-bold mb-2">Become a partner</h2>
       <p class="text-ink/80 mb-6 max-w-2xl">
         Whether you're a CSR team, a family foundation, or an individual donor — we'd love to hear

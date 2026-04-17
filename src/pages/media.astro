@@ -1,37 +1,108 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import WpImage from '../components/WpImage.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../utils/url';
 
-const items = [
-  { title: 'Gandhi Jayanthi 2024', region: 'Multiple villages', year: '2024' },
-  { title: 'Prakriti Prem at Tumkur', region: 'Tumkur, Karnataka', year: '2024' },
-  { title: 'Tumkur Taluka Inter-Village Kho-Kho & Kabaddi Tournament', region: 'Tumkur, Karnataka', year: '2024' },
-  { title: 'Annual Awards and Women\'s Day Celebration', region: 'Bengaluru', year: '2024' },
-  { title: 'Dhan Kaushal — Financial Literacy Programme', region: 'Madurai, Tamil Nadu', year: '2024' },
-  { title: 'Jal Vriddhi — Groundwater Recharge', region: 'Haliyal, Karnataka', year: '2024' },
-  { title: 'Prakriti Prem — Love for Nature', region: 'Dimapur, Nagaland', year: '2024' },
-  { title: 'Swachh Bharat / Spit-Free India Movement', region: 'Dimapur, Nagaland', year: '2024' },
-  { title: 'Annual Competition', region: 'Madurai, Tamil Nadu', year: '2024' },
-  { title: 'Padaveedu Programme', region: 'Padaveedu, Tamil Nadu', year: '2024' },
+const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare(b.id));
+
+const articles = [
+  {
+    title: 'Gandhi Jayanthi 2024 at Dimapur',
+    image: 'wp-content/uploads/2024/10/GJ-Dim_page-0001-300x187.jpg',
+    link: 'https://www.morungexpress.com/navsahyog-foundation-celebrates-gandhi-jayanti-across-karnataka-tamil-nadu-and-nagaland',
+    source: 'Morung Express',
+  },
+  {
+    title: 'Prakriti Prem Coverage by Nesar TV',
+    image: 'wp-content/uploads/2024/10/PP-Nesar-TV-768x477.jpg',
+    link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ',
+    source: 'Nesar TV (Facebook)',
+  },
+  {
+    title: 'Prakriti Prem at Tumkur / Tiptur',
+    image: 'wp-content/uploads/2024/09/Prakriti-Prem-Tumkur-Tiptur-1-270x300.jpeg',
+    source: 'Regional press',
+  },
+  {
+    title: 'Independence Day 2024 at Dimapur',
+    image: 'wp-content/uploads/2024/10/Dimapur_page-0001-300x252.jpg',
+    link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/',
+    source: 'Eastern Mirror Nagaland',
+  },
+  {
+    title: 'Tumkur Taluka Inter-Village Kho-Kho & Kabaddi Tournament — Praja Pragathi',
+    image: 'wp-content/uploads/2024/09/Praja-Pragathi-Tumkur-Edition-300x251.jpeg',
+    source: 'Praja Pragathi (Tumkur)',
+  },
+  {
+    title: 'Tournament coverage — Praja Pragathi, Bengaluru',
+    image: 'wp-content/uploads/2024/10/Praja-Praga-Bengaluru-Edition-300x254.jpeg',
+    source: 'Praja Pragathi (Bengaluru)',
+  },
+  {
+    title: 'Kho-Kho Finals — Deccan Herald',
+    image: 'wp-content/uploads/2024/09/Deccan-Herald-Finals-176x300.jpeg',
+    source: 'Deccan Herald',
+  },
+  {
+    title: 'Tournament coverage — Kannada Prabha',
+    image: 'wp-content/uploads/2024/09/Kannada-Prabha-136x300.jpeg',
+    source: 'Kannada Prabha',
+  },
+  {
+    title: 'Tournament coverage — Kranthi Deepa',
+    image: 'wp-content/uploads/2024/09/Kranthi-Deepa-1024x787.jpeg',
+    source: 'Kranthi Deepa',
+  },
 ];
 ---
 
-<Layout title="Media Coverage" description="Events, awards, and programme highlights from NavSahyog Foundation.">
+<Layout title="Media Coverage" description="Press coverage, events and programme highlights from NavSahyog Foundation.">
   <PageHeader
     eyebrow="News"
-    title="Media Coverage &amp; Events"
-    subtitle="A running log of celebrations, competitions, and field programmes across our clusters."
+    title="Media Coverage"
+    subtitle="Press clippings, events and programme highlights."
   />
 
-  <div class="container-content py-16">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {items.map((item) => (
-        <article class="rounded-xl border border-slate-200 p-6 bg-white shadow-sm">
-          <p class="text-xs uppercase tracking-wide text-brand font-semibold">{item.year}</p>
-          <h2 class="text-lg font-bold mt-2 mb-2">{item.title}</h2>
-          <p class="text-sm text-ink/70">{item.region}</p>
-        </article>
-      ))}
+  <section class="container-content py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">Recent Coverage</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {articles.map((a) => {
+        const Tag = a.link ? 'a' : 'div';
+        const extra = a.link ? { href: a.link, target: '_blank', rel: 'noopener' } : {};
+        return (
+          <Tag class="group block rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden hover:border-brand transition" {...extra}>
+            <div class="aspect-[4/3] bg-surface-soft overflow-hidden">
+              <WpImage src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div class="p-5">
+              <p class="text-xs uppercase tracking-wide text-brand font-semibold">{a.source}</p>
+              <h3 class="font-bold text-ink mt-1">{a.title}</h3>
+              {a.link && <p class="mt-2 text-sm text-brand">Read article →</p>}
+            </div>
+          </Tag>
+        );
+      })}
     </div>
-  </div>
+  </section>
+
+  <section class="bg-surface-soft">
+    <div class="container-content py-16">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Events &amp; Celebrations</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {events.map((e) => (
+          <a
+            href={url(`/events/${e.slug}/`)}
+            class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-brand hover:bg-brand-50 transition"
+          >
+            {e.data.date && <p class="text-xs uppercase tracking-wide text-brand font-semibold">{e.data.date}</p>}
+            <h3 class="font-bold text-ink mt-1">{e.data.title}</h3>
+            {e.data.summary && <p class="mt-2 text-sm text-ink/80">{e.data.summary}</p>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 </Layout>

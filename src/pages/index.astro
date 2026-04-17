@@ -1,40 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import WpImage from '../components/WpImage.astro';
 import { url } from '../utils/url';
-import heroImage from '../assets/images/hero-mission.jpg';
-import linkagesImage from '../assets/images/linkages.png';
-import visionImage from '../assets/images/vision.png';
-import sdg4 from '../assets/images/sdg4.png';
-import sdg5 from '../assets/images/sdg5.jpg';
 ---
 
-<Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 — a path from life skills to livelihood.">
+<Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 through board games, sports, storytelling, creative activities and experiential learning.">
   <!-- Hero -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="bg-white">
     <div class="container-content pt-10 pb-6 md:pt-14 md:pb-10">
       <div class="relative rounded-3xl overflow-hidden shadow-xl">
-        <Image
-          src={heroImage}
+        <WpImage
+          src="wp-content/uploads/2026/04/ww-scaled-e1775040670106-930x620.jpg"
           alt="NavSahyog children with the Foundation's logo — Life skills to Livelihood"
           class="w-full h-auto object-cover"
           loading="eager"
         />
       </div>
     </div>
-    <div class="container-content pb-14 md:pb-20 text-center">
+    <div class="container-content pb-14 md:pb-16 text-center">
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-[#b83227] leading-tight tracking-tight">
         Developing Life Skills and Creativity<br />in Village children
       </h1>
-      <p class="mt-6 text-lg md:text-xl text-ink/80 max-w-3xl mx-auto leading-relaxed">
-        Every day, Monday to Saturday, we engage rural children aged 5–14 through sports,
-        storytelling, experiential learning and creative activities — a path from life skills to
-        livelihood.
-      </p>
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a href={url('/donate/')} class="btn-primary">Donate</a>
-        <a href={url('/program/intervention/')} class="btn-outline">Our Programme</a>
-      </div>
       <div class="mt-6 flex justify-center gap-4">
         <a href="https://www.facebook.com/navsahyogfoundation/" target="_blank" rel="noopener" aria-label="Facebook" class="text-ink/60 hover:text-brand">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.8l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6H16V4.2A22 22 0 0 0 13.9 4c-2.3 0-3.9 1.4-3.9 4v2.8H7.2V14H10v8h3Z"/></svg>
@@ -52,7 +38,7 @@ import sdg5 from '../assets/images/sdg5.jpg';
     </div>
   </section>
 
-  <!-- Key stats banner (matches original site) -->
+  <!-- Key stats banner -->
   <section class="bg-brand text-white">
     <div class="container-content py-14 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <div>
@@ -79,38 +65,74 @@ import sdg5 from '../assets/images/sdg5.jpg';
     </div>
   </section>
 
+  <!-- What we do -->
+  <section class="container-content py-16 md:py-20 grid lg:grid-cols-2 gap-10 items-start">
+    <div>
+      <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">What we do</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Life skills through daily engagement.</h2>
+      <p class="text-lg text-ink/85 leading-relaxed mb-4">
+        At NavSahyog, we develop life skills and creativity in village children aged 5–14 years
+        (their most impressionable age) through traditional board games, sports, storytelling,
+        creative activities, and experiential learning.
+      </p>
+      <p class="text-lg text-ink/85 leading-relaxed mb-4">
+        We engage children on a daily basis, from Monday to Saturday, throughout the year.
+      </p>
+      <p class="text-lg text-ink/85 leading-relaxed">
+        Our experiential learning is all about children learning about the environment and climate
+        change. Here, we have two programmes:
+      </p>
+      <ul class="mt-6 space-y-4 text-lg">
+        <li class="flex gap-3">
+          <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span>
+          <span><strong>Prakriti Prem</strong> — We give a fruit sapling to each child in the village, which they nurture and grow into a fruit tree; we run a competition across clusters of villages.</span>
+        </li>
+        <li class="flex gap-3">
+          <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span>
+          <span><strong>Jal Vriddhi</strong> — We teach children the value of water and address the depleting water table problem in villages through the co-creation of farm ponds with bunds alongside farmers.</span>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <WpImage
+        src="wp-content/uploads/2026/04/qq.png"
+        alt="NavSahyog programme highlights"
+        class="rounded-xl w-full h-auto shadow-sm"
+      />
+    </div>
+  </section>
+
   <!-- Linkages to Livelihood -->
   <section class="bg-surface-soft">
-    <div class="container-content py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
-      <div>
+    <div class="container-content py-16 md:py-20">
+      <div class="max-w-3xl mb-10">
         <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">Linkages to Livelihood</p>
-        <h2 class="text-2xl md:text-4xl font-bold mb-4">From life skills to livelihood.</h2>
-        <p class="text-lg text-ink/85 leading-relaxed mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">From life skills to livelihood.</h2>
+        <p class="text-lg text-ink/85 leading-relaxed">
           We have added extensions to our core programme of life skills development to address
           better linkages of life skills to livelihood.
         </p>
-        <ul class="space-y-3 mt-6">
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span><strong>Dhan Kaushal</strong> — financial literacy for children and youth.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span><strong>Yuva Samriddhi</strong> — self-employment training for rural youth, with CBD-RSETI at Haliyal, Karnataka.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span><strong>Vanya Samriddhi</strong> — food forests on one acre or more of barren farmland.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span><strong>Jal Vriddhi</strong> — recharging the groundwater table through village-led action.</span>
-          </li>
-        </ul>
-        <a href={url('/program/projects/')} class="btn-outline mt-8">Explore our projects</a>
       </div>
-      <div>
-        <Image src={linkagesImage} alt="NavSahyog programme linkages" class="rounded-xl w-full h-auto shadow-sm" />
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="rounded-xl border border-slate-200 p-6 bg-white">
+          <h3 class="text-xl font-bold text-brand mb-2">Dhan Kaushal</h3>
+          <p class="text-ink/80">Financial literacy for children and youth.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-6 bg-white">
+          <h3 class="text-xl font-bold text-brand mb-2">Yuva Samriddhi</h3>
+          <p class="text-ink/80">Self-employment training for rural youth in collaboration with CBD-RSETI at Haliyal, Karnataka.</p>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-6 bg-white md:col-span-2">
+          <h3 class="text-xl font-bold text-brand mb-2">Vanya Samriddhi</h3>
+          <p class="text-ink/80">
+            Development of food forests on one acre or more barren land of farmers. This significantly
+            enhances farmers' productivity, makes them more resilient to climate change, opens
+            livelihood opportunities for rural youth, and leads to positive climate action in the villages.
+          </p>
+        </div>
+      </div>
+      <div class="mt-10">
+        <a href={url('/program/projects/')} class="btn-outline">Explore our projects</a>
       </div>
     </div>
   </section>
@@ -123,7 +145,7 @@ import sdg5 from '../assets/images/sdg5.jpg';
         <h3 class="text-2xl md:text-3xl font-bold mb-4">
           A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
         </h3>
-        <Image src={visionImage} alt="Vision" class="rounded-xl mt-6 w-full h-auto" />
+        <WpImage src="wp-content/uploads/2026/04/ss.png" alt="Vision" class="rounded-xl mt-6 w-full h-auto" />
       </div>
       <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-brand text-white shadow-sm">
         <p class="text-white/80 font-semibold uppercase tracking-wide text-sm mb-3">Mission</p>
@@ -138,28 +160,8 @@ import sdg5 from '../assets/images/sdg5.jpg';
     </div>
   </section>
 
-  <!-- SDG alignment -->
-  <section class="bg-surface-soft">
-    <div class="container-content py-16">
-      <div class="max-w-3xl">
-        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">UN SDG Alignment</p>
-        <h2 class="text-2xl md:text-3xl font-bold mb-3">
-          Aligned to the UN Sustainable Development Goals.
-        </h2>
-        <p class="text-ink/80 text-lg leading-relaxed">
-          NavSahyog Foundation's work is aligned to several sub-goals of select UN SDGs — including
-          increasing the proportion of youth and adults with the skills needed for entrepreneurship.
-        </p>
-      </div>
-      <div class="flex flex-wrap items-center gap-8 mt-10">
-        <Image src={sdg4} alt="UN SDG 4 — Quality Education" class="h-28 w-auto" />
-        <Image src={sdg5} alt="UN SDG 5 — Gender Equality" class="h-28 w-auto" />
-      </div>
-    </div>
-  </section>
-
   <!-- Partner CTA -->
-  <section class="container-content py-20 text-center">
+  <section class="container-content py-14 text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-3">Want to partner with us?</h2>
     <p class="text-lg text-ink/80 max-w-2xl mx-auto mb-8">
       Every rupee, every hour, every connection helps a village child take the first step from life
@@ -167,7 +169,28 @@ import sdg5 from '../assets/images/sdg5.jpg';
     </p>
     <div class="flex flex-wrap justify-center gap-3">
       <a href={url('/donate/')} class="btn-primary">Donate</a>
-      <a href={url('/contact/')} class="btn-outline">Get in touch</a>
+      <a href={url('/downloads/')} class="btn-outline">Download our implementation document</a>
+    </div>
+  </section>
+
+  <!-- UN SDGs -->
+  <section class="bg-surface-soft">
+    <div class="container-content py-16">
+      <div class="max-w-3xl mb-10">
+        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">UN SDG &amp; NavSahyog Foundation</p>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">Our alignment to Sustainable Development.</h2>
+        <p class="text-ink/80 text-lg leading-relaxed">
+          NavSahyog Foundation is aligned to several sub-goals of select UN SDGs.
+        </p>
+      </div>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 items-center">
+        <WpImage src="wp-content/uploads/2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="w-full h-auto" />
+        <WpImage src="wp-content/uploads/2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="w-full h-auto" />
+      </div>
     </div>
   </section>
 </Layout>

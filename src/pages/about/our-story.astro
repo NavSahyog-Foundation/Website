@@ -1,56 +1,71 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { Image } from 'astro:assets';
+import WpImage from '../../components/WpImage.astro';
 import { url } from '../../utils/url';
-import img1 from '../../assets/images/story-1.jpg';
-import img2 from '../../assets/images/story-2.jpg';
-import img3 from '../../assets/images/story-longjump.jpg';
 ---
 
-<Layout title="Our Story" description="How NavSahyog Foundation began — and why life skills in village children are the key to superior livelihood.">
-  <PageHeader eyebrow="About" title="Our Story" subtitle="Why we exist, and the insight that set us on this path." />
+<Layout title="Our Story" description="NavSahyog Foundation's origin: a 2016 exploration of India's rural education problem and the insight that life skills are the missing link.">
+  <PageHeader eyebrow="About" title="Our Story" subtitle="How NavSahyog began, and the insight that set us on this path." />
 
   <article class="container-content py-16 grid lg:grid-cols-3 gap-12">
     <div class="lg:col-span-2 prose-content">
       <p>
+        A group of like-minded individuals came together in early 2016 to address a big problem in
+        the social sector. They chose education as their domain. They then started to explore what
+        could be the big problem in the education domain.
+      </p>
+      <p>
+        Upon studying secondary data related to education in India, they uncovered that nearly 70%
+        of school-going children in India are in the villages. They then started connecting with
+        various organizations doing stellar work in education, rural development etc. They also
+        travelled to villages to understand first hand, the issues and challenges the children in
+        the villages face.
+      </p>
+      <p>
+        It was a collective knowledge that gave the pointer to them that more than 90% of the
+        children in the villages drop out before completing schooling. Besides an incomplete
+        education, they also lack essential life skills like self esteem, communication, confidence,
+        teaming, resilience, values etc.
+      </p>
+      <p>
+        The impact of this is described in <a href={url('/program/big-problem/')}>The Big Problem</a> section.
+      </p>
+      <p>
         The job opportunities in the villages are highly limited. The only way for the youth in the
-        villages to achieve superior livelihood is to take up entrepreneurship.
+        villages to achieve superior livelihood is to take up entrepreneurship. There are many
+        unmet needs in the villages which are waiting for good quality solutions to be provided at
+        affordable prices.
       </p>
       <p>
-        There are many unmet needs in the villages which are waiting for good quality solutions to
-        be provided at affordable prices. Even if today the youth are told about these possibilities,
-        they are unable to take them up because they lack well-developed life skills like
-        self-esteem, confidence, teaming, values and more.
+        Even if today the youth are told about these possibilities they are unable to take them up
+        because they lack well-developed life skills like self-esteem, confidence, teaming, value
+        etc. Thus, the team decided to develop their life skills at their most impressionable age
+        (5–14 years), which will enable them to take up entrepreneurship creating superior
+        livelihood.
       </p>
       <p>
-        And so, the team decided to develop these life skills at their most impressionable age
-        (5–14 years), enabling them to eventually take up entrepreneurship and create superior
-        livelihood — for themselves and for their villages.
+        In villages, another challenge that the girl children face is, being forced to drop out of
+        school and early childhood marriages. These issues also get addressed through the
+        development of life skills in girl children.
       </p>
       <p>
-        In villages, another challenge that girl children face is being forced to drop out of school
-        and into early childhood marriages. These issues also get addressed through the development
-        of life skills in girl children.
+        The team decided to follow <a href={url('/about/five-factors/')}>5 Principles</a> on which
+        they based their entire initiative.
       </p>
 
       <h2>Our Journey</h2>
       <p>
-        What started as a small effort in a handful of Karnataka villages is now a daily engagement
-        with over 9,000 children across 300 villages in Karnataka, Tamil Nadu and Nagaland — every
-        Monday to Saturday, throughout the year.
-      </p>
-      <p>
-        We have since expanded from our core life-skills programme into livelihood linkages —
-        financial literacy for children and youth (<em>Dhan Kaushal</em>), self-employment training
-        (<em>Yuva Samriddhi</em>), food forests on barren land (<em>Vanya Samriddhi</em>), and
-        village-led groundwater recharge (<em>Jal Vriddhi</em>).
+        Our initiative started in November 2016, under the aegis of Sahyog Foundation, a trust
+        registered with 12A &amp; 80G certifications. We were kindly let to carry out our
+        initiative by the Managing Trustee, Mr. Anish Kumar, with an understanding that once we
+        are ready to grow our initiative, we will set up a separate entity.
       </p>
 
       <div class="grid sm:grid-cols-3 gap-4 mt-8 not-prose">
-        <Image src={img1} alt="Village programme" class="rounded-lg w-full h-auto" />
-        <Image src={img2} alt="Children learning" class="rounded-lg w-full h-auto" />
-        <Image src={img3} alt="Long jump at an annual competition" class="rounded-lg w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/IMG-20210201-WA0048-2-930x620.jpg" alt="Village programme" class="rounded-lg w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/IMG-20210710-WA0062-930x620.jpg" alt="Children learning" class="rounded-lg w-full h-auto" />
+        <WpImage src="wp-content/uploads/2021/07/Long-Jump-930x620.jpg" alt="Long jump at an annual competition" class="rounded-lg w-full h-auto" />
       </div>
 
       <div class="mt-10 flex flex-wrap gap-3">
