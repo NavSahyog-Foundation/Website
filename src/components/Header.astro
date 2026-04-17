@@ -1,47 +1,48 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/images/logo-tagline.png';
+import { url } from '../utils/url';
 
 const nav = [
   {
     label: 'About',
     children: [
-      { label: 'Our Story', href: '/about/our-story/' },
-      { label: 'The Five Factors', href: '/about/five-factors/' },
-      { label: 'The Team', href: '/about/the-team/' },
+      { label: 'Our Story', href: url('/about/our-story/') },
+      { label: 'The Five Factors', href: url('/about/five-factors/') },
+      { label: 'The Team', href: url('/about/the-team/') },
     ],
   },
   {
     label: 'Our Program',
     children: [
-      { label: 'The Big Problem', href: '/program/big-problem/' },
-      { label: 'Intervention', href: '/program/intervention/' },
-      { label: 'Projects', href: '/program/projects/' },
-      { label: 'Presence', href: '/program/presence/' },
-      { label: 'Partners', href: '/program/partners/' },
-      { label: 'Donors', href: '/program/donors/' },
+      { label: 'The Big Problem', href: url('/program/big-problem/') },
+      { label: 'Intervention', href: url('/program/intervention/') },
+      { label: 'Projects', href: url('/program/projects/') },
+      { label: 'Presence', href: url('/program/presence/') },
+      { label: 'Partners', href: url('/program/partners/') },
+      { label: 'Donors', href: url('/program/donors/') },
     ],
   },
   {
     label: 'Impact',
     children: [
-      { label: 'Impact', href: '/impact/' },
-      { label: 'Testimonials', href: '/impact/testimonials/' },
+      { label: 'Impact', href: url('/impact/') },
+      { label: 'Testimonials', href: url('/impact/testimonials/') },
     ],
   },
-  { label: 'Media', href: '/media/' },
-  { label: 'Blogs', href: '/blogs/' },
-  { label: 'Downloads', href: '/downloads/' },
-  { label: 'Contact', href: '/contact/' },
+  { label: 'Media', href: url('/media/') },
+  { label: 'Blogs', href: url('/blogs/') },
+  { label: 'Downloads', href: url('/downloads/') },
+  { label: 'Contact', href: url('/contact/') },
 ];
 
 const currentPath = Astro.url.pathname;
-const isActive = (href: string) => currentPath === href || currentPath.startsWith(href) && href !== '/';
+const isActive = (href: string) => currentPath === href || (currentPath.startsWith(href) && href !== url('/'));
 ---
 
 <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
   <div class="container-content flex items-center justify-between gap-4 py-3">
-    <a href="/" class="flex items-center gap-3 shrink-0" aria-label="NavSahyog Foundation — Home">
+    <a href={url('/')} class="flex items-center gap-3 shrink-0" aria-label="NavSahyog Foundation — Home">
       <Image src={logo} alt="NavSahyog Foundation" class="h-12 w-auto" loading="eager" />
     </a>
 
@@ -90,7 +91,7 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/donate/" class="btn-primary hidden sm:inline-flex">Donate</a>
+      <a href={url('/donate/')} class="btn-primary hidden sm:inline-flex">Donate</a>
       <button
         type="button"
         id="mobile-menu-toggle"
@@ -133,7 +134,7 @@ const isActive = (href: string) => currentPath === href || currentPath.startsWit
           </a>
         ),
       )}
-      <a href="/donate/" class="btn-primary w-full mt-2">Donate</a>
+      <a href={url('/donate/')} class="btn-primary w-full mt-2">Donate</a>
     </nav>
   </div>
 </header>

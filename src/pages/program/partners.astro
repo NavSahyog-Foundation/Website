@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { partnerCategories } from '../../data/partners';
+import { url } from '../../utils/url';
 ---
 
 <Layout title="Partners" description="The funding and programme partners who make NavSahyog Foundation's work possible.">
@@ -37,7 +38,7 @@ import { partnerCategories } from '../../data/partners';
         Whether you're a CSR team, a family foundation, or an individual donor — we'd love to hear
         from you.
       </p>
-      <a href="/contact/" class="btn-primary">Get in touch</a>
+      <a href={url('/contact/')} class="btn-primary">Get in touch</a>
     </section>
   </div>
 </Layout>

@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import StatCard from '../components/StatCard.astro';
 import { Image } from 'astro:assets';
+import { url } from '../utils/url';
 import heroImage from '../assets/images/hero-mission.jpg';
 import linkagesImage from '../assets/images/linkages.png';
 import visionImage from '../assets/images/vision.png';
@@ -11,28 +10,76 @@ import sdg5 from '../assets/images/sdg5.jpg';
 ---
 
 <Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 — a path from life skills to livelihood.">
-  <Hero
-    eyebrow="Life Skills to Livelihood"
-    title="A world where village children pursue their dreams and create superior livelihoods."
-    subtitle="NavSahyog Foundation engages rural children aged 5–14 every day — through sports, storytelling, experiential learning and creative activities — building the life skills that become the foundation for superior livelihood."
-    image={heroImage}
-    imageAlt="NavSahyog children at a village programme"
-    ctaPrimary={{ label: 'Donate', href: '/donate/' }}
-    ctaSecondary={{ label: 'Our Programme', href: '/program/intervention/' }}
-  />
-
-  <!-- Impact stats -->
-  <section class="container-content py-16">
-    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Our Reach Today</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <StatCard value="9,000+" label="Children engaged" description="Every day, Monday to Saturday." />
-      <StatCard value="300" label="Villages" description="Across Karnataka, Tamil Nadu and Nagaland." />
-      <StatCard value="60%" label="Children are girls" description="Diversity &amp; inclusion at the core." />
-      <StatCard value="97%" label="Women on our team" description="97% of whom live in the villages they serve." />
+  <!-- Hero -->
+  <section class="relative bg-white overflow-hidden">
+    <div class="container-content pt-10 pb-6 md:pt-14 md:pb-10">
+      <div class="relative rounded-3xl overflow-hidden shadow-xl">
+        <Image
+          src={heroImage}
+          alt="NavSahyog children with the Foundation's logo — Life skills to Livelihood"
+          class="w-full h-auto object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+    <div class="container-content pb-14 md:pb-20 text-center">
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-[#b83227] leading-tight tracking-tight">
+        Developing Life Skills and Creativity<br />in Village children
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-ink/80 max-w-3xl mx-auto leading-relaxed">
+        Every day, Monday to Saturday, we engage rural children aged 5–14 through sports,
+        storytelling, experiential learning and creative activities — a path from life skills to
+        livelihood.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href={url('/donate/')} class="btn-primary">Donate</a>
+        <a href={url('/program/intervention/')} class="btn-outline">Our Programme</a>
+      </div>
+      <div class="mt-6 flex justify-center gap-4">
+        <a href="https://www.facebook.com/navsahyogfoundation/" target="_blank" rel="noopener" aria-label="Facebook" class="text-ink/60 hover:text-brand">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.8l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6H16V4.2A22 22 0 0 0 13.9 4c-2.3 0-3.9 1.4-3.9 4v2.8H7.2V14H10v8h3Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/navsahyogfoundation/" target="_blank" rel="noopener" aria-label="Instagram" class="text-ink/60 hover:text-brand">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.5.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.5.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.5-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.5-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7 .1 5.8.1 4.9.3 4.2.6c-.8.3-1.5.7-2.1 1.4S1 3.4.7 4.2c-.3.7-.5 1.6-.6 2.8C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.1s1.3 1.1 2.1 1.4c.8.3 1.6.5 2.8.6 1.3.1 1.7.1 5 .1s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4s1.1-1.3 1.4-2.1c.3-.8.5-1.6.6-2.9.1-1.3.1-1.7.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.1s-1.3-1.1-2.1-1.4c-.8-.3-1.6-.5-2.9-.6C15.7 0 15.3 0 12 0zm0 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.8a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCOzO0-ZWLIOWjxU2SWwr7OA" target="_blank" rel="noopener" aria-label="YouTube" class="text-ink/60 hover:text-brand">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/navsahyog-foundation/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-ink/60 hover:text-brand">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1a4.2 4.2 0 0 1 3.8-2.1c4 0 4.8 2.6 4.8 6V21h-4v-5.8c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3V21h-4V9Z"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Linkages section -->
+  <!-- Key stats banner (matches original site) -->
+  <section class="bg-brand text-white">
+    <div class="container-content py-14 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <p class="text-4xl md:text-5xl font-bold">350+</p>
+        <p class="mt-1 text-white/90 text-lg">Villages</p>
+      </div>
+      <div>
+        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/></svg>
+        </div>
+        <p class="text-4xl md:text-5xl font-bold">10,000+</p>
+        <p class="mt-1 text-white/90 text-lg">Children</p>
+      </div>
+      <div>
+        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
+        </div>
+        <p class="text-4xl md:text-5xl font-bold">6</p>
+        <p class="mt-1 text-white/90 text-lg">Days / Week</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Linkages to Livelihood -->
   <section class="bg-surface-soft">
     <div class="container-content py-16 md:py-20 grid md:grid-cols-2 gap-10 items-center">
       <div>
@@ -49,7 +96,7 @@ import sdg5 from '../assets/images/sdg5.jpg';
           </li>
           <li class="flex gap-3">
             <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span><strong>Yuva Samriddhi</strong> — self-employment training for rural youth, in collaboration with CBD-RSETI at Haliyal, Karnataka.</span>
+            <span><strong>Yuva Samriddhi</strong> — self-employment training for rural youth, with CBD-RSETI at Haliyal, Karnataka.</span>
           </li>
           <li class="flex gap-3">
             <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
@@ -60,10 +107,10 @@ import sdg5 from '../assets/images/sdg5.jpg';
             <span><strong>Jal Vriddhi</strong> — recharging the groundwater table through village-led action.</span>
           </li>
         </ul>
-        <a href="/program/projects/" class="btn-outline mt-8">Explore our projects</a>
+        <a href={url('/program/projects/')} class="btn-outline mt-8">Explore our projects</a>
       </div>
       <div>
-        <Image src={linkagesImage} alt="NavSahyog programme linkages" class="rounded-xl w-full h-auto" />
+        <Image src={linkagesImage} alt="NavSahyog programme linkages" class="rounded-xl w-full h-auto shadow-sm" />
       </div>
     </div>
   </section>
@@ -84,8 +131,8 @@ import sdg5 from '../assets/images/sdg5.jpg';
           Impact 100,000 children with life skills &amp; enable superior livelihood for 3,000 youth in villages by 2030.
         </h3>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/about/our-story/" class="btn bg-white text-brand hover:bg-white/90">Our story</a>
-          <a href="/program/presence/" class="btn border border-white/60 text-white hover:bg-white/10">Where we work</a>
+          <a href={url('/about/our-story/')} class="btn bg-white text-brand hover:bg-white/90">Our story</a>
+          <a href={url('/program/presence/')} class="btn border border-white/60 text-white hover:bg-white/10">Where we work</a>
         </div>
       </div>
     </div>
@@ -119,8 +166,8 @@ import sdg5 from '../assets/images/sdg5.jpg';
       skills to livelihood.
     </p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href="/donate/" class="btn-primary">Donate</a>
-      <a href="/contact/" class="btn-outline">Get in touch</a>
+      <a href={url('/donate/')} class="btn-primary">Donate</a>
+      <a href={url('/contact/')} class="btn-outline">Get in touch</a>
     </div>
   </section>
 </Layout>

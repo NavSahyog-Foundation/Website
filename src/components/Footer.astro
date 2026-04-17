@@ -1,8 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import logo from '../assets/images/logo-tagline.png';
+import { url } from '../utils/url';
 
 const year = new Date().getFullYear();
+
+const links = [
+  { href: url('/about/our-story/'), label: 'Our Story' },
+  { href: url('/about/the-team/'), label: 'The Team' },
+  { href: url('/program/intervention/'), label: 'Intervention' },
+  { href: url('/program/presence/'), label: 'Presence' },
+  { href: url('/impact/'), label: 'Impact' },
+  { href: url('/downloads/'), label: 'Annual Reports' },
+  { href: url('/donate/'), label: 'Donate' },
+];
 ---
 
 <footer class="bg-surface-dark text-white mt-24">
@@ -47,13 +58,9 @@ const year = new Date().getFullYear();
     <div>
       <h3 class="text-white font-semibold mb-4">Explore</h3>
       <ul class="space-y-2 text-sm text-white/80">
-        <li><a href="/about/our-story/" class="hover:text-white">Our Story</a></li>
-        <li><a href="/about/the-team/" class="hover:text-white">The Team</a></li>
-        <li><a href="/program/intervention/" class="hover:text-white">Intervention</a></li>
-        <li><a href="/program/presence/" class="hover:text-white">Presence</a></li>
-        <li><a href="/impact/" class="hover:text-white">Impact</a></li>
-        <li><a href="/downloads/" class="hover:text-white">Annual Reports</a></li>
-        <li><a href="/donate/" class="hover:text-white">Donate</a></li>
+        {links.map((l) => (
+          <li><a href={l.href} class="hover:text-white">{l.label}</a></li>
+        ))}
       </ul>
     </div>
 

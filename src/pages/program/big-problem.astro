@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { Image } from 'astro:assets';
+import { url } from '../../utils/url';
 import img from '../../assets/images/big-problem.jpg';
 ---
 
@@ -48,7 +49,7 @@ import img from '../../assets/images/big-problem.jpg';
 
       <h2>What we do about it</h2>
       <p>
-        We run a standard, structured <a href="/program/intervention/">daily programme</a> in over
+        We run a standard, structured <a href={url('/program/intervention/')}>daily programme</a> in over
         300 villages — Monday to Saturday, an hour most days and two hours on Saturdays. Sports.
         Storytelling. Experiential learning. Creative activities. Delivered by a team that is 97%
         women, 97% of whom live in the villages they serve.

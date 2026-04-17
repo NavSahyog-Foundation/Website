@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import { Image } from 'astro:assets';
+import { url } from '../../utils/url';
 import img1 from '../../assets/images/story-1.jpg';
 import img2 from '../../assets/images/story-2.jpg';
 import img3 from '../../assets/images/story-longjump.jpg';
@@ -53,8 +54,8 @@ import img3 from '../../assets/images/story-longjump.jpg';
       </div>
 
       <div class="mt-10 flex flex-wrap gap-3">
-        <a href="/about/five-factors/" class="btn-outline">The Five Factors</a>
-        <a href="/about/the-team/" class="btn-outline">Meet the Team</a>
+        <a href={url('/about/five-factors/')} class="btn-outline">The Five Factors</a>
+        <a href={url('/about/the-team/')} class="btn-outline">Meet the Team</a>
       </div>
     </div>
 
