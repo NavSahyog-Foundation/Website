@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import StatCard from '../../components/StatCard.astro';
 import { Image } from 'astro:assets';
+import { url } from '../../utils/url';
 import heroImg from '../../assets/images/impact-hero.jpg';
 import priyanka from '../../assets/images/testimonial-priyanka.png';
 import nithyasree from '../../assets/images/testimonial-nithyasree.png';
@@ -43,25 +44,25 @@ import nithyasree from '../../assets/images/testimonial-nithyasree.png';
       </p>
       <ul class="grid md:grid-cols-2 gap-4">
         <li class="rounded-xl border border-slate-200 p-5 bg-white">
-          <a href="/downloads/impact-study-mar-2022.pdf" class="font-semibold text-brand hover:underline">
+          <a href={url('/downloads/impact-study-mar-2022.pdf')} class="font-semibold text-brand hover:underline">
             Impact Study — March 2022
           </a>
           <p class="text-sm text-ink/70 mt-1">PDF · full programme assessment</p>
         </li>
         <li class="rounded-xl border border-slate-200 p-5 bg-white">
-          <a href="/downloads/impact-study-mar-2021.pdf" class="font-semibold text-brand hover:underline">
+          <a href={url('/downloads/impact-study-mar-2021.pdf')} class="font-semibold text-brand hover:underline">
             Impact Study — March 2021
           </a>
           <p class="text-sm text-ink/70 mt-1">PDF · 39-village assessment</p>
         </li>
         <li class="rounded-xl border border-slate-200 p-5 bg-white">
-          <a href="/downloads/impact-study-jan-2020.pdf" class="font-semibold text-brand hover:underline">
+          <a href={url('/downloads/impact-study-jan-2020.pdf')} class="font-semibold text-brand hover:underline">
             Impact Study — January 2020
           </a>
           <p class="text-sm text-ink/70 mt-1">PDF</p>
         </li>
         <li class="rounded-xl border border-slate-200 p-5 bg-white">
-          <a href="/downloads/impact-study-sep-2019.pdf" class="font-semibold text-brand hover:underline">
+          <a href={url('/downloads/impact-study-sep-2019.pdf')} class="font-semibold text-brand hover:underline">
             Impact Study — September 2019
           </a>
           <p class="text-sm text-ink/70 mt-1">PDF</p>
@@ -87,7 +88,7 @@ import nithyasree from '../../assets/images/testimonial-nithyasree.png';
           </figcaption>
         </figure>
       </div>
-      <a href="/impact/testimonials/" class="btn-outline mt-8">Read more testimonials</a>
+      <a href={url('/impact/testimonials/')} class="btn-outline mt-8">Read more testimonials</a>
     </section>
   </div>
 </Layout>

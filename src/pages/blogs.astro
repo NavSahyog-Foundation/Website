@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { getCollection } from 'astro:content';
+import { url } from '../utils/url';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -25,7 +26,7 @@ const posts = (await getCollection('blog')).sort(
         {posts.map((p) => (
           <li>
             <a
-              href={`/blogs/${p.slug}/`}
+              href={url(`/blog/${p.slug}/`)}
               class="block rounded-xl border border-slate-200 p-6 bg-white hover:border-brand hover:bg-brand-50 transition"
             >
               <p class="text-xs text-ink/60 uppercase tracking-wide">

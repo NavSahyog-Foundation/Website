@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { downloads } from '../data/downloads';
+import { url } from '../utils/url';
 ---
 
 <Layout title="Downloads" description="Annual reports, audited financial statements, impact studies and programme literature from NavSahyog Foundation.">
@@ -19,7 +20,7 @@ import { downloads } from '../data/downloads';
           {section.items.map((item) => (
             <li>
               <a
-                href={item.file}
+                href={url(item.file)}
                 class="flex items-center justify-between gap-4 p-4 rounded-lg border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition"
               >
                 <div class="flex items-center gap-3">

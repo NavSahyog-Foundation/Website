@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import { url } from '../../utils/url';
 ---
 
 <Layout title="Donors" description="Our esteemed individual donors who make NavSahyog Foundation's work possible year after year.">
@@ -14,13 +15,13 @@ import PageHeader from '../../components/PageHeader.astro';
     <section>
       <h2 class="text-2xl font-bold mb-4">Our Esteemed Individual Donors — 2024–2025</h2>
       <p class="text-ink/70 mb-6">A detailed list is maintained in our annual report.</p>
-      <a href="/downloads/" class="btn-outline">See Annual Reports</a>
+      <a href={url('/downloads/')} class="btn-outline">See Annual Reports</a>
     </section>
 
     <section>
       <h2 class="text-2xl font-bold mb-4">Our Esteemed Individual Donors — 2023–2024</h2>
       <p class="text-ink/70 mb-6">A detailed list is maintained in our annual report.</p>
-      <a href="/downloads/" class="btn-outline">See Annual Reports</a>
+      <a href={url('/downloads/')} class="btn-outline">See Annual Reports</a>
     </section>
 
     <section class="rounded-xl bg-brand text-white p-8">
@@ -29,7 +30,7 @@ import PageHeader from '../../components/PageHeader.astro';
         Your contribution — large or small, one-off or monthly — directly funds a child's daily
         engagement in our programme.
       </p>
-      <a href="/donate/" class="btn bg-white text-brand hover:bg-white/90">Donate</a>
+      <a href={url('/donate/')} class="btn bg-white text-brand hover:bg-white/90">Donate</a>
     </section>
   </div>
 </Layout>

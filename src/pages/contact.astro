@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import { url } from '../utils/url';
 
 const contacts = [
   {
@@ -60,7 +61,7 @@ const contacts = [
           <li>• Partner as a company or family foundation</li>
           <li>• Volunteer your skills (writing, design, audit, mentorship)</li>
         </ul>
-        <a href="/donate/" class="btn bg-white text-brand hover:bg-white/90 mt-5">Donate now</a>
+        <a href={url('/donate/')} class="btn bg-white text-brand hover:bg-white/90 mt-5">Donate now</a>
       </div>
 
       <div class="rounded-xl bg-surface-soft p-6 border border-slate-200">
