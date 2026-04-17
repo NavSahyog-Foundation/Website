@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/images/logo-tagline.png';
+
+const nav = [
+  {
+    label: 'About',
+    children: [
+      { label: 'Our Story', href: '/about/our-story/' },
+      { label: 'The Five Factors', href: '/about/five-factors/' },
+      { label: 'The Team', href: '/about/the-team/' },
+    ],
+  },
+  {
+    label: 'Our Program',
+    children: [
+      { label: 'The Big Problem', href: '/program/big-problem/' },
+      { label: 'Intervention', href: '/program/intervention/' },
+      { label: 'Projects', href: '/program/projects/' },
+      { label: 'Presence', href: '/program/presence/' },
+      { label: 'Partners', href: '/program/partners/' },
+      { label: 'Donors', href: '/program/donors/' },
+    ],
+  },
+  {
+    label: 'Impact',
+    children: [
+      { label: 'Impact', href: '/impact/' },
+      { label: 'Testimonials', href: '/impact/testimonials/' },
+    ],
+  },
+  { label: 'Media', href: '/media/' },
+  { label: 'Blogs', href: '/blogs/' },
+  { label: 'Downloads', href: '/downloads/' },
+  { label: 'Contact', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath === href || currentPath.startsWith(href) && href !== '/';
+---
+
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
+  <div class="container-content flex items-center justify-between gap-4 py-3">
+    <a href="/" class="flex items-center gap-3 shrink-0" aria-label="NavSahyog Foundation — Home">
+      <Image src={logo} alt="NavSahyog Foundation" class="h-12 w-auto" loading="eager" />
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
+      {nav.map((item) =>
+        'children' in item ? (
+          <div class="relative group">
+            <button
+              type="button"
+              class="px-3 py-2 text-sm font-medium text-ink hover:text-brand inline-flex items-center gap-1"
+              aria-haspopup="true"
+            >
+              {item.label}
+              <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                <path d="M6 8.5 1.5 4h9L6 8.5z" />
+              </svg>
+            </button>
+            <div class="absolute left-0 top-full pt-1 hidden group-hover:block group-focus-within:block">
+              <div class="bg-white border border-slate-200 rounded-md shadow-lg py-2 min-w-[12rem]">
+                {item.children.map((child) => (
+                  <a
+                    href={child.href}
+                    class:list={[
+                      'block px-4 py-2 text-sm hover:bg-brand-50 hover:text-brand',
+                      isActive(child.href) ? 'text-brand font-semibold' : 'text-ink',
+                    ]}
+                  >
+                    {child.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class:list={[
+              'px-3 py-2 text-sm font-medium hover:text-brand',
+              isActive(item.href) ? 'text-brand' : 'text-ink',
+            ]}
+          >
+            {item.label}
+          </a>
+        ),
+      )}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href="/donate/" class="btn-primary hidden sm:inline-flex">Donate</a>
+      <button
+        type="button"
+        id="mobile-menu-toggle"
+        class="lg:hidden p-2 text-ink hover:text-brand"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white">
+    <nav class="container-content py-3 space-y-1" aria-label="Mobile">
+      {nav.map((item) =>
+        'children' in item ? (
+          <details class="group">
+            <summary class="flex items-center justify-between px-2 py-2 text-sm font-semibold text-ink cursor-pointer list-none">
+              {item.label}
+              <svg class="w-3 h-3 group-open:rotate-180 transition" viewBox="0 0 12 12" fill="currentColor">
+                <path d="M6 8.5 1.5 4h9L6 8.5z" />
+              </svg>
+            </summary>
+            <div class="pl-4 py-1 space-y-1">
+              {item.children.map((child) => (
+                <a href={child.href} class="block px-2 py-1.5 text-sm text-ink/80 hover:text-brand">
+                  {child.label}
+                </a>
+              ))}
+            </div>
+          </details>
+        ) : (
+          <a href={item.href} class="block px-2 py-2 text-sm font-semibold text-ink hover:text-brand">
+            {item.label}
+          </a>
+        ),
+      )}
+      <a href="/donate/" class="btn-primary w-full mt-2">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

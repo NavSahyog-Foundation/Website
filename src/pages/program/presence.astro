@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { Image } from 'astro:assets';
+import mapImg from '../../assets/images/presence-map.png';
+import { villageClusters } from '../../data/villages';
+
+const byRegion = villageClusters.reduce((acc, c) => {
+  (acc[c.region] ||= []).push(c);
+  return acc;
+}, {} as Record<string, typeof villageClusters>);
+---
+
+<Layout title="Presence" description="NavSahyog Foundation is present in 300 villages across Karnataka, Tamil Nadu and Nagaland.">
+  <PageHeader
+    eyebrow="Our Programme"
+    title="Where We Work"
+    subtitle="Currently present in 300 villages across Karnataka, Tamil Nadu and Nagaland."
+  />
+
+  <div class="container-content py-16 grid lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-2">
+      <Image src={mapImg} alt="NavSahyog Foundation presence map" class="rounded-xl w-full h-auto shadow-sm" />
+    </div>
+    <div class="lg:col-span-3 space-y-10">
+      {Object.entries(byRegion).map(([region, clusters]) => (
+        <section>
+          <h2 class="text-2xl font-bold mb-4">{region}</h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            {clusters.map((c) => (
+              <div class="rounded-lg border border-slate-200 p-4 bg-white">
+                <p class="font-semibold text-ink">{c.name}</p>
+                {c.summary && <p class="text-sm text-ink/70 mt-1">{c.summary}</p>}
+                {c.villages && c.villages.length > 0 && (
+                  <p class="text-xs text-ink/60 mt-2">
+                    Includes: {c.villages.join(', ')}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+</Layout>

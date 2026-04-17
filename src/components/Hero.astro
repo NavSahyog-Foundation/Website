@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+export interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  image?: ImageMetadata;
+  imageAlt?: string;
+  ctaPrimary?: { label: string; href: string };
+  ctaSecondary?: { label: string; href: string };
+}
+
+const { eyebrow, title, subtitle, image, imageAlt = '', ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section class="relative bg-gradient-to-br from-brand-50 via-white to-brand-50">
+  <div class="container-content py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      {eyebrow && (
+        <p class="text-brand font-semibold tracking-wide uppercase text-sm mb-3">{eyebrow}</p>
+      )}
+      <h1 class="text-3xl md:text-5xl font-bold leading-tight text-ink">{title}</h1>
+      {subtitle && <p class="mt-5 text-lg md:text-xl text-ink/80 leading-relaxed">{subtitle}</p>}
+      {(ctaPrimary || ctaSecondary) && (
+        <div class="mt-8 flex flex-wrap gap-3">
+          {ctaPrimary && (
+            <a href={ctaPrimary.href} class="btn-primary">{ctaPrimary.label}</a>
+          )}
+          {ctaSecondary && (
+            <a href={ctaSecondary.href} class="btn-outline">{ctaSecondary.label}</a>
+          )}
+        </div>
+      )}
+    </div>
+    {image && (
+      <div class="relative">
+        <Image
+          src={image}
+          alt={imageAlt}
+          class="rounded-2xl shadow-xl w-full h-auto object-cover"
+          loading="eager"
+        />
+      </div>
+    )}
+  </div>
+</section>

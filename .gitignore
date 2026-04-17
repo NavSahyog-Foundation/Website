@@ -1,0 +1,21 @@
+# build
+dist/
+.astro/
+
+# node
+node_modules/
+
+# env
+.env
+.env.production
+.env.local
+
+# editor
+.vscode/
+.idea/
+.DS_Store
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

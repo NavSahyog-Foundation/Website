@@ -1,23 +1,69 @@
-# NavSahayog Website static mirror snapshot
+# NavSahyog Foundation — Website
 
-This repository currently contains a wget mirror of https://www.navsahyog.org/ captured for static migration work.
+Static website for [NavSahyog Foundation](https://www.navsahyog.org), built with [Astro](https://astro.build) and deployed free of charge on [GitHub Pages](https://pages.github.com).
 
-## Snapshot notes
+## Why Astro
 
-- Source: https://www.navsahyog.org/
-- Capture method: `wget --mirror --convert-links --adjust-extension --page-requisites --no-parent -e robots=off -U "Mozilla/5.0" https://www.navsahyog.org/`
-- Mirrored content lives under `www.navsahyog.org/`
-- This is a working offline snapshot for migration and refactoring, not yet a cleaned GitHub Pages build
+- **Zero JavaScript** shipped by default — fast on rural/low-bandwidth connections.
+- **Markdown content collections** — the team can edit blog posts, village pages and downloads by editing plain text files (on GitHub's web editor, no code knowledge needed).
+- **Built-in image optimization** — every photo is automatically resized and converted to WebP/AVIF at build time.
+- **GitHub Pages compatible** — one workflow file, no paid hosting.
 
-## Important caveats
+## Local development
 
-- Some URLs returned `403` or `404` during capture. The main page set and most assets were downloaded successfully.
-- A number of pages still contain absolute references to WordPress JS/CSS endpoints on `https://www.navsahyog.org/...`.
-- Dynamic WordPress features like forms, donations, search, comments, and some plugin behavior will need replacement or removal for a pure static deployment.
+Requires Node.js 22.
 
-## Suggested next steps
+```bash
+npm install
+npm run dev     # starts a dev server at http://localhost:4321
+npm run build   # builds the production site into ./dist
+npm run preview # serves the built site locally
+```
 
-1. Audit all remaining external references.
-2. Decide the GitHub Pages structure you want.
-3. Replace dynamic WordPress/plugin features with static or Jamstack equivalents.
-4. Clean URLs/assets and validate locally before publishing.
+## Repository layout
+
+```
+src/
+  assets/images/        # photos used by components (optimized by Astro)
+  components/           # Header, Footer, Hero, PageHeader, StatCard
+  content/
+    blog/               # Markdown blog posts
+  data/
+    team.ts             # team roster (edit here to add/remove team members)
+    villages.ts         # village cluster list
+    downloads.ts        # list of PDFs shown on the Downloads page
+    partners.ts         # partners and donors grouped by category
+  layouts/
+    Layout.astro        # shared page shell
+  pages/                # one file per URL, including sub-routes
+  styles/global.css     # Tailwind entrypoint + shared styles
+public/
+  downloads/            # PDFs served as-is (annual reports, impact studies)
+  videos/               # video assets
+  CNAME                 # custom domain for GitHub Pages
+  robots.txt
+.github/workflows/
+  deploy.yml            # builds and deploys to GitHub Pages on every push to main
+```
+
+## Editing content
+
+**Text on a page:** edit the `.astro` file in `src/pages/`.
+
+**Blog posts:** add a new Markdown file in `src/content/blog/` with frontmatter for `title`, `date`, and `summary`.
+
+**Downloads (PDFs):** drop the PDF into `public/downloads/` and add an entry in `src/data/downloads.ts`.
+
+**Team, partners, villages:** edit the corresponding `.ts` file in `src/data/`.
+
+**Images:** place in `src/assets/images/` and import in the page. Astro will generate responsive versions automatically.
+
+## Deploy
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes the output to GitHub Pages. No manual steps.
+
+The custom domain is set via `public/CNAME` (currently `www.navsahyog.org`).
+
+## Legacy mirror
+
+The `www.navsahyog.org/` directory is the original WordPress site captured with `wget`. It is kept in the repository as a reference during the rebuild and is **not** published. It can be deleted once the new site is in production.

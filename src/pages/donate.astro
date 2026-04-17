@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children.">
+  <PageHeader
+    eyebrow="Support our work"
+    title="Donate"
+    subtitle="Every contribution directly funds a child's daily engagement — sports, storytelling, learning, creativity — Monday to Saturday, throughout the year."
+  />
+
+  <div class="container-content py-16 grid lg:grid-cols-5 gap-10">
+    <section class="lg:col-span-3 space-y-10">
+      <div class="rounded-xl border border-slate-200 p-8 bg-white">
+        <h2 class="text-2xl font-bold mb-2">Donate online</h2>
+        <p class="text-ink/80 mb-6">
+          The simplest way to give. All donations are eligible for tax benefits under Section 80G
+          (Indian donors).
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="https://give.do/ngos/navsahyog-foundation"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary"
+          >
+            Donate via Give.do
+          </a>
+          <a
+            href="https://navsahyog-foundation.danamojo.org/"
+            target="_blank"
+            rel="noopener"
+            class="btn-outline"
+          >
+            Donate via Danamojo
+          </a>
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-slate-200 p-8 bg-white">
+        <h2 class="text-2xl font-bold mb-3">Alternate Payment Details</h2>
+        <p class="text-ink/80 mb-6">
+          For large gifts, CSR disbursements, or international donations, please write to us first
+          so we can share the most appropriate bank details and tax paperwork.
+        </p>
+        <a href="mailto:paritosh.segal@gmail.com" class="btn-outline">Email us about a gift</a>
+      </div>
+
+      <div class="rounded-xl border border-slate-200 p-8 bg-white">
+        <h2 class="text-2xl font-bold mb-3">Where your donation goes</h2>
+        <ul class="space-y-3 text-ink/90">
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span>Honoraria for Area Facilitators who run daily sessions in their own villages.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span>Sports, storytelling and creative-activity materials for every cluster.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span>Training, supervision and independent impact assessment.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
+            <span>Livelihood-linkage projects: Vanya Samriddhi, Jal Vriddhi, Yuva Samriddhi, Dhan Kaushal.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="lg:col-span-2 space-y-6">
+      <div class="rounded-xl bg-brand text-white p-6">
+        <p class="text-white/80 uppercase tracking-wide text-sm font-semibold mb-2">Tax benefits</p>
+        <p class="leading-relaxed">
+          NavSahyog Foundation is 80G &amp; 12A certified. Indian donors receive a tax-deduction
+          receipt by email.
+        </p>
+      </div>
+      <div class="rounded-xl bg-surface-soft p-6 border border-slate-200">
+        <p class="text-brand uppercase tracking-wide text-sm font-semibold mb-2">Questions?</p>
+        <p class="text-ink/80 text-sm leading-relaxed mb-4">
+          Write to Paritosh for anything related to donations, sponsorship, or CSR partnerships.
+        </p>
+        <a href="mailto:paritosh.segal@gmail.com" class="text-brand font-semibold hover:underline">
+          paritosh.segal@gmail.com
+        </a>
+      </div>
+    </aside>
+  </div>
+</Layout>

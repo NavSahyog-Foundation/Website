@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const contacts = [
+  {
+    name: 'Paritosh Segal',
+    role: 'Strategy & Growth',
+    email: 'paritosh.segal@gmail.com',
+    phone: '+91 98866 24000',
+    phoneLink: '+919886624000',
+  },
+  {
+    name: 'Mary Dolly',
+    role: 'Chief Executive Officer',
+    email: 'marydolly190@gmail.com',
+    phone: '+91 99452 23897',
+    phoneLink: '+919945223897',
+  },
+];
+---
+
+<Layout title="Contact" description="Reach NavSahyog Foundation in Bengaluru.">
+  <PageHeader eyebrow="Get in touch" title="Contact Us" subtitle="We'd love to hear from donors, partners, volunteers and well-wishers." />
+
+  <div class="container-content py-16 grid lg:grid-cols-5 gap-10">
+    <div class="lg:col-span-3 space-y-8">
+      <div class="rounded-xl border border-slate-200 p-8 bg-white">
+        <h2 class="text-2xl font-bold mb-2">Our Office</h2>
+        <address class="not-italic text-lg text-ink/85 leading-relaxed">
+          B-104, Shobha Garnet,<br />
+          Sarjapur Road, Iblur,<br />
+          Bengaluru — 560 102,<br />
+          Karnataka, India
+        </address>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5">
+        {contacts.map((c) => (
+          <div class="rounded-xl border border-slate-200 p-6 bg-white">
+            <p class="font-semibold text-ink text-lg">{c.name}</p>
+            <p class="text-sm text-ink/70 mb-3">{c.role}</p>
+            <p class="text-sm">
+              <a href={`mailto:${c.email}`} class="text-brand hover:underline break-all">{c.email}</a>
+            </p>
+            <p class="text-sm mt-1">
+              <a href={`tel:${c.phoneLink}`} class="text-brand hover:underline">{c.phone}</a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <aside class="lg:col-span-2 space-y-6">
+      <div class="rounded-xl bg-brand text-white p-6">
+        <h3 class="text-lg font-semibold mb-3">Ways to support</h3>
+        <ul class="space-y-2 text-white/90">
+          <li>• Donate online in minutes</li>
+          <li>• Sponsor a village cohort</li>
+          <li>• Partner as a company or family foundation</li>
+          <li>• Volunteer your skills (writing, design, audit, mentorship)</li>
+        </ul>
+        <a href="/donate/" class="btn bg-white text-brand hover:bg-white/90 mt-5">Donate now</a>
+      </div>
+
+      <div class="rounded-xl bg-surface-soft p-6 border border-slate-200">
+        <h3 class="text-lg font-semibold mb-3">Registered as</h3>
+        <p class="text-ink/80 text-sm leading-relaxed">
+          NavSahyog Foundation is a registered Indian not-for-profit. Donations are eligible under
+          Section 80G &amp; 12A of the Indian Income Tax Act.
+        </p>
+      </div>
+    </aside>
+  </div>
+</Layout>
