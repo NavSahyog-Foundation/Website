@@ -2,7 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import WpImage from '../../components/WpImage.astro';
-import { advisors, founders, functionalLeaders, programTeam, areaFacilitatorPhotos } from '../../data/team';
+import {
+  advisors, founders, functionalLeaders, programTeam,
+  facilitatorsBengaluru, facilitatorsDimapur, facilitatorsHills,
+} from '../../data/team';
 
 const sections = [
   { heading: 'Board of Advisors', members: advisors },
@@ -10,13 +13,19 @@ const sections = [
   { heading: 'Functional Leaders', members: functionalLeaders },
   { heading: 'Program Team', members: programTeam },
 ];
+
+const facilitatorGroups = [
+  { heading: 'Area Facilitators — Bengaluru (Karnataka)', list: facilitatorsBengaluru },
+  { heading: 'Area Facilitators — Dimapur (Nagaland)', list: facilitatorsDimapur },
+  { heading: 'Area Facilitators — Jawadhu Hills (Tamil Nadu)', list: facilitatorsHills },
+];
 ---
 
-<Layout title="The Team" description="Advisors, founders, leaders and 150+ Area Facilitators who run NavSahyog Foundation's daily programme.">
+<Layout title="The Team" description="Advisors, founders, leaders and Area Facilitators who run NavSahyog Foundation's daily programme across Karnataka, Tamil Nadu and Nagaland.">
   <PageHeader
     eyebrow="About"
     title="The Team"
-    subtitle="Advisors, founders, leaders and Area Facilitators who make every programme possible."
+    subtitle="Advisors, founders, leaders and Area Facilitators — each one making the daily programme possible."
   />
 
   <div class="container-content py-16 space-y-14">
@@ -40,14 +49,25 @@ const sections = [
     ))}
 
     <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-2">Area Facilitators</h2>
-      <p class="text-ink/70 mb-6 max-w-3xl">
-        Our on-ground leaders — 150+ women, almost all from the villages they serve — run the
-        daily programme Monday through Saturday, every week of the year.
+      <h2 class="text-2xl md:text-3xl font-bold mb-2">Area Facilitators (AF)</h2>
+      <p class="text-ink/70 mb-8 max-w-3xl">
+        Our on-ground leaders — women, almost all from the villages they serve — who run the daily
+        programme Monday through Saturday, every week of the year.
       </p>
-      <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
-        {areaFacilitatorPhotos.map((src) => (
-          <WpImage src={src} alt="Area Facilitator" class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm" />
+      <div class="space-y-12">
+        {facilitatorGroups.map((g) => (
+          <div>
+            <h3 class="text-xl font-semibold mb-5 text-brand">{g.heading}</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {g.list.map((f) => (
+                <div class="text-center">
+                  <WpImage src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm bg-brand-50" />
+                  <p class="mt-2 font-semibold text-ink text-sm">{f.name}</p>
+                  {f.village && <p class="text-xs text-ink/60">{f.village}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>

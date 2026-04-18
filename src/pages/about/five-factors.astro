@@ -1,99 +1,99 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { Image } from 'astro:assets';
-import img1 from '../../assets/images/factors-1.jpg';
-import img2 from '../../assets/images/factors-2.jpg';
+import WpImage from '../../components/WpImage.astro';
 
 const principles = [
-  'Deep, daily engagement with every child.',
-  'Work in the child\'s own village, in their own language.',
-  'Programme designed by and with the community.',
-  'Measurable outcomes, every year, for every cohort.',
-  'Life skills first; livelihood follows as a consequence.',
+  { n: 1, text: 'We focus on a Big Problem.' },
+  { n: 2, text: 'We avoid re-inventing the wheel by partnering with organisations with proven solutions.' },
+  { n: 3, text: 'We ensure that our first employees come from the community we begin work in.' },
+  { n: 4, text: 'We maintain humility. We understand that the communities and the beneficiaries know best. We collaborate to adapt and co-create solutions with them.' },
+  { n: 5, text: 'We scale our operations by partnering with organizations that have a large geo presence and deep relations with the community. Thus, we are able to efficiently scale quickly, focusing on the impact.' },
 ];
 
 const values = [
-  'Integrity in every rupee, every report, every interaction.',
-  'Respect for the child, the family, and the village.',
-  'Humility — we learn before we teach.',
-  'Perseverance — daily, decade-long engagement.',
-  'Joy — programmes children look forward to every day.',
+  { n: 1, title: 'INTEGRITY', text: 'Honesty and meeting our commitments. What you mean is what you say, what you say is what you do.' },
+  { n: 2, title: 'TEAMWORK', text: 'We value team play and believe that through teamwork only, we can achieve our organization and individual goals.' },
+  { n: 3, title: 'RESPECT', text: 'We treat our beneficiaries, partners, donors, the community and each other with respect and sensitivity.' },
+  { n: 4, title: 'INNOVATION', text: 'We consider every challenge as an opportunity to innovate.' },
+  { n: 5, title: 'BEST PRACTICES', text: 'We learn from others, share and embrace best practices in all our work.' },
 ];
 
 const strengths = [
-  'An on-ground team that is 97% women and 97% from the villages we serve.',
-  'A standard, replicable programme across 15+ village clusters.',
-  'An active community of advisors, donors and partners.',
-  'Measured impact, published in public impact studies.',
-  'Deep understanding of rural entrepreneurship and the gap it needs to bridge.',
+  { n: 1, title: 'Our Team' },
+  { n: 2, title: 'Program Content' },
+  { n: 3, title: 'Delivery Structure' },
+  { n: 4, title: 'Well-documented Processes' },
+  { n: 5, title: 'Impact results in the last 3 years' },
 ];
 ---
 
-<Layout title="The Five Factors" description="The five principles, five values and five strengths that guide NavSahyog Foundation's work.">
+<Layout title="The Five Factors" description="NavSahyog Foundation's 5 principles, 5 values and 5 strengths — the factors that guide our work.">
   <PageHeader
     eyebrow="About"
     title="The Five Factors"
-    subtitle="Our entire initiative is based on five principles, five values, and five strengths."
+    subtitle="We are driven by 5 Principles and 5 Values. We also have 5 Strengths that differentiate us in what we do."
   />
 
-  <div class="container-content py-16 space-y-16">
-    <section class="grid md:grid-cols-2 gap-10 items-center">
-      <Image src={img1} alt="NavSahyog team" class="rounded-xl w-full h-auto" />
+  <section class="container-content py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
+      <WpImage src="wp-content/uploads/2022/05/1625724924859-1024x597.jpg" alt="NavSahyog team and children" class="rounded-xl w-full h-auto shadow-sm" />
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-3">Grounded in principle, bound by values.</h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">5 Principles</h2>
         <p class="text-lg text-ink/80 leading-relaxed">
-          NavSahyog Foundation's entire initiative is based on these five principles. We as a team
-          are deeply rooted in our values — they embody our culture and the way we do everything.
+          NavSahyog Foundation's entire initiative is based on these five principles.
         </p>
       </div>
-    </section>
+    </div>
+    <ul class="grid md:grid-cols-2 gap-4">
+      {principles.map((p) => (
+        <li class="flex gap-4 p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <span class="shrink-0 w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center">
+            #{p.n}
+          </span>
+          <span class="text-ink/90 text-lg">{p.text}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
 
-    <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Principles</h2>
+  <section class="bg-surface-soft">
+    <div class="container-content py-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">5 Values</h2>
+          <p class="text-lg text-ink/80 leading-relaxed">
+            We as a team are deeply rooted in our values. They embody our culture and the way we do
+            everything.
+          </p>
+        </div>
+        <WpImage src="wp-content/uploads/2022/05/192421519_296559592163787_7961964084391222623_n.jpg" alt="NavSahyog team at work" class="rounded-xl w-full h-auto shadow-sm" />
+      </div>
       <ul class="grid md:grid-cols-2 gap-4">
-        {principles.map((p, i) => (
-          <li class="flex gap-4 p-5 rounded-xl bg-white border border-slate-200">
-            <span class="shrink-0 w-9 h-9 rounded-full bg-brand text-white font-semibold flex items-center justify-center">
-              {i + 1}
-            </span>
-            <span class="text-ink/90">{p}</span>
+        {values.map((v) => (
+          <li class="p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand font-bold flex items-center justify-center">
+                #{v.n}
+              </span>
+              <h3 class="text-xl font-bold text-brand">{v.title}</h3>
+            </div>
+            <p class="text-ink/90">{v.text}</p>
           </li>
         ))}
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section class="bg-surface-soft -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 rounded-xl">
-      <div class="container-content">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Values</h2>
-        <ul class="grid md:grid-cols-2 gap-4">
-          {values.map((v, i) => (
-            <li class="flex gap-4 p-5 rounded-xl bg-white border border-slate-200">
-              <span class="shrink-0 w-9 h-9 rounded-full bg-brand-100 text-brand font-semibold flex items-center justify-center">
-                {i + 1}
-              </span>
-              <span class="text-ink/90">{v}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section class="grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">Five Strengths</h2>
-        <ul class="space-y-3">
-          {strengths.map((s, i) => (
-            <li class="flex gap-3">
-              <span class="shrink-0 w-7 h-7 rounded-full bg-brand text-white font-semibold text-sm flex items-center justify-center mt-0.5">
-                {i + 1}
-              </span>
-              <span class="text-ink/90">{s}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <Image src={img2} alt="NavSahyog team at work" class="rounded-xl w-full h-auto" />
-    </section>
-  </div>
+  <section class="container-content py-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">5 Strengths</h2>
+    <ul class="grid md:grid-cols-5 gap-4">
+      {strengths.map((s) => (
+        <li class="p-6 rounded-xl bg-brand text-white text-center">
+          <p class="text-3xl font-bold mb-2">#{s.n}</p>
+          <p class="font-semibold">{s.title}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
 </Layout>

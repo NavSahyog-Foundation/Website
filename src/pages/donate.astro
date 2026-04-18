@@ -1,9 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import { url } from '../utils/url';
 ---
 
-<Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children.">
+<Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children. 80G-eligible for Indian donors; FCRA-registered for international giving.">
   <PageHeader
     eyebrow="Support our work"
     title="Donate"
@@ -11,77 +12,85 @@ import PageHeader from '../components/PageHeader.astro';
   />
 
   <div class="container-content py-16 grid lg:grid-cols-5 gap-10">
-    <section class="lg:col-span-3 space-y-10">
+    <section class="lg:col-span-3 space-y-8">
+      <!-- Online donation platforms -->
       <div class="rounded-xl border border-slate-200 p-8 bg-white">
         <h2 class="text-2xl font-bold mb-2">Donate online</h2>
         <p class="text-ink/80 mb-6">
-          The simplest way to give. All donations are eligible for tax benefits under Section 80G
-          (Indian donors).
+          The simplest way to give. Indian donors receive an 80G tax-exemption receipt by email.
         </p>
         <div class="flex flex-wrap gap-3">
-          <a
-            href="https://give.do/ngos/navsahyog-foundation"
-            target="_blank"
-            rel="noopener"
-            class="btn-primary"
-          >
-            Donate via Give.do
-          </a>
-          <a
-            href="https://navsahyog-foundation.danamojo.org/"
-            target="_blank"
-            rel="noopener"
-            class="btn-outline"
-          >
-            Donate via Danamojo
-          </a>
+          <a href="https://navsahyog-foundation.danamojo.org/" target="_blank" rel="noopener" class="btn-primary">Donate via Danamojo</a>
+          <a href="https://give.do/ngos/navsahyog-foundation" target="_blank" rel="noopener" class="btn-outline">Donate via Give.do</a>
         </div>
       </div>
 
+      <!-- Alternate Payment Details -->
       <div class="rounded-xl border border-slate-200 p-8 bg-white">
-        <h2 class="text-2xl font-bold mb-3">Alternate Payment Details</h2>
-        <p class="text-ink/80 mb-6">
-          For large gifts, CSR disbursements, or international donations, please write to us first
-          so we can share the most appropriate bank details and tax paperwork.
-        </p>
-        <a href="mailto:paritosh.segal@gmail.com" class="btn-outline">Email us about a gift</a>
-      </div>
+        <h2 class="text-2xl font-bold mb-4">Alternate Payment Details</h2>
 
-      <div class="rounded-xl border border-slate-200 p-8 bg-white">
-        <h2 class="text-2xl font-bold mb-3">Where your donation goes</h2>
-        <ul class="space-y-3 text-ink/90">
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span>Honoraria for Area Facilitators who run daily sessions in their own villages.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span>Sports, storytelling and creative-activity materials for every cluster.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span>Training, supervision and independent impact assessment.</span>
-          </li>
-          <li class="flex gap-3">
-            <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-2.5"></span>
-            <span>Livelihood-linkage projects: Vanya Samriddhi, Jal Vriddhi, Yuva Samriddhi, Dhan Kaushal.</span>
-          </li>
-        </ul>
+        <h3 class="text-lg font-bold mt-6 mb-3 text-brand">Bank Details — Domestic</h3>
+        <dl class="grid sm:grid-cols-[12rem_1fr] gap-y-2 gap-x-4 text-ink/90">
+          <dt class="font-semibold">Name</dt><dd>Navsahyog Foundation</dd>
+          <dt class="font-semibold">Bank</dt><dd>ICICI Bank</dd>
+          <dt class="font-semibold">Account Number</dt><dd class="font-mono">107505003198</dd>
+          <dt class="font-semibold">IFSC Code</dt><dd class="font-mono">ICIC0001075</dd>
+          <dt class="font-semibold">Google Pay / UPI</dt><dd class="font-mono">navsahyog01@icici</dd>
+        </dl>
+
+        <h3 class="text-lg font-bold mt-8 mb-3 text-brand">Bank Details — Foreign Contributions (FCRA)</h3>
+        <dl class="grid sm:grid-cols-[12rem_1fr] gap-y-2 gap-x-4 text-ink/90">
+          <dt class="font-semibold">Name</dt><dd>Navsahyog Foundation</dd>
+          <dt class="font-semibold">Bank</dt><dd>State Bank of India</dd>
+          <dt class="font-semibold">Account Number</dt><dd class="font-mono">42219241823</dd>
+          <dt class="font-semibold">Branch</dt><dd>New Delhi Main Branch, State Bank of India</dd>
+          <dt class="font-semibold">Branch Address</dt><dd>11, Parliament Street, New Delhi, NCT of Delhi – 110001</dd>
+          <dt class="font-semibold">IFSC Code</dt><dd class="font-mono">SBIN0000691</dd>
+          <dt class="font-semibold">MICR Code</dt><dd class="font-mono">110002087</dd>
+          <dt class="font-semibold">SWIFT Code</dt><dd class="font-mono">SBININBB104</dd>
+        </dl>
+
+        <h3 class="text-lg font-bold mt-8 mb-3 text-brand">Donate by Cheque</h3>
+        <p class="text-ink/90">
+          Leave a message with your name, address, PAN number and amount at
+          <a href="mailto:donations.navsahyog@gmail.com?subject=Donations to Navsahyog" class="text-brand hover:underline">donations.navsahyog@gmail.com</a>
+          (subject line: <em>Donations to Navsahyog</em>) and we'll share the mailing address.
+        </p>
       </div>
     </section>
 
     <aside class="lg:col-span-2 space-y-6">
       <div class="rounded-xl bg-brand text-white p-6">
-        <p class="text-white/80 uppercase tracking-wide text-sm font-semibold mb-2">Tax benefits</p>
-        <p class="leading-relaxed">
-          NavSahyog Foundation is 80G &amp; 12A certified. Indian donors receive a tax-deduction
-          receipt by email.
+        <p class="text-white/80 uppercase tracking-wide text-sm font-semibold mb-2">Section 80G</p>
+        <p class="leading-relaxed text-white/95 text-sm">
+          NavSahyog Foundation is registered as a Section 8, not-for-profit company. Donations are
+          eligible for tax deduction under Section 80G of the Income Tax Act, 1960.
+        </p>
+        <p class="mt-3 text-xs text-white/80 font-mono">
+          Provisional Approval: AAGCN8813PF20206<br />
+          Dated 31/05/2021 · Valid AY 2022-23 to AY 2026-27
         </p>
       </div>
       <div class="rounded-xl bg-surface-soft p-6 border border-slate-200">
+        <p class="text-brand uppercase tracking-wide text-sm font-semibold mb-2">FCRA Registration</p>
+        <p class="text-ink/85 text-sm leading-relaxed mb-3">
+          NavSahyog Foundation is registered under the Foreign Contribution (Regulation) Act (FCRA),
+          2010, Government of India, which authorizes us to receive donations from supporters
+          outside India.
+        </p>
+        <p class="text-ink/85 text-sm leading-relaxed">
+          If you are a non-Indian citizen, NRI, OCI, or an international supporter and would like
+          to contribute to our work, we warmly welcome your support. As per Government of India
+          regulations, kindly make your donation <strong>only to our designated FCRA bank account</strong>.
+          Foreign contributions cannot be accepted through our domestic bank account, Google Pay,
+          or UPI details.
+        </p>
+        <p class="mt-3 text-xs text-ink/70 font-mono">FCRA Registration Number: 094421912</p>
+      </div>
+      <div class="rounded-xl bg-white p-6 border border-slate-200">
         <p class="text-brand uppercase tracking-wide text-sm font-semibold mb-2">Questions?</p>
         <p class="text-ink/80 text-sm leading-relaxed mb-4">
-          Write to Paritosh for anything related to donations, sponsorship, or CSR partnerships.
+          For CSR gifts, large donations, or partnership conversations, please write to Paritosh.
         </p>
         <a href="mailto:paritosh.segal@gmail.com" class="text-brand font-semibold hover:underline">
           paritosh.segal@gmail.com

@@ -4,10 +4,10 @@ export type TeamMember = {
   photo?: string;
 };
 
-export type TeamGroup = {
-  heading: string;
-  description?: string;
-  members: TeamMember[];
+export type Facilitator = {
+  name: string;
+  village?: string;
+  photo: string;
 };
 
 export const advisors: TeamMember[] = [
@@ -36,40 +36,49 @@ export const programTeam: TeamMember[] = [
   { name: 'Gomathi Palani', role: 'Senior Program Lead' },
 ];
 
-// Sample of real Area Facilitator photo thumbnails from the WP mirror.
-// The full collection (150+) lives in public/wp-content/uploads/2022/10/ and 2025/12/.
-export const areaFacilitatorPhotos: string[] = [
-  'wp-content/uploads/2022/10/Arthi-kalvasal-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Aswini-K.-Mallasandram-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Ayyur-Aishwarya-1-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Chaitra-Ballapally-VC-150x150.jpeg',
-  'wp-content/uploads/2022/10/Chinnatippanur-Shanthi-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Chithlinkottai-Roja-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Deepa_Kakkadasam-150x150.jpeg',
-  'wp-content/uploads/2022/10/Deysini-kannikapuram-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Gayathri_Medumuthukottai-150x150.jpeg',
-  'wp-content/uploads/2022/10/Giriyanapalli-Durga-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Govindapalli-Ranjitha-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Hanumanthapuram-Manjula-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Janani_kelur-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Kalpanath-kelur-adc-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Koochuvadi-Sivaranjani-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Maheshwari_Narayanamangalam-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Manjula_Sarandapally-150x150.jpeg',
-  'wp-content/uploads/2022/10/Mellure-Chithra-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Namileri-Chandrakala-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Nelukunthi-Anuratha-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Padma_Agalakotta-150x150.jpeg',
-  'wp-content/uploads/2022/10/Prabhavathi_kamakkurpalayam-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/R.suganya-Kalvasal-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Rasi-priya-Ammapalayam-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Revathi-palaya-ekambara-nallur-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Samanthakottai-Amaravathi-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Shabeena_Chinna-Pushpagiri-1-150x150.jpg',
-  'wp-content/uploads/2022/10/Thadikal-Kasturi-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Thippasandiram-Shoba-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Thottikuppam-Pavithra-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Unjetti-Manjula-1-150x150.jpeg',
-  'wp-content/uploads/2022/10/Venku-bai_J-setiipalli-150x150.jpeg',
-  'wp-content/uploads/2022/10/Vinitha_kamakkurpalayam-1-150x150.jpeg',
+// Area Facilitators — Bengaluru cluster (full name + village pairing)
+export const facilitatorsBengaluru: Facilitator[] = [
+  { name: 'Sarvamangala', village: 'Medanahalli', photo: 'wp-content/uploads/2025/12/b1-150x150.png' },
+  { name: 'Pavithra', village: 'Manchanayakanahalli', photo: 'wp-content/uploads/2025/12/b2-150x150.png' },
+  { name: 'Hanumakka', village: 'Seshagirihalli Colony', photo: 'wp-content/uploads/2025/12/b3-150x150.png' },
+  { name: 'Amrutha', village: 'Shanumangala', photo: 'wp-content/uploads/2025/12/b4-150x150.png' },
+  { name: 'Rukmini', village: 'Bananduru', photo: 'wp-content/uploads/2025/12/b5-150x150.png' },
+  { name: 'Shakuntala', village: 'Ningegowdanadoddi', photo: 'wp-content/uploads/2025/12/b6-150x150.png' },
+  { name: 'Chandana', village: 'Ganakallu', photo: 'wp-content/uploads/2025/12/b7-150x150.png' },
+  { name: 'Shree Vidya', village: 'Gollarapalya', photo: 'wp-content/uploads/2025/12/b9-150x150.png' },
+  { name: 'Prema', village: 'Chikkakundanahalli', photo: 'wp-content/uploads/2025/12/b10-150x150.png' },
+  { name: 'Rathnamma', village: 'Kodiyala Kerenahalli', photo: 'wp-content/uploads/2025/12/b11-150x150.png' },
+  { name: 'Sushma', village: 'Abbanakuppe', photo: 'wp-content/uploads/2025/12/b13-150x150.png' },
+  { name: 'Mangalamma', village: 'Chinnegowdanadoddi', photo: 'wp-content/uploads/2025/12/b14-150x150.png' },
+  { name: 'Aruna', village: 'Kemapiyahnapalya', photo: 'wp-content/uploads/2025/12/b15-150x150.png' },
+  { name: 'Shanthamani', village: 'Hakki Pikki Colony', photo: 'wp-content/uploads/2025/12/b16-150x150.png' },
+  { name: 'Savithra', village: 'Billakempanahalli', photo: 'wp-content/uploads/2025/12/b17-150x150.png' },
+];
+
+// Area Facilitators — Nagaland / Dimapur
+export const facilitatorsDimapur: Facilitator[] = [
+  { name: 'Priya Urang', photo: 'wp-content/uploads/2025/12/d1-150x150.png' },
+  { name: 'Ronjuli', photo: 'wp-content/uploads/2025/12/d2-150x150.png' },
+  { name: 'Dimashree', photo: 'wp-content/uploads/2025/12/d3-150x150.png' },
+  { name: 'Bridget Dungdung', photo: 'wp-content/uploads/2025/12/d4-150x150.png' },
+  { name: 'Keneiletuo', photo: 'wp-content/uploads/2025/12/d5-150x150.png' },
+  { name: 'Vekhrune', photo: 'wp-content/uploads/2025/12/d6-150x150.png' },
+  { name: 'Kevesholu', photo: 'wp-content/uploads/2025/12/d7-150x150.png' },
+  { name: 'T. Khailoi', photo: 'wp-content/uploads/2025/12/d8-150x150.png' },
+  { name: 'Kangsila', photo: 'wp-content/uploads/2025/12/d9-150x150.png' },
+  { name: 'Durga', photo: 'wp-content/uploads/2025/12/d10-150x150.png' },
+];
+
+// Area Facilitators — Hills cluster (H-prefix, likely Jawadhu Hills)
+export const facilitatorsHills: Facilitator[] = [
+  { name: 'Rabina Lafthai', photo: 'wp-content/uploads/2025/12/H0001-150x150.png' },
+  { name: 'Indira', photo: 'wp-content/uploads/2025/12/H2-150x150.png' },
+  { name: 'Pushringdi', photo: 'wp-content/uploads/2025/12/MM-150x150.jpeg' },
+  { name: 'Ringli', photo: 'wp-content/uploads/2025/12/H4-150x150.png' },
+  { name: 'Ringsringdi', photo: 'wp-content/uploads/2025/12/H5-150x150.png' },
+  { name: 'Disaindi', photo: 'wp-content/uploads/2025/12/H6-150x150.png' },
+  { name: 'Minika', photo: 'wp-content/uploads/2025/12/H7-150x150.png' },
+  { name: 'Ringjali', photo: 'wp-content/uploads/2025/12/H8-150x150.png' },
+  { name: 'Dirham', photo: 'wp-content/uploads/2025/12/H9-150x150.png' },
+  { name: 'Mercy', photo: 'wp-content/uploads/2025/12/H10-150x150.png' },
 ];
