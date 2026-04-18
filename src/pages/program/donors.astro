@@ -1,18 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import WpImage from '../../components/WpImage.astro';
 import { donorsByYear } from '../../data/donors';
 import { url } from '../../utils/url';
+
+const corporateLogos = [
+  { name: 'Hitachi CS', logo: 'wp-content/uploads/2023/07/Hitachi-CS-Logo.jpg' },
+  { name: 'Infosys Foundation', logo: 'wp-content/uploads/2023/07/Infosy-foundation_Logo_Blue.jpg' },
+  { name: 'TVS', logo: 'wp-content/uploads/2023/07/Tvs-logo.jpg' },
+  { name: 'Corporate Donor', logo: 'wp-content/uploads/2023/07/download.png' },
+  { name: 'Corporate Donor', logo: 'wp-content/uploads/2023/07/download-1.png' },
+  { name: 'Corporate Donor', logo: 'wp-content/uploads/2021/07/download-1-1.jpg' },
+  { name: 'Partner', logo: 'wp-content/uploads/2021/07/8aca506321104652a036478dad072c38-1.png' },
+];
+
+const acknowledgements = [
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-080949.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-081126-e1775443438396.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-081300.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-082942.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-083510.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084027.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084123.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084353.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084529.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084740.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084833.png',
+  'wp-content/uploads/2026/04/Screenshot-2026-04-06-084947.png',
+];
 ---
 
-<Layout title="Individual Donors" description="Our esteemed individual donors — every year, a list of people whose generosity makes our work possible.">
+<Layout title="Individual Donors" description="Our esteemed individual donors and corporate partners — the generosity behind our daily work.">
   <PageHeader
     eyebrow="Our Programme"
     title="Individual Donors"
-    subtitle="We are deeply grateful to the individuals who fund our work, year after year."
+    subtitle="We are deeply grateful to the individuals and organisations who fund our work, year after year."
   />
 
   <div class="container-content py-16 space-y-14">
+    <section>
+      <h2 class="text-2xl font-bold mb-6">Corporate Donors &amp; Partners</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {corporateLogos.map((c) => (
+          <div class="bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-center aspect-video">
+            <WpImage src={c.logo} alt={c.name} class="w-full h-full object-contain" />
+          </div>
+        ))}
+      </div>
+    </section>
+
     {donorsByYear.map((y) => (
       <section>
         <h2 class="text-2xl font-bold mb-6">{y.heading}</h2>
@@ -26,6 +63,18 @@ import { url } from '../../utils/url';
         </ul>
       </section>
     ))}
+
+    <section>
+      <h2 class="text-2xl font-bold mb-2">Donor Acknowledgements</h2>
+      <p class="text-ink/70 mb-6 max-w-3xl">Snapshots shared on our social channels and annual reports.</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {acknowledgements.map((src, i) => (
+          <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
+            <WpImage src={src} alt={`Donor acknowledgement ${i + 1}`} class="w-full h-48 object-cover" />
+          </div>
+        ))}
+      </div>
+    </section>
 
     <section class="rounded-xl bg-brand text-white p-8">
       <h2 class="text-2xl font-bold mb-2">Join this list</h2>

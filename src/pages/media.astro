@@ -8,58 +8,42 @@ import { url } from '../utils/url';
 const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare(b.id));
 
 const articles = [
-  {
-    title: 'Gandhi Jayanthi 2024 at Dimapur',
-    image: 'wp-content/uploads/2024/10/GJ-Dim_page-0001-300x187.jpg',
-    link: 'https://www.morungexpress.com/navsahyog-foundation-celebrates-gandhi-jayanti-across-karnataka-tamil-nadu-and-nagaland',
-    source: 'Morung Express',
-  },
-  {
-    title: 'Prakriti Prem Coverage by Nesar TV',
-    image: 'wp-content/uploads/2024/10/PP-Nesar-TV-768x477.jpg',
-    link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ',
-    source: 'Nesar TV (Facebook)',
-  },
-  {
-    title: 'Prakriti Prem at Tumkur / Tiptur',
-    image: 'wp-content/uploads/2024/09/Prakriti-Prem-Tumkur-Tiptur-1-270x300.jpeg',
-    source: 'Regional press',
-  },
-  {
-    title: 'Independence Day 2024 at Dimapur',
-    image: 'wp-content/uploads/2024/10/Dimapur_page-0001-300x252.jpg',
-    link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/',
-    source: 'Eastern Mirror Nagaland',
-  },
-  {
-    title: 'Tumkur Taluka Inter-Village Kho-Kho & Kabaddi Tournament — Praja Pragathi',
-    image: 'wp-content/uploads/2024/09/Praja-Pragathi-Tumkur-Edition-300x251.jpeg',
-    source: 'Praja Pragathi (Tumkur)',
-  },
-  {
-    title: 'Tournament coverage — Praja Pragathi, Bengaluru',
-    image: 'wp-content/uploads/2024/10/Praja-Praga-Bengaluru-Edition-300x254.jpeg',
-    source: 'Praja Pragathi (Bengaluru)',
-  },
-  {
-    title: 'Kho-Kho Finals — Deccan Herald',
-    image: 'wp-content/uploads/2024/09/Deccan-Herald-Finals-176x300.jpeg',
-    source: 'Deccan Herald',
-  },
-  {
-    title: 'Tournament coverage — Kannada Prabha',
-    image: 'wp-content/uploads/2024/09/Kannada-Prabha-136x300.jpeg',
-    source: 'Kannada Prabha',
-  },
-  {
-    title: 'Tournament coverage — Kranthi Deepa',
-    image: 'wp-content/uploads/2024/09/Kranthi-Deepa-1024x787.jpeg',
-    source: 'Kranthi Deepa',
-  },
+  { title: 'Gandhi Jayanthi 2024 at Dimapur', image: 'wp-content/uploads/2024/10/GJ-Dim_page-0001.jpg', link: 'https://www.morungexpress.com/navsahyog-foundation-celebrates-gandhi-jayanti-across-karnataka-tamil-nadu-and-nagaland', source: 'Morung Express' },
+  { title: 'Prakriti Prem Coverage by Nesar TV', image: 'wp-content/uploads/2024/10/PP-Nesar-TV.jpg', link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ', source: 'Nesar TV' },
+  { title: 'Prakriti Prem at Tumkur / Tiptur', image: 'wp-content/uploads/2024/09/Prakriti-Prem-Tumkur-Tiptur-1.jpeg', source: 'Regional press' },
+  { title: 'Independence Day 2024 at Dimapur', image: 'wp-content/uploads/2024/10/Dimapur_page-0001.jpg', link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/', source: 'Eastern Mirror Nagaland' },
+  { title: 'Tumkur Taluka Kho-Kho & Kabaddi Tournament', image: 'wp-content/uploads/2024/09/Praja-Pragathi-Tumkur-Edition.jpeg', source: 'Praja Pragathi (Tumkur)' },
+  { title: 'Tournament coverage — Bengaluru', image: 'wp-content/uploads/2024/10/Praja-Praga-Bengaluru-Edition.jpeg', source: 'Praja Pragathi (Bengaluru)' },
+  { title: 'Kho-Kho Finals', image: 'wp-content/uploads/2024/09/Deccan-Herald-Finals.jpeg', source: 'Deccan Herald' },
+  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Kannada-Prabha.jpeg', source: 'Kannada Prabha' },
+  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Kranthi-Deepa.jpeg', source: 'Kranthi Deepa' },
+  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Sanjevani-1.jpeg', source: 'Sanjevani' },
+  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Udayakala-1.jpeg', source: 'Udayakala' },
+  { title: 'Field report — July 2024', image: 'wp-content/uploads/2024/09/WhatsApp-Image-2024-07-11-at-11.45.41-e1729149195701.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.26-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.23-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.27-AM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (A)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (B)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (C)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.18.13-PM.jpeg', source: 'Regional press' },
+  { title: 'Report clipping', image: 'wp-content/uploads/2023/11/Untitled-2.png', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (D)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.20.17-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (E)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.27.57-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (F)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (G)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-3.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (H)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (I)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (J)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.19.03-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (K)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.48.55-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (L)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-9.03.53-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (M)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.20.45-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (N)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.17.51-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (O)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.26.37-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (P)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.18.31-PM.jpeg', source: 'Regional press' },
 ];
 ---
 
-<Layout title="Media Coverage" description="Press coverage, events and programme highlights from NavSahyog Foundation.">
+<Layout title="Media Coverage" description="Press clippings, events and programme highlights from NavSahyog Foundation.">
   <PageHeader
     eyebrow="News"
     title="Media Coverage"
@@ -68,7 +52,7 @@ const articles = [
 
   <section class="container-content py-16">
     <h2 class="text-2xl md:text-3xl font-bold mb-6">Recent Coverage</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
       {articles.map((a) => {
         const Tag = a.link ? 'a' : 'div';
         const extra = a.link ? { href: a.link, target: '_blank', rel: 'noopener' } : {};
@@ -77,10 +61,10 @@ const articles = [
             <div class="aspect-[4/3] bg-surface-soft overflow-hidden">
               <WpImage src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
-            <div class="p-5">
+            <div class="p-4">
               <p class="text-xs uppercase tracking-wide text-brand font-semibold">{a.source}</p>
-              <h3 class="font-bold text-ink mt-1">{a.title}</h3>
-              {a.link && <p class="mt-2 text-sm text-brand">Read article →</p>}
+              <h3 class="font-bold text-ink mt-1 text-sm">{a.title}</h3>
+              {a.link && <p class="mt-2 text-xs text-brand">Read article →</p>}
             </div>
           </Tag>
         );
@@ -93,10 +77,7 @@ const articles = [
       <h2 class="text-2xl md:text-3xl font-bold mb-6">Events &amp; Celebrations</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {events.map((e) => (
-          <a
-            href={url(`/events/${e.slug}/`)}
-            class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-brand hover:bg-brand-50 transition"
-          >
+          <a href={url(`/events/${e.slug}/`)} class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-brand hover:bg-brand-50 transition">
             {e.data.date && <p class="text-xs uppercase tracking-wide text-brand font-semibold">{e.data.date}</p>}
             <h3 class="font-bold text-ink mt-1">{e.data.title}</h3>
             {e.data.summary && <p class="mt-2 text-sm text-ink/80">{e.data.summary}</p>}

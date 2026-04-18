@@ -5,6 +5,19 @@ import StatCard from '../../components/StatCard.astro';
 import WpImage from '../../components/WpImage.astro';
 import { url } from '../../utils/url';
 
+const stories = [
+  { name: 'Priyanka', image: 'wp-content/uploads/2023/12/Priyanka-768x1086.png' },
+  { name: 'Nithyasree', image: 'wp-content/uploads/2023/12/Nithyasree-768x1086.png' },
+  { name: 'Manjunath', image: 'wp-content/uploads/2023/12/Manjunath-768x1086.png' },
+  { name: 'Manasa', image: 'wp-content/uploads/2023/12/Manasa-768x1086.png' },
+  { name: 'Dhanush', image: 'wp-content/uploads/2023/12/Dhanush-768x1086.png' },
+  { name: 'Kavya', image: 'wp-content/uploads/2023/12/Kavya-768x1086.png' },
+  { name: 'Chitra Devi', image: 'wp-content/uploads/2023/12/Chitra-Devi-768x1086.png' },
+  { name: 'Bhavya J', image: 'wp-content/uploads/2023/12/Bhavya-J-768x1086.jpeg' },
+  { name: 'Annu', image: 'wp-content/uploads/2023/12/Annu-768x1086.jpeg' },
+  { name: 'Amrutha', image: 'wp-content/uploads/2023/12/Amrutha-768x1086.jpeg' },
+];
+
 const studies = [
   { label: 'NavSahyog Foundation — Impact Study March 2025', link: 'https://drive.google.com/file/d/1ib0VvGRVmP-Tn62fq_ZR3hXAF6rj1Kio/view?usp=sharing', external: true },
   { label: 'NavSahyog Foundation — Impact Study March 2024', link: 'https://drive.google.com/file/d/1OVK8ZJr5DHFV5l5lDaxd1vMP1bFaMZiW/view?usp=sharing', external: true },
@@ -16,7 +29,7 @@ const studies = [
 ];
 ---
 
-<Layout title="Impact" description="NavSahyog Foundation's measured impact — by numbers, by studies, and by the children whose lives have changed.">
+<Layout title="Impact" description="NavSahyog Foundation's measured impact — by numbers, by independent studies, and by the children whose lives have changed.">
   <PageHeader
     eyebrow="Impact"
     title="Impact"
@@ -33,7 +46,8 @@ const studies = [
           participation of girls and women in our programme.
         </p>
         <p class="text-lg text-ink/80 leading-relaxed">
-          We conduct impact studies to understand the development of life skills and non-life skills.
+          We conduct impact studies to understand the development of life skills and non-life
+          skills.
         </p>
       </div>
     </section>
@@ -43,6 +57,23 @@ const studies = [
         <StatCard value="60%" label="Children in our programme are girls" />
         <StatCard value="97%" label="Of our team members are women" />
         <StatCard value="97%" label="Of those women live in villages" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6">Stories of Change</h2>
+      <p class="text-ink/80 text-lg max-w-3xl mb-8">
+        Children who grew up in the NavSahyog programme, now pursuing their dreams.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        {stories.map((s) => (
+          <figure class="rounded-xl overflow-hidden border border-slate-200 bg-white">
+            <WpImage src={s.image} alt={s.name} class="w-full aspect-[3/4] object-cover" />
+            <figcaption class="px-4 py-3 text-center">
+              <p class="font-semibold text-ink text-sm">{s.name}</p>
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </section>
 
@@ -68,25 +99,8 @@ const studies = [
       </ul>
     </section>
 
-    <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">In their own words</h2>
-      <div class="grid sm:grid-cols-2 gap-6">
-        <figure class="rounded-xl overflow-hidden border border-slate-200 bg-white">
-          <WpImage src="wp-content/uploads/2023/12/Priyanka-768x1086.png" alt="Priyanka — NavSahyog programme alumna" class="w-full h-auto" />
-          <figcaption class="p-4">
-            <p class="font-semibold">Priyanka</p>
-            <p class="text-sm text-ink/70">NavSahyog programme participant</p>
-          </figcaption>
-        </figure>
-        <figure class="rounded-xl overflow-hidden border border-slate-200 bg-white">
-          <WpImage src="wp-content/uploads/2023/12/Nithyasree-768x1086.png" alt="Nithyasree — NavSahyog programme alumna" class="w-full h-auto" />
-          <figcaption class="p-4">
-            <p class="font-semibold">Nithyasree</p>
-            <p class="text-sm text-ink/70">NavSahyog programme participant</p>
-          </figcaption>
-        </figure>
-      </div>
-      <a href={url('/impact/testimonials/')} class="btn-outline mt-8">Read more testimonials</a>
+    <section class="text-center">
+      <a href={url('/impact/testimonials/')} class="btn-outline">Read testimonial videos →</a>
     </section>
   </div>
 </Layout>

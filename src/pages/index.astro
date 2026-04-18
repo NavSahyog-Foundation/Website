@@ -93,12 +93,9 @@ import { url } from '../utils/url';
         </li>
       </ul>
     </div>
-    <div>
-      <WpImage
-        src="wp-content/uploads/2026/04/qq.png"
-        alt="NavSahyog programme highlights"
-        class="rounded-xl w-full h-auto shadow-sm"
-      />
+    <div class="space-y-4">
+      <WpImage src="wp-content/uploads/2022/07/IMG-2681-1024x461.jpg" alt="NavSahyog programme in action" class="rounded-xl w-full h-auto shadow-sm" />
+      <WpImage src="wp-content/uploads/2026/04/qq.png" alt="NavSahyog programme highlights" class="rounded-xl w-full h-auto shadow-sm" />
     </div>
   </section>
 
@@ -145,7 +142,10 @@ import { url } from '../utils/url';
         <h3 class="text-2xl md:text-3xl font-bold mb-4">
           A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
         </h3>
-        <WpImage src="wp-content/uploads/2026/04/ss.png" alt="Vision" class="rounded-xl mt-6 w-full h-auto" />
+        <div class="grid grid-cols-2 gap-4 mt-6">
+          <WpImage src="wp-content/uploads/2026/04/ss.png" alt="Vision" class="rounded-xl w-full h-auto" />
+          <WpImage src="wp-content/uploads/2021/07/Presentation1-300x276.jpg" alt="Vision illustration" class="rounded-xl w-full h-auto" />
+        </div>
       </div>
       <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-brand text-white shadow-sm">
         <p class="text-white/80 font-semibold uppercase tracking-wide text-sm mb-3">Mission</p>
@@ -170,6 +170,9 @@ import { url } from '../utils/url';
     <div class="flex flex-wrap justify-center gap-3">
       <a href={url('/donate/')} class="btn-primary">Donate</a>
       <a href={url('/downloads/')} class="btn-outline">Download our implementation document</a>
+    </div>
+    <div class="max-w-3xl mx-auto mt-12">
+      <WpImage src="wp-content/uploads/2026/03/ooo.png" alt="Our partners and supporters" class="w-full h-auto rounded-xl" />
     </div>
   </section>
 
@@ -222,13 +225,14 @@ import { url } from '../utils/url';
           NavSahyog Foundation is aligned to several sub-goals of select UN SDGs.
         </p>
       </div>
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 items-center">
-        <WpImage src="wp-content/uploads/2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="w-full h-auto" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="w-full h-auto" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="w-full h-auto" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="w-full h-auto" />
-        <WpImage src="wp-content/uploads/2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="w-full h-auto" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="w-full h-auto" />
+      <div class="flex flex-wrap items-center gap-6 mt-10">
+        <WpImage src="wp-content/uploads/2021/07/vcvfvf-150x150.jpg" alt="UN SDG preview" class="h-20 w-auto rounded" />
+        <WpImage src="wp-content/uploads/2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="h-24 w-24" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="h-24 w-24" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="h-24 w-24" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="h-24 w-24" />
+        <WpImage src="wp-content/uploads/2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="h-24 w-24" />
+        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="h-24 w-24" />
       </div>
     </div>
   </section>

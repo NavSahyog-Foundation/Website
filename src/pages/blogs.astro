@@ -3,61 +3,93 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import WpImage from '../components/WpImage.astro';
 
-const posts = [
-  {
-    title: 'World Water Day, 2026',
-    date: '22 March 2026',
-    summary: 'Water Day celebration across 355 villages.',
-    image: 'wp-content/uploads/2026/04/water.png',
-    video: 'https://youtu.be/ANLfFqblS4k?si=ElCCNqWelVjhle5Z',
-  },
-  {
-    title: 'Republic Day, 2026',
-    date: '26 January 2026',
-    summary: 'Republic Day celebration across 355 villages.',
-    image: 'wp-content/uploads/2026/04/repu.png',
-    video: 'https://youtu.be/abbMI7Era1s?si=UtLp5IQCD3ybVNlC',
-  },
-  {
-    title: 'Testimonials — Dhan Kaushal',
-    date: 'March 2026',
-    summary: 'Financial Literacy Programme testimonials.',
-    image: 'wp-content/uploads/2026/04/llll.png',
-    video: 'https://youtu.be/eS7OOdDzask?si=GkvhFsQqXyHtOnmm',
-  },
-  {
-    title: "Dhan Kaushal — Financial Literacy Children's Roll-out at MASS, Belagavi",
-    date: 'January–February 2026',
-    summary: "Children's roll-out in Belagavi.",
-    image: 'wp-content/uploads/2026/04/wwww.png',
-    video: 'https://youtu.be/Gx5fZ5LqplQ?si=pc90IP6eSm5wIk4a',
-  },
-  {
-    title: "Dhan Kaushal — Financial Literacy Teacher's Roll-out at MASS, Belagavi",
-    date: 'January 2026',
-    summary: "Teacher's roll-out in Belagavi.",
-    image: 'wp-content/uploads/2026/04/aaa-1.png',
-    video: 'https://youtu.be/laJpn1Dtt1w?si=8UbYF7p3aPv26w_J',
-  },
+// Current 2026 YouTube-linked posts
+const currentPosts = [
+  { title: 'World Water Day, 2026', date: '22 March 2026', summary: 'Water Day celebration across 355 villages.', image: 'wp-content/uploads/2026/04/water.png', video: 'https://youtu.be/ANLfFqblS4k?si=ElCCNqWelVjhle5Z' },
+  { title: 'Republic Day, 2026', date: '26 January 2026', summary: 'Republic Day celebration across 355 villages.', image: 'wp-content/uploads/2026/04/repu.png', video: 'https://youtu.be/abbMI7Era1s?si=UtLp5IQCD3ybVNlC' },
+  { title: 'Testimonials — Dhan Kaushal', date: 'March 2026', summary: 'Financial Literacy Programme testimonials.', image: 'wp-content/uploads/2026/04/llll.png', video: 'https://youtu.be/eS7OOdDzask?si=GkvhFsQqXyHtOnmm' },
+  { title: "Dhan Kaushal — Children's Roll-out at MASS, Belagavi", date: 'January–February 2026', summary: "Financial literacy children's roll-out in Belagavi.", image: 'wp-content/uploads/2026/04/wwww.png', video: 'https://youtu.be/Gx5fZ5LqplQ?si=pc90IP6eSm5wIk4a' },
+  { title: "Dhan Kaushal — Teacher's Roll-out at MASS, Belagavi", date: 'January 2026', summary: "Financial literacy teacher's roll-out in Belagavi.", image: 'wp-content/uploads/2026/04/aaa-1.png', video: 'https://youtu.be/laJpn1Dtt1w?si=8UbYF7p3aPv26w_J' },
+];
+
+// Additional archive posts with thumbnails from the WordPress mirror
+const archivePosts = [
+  { title: 'Servamangala Memorial Day', image: 'wp-content/uploads/2026/04/ser.png' },
+  { title: 'Annual Day 2026', image: 'wp-content/uploads/2026/04/ann.png' },
+  { title: "Children's Day celebrations", image: 'wp-content/uploads/2026/04/chil.png' },
+  { title: 'NavSahyog team gathering', image: 'wp-content/uploads/2026/04/team.png' },
+  { title: 'Gandhi Jayanthi celebrations', image: 'wp-content/uploads/2026/04/gan-1.png' },
+  { title: 'Independence Day 2025', image: 'wp-content/uploads/2026/04/ind25.png' },
+  { title: 'Annual competitions — Day 1', image: 'wp-content/uploads/2025/12/day1-1.png' },
+  { title: 'Annual competitions — Day 2', image: 'wp-content/uploads/2025/12/day2-1.png' },
+  { title: 'Annual competitions — Day 3', image: 'wp-content/uploads/2025/12/day-3.png' },
+  { title: 'Yoga Day celebrations', image: 'wp-content/uploads/2026/04/yog.png' },
+  { title: 'Teachers roll-out', image: 'wp-content/uploads/2026/03/tea.png' },
+  { title: 'Community Meeting', image: 'wp-content/uploads/2026/04/mm-e1775028217725.png' },
+  { title: 'Feature story', image: 'wp-content/uploads/2026/04/aaa.png' },
+  { title: 'Kabaddi Tournament — 7 July 2024', image: 'wp-content/uploads/2024/09/Kabaddi-Tournament-7th-July-2024.jpg' },
+  { title: 'Kho-Kho Tournament — 14 July 2024', image: 'wp-content/uploads/2024/09/Kho-Kho-Tournament-14th-July-2024.jpg' },
+  { title: 'Tournament Finals — 28 July 2024', image: 'wp-content/uploads/2024/09/Finals-tournament-28th.jpg' },
+  { title: 'Republic Day Celebration 2024', image: 'wp-content/uploads/2024/02/REPUBLIC-DAY-CELEBRATION-2024-min.png' },
+  { title: 'Republic Day 2024 (gallery)', image: 'wp-content/uploads/2024/02/Screenshot-2024-01-26-215210.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-894.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-892.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-890.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-888.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-886.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-884.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-882.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-878.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-876.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-874.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-872.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-868.png' },
+  { title: 'Programme thumbnail', image: 'wp-content/uploads/2023/07/mq2.webp' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-865.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-861.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-856.png' },
+  { title: 'Programme photo — 2023', image: 'wp-content/uploads/2023/07/Screenshot-853.png' },
+  { title: 'Annual Competition — Byrasandra', image: 'wp-content/uploads/2021/11/Byrasandra-AC.jpg' },
+  { title: 'Village programme — October 2021', image: 'wp-content/uploads/2021/11/IMG_20211002_152706-1.jpg' },
+  { title: 'Boys Kabaddi — September 2021', image: 'wp-content/uploads/2021/09/fbfb.jpg' },
+  { title: 'Tokyo Olympics 2020 salute', image: 'wp-content/uploads/2021/08/Tokyo-Olympics-2020.jpg' },
+  { title: '#StopIndiaSpitting campaign', image: 'wp-content/uploads/2021/08/Stop-India-Spitting-campaign.jpg' },
+  { title: 'International Yoga Day 2021', image: 'wp-content/uploads/2021/07/iyds.jpg' },
+  { title: 'Programme photo — 2021', image: 'wp-content/uploads/2021/07/fhhfhf.jpg' },
 ];
 ---
 
-<Layout title="Blogs" description="Stories, reflections and field notes from NavSahyog Foundation.">
+<Layout title="Blogs" description="Stories, videos, reflections and field notes from NavSahyog Foundation — from 2021 to today.">
   <PageHeader eyebrow="From the field" title="Blogs" subtitle="Stories and reflections from our villages and our team." />
 
-  <div class="container-content py-16 space-y-5">
-    {posts.map((p) => (
-      <a href={p.video} target="_blank" rel="noopener" class="group flex flex-col sm:flex-row rounded-xl border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition overflow-hidden">
-        <div class="sm:w-64 shrink-0 aspect-video sm:aspect-auto">
-          <WpImage src={p.image} alt={p.title} class="w-full h-full object-cover" />
-        </div>
-        <div class="p-6 flex-1">
-          <p class="text-xs uppercase tracking-wide text-brand font-semibold">{p.date}</p>
-          <h2 class="text-xl font-bold mt-1 mb-2">▶ {p.title}</h2>
-          <p class="text-ink/80">{p.summary}</p>
-          <p class="mt-3 text-sm text-brand font-semibold">Watch on YouTube →</p>
-        </div>
-      </a>
-    ))}
+  <div class="container-content py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">Latest Videos</h2>
+    <div class="space-y-5 mb-16">
+      {currentPosts.map((p) => (
+        <a href={p.video} target="_blank" rel="noopener" class="group flex flex-col sm:flex-row rounded-xl border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition overflow-hidden">
+          <div class="sm:w-64 shrink-0 aspect-video sm:aspect-auto">
+            <WpImage src={p.image} alt={p.title} class="w-full h-full object-cover" />
+          </div>
+          <div class="p-6 flex-1">
+            <p class="text-xs uppercase tracking-wide text-brand font-semibold">{p.date}</p>
+            <h3 class="text-xl font-bold mt-1 mb-2">▶ {p.title}</h3>
+            <p class="text-ink/80">{p.summary}</p>
+            <p class="mt-3 text-sm text-brand font-semibold">Watch on YouTube →</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">Archive</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+      {archivePosts.map((p) => (
+        <figure class="rounded-lg overflow-hidden bg-white border border-slate-200">
+          <div class="aspect-[4/3]">
+            <WpImage src={p.image} alt={p.title} class="w-full h-full object-cover" />
+          </div>
+          <figcaption class="px-3 py-2 text-xs text-ink/80">{p.title}</figcaption>
+        </figure>
+      ))}
+    </div>
   </div>
 </Layout>

@@ -4,7 +4,8 @@ import PageHeader from '../../components/PageHeader.astro';
 import WpImage from '../../components/WpImage.astro';
 import {
   advisors, founders, functionalLeaders, programTeam,
-  facilitatorsBengaluru, facilitatorsDimapur, facilitatorsHills,
+  facilitatorsBengaluru, facilitatorsDimapur, facilitatorsHills, facilitatorsLegacy,
+  teamArchivePhotos,
 } from '../../data/team';
 
 const sections = [
@@ -18,14 +19,15 @@ const facilitatorGroups = [
   { heading: 'Area Facilitators — Bengaluru (Karnataka)', list: facilitatorsBengaluru },
   { heading: 'Area Facilitators — Dimapur (Nagaland)', list: facilitatorsDimapur },
   { heading: 'Area Facilitators — Jawadhu Hills (Tamil Nadu)', list: facilitatorsHills },
+  { heading: 'Area Facilitators — Tamil Nadu & Karnataka Roster', list: facilitatorsLegacy },
 ];
 ---
 
-<Layout title="The Team" description="Advisors, founders, leaders and Area Facilitators who run NavSahyog Foundation's daily programme across Karnataka, Tamil Nadu and Nagaland.">
+<Layout title="The Team" description="Advisors, founders, leaders and 150+ Area Facilitators who run NavSahyog Foundation's daily programme across Karnataka, Tamil Nadu and Nagaland.">
   <PageHeader
     eyebrow="About"
     title="The Team"
-    subtitle="Advisors, founders, leaders and Area Facilitators — each one making the daily programme possible."
+    subtitle="Advisors, founders, leaders and 150+ Area Facilitators — each one making the daily programme possible."
   />
 
   <div class="container-content py-16 space-y-14">
@@ -58,16 +60,25 @@ const facilitatorGroups = [
         {facilitatorGroups.map((g) => (
           <div>
             <h3 class="text-xl font-semibold mb-5 text-brand">{g.heading}</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {g.list.map((f) => (
                 <div class="text-center">
                   <WpImage src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm bg-brand-50" />
-                  <p class="mt-2 font-semibold text-ink text-sm">{f.name}</p>
-                  {f.village && <p class="text-xs text-ink/60">{f.village}</p>}
+                  <p class="mt-2 font-semibold text-ink text-xs">{f.name}</p>
+                  {f.village && <p class="text-[10px] text-ink/60">{f.village}</p>}
                 </div>
               ))}
             </div>
           </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h3 class="text-xl font-semibold mb-5 text-brand">Team gatherings &amp; training</h3>
+      <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-2">
+        {teamArchivePhotos.map((p) => (
+          <WpImage src={p} alt="Team gathering" class="w-full aspect-square object-cover rounded-lg" />
         ))}
       </div>
     </section>
