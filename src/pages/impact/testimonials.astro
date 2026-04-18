@@ -1,30 +1,69 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
+import { url } from '../../utils/url';
 
 const categories = [
   {
-    title: 'Feedback by children about our program',
-    body: 'Nityashree from Haralur and Manasa from Thottikuppam share their experience of being a part of our program.',
-  },
-  {
-    title: 'Feedback by teachers about our program',
-    body: 'School teachers from our village clusters share how they see the NavSahyog programme shaping the children they teach.',
-  },
-  {
-    title: 'Feedback by parents about our program',
-    body: 'Feedback by a parent from Samantakottai village, Denkanikottai. Feedback by Anitha (parent) from Enimuchandram village, Denkanikottai.',
-    videos: [
-      '/videos/feedback-by-anitha.mp4',
+    heading: 'Feedback by children about our program',
+    entries: [
+      {
+        label: 'Nityashree, Haralur',
+        type: 'mp4',
+        src: '/wp-content/uploads/2021/07/Untitled-design-1.mp4',
+      },
+      {
+        label: 'Manasa, Thottikuppam',
+        type: 'youtube',
+        id: 'AbHu8llgWIU',
+      },
     ],
+    summary: 'Nityashree from Haralur and Manasa from Thottikuppam share their experience of being a part of our program.',
   },
   {
-    title: 'Feedback by Village Coordinators about our program',
-    body: 'Village Coordinator Sudha, from Kowthamaranahalli gives her feedback. Village Coordinator Kanaka, from Enimuchandram gives her feedback on working with the foundation.',
+    heading: 'Feedback by teachers about our program',
+    entries: [
+      {
+        label: "A teacher's feedback",
+        type: 'youtube',
+        id: '036u-rKBua0',
+      },
+    ],
+    summary: 'A teacher from one of our village schools shares how the NavSahyog programme has shaped the children she teaches.',
   },
-];
-
-import { url } from '../../utils/url';
+  {
+    heading: 'Feedback by parents about our program',
+    entries: [
+      {
+        label: 'A parent from Samandhakottai, Denkanikottai',
+        type: 'mp4',
+        src: '/wp-content/uploads/2021/07/Untitled-design-1.mp4',
+      },
+      {
+        label: 'Anitha (parent) from Enimuchandram, Denkanikottai',
+        type: 'mp4',
+        src: '/wp-content/uploads/2021/07/Feeback-By-Anitha.mp4',
+      },
+    ],
+    summary: 'Parents from Denkanikottai describe what has changed at home — in confidence, in study habits, in how their children carry themselves.',
+  },
+  {
+    heading: 'Feedback by Village Coordinators about our program',
+    entries: [
+      {
+        label: 'Village Coordinator Kanaka, Enimuchandram',
+        type: 'youtube',
+        id: 'OaYfepE6xVw',
+      },
+      {
+        label: 'Village Coordinator Sudha, Kowthamaranahalli',
+        type: 'mp4',
+        src: '/wp-content/uploads/2021/07/Feeback-By-Anitha.mp4',
+      },
+    ],
+    summary: 'Our on-ground facilitators — almost all women from the villages themselves — describe the programme from the inside.',
+  },
+] as const;
 ---
 
 <Layout title="Testimonials" description="Feedback from children, teachers, parents and village coordinators on NavSahyog Foundation's programme.">
@@ -34,20 +73,35 @@ import { url } from '../../utils/url';
     subtitle="The programme through the eyes of the people it serves — and the people who run it."
   />
 
-  <div class="container-content py-16 space-y-10">
+  <div class="container-content py-16 space-y-14">
     {categories.map((c) => (
-      <section class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
-        <h2 class="text-xl md:text-2xl font-bold mb-3">{c.title}</h2>
-        <p class="text-ink/80 leading-relaxed">{c.body}</p>
-        {c.videos && c.videos.length > 0 && (
-          <div class="grid md:grid-cols-2 gap-4 mt-6">
-            {c.videos.map((v) => (
-              <video controls class="w-full rounded-lg bg-black">
-                <source src={url(v)} />
-              </video>
-            ))}
-          </div>
-        )}
+      <section>
+        <h2 class="text-2xl md:text-3xl font-bold mb-3">{c.heading}</h2>
+        <p class="text-ink/80 leading-relaxed mb-6 max-w-3xl">{c.summary}</p>
+        <div class={`grid ${c.entries.length > 1 ? 'md:grid-cols-2' : ''} gap-5`}>
+          {c.entries.map((e) => (
+            <figure class="rounded-xl overflow-hidden bg-white border border-slate-200 shadow-sm">
+              <div class="aspect-video bg-black">
+                {e.type === 'youtube' ? (
+                  <iframe
+                    class="w-full h-full"
+                    src={`https://www.youtube-nocookie.com/embed/${e.id}`}
+                    title={e.label}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    loading="lazy"
+                  ></iframe>
+                ) : (
+                  <video controls class="w-full h-full" preload="metadata">
+                    <source src={url(e.src)} />
+                    Your browser does not support embedded video.
+                  </video>
+                )}
+              </div>
+              <figcaption class="px-5 py-3 text-sm font-medium text-ink bg-white">{e.label}</figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
     ))}
   </div>
