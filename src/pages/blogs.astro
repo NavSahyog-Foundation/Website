@@ -2,6 +2,28 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import WpImage from '../components/WpImage.astro';
+import { url } from '../utils/url';
+
+const impactStudy = {
+  title: 'Annual Impact Survey Report 2025–26',
+  date: '02 March 2026',
+  cover: 'wp-content/uploads/2026/04/impact-study-2026-cover.jpg',
+  pdf: '/downloads/impact-study-2026.pdf',
+  stats: [
+    { value: '18,487', label: 'Stakeholder responses' },
+    { value: '75%', label: 'High to Very High impact' },
+    { value: '3', label: 'States — Karnataka, Nagaland, Tamil Nadu' },
+  ],
+  highlights: [
+    'Universal positive impact across children, parents and teachers — 74–75% rate the change as High to Very High across all 26 life-skill and non-life-skill parameters.',
+    'Programme strengths: Values (80.3% Children High), Water Awareness (~80% across stakeholders) and Sports Interest (80% Children High) lead the ratings.',
+    'Behavioural transformation: Discipline (11%) is the top new habit; Watching TV (21.7%), Mobile Usage (20%) and Fighting (13.2%) are the biggest habits stopped.',
+    'Tamil Nadu shows the strongest regional impact at 80.6% High; girls (75.5%) marginally outperform boys (73.6%).',
+    'Attendance matters: 93% of children attend regularly and report 74.9% High outcomes — irregular attendance drops to 58.6%.',
+    'Tenure compounds: every cohort (<1 year, 1–2 years, 2+ years) exceeds 74% High ratings, with the 1–2 year group peaking at 76.7%.',
+    'Yoga (61%), Kho-Kho (49%) and Kabbadi (43%) are the most-loved activities; Teacher (18%), Doctor (15%) and Police (14%) top parents’ aspirations for their children.',
+  ],
+};
 
 // Current 2026 YouTube-linked posts
 const currentPosts = [
@@ -63,6 +85,54 @@ const archivePosts = [
   <PageHeader eyebrow="From the field" title="Blogs" subtitle="Stories and reflections from our villages and our team." />
 
   <div class="container-content py-16">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6">Featured Report</h2>
+    <article class="mb-16 rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-sm">
+      <div class="grid md:grid-cols-2 gap-0">
+        <a href={url(impactStudy.pdf)} target="_blank" rel="noopener" class="block group">
+          <div class="aspect-video md:aspect-auto md:h-full bg-slate-100">
+            <WpImage src={impactStudy.cover} alt={`${impactStudy.title} cover`} class="w-full h-full object-cover group-hover:opacity-95 transition" loading="eager" />
+          </div>
+        </a>
+        <div class="p-6 md:p-8 flex flex-col">
+          <p class="text-xs uppercase tracking-wide text-brand font-semibold">{impactStudy.date} · Impact Study</p>
+          <h3 class="text-2xl md:text-3xl font-bold mt-1 mb-3">{impactStudy.title}</h3>
+          <p class="text-ink/80 mb-5">
+            Our largest impact survey to date — independent ratings from <strong>6,388 children, 6,294 parents and 5,805 teachers</strong> across the villages where the NavSahyog Foundation programme has been active for six months or more. The headline: the programme delivers <strong>universal, consistent, age-resilient positive change</strong>.
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 mb-6">
+            {impactStudy.stats.map((s) => (
+              <div class="rounded-lg bg-brand-50 border border-brand/20 p-3 text-center">
+                <p class="text-xl md:text-2xl font-bold text-brand leading-tight">{s.value}</p>
+                <p class="text-[11px] md:text-xs text-ink/70 mt-1 leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
+          <h4 class="font-semibold text-ink mb-2">Key highlights</h4>
+          <ul class="space-y-2 text-sm text-ink/80 mb-6 list-disc pl-5">
+            {impactStudy.highlights.map((h) => (
+              <li set:html={h} />
+            ))}
+          </ul>
+
+          <div class="mt-auto flex flex-wrap gap-3">
+            <a href={url(impactStudy.pdf)} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand text-white font-semibold hover:opacity-90 transition">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download the full report (PDF)
+            </a>
+            <a href={url('/downloads')} class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-300 text-ink font-semibold hover:border-brand hover:text-brand transition">
+              See all impact reports →
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <h2 class="text-2xl md:text-3xl font-bold mb-6">Latest Videos</h2>
     <div class="space-y-5 mb-16">
       {currentPosts.map((p) => (
