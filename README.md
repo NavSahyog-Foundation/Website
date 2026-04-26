@@ -63,7 +63,3 @@ public/
 Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes the output to GitHub Pages. No manual steps.
 
 The custom domain is set via `public/CNAME` (currently `www.navsahyog.org`).
-
-## Legacy mirror
-
-The `www.navsahyog.org/` directory is the original WordPress site captured with `wget`. It is kept in the repository as a reference during the rebuild and is **not** published. It can be deleted once the new site is in production.

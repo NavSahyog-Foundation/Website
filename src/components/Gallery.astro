@@ -1,5 +1,6 @@
 ---
 import WpImage from './WpImage.astro';
+import { url } from '../utils/url';
 
 export interface Props {
   images: string[];
@@ -18,7 +19,7 @@ const colClass = {
 
 <div class={`grid grid-cols-1 ${colClass} gap-3`}>
   {images.map((src, i) => (
-    <a href={src.startsWith('/') ? src : `/${src}`} class="block rounded-lg overflow-hidden bg-surface-soft group">
+    <a href={url(src.startsWith('/') ? src : `/${src}`)} class="block rounded-lg overflow-hidden bg-surface-soft group">
       <WpImage
         src={src}
         alt={alt ? `${alt} — ${i + 1}` : `Image ${i + 1}`}
