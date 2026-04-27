@@ -1,6 +1,6 @@
 ---
 import WpImage from './WpImage.astro';
-import { url } from '../utils/url';
+import { wpImage } from '../utils/wp-images';
 
 export interface Props {
   images: string[];
@@ -15,14 +15,18 @@ const colClass = {
   3: 'sm:grid-cols-2 md:grid-cols-3',
   4: 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
 }[columns];
+
+const resolved = images
+  .map((src, i) => ({ src, img: wpImage(src), index: i }))
+  .filter((entry): entry is { src: string; img: NonNullable<ReturnType<typeof wpImage>>; index: number } => entry.img !== null);
 ---
 
 <div class={`grid grid-cols-1 ${colClass} gap-3`}>
-  {images.map((src, i) => (
-    <a href={url(src.startsWith('/') ? src : `/${src}`)} class="block rounded-lg overflow-hidden bg-surface-soft group">
+  {resolved.map(({ src, img, index }) => (
+    <a href={img.src} class="block rounded-lg overflow-hidden bg-surface-soft group">
       <WpImage
         src={src}
-        alt={alt ? `${alt} — ${i + 1}` : `Image ${i + 1}`}
+        alt={alt ? `${alt} — ${index + 1}` : `Image ${index + 1}`}
         class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
       />
     </a>

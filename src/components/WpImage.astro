@@ -1,5 +1,6 @@
 ---
-import { url } from '../utils/url';
+import { Image } from 'astro:assets';
+import { wpImage } from '../utils/wp-images';
 
 export interface Props {
   src: string;
@@ -9,12 +10,7 @@ export interface Props {
 }
 
 const { src, alt = '', class: className = '', loading = 'lazy' } = Astro.props;
-
-const normalized = src.startsWith('/')
-  ? src.slice(1)
-  : src.replace(/^https?:\/\/[^/]+\//, '');
-
-const href = url(`/${normalized}`);
+const img = wpImage(src);
 ---
 
-<img src={href} alt={alt} class={className} loading={loading} decoding="async" />
+{img && <Image src={img} alt={alt} class={className} loading={loading} />}
