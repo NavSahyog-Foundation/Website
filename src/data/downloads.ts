@@ -38,17 +38,17 @@ export const downloads: DownloadSection[] = [
   {
     heading: 'Research Reports',
     items: [
-      { title: 'Sports and Child Development', file: '/wp-content/uploads/2021/07/Sports-and-Child-development.pdf' },
-      { title: 'Storytelling and Child Development', file: '/wp-content/uploads/2021/07/Storytelling-and-Child-Development.pdf' },
+      { title: 'Sports and Child Development', file: '/downloads/Sports-and-Child-development.pdf' },
+      { title: 'Storytelling and Child Development', file: '/downloads/Storytelling-and-Child-Development.pdf' },
       { title: 'Children and Value of Music, Art and Storytelling', file: '/downloads/children-music-art-storytelling.pdf' },
     ],
   },
   {
     heading: 'Programme Related',
     items: [
-      { title: 'NavSahyog Program Overview 2020 – 21 (PDF)', file: '/wp-content/uploads/2021/07/NavSahyog-Foundation-Program-Overview-Apr2021.pdf' },
+      { title: 'NavSahyog Program Overview 2020 – 21 (PDF)', file: '/downloads/NavSahyog-Foundation-Program-Overview-Apr2021.pdf' },
       { title: 'NavSahyog Foundation Overview July 2021 (PDF)', file: '/downloads/navsahyog-foundation-july21.pdf' },
-      { title: 'NavSahyog Foundation Covid Initiatives (PDF)', file: '/wp-content/uploads/2021/07/NavSahyog-Covid-19-related-initiatives-.pdf' },
+      { title: 'NavSahyog Foundation Covid Initiatives (PDF)', file: '/downloads/covid-related-initiatives.pdf' },
     ],
   },
 ];

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import WpImage from '../../components/WpImage.astro';
+import Img from '../../components/Img.astro';
 
 const principles = [
   { n: 1, text: 'We focus on a Big Problem.' },
@@ -37,7 +37,7 @@ const strengths = [
 
   <section class="container-content py-16">
     <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
-      <WpImage src="wp-content/uploads/2022/05/1625724924859-1024x597.jpg" alt="NavSahyog team and children" class="rounded-xl w-full h-auto shadow-sm" />
+      <Img src="2022/05/1625724924859-1024x597.jpg" alt="NavSahyog team and children" class="rounded-xl w-full h-auto shadow-sm" />
       <div>
         <h2 class="text-3xl md:text-4xl font-bold mb-4">5 Principles</h2>
         <p class="text-lg text-ink/80 leading-relaxed">
@@ -67,7 +67,7 @@ const strengths = [
             everything.
           </p>
         </div>
-        <WpImage src="wp-content/uploads/2022/05/192421519_296559592163787_7961964084391222623_n.jpg" alt="NavSahyog team at work" class="rounded-xl w-full h-auto shadow-sm" />
+        <Img src="2022/05/192421519_296559592163787_7961964084391222623_n.jpg" alt="NavSahyog team at work" class="rounded-xl w-full h-auto shadow-sm" />
       </div>
       <ul class="grid md:grid-cols-2 gap-4">
         {values.map((v) => (

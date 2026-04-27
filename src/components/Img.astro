@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { wpImage } from '../utils/wp-images';
+import { media } from '../utils/media';
 
 export interface Props {
   src: string;
@@ -10,7 +10,7 @@ export interface Props {
 }
 
 const { src, alt = '', class: className = '', loading = 'lazy' } = Astro.props;
-const img = wpImage(src);
+const img = media(src);
 ---
 
 {img && <Image src={img} alt={alt} class={className} loading={loading} />}

@@ -24,10 +24,17 @@ npm run preview # serves the built site locally
 
 ```
 src/
-  assets/images/        # photos used by components (optimized by Astro)
-  components/           # Header, Footer, Hero, PageHeader, StatCard
+  assets/
+    images/             # hand-curated photos used by components (optimized by Astro)
+    media/              # bulk media library, addressed by relative path through <Img />
+  components/
+    Img.astro           # wraps Astro's <Image> with string-path lookup into src/assets/media
+    Gallery.astro       # photo gallery with click-through to optimized full-size
+    # Header, Footer, Hero, PageHeader, StatCard
   content/
     blog/               # Markdown blog posts
+    events/             # event pages (frontmatter heroImage / gallery resolve via media())
+    villages/           # village cluster pages
   data/
     team.ts             # team roster (edit here to add/remove team members)
     villages.ts         # village cluster list
@@ -37,9 +44,12 @@ src/
     Layout.astro        # shared page shell
   pages/                # one file per URL, including sub-routes
   styles/global.css     # Tailwind entrypoint + shared styles
+  utils/
+    media.ts            # resolves string paths to ImageMetadata for <Img />
+    url.ts              # base-URL-aware href helper
 public/
   downloads/            # PDFs served as-is (annual reports, impact studies)
-  videos/               # video assets
+  videos/               # video assets served as-is (testimonials)
   CNAME                 # custom domain for GitHub Pages
   robots.txt
 .github/workflows/
@@ -56,7 +66,9 @@ public/
 
 **Team, partners, villages:** edit the corresponding `.ts` file in `src/data/`.
 
-**Images:** place in `src/assets/images/` and import in the page. Astro will generate responsive versions automatically.
+**Images (hero / inline):** place in `src/assets/images/` and `import` in the page. Astro generates responsive versions automatically.
+
+**Bulk photos / event galleries:** drop into `src/assets/media/<year>/<month>/` and reference by string path (e.g. `'2026/04/foo.jpg'`) — `<Img src="…" />` and `Gallery` resolve them via `media()`. Astro optimizes them at build time the same way.
 
 ## Deploy
 

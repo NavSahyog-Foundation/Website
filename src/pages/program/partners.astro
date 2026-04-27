@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import WpImage from '../../components/WpImage.astro';
+import Img from '../../components/Img.astro';
 import { partnerLogos } from '../../data/partners';
 import { url } from '../../utils/url';
 ---
@@ -19,10 +19,10 @@ import { url } from '../../utils/url';
         <div class="bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-center aspect-video">
           {p.url ? (
             <a href={p.url} target="_blank" rel="noopener" class="block w-full h-full">
-              <WpImage src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+              <Img src={p.logo} alt={p.name} class="w-full h-full object-contain" />
             </a>
           ) : (
-            <WpImage src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+            <Img src={p.logo} alt={p.name} class="w-full h-full object-contain" />
           )}
         </div>
       ))}
