@@ -12,7 +12,7 @@ export const partnerLogos: PartnerLogo[] = [
   { name: 'Save the Children', logo: '2021/07/download.png' },
   { name: 'Buzz Def / Social Venture Partners', logo: '2021/07/copy-cropped-logobuzzdef_joinbuzz_def-e1421749282585-1.png' },
   { name: 'Partnership Logo', logo: '2021/07/download-2-300x106.png' },
-  { name: 'Partnership Logo', logo: 'elementor/thumbs/Capture-1-pmrq0a9msjj57l93p8g6zxudvgh08g19wmcpoe2pcg.jpg' },
+  { name: 'Partnership Logo', logo: 'partners/partner-logo-1.jpg' },
   { name: 'IMA', logo: '2021/07/ima-20210618140640-1.jpg' },
   { name: 'Partnership Logo', logo: '2021/07/Untitled-5.jpg' },
   { name: 'Partnership Logo', logo: '2021/07/1519909034003.jpg' },
