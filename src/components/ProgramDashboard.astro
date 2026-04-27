@@ -1,0 +1,324 @@
+---
+export interface StatusConfig {
+  key: string;
+  label: string;
+  color: string;
+}
+
+export interface Props {
+  programSlug: string;
+  apiBase?: string;
+  statuses: StatusConfig[];
+  unitSingular: string;
+  unitPlural: string;
+  initialCenter?: [number, number];
+  initialZoom?: number;
+}
+
+const {
+  programSlug,
+  apiBase = 'https://navsahyog-api-staging.sameersegal.workers.dev',
+  statuses,
+  unitSingular,
+  unitPlural,
+  initialCenter = [22.5, 79],
+  initialZoom = 4,
+} = Astro.props;
+
+const endpoint = `${apiBase}/api/programs/${programSlug}`;
+const config = {
+  endpoint,
+  statuses,
+  unitSingular,
+  unitPlural,
+  initialCenter,
+  initialZoom,
+};
+---
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<section class="container-content py-12" data-program-dashboard>
+  <div
+    role="status"
+    aria-live="polite"
+    class="hidden rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 mb-6"
+    data-error
+  ></div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-kpi>
+    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-total>—</p>
+      <p class="mt-1 text-sm font-semibold text-ink" data-kpi-total-label>{unitPlural}</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-villages>—</p>
+      <p class="mt-1 text-sm font-semibold text-ink">Villages</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-districts>—</p>
+      <p class="mt-1 text-sm font-semibold text-ink">Districts</p>
+    </div>
+    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-states>—</p>
+      <p class="mt-1 text-sm font-semibold text-ink">States</p>
+    </div>
+  </div>
+
+  <div class="mt-8 grid lg:grid-cols-3 gap-6">
+    <div class="lg:col-span-2">
+      <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+        <div class="flex flex-wrap items-center gap-2 mb-3" data-filters aria-label="Filter by status">
+          <span class="text-sm font-semibold text-ink/70 mr-1">Status:</span>
+        </div>
+        <div
+          class="w-full h-[420px] md:h-[520px] rounded-lg overflow-hidden bg-surface-soft"
+          data-map
+          aria-label={`Map of ${unitPlural}`}
+        ></div>
+        <p class="mt-3 text-xs text-ink/60">
+          Tiles &copy; <a href="https://www.openstreetmap.org/copyright" class="underline">OpenStreetMap</a> contributors.
+        </p>
+      </div>
+    </div>
+
+    <aside class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+      <h3 class="text-lg font-bold text-ink mb-3">By state</h3>
+      <ul class="space-y-3" data-state-breakdown>
+        <li class="text-sm text-ink/60">Loading…</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<script type="application/json" data-program-dashboard-config set:html={JSON.stringify(config)} />
+
+<script>
+  type LatLng = [number, number];
+  type Pond = {
+    id: number | string;
+    latitude: number;
+    longitude: number;
+    status: string;
+    village?: string;
+    cluster?: string;
+    district?: string;
+    state?: string;
+    zone?: string;
+    created_at?: number;
+  };
+  type StatusConfig = { key: string; label: string; color: string };
+  type Stats = {
+    total: number;
+    by_status: Record<string, number>;
+    by_state: { state: string; count: number }[];
+    villages: number;
+    districts: number;
+    states: number;
+  };
+  type ApiResponse = { program: string; stats: Stats; ponds: Pond[] };
+
+  declare const L: any;
+
+  const root = document.querySelector<HTMLElement>('[data-program-dashboard]');
+  const configEl = document.querySelector<HTMLScriptElement>('[data-program-dashboard-config]');
+  if (!root || !configEl) throw new Error('Dashboard root not found');
+
+  const config = JSON.parse(configEl.textContent || '{}') as {
+    endpoint: string;
+    statuses: StatusConfig[];
+    unitSingular: string;
+    unitPlural: string;
+    initialCenter: LatLng;
+    initialZoom: number;
+  };
+
+  const errorEl = root.querySelector<HTMLElement>('[data-error]')!;
+  const filtersEl = root.querySelector<HTMLElement>('[data-filters]')!;
+  const mapEl = root.querySelector<HTMLElement>('[data-map]')!;
+  const stateListEl = root.querySelector<HTMLElement>('[data-state-breakdown]')!;
+  const totalEl = root.querySelector<HTMLElement>('[data-kpi-total]')!;
+  const totalLabelEl = root.querySelector<HTMLElement>('[data-kpi-total-label]')!;
+  const villagesEl = root.querySelector<HTMLElement>('[data-kpi-villages]')!;
+  const districtsEl = root.querySelector<HTMLElement>('[data-kpi-districts]')!;
+  const statesEl = root.querySelector<HTMLElement>('[data-kpi-states]')!;
+
+  const colorByStatus = new Map(config.statuses.map((s) => [s.key, s.color]));
+  const labelByStatus = new Map(config.statuses.map((s) => [s.key, s.label]));
+  const visible = new Set(config.statuses.map((s) => s.key));
+
+  function showError(msg: string) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
+  }
+
+  function fmt(n: number) {
+    return n.toLocaleString('en-IN');
+  }
+
+  function escapeHtml(s: string) {
+    return s
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function loadLeaflet(): Promise<void> {
+    if (typeof L !== 'undefined') return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const s = document.createElement('script');
+      s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      s.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+      s.crossOrigin = '';
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error('Failed to load map library'));
+      document.head.appendChild(s);
+    });
+  }
+
+  function renderFilters(byStatus: Record<string, number>) {
+    for (const cfg of config.statuses) {
+      const count = byStatus[cfg.key] ?? 0;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.dataset.status = cfg.key;
+      btn.setAttribute('aria-pressed', 'true');
+      btn.className =
+        'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition border-slate-300 bg-white text-ink hover:border-brand';
+      btn.innerHTML = `<span class="inline-block h-2.5 w-2.5 rounded-full" style="background:${cfg.color}"></span>${escapeHtml(cfg.label)} <span class="text-ink/60">(${fmt(count)})</span>`;
+      filtersEl.appendChild(btn);
+    }
+  }
+
+  function renderStateBreakdown(byState: { state: string; count: number }[], total: number) {
+    stateListEl.innerHTML = '';
+    if (!byState.length) {
+      const li = document.createElement('li');
+      li.className = 'text-sm text-ink/60';
+      li.textContent = 'No data yet.';
+      stateListEl.appendChild(li);
+      return;
+    }
+    const max = Math.max(...byState.map((s) => s.count), 1);
+    for (const row of byState) {
+      const pct = Math.round((row.count / max) * 100);
+      const share = total ? Math.round((row.count / total) * 100) : 0;
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <div class="flex items-baseline justify-between gap-3">
+          <span class="text-sm font-semibold text-ink">${escapeHtml(row.state)}</span>
+          <span class="text-sm text-ink/70">${fmt(row.count)} <span class="text-ink/50">· ${share}%</span></span>
+        </div>
+        <div class="mt-1 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
+          <div class="h-full bg-brand" style="width:${pct}%"></div>
+        </div>`;
+      stateListEl.appendChild(li);
+    }
+  }
+
+  async function init() {
+    let data: ApiResponse;
+    try {
+      const res = await fetch(config.endpoint, { headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      data = (await res.json()) as ApiResponse;
+    } catch (err) {
+      showError(`Could not load ${config.unitPlural} data. Please try again later.`);
+      return;
+    }
+
+    const { stats, ponds } = data;
+    totalEl.textContent = fmt(stats.total);
+    totalLabelEl.textContent = stats.total === 1 ? config.unitSingular : config.unitPlural;
+    villagesEl.textContent = fmt(stats.villages);
+    districtsEl.textContent = fmt(stats.districts);
+    statesEl.textContent = fmt(stats.states);
+
+    renderFilters(stats.by_status || {});
+    renderStateBreakdown(stats.by_state || [], stats.total);
+
+    try {
+      await loadLeaflet();
+    } catch (err) {
+      showError('Map failed to load. Stats above are still accurate.');
+      return;
+    }
+
+    const map = L.map(mapEl, { scrollWheelZoom: false }).setView(
+      config.initialCenter,
+      config.initialZoom,
+    );
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+
+    const layers: { marker: any; status: string }[] = [];
+    const validPonds = ponds.filter(
+      (p) => Number.isFinite(p.latitude) && Number.isFinite(p.longitude),
+    );
+
+    for (const p of validPonds) {
+      const color = colorByStatus.get(p.status) || '#64748b';
+      const statusLabel = labelByStatus.get(p.status) || p.status;
+      const marker = L.circleMarker([p.latitude, p.longitude], {
+        radius: 7,
+        color: '#ffffff',
+        weight: 2,
+        fillColor: color,
+        fillOpacity: 0.9,
+      });
+      const lines: string[] = [];
+      if (p.village) lines.push(`<strong>${escapeHtml(p.village)}</strong>`);
+      const place = [p.cluster, p.district, p.state].filter(Boolean).map(escapeHtml).join(', ');
+      if (place) lines.push(`<div class="text-ink/70">${place}</div>`);
+      lines.push(
+        `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
+      );
+      marker.bindPopup(lines.join(''));
+      marker.addTo(map);
+      layers.push({ marker, status: p.status });
+    }
+
+    if (validPonds.length) {
+      const bounds = L.latLngBounds(validPonds.map((p) => [p.latitude, p.longitude]));
+      map.fitBounds(bounds, { padding: [30, 30], maxZoom: 7 });
+    }
+
+    function applyFilter() {
+      for (const { marker, status } of layers) {
+        if (visible.has(status)) {
+          if (!map.hasLayer(marker)) marker.addTo(map);
+        } else if (map.hasLayer(marker)) {
+          map.removeLayer(marker);
+        }
+      }
+    }
+
+    filtersEl.querySelectorAll<HTMLButtonElement>('button[data-status]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.status!;
+        const isOn = btn.getAttribute('aria-pressed') === 'true';
+        if (isOn) {
+          visible.delete(key);
+          btn.setAttribute('aria-pressed', 'false');
+          btn.classList.add('opacity-50');
+        } else {
+          visible.add(key);
+          btn.setAttribute('aria-pressed', 'true');
+          btn.classList.remove('opacity-50');
+        }
+        applyFilter();
+      });
+    });
+  }
+
+  init();
+</script>
