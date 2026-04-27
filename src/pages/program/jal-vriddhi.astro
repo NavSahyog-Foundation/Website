@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProgramDashboard from '../../components/ProgramDashboard.astro';
+
+const statuses = [
+  { key: 'planned',  label: 'Planned',  color: '#d97706' },
+  { key: 'dug',      label: 'Dug',      color: '#2563eb' },
+  { key: 'active',   label: 'Active',   color: '#059669' },
+  { key: 'inactive', label: 'Inactive', color: '#64748b' },
+];
+---
+
+<Layout
+  title="Jal Vriddhi"
+  description="Jal Vriddhi is NavSahyog Foundation's village-led water-stewardship programme — recharging groundwater through farm ponds and bunds co-created with farmers."
+>
+  <PageHeader
+    eyebrow="Our Programme"
+    title="Jal Vriddhi"
+    subtitle="Village-led water stewardship — recharging groundwater, one pond at a time."
+  />
+
+  <section class="container-content py-12 grid lg:grid-cols-3 gap-10 items-start">
+    <div class="lg:col-span-2 prose-content">
+      <p>
+        <strong>Jal Vriddhi</strong> is a village-led programme to recharge groundwater through farm
+        ponds and bunds, co-created with farmers. We teach children the value of water and build the
+        infrastructure to preserve it.
+      </p>
+      <p>
+        Each pond on the map below is a real site in a partner village, classified by where it is in
+        its lifecycle — <em>planned</em>, <em>dug</em>, <em>active</em>, or <em>inactive</em>. Use
+        the status chips to focus the map; click any pond for village details.
+      </p>
+    </div>
+    <div class="rounded-xl border border-slate-200 bg-surface-soft p-5">
+      <h3 class="text-base font-bold text-ink mb-2">What the statuses mean</h3>
+      <ul class="space-y-2 text-sm text-ink/80">
+        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#d97706"></span><strong>Planned</strong> — site identified with the village, work yet to begin.</li>
+        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#2563eb"></span><strong>Dug</strong> — pond excavated; awaiting first monsoon recharge.</li>
+        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#059669"></span><strong>Active</strong> — holding water and recharging the local table.</li>
+        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#64748b"></span><strong>Inactive</strong> — currently dry or out of service.</li>
+      </ul>
+    </div>
+  </section>
+
+  <ProgramDashboard
+    programSlug="jal-vriddhi"
+    statuses={statuses}
+    unitSingular="Pond"
+    unitPlural="Ponds"
+  />
+
+  <section class="bg-surface-soft">
+    <div class="container-content py-12 text-center">
+      <p class="text-ink/80 max-w-2xl mx-auto">
+        Data on this page is updated regularly from the field. If you'd like to partner with us on
+        Jal Vriddhi — as a village, donor, or volunteer — please get in touch.
+      </p>
+    </div>
+  </section>
+</Layout>
