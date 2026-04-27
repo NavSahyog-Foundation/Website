@@ -2,11 +2,11 @@
 title: "National recognition for Water Conservation: CASCA 2026 Award of Excellence"
 date: 22 April 2026
 summary: "On Earth Day, NavSahyog Foundation received the Award of Excellence at CASCA 2026 in New Delhi for the Jal Vriddhi project — recognised for percolating over 20 million litres of water annually through 280+ farmer co-created farm ponds."
-heroImage: wp-content/uploads/2026/04/casca-2026-ceremony.jpg
+heroImage: 2026/04/casca-2026-ceremony.jpg
 gallery:
-  - wp-content/uploads/2026/04/casca-2026-trophy.png
-  - wp-content/uploads/2026/04/casca-2026-certificate.png
-  - wp-content/uploads/2026/04/casca-2026-ceremony.jpg
+  - 2026/04/casca-2026-trophy.png
+  - 2026/04/casca-2026-certificate.png
+  - 2026/04/casca-2026-ceremony.jpg
 ---
 
 National recognition for Water Conservation. 🏆

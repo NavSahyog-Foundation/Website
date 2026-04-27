@@ -2,7 +2,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import PageHeader from '../../../components/PageHeader.astro';
 import Gallery from '../../../components/Gallery.astro';
-import WpImage from '../../../components/WpImage.astro';
+import Img from '../../../components/Img.astro';
 import { url } from '../../../utils/url';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
@@ -27,7 +27,7 @@ const d = entry.data;
 
   {d.heroImage && (
     <div class="container-content py-8">
-      <WpImage src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
+      <Img src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
     </div>
   )}
 

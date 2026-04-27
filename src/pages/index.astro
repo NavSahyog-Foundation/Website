@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import WpImage from '../components/WpImage.astro';
+import Img from '../components/Img.astro';
 import { url } from '../utils/url';
 ---
 
@@ -9,8 +9,8 @@ import { url } from '../utils/url';
   <section class="bg-white">
     <div class="container-content pt-10 pb-6 md:pt-14 md:pb-10">
       <div class="relative rounded-3xl overflow-hidden shadow-xl">
-        <WpImage
-          src="wp-content/uploads/2026/04/ww-scaled-e1775040670106-930x620.jpg"
+        <Img
+          src="2026/04/ww-scaled-e1775040670106-930x620.jpg"
           alt="NavSahyog children with the Foundation's logo — Life skills to Livelihood"
           class="w-full h-auto object-cover"
           loading="eager"
@@ -94,8 +94,8 @@ import { url } from '../utils/url';
       </ul>
     </div>
     <div class="space-y-4">
-      <WpImage src="wp-content/uploads/2022/07/IMG-2681-1024x461.jpg" alt="NavSahyog programme in action" class="rounded-xl w-full h-auto shadow-sm" />
-      <WpImage src="wp-content/uploads/2026/04/qq.png" alt="NavSahyog programme highlights" class="rounded-xl w-full h-auto shadow-sm" />
+      <Img src="2022/07/IMG-2681-1024x461.jpg" alt="NavSahyog programme in action" class="rounded-xl w-full h-auto shadow-sm" />
+      <Img src="2026/04/qq.png" alt="NavSahyog programme highlights" class="rounded-xl w-full h-auto shadow-sm" />
     </div>
   </section>
 
@@ -143,8 +143,8 @@ import { url } from '../utils/url';
           A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
         </h3>
         <div class="grid grid-cols-2 gap-4 mt-6">
-          <WpImage src="wp-content/uploads/2026/04/ss.png" alt="Vision" class="rounded-xl w-full h-auto" />
-          <WpImage src="wp-content/uploads/2021/07/Presentation1-300x276.jpg" alt="Vision illustration" class="rounded-xl w-full h-auto" />
+          <Img src="2026/04/ss.png" alt="Vision" class="rounded-xl w-full h-auto" />
+          <Img src="2021/07/Presentation1-300x276.jpg" alt="Vision illustration" class="rounded-xl w-full h-auto" />
         </div>
       </div>
       <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-brand text-white shadow-sm">
@@ -172,7 +172,7 @@ import { url } from '../utils/url';
       <a href={url('/downloads/')} class="btn-outline">Download our implementation document</a>
     </div>
     <div class="max-w-3xl mx-auto mt-12">
-      <WpImage src="wp-content/uploads/2026/03/ooo.png" alt="Our partners and supporters" class="w-full h-auto rounded-xl" />
+      <Img src="2026/03/ooo.png" alt="Our partners and supporters" class="w-full h-auto rounded-xl" />
     </div>
   </section>
 
@@ -181,34 +181,34 @@ import { url } from '../utils/url';
     <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Photo Gallery</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
       {[
-        { src: 'wp-content/uploads/2021/07/fbfb.jpg', caption: 'Boys Kabaddi' },
-        { src: 'wp-content/uploads/2021/07/Capture3-1.jpg', caption: 'Girls Kabaddi' },
-        { src: 'wp-content/uploads/2021/07/Capture2-1.jpg', caption: 'Kho-Kho' },
-        { src: 'wp-content/uploads/2021/11/IMG-20201027-WA0101-1.jpg', caption: 'Running Race' },
-        { src: 'wp-content/uploads/2021/07/Goat-and-Tiger-Game.jpg', caption: 'Children enjoying Goat and Tiger' },
-        { src: 'wp-content/uploads/2021/11/WhatsApp-Image-2021-09-25-at-10.51.59.jpg', caption: 'High Jump' },
-        { src: 'wp-content/uploads/2021/07/ghg.jpg', caption: 'Children playing Board games' },
-        { src: 'wp-content/uploads/2021/11/IMG-20210829-WA0037.jpg', caption: 'Thaayam Board game' },
-        { src: 'wp-content/uploads/2021/07/2.jpg', caption: 'Board games with family' },
-        { src: 'wp-content/uploads/2021/07/fgf-1.jpg', caption: 'Children adhering to Covid Protocols' },
-        { src: 'wp-content/uploads/2021/07/Yoga.jpg', caption: 'Children performing Yoga' },
-        { src: 'wp-content/uploads/2021/11/IMG-20210308-WA0091-1.jpg', caption: 'Yoga, Haliyal Cluster' },
-        { src: 'wp-content/uploads/2021/07/IMG-20210619-WA0016.jpg', caption: 'Daily Activities — Meditation' },
-        { src: 'wp-content/uploads/2021/07/fgfgf.jpg', caption: 'Chakrasana — child from Inapura, Tumkur' },
-        { src: 'wp-content/uploads/2021/07/Capture5.jpg', caption: 'Star of the Month — with grandmother' },
-        { src: 'wp-content/uploads/2021/07/Girls-with-cert.jpg', caption: 'Girls with their medals' },
-        { src: 'wp-content/uploads/2021/07/Projetc-bon.jpg', caption: 'Girls planting saplings' },
-        { src: 'wp-content/uploads/2021/07/yjyj.jpg', caption: 'Reusing coconut shells to grow plants' },
-        { src: 'wp-content/uploads/2021/07/lllii.jpg', caption: 'Honnudikki — World Environment Day saplings' },
-        { src: 'wp-content/uploads/2021/07/Goat-and-Tiger-Game-1.jpg', caption: 'Drawings by girls, Haliyal Cluster' },
-        { src: 'wp-content/uploads/2021/07/gjfdv.jpg', caption: 'Drawings themed on nature' },
-        { src: 'wp-content/uploads/2021/07/yjhjhk.jpg', caption: 'Art — Happy International Yoga Day' },
-        { src: 'wp-content/uploads/2021/07/IMG-20210621-WA0036.jpg', caption: 'Art for International Yoga Day 2021' },
-        { src: 'wp-content/uploads/2022/05/192421519_296559592163787_7961964084391222623_n.jpg', caption: 'Creative activities by children' },
-        { src: 'wp-content/uploads/2022/07/IMG-2679.jpg', caption: 'Creative activity — World Environment Day' },
+        { src: '2021/07/fbfb.jpg', caption: 'Boys Kabaddi' },
+        { src: '2021/07/Capture3-1.jpg', caption: 'Girls Kabaddi' },
+        { src: '2021/07/Capture2-1.jpg', caption: 'Kho-Kho' },
+        { src: '2021/11/IMG-20201027-WA0101-1.jpg', caption: 'Running Race' },
+        { src: '2021/07/Goat-and-Tiger-Game.jpg', caption: 'Children enjoying Goat and Tiger' },
+        { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.51.59.jpg', caption: 'High Jump' },
+        { src: '2021/07/ghg.jpg', caption: 'Children playing Board games' },
+        { src: '2021/11/IMG-20210829-WA0037.jpg', caption: 'Thaayam Board game' },
+        { src: '2021/07/2.jpg', caption: 'Board games with family' },
+        { src: '2021/07/fgf-1.jpg', caption: 'Children adhering to Covid Protocols' },
+        { src: '2021/07/Yoga.jpg', caption: 'Children performing Yoga' },
+        { src: '2021/11/IMG-20210308-WA0091-1.jpg', caption: 'Yoga, Haliyal Cluster' },
+        { src: '2021/07/IMG-20210619-WA0016.jpg', caption: 'Daily Activities — Meditation' },
+        { src: '2021/07/fgfgf.jpg', caption: 'Chakrasana — child from Inapura, Tumkur' },
+        { src: '2021/07/Capture5.jpg', caption: 'Star of the Month — with grandmother' },
+        { src: '2021/07/Girls-with-cert.jpg', caption: 'Girls with their medals' },
+        { src: '2021/07/Projetc-bon.jpg', caption: 'Girls planting saplings' },
+        { src: '2021/07/yjyj.jpg', caption: 'Reusing coconut shells to grow plants' },
+        { src: '2021/07/lllii.jpg', caption: 'Honnudikki — World Environment Day saplings' },
+        { src: '2021/07/Goat-and-Tiger-Game-1.jpg', caption: 'Drawings by girls, Haliyal Cluster' },
+        { src: '2021/07/gjfdv.jpg', caption: 'Drawings themed on nature' },
+        { src: '2021/07/yjhjhk.jpg', caption: 'Art — Happy International Yoga Day' },
+        { src: '2021/07/IMG-20210621-WA0036.jpg', caption: 'Art for International Yoga Day 2021' },
+        { src: '2022/05/192421519_296559592163787_7961964084391222623_n.jpg', caption: 'Creative activities by children' },
+        { src: '2022/07/IMG-2679.jpg', caption: 'Creative activity — World Environment Day' },
       ].map((g) => (
         <figure class="rounded-lg overflow-hidden bg-white border border-slate-200 group">
-          <WpImage src={g.src} alt={g.caption} class="w-full h-44 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <Img src={g.src} alt={g.caption} class="w-full h-44 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
           <figcaption class="px-3 py-2 text-xs text-ink/80 bg-white">{g.caption}</figcaption>
         </figure>
       ))}
@@ -226,13 +226,13 @@ import { url } from '../utils/url';
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-6 mt-10">
-        <WpImage src="wp-content/uploads/2021/07/vcvfvf-150x150.jpg" alt="UN SDG preview" class="h-20 w-auto rounded" />
-        <WpImage src="wp-content/uploads/2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="h-24 w-24" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="h-24 w-24" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="h-24 w-24" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="h-24 w-24" />
-        <WpImage src="wp-content/uploads/2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="h-24 w-24" />
-        <WpImage src="wp-content/uploads/2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="h-24 w-24" />
+        <Img src="2021/07/vcvfvf-150x150.jpg" alt="UN SDG preview" class="h-20 w-auto rounded" />
+        <Img src="2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="h-24 w-24" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="h-24 w-24" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="h-24 w-24" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="h-24 w-24" />
+        <Img src="2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="h-24 w-24" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="h-24 w-24" />
       </div>
     </div>
   </section>

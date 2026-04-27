@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import WpImage from '../../components/WpImage.astro';
+import Img from '../../components/Img.astro';
 import { clustersByRegion } from '../../data/villages';
 import { url } from '../../utils/url';
 ---
@@ -15,8 +15,8 @@ import { url } from '../../utils/url';
 
   <div class="container-content py-12 grid lg:grid-cols-5 gap-10">
     <div class="lg:col-span-2">
-      <WpImage
-        src="wp-content/uploads/2023/09/NSF-Presence-v-1-768x903.png"
+      <Img
+        src="2023/09/NSF-Presence-v-1-768x903.png"
         alt="NavSahyog Foundation presence map"
         class="rounded-xl w-full h-auto shadow-sm bg-white"
         loading="eager"

@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import WpImage from '../../components/WpImage.astro';
+import Img from '../../components/Img.astro';
 import {
   advisors, founders, functionalLeaders, programTeam,
   facilitatorsBengaluru, facilitatorsDimapur, facilitatorsHills, facilitatorsLegacy,
@@ -63,7 +63,7 @@ const facilitatorGroups = [
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {g.list.map((f) => (
                 <div class="text-center">
-                  <WpImage src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm bg-brand-50" />
+                  <Img src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm bg-brand-50" />
                   <p class="mt-2 font-semibold text-ink text-xs">{f.name}</p>
                   {f.village && <p class="text-[10px] text-ink/60">{f.village}</p>}
                 </div>
@@ -78,7 +78,7 @@ const facilitatorGroups = [
       <h3 class="text-xl font-semibold mb-5 text-brand">Team gatherings &amp; training</h3>
       <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-2">
         {teamArchivePhotos.map((p) => (
-          <WpImage src={p} alt="Team gathering" class="w-full aspect-square object-cover rounded-lg" />
+          <Img src={p} alt="Team gathering" class="w-full aspect-square object-cover rounded-lg" />
         ))}
       </div>
     </section>

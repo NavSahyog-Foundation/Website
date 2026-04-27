@@ -2,30 +2,30 @@
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
 import Gallery from '../../components/Gallery.astro';
-import WpImage from '../../components/WpImage.astro';
+import Img from '../../components/Img.astro';
 
 const gallery = [
-  { src: 'wp-content/uploads/2021/07/fghf.jpg', caption: 'Tug-of-war' },
-  { src: 'wp-content/uploads/2021/11/WhatsApp-Image-2021-09-25-at-10.52.04.jpg', caption: 'Long Jump' },
-  { src: 'wp-content/uploads/2021/11/WhatsApp-Image-2021-09-25-at-10.51.59-1.jpg', caption: 'High Jump — caught in action' },
-  { src: 'wp-content/uploads/2021/07/2.jpg', caption: 'Playing board games with family members' },
-  { src: 'wp-content/uploads/2021/07/ifjbknb.jpg', caption: 'Children doing Yoga' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210308-WA0095.jpg', caption: 'Children from Haliyal performing Yoga' },
-  { src: 'wp-content/uploads/2021/11/IMG-20201025-WA0158.jpg', caption: 'Children performing Yoga' },
-  { src: 'wp-content/uploads/2021/07/4-1.jpg', caption: 'Quarterly competition at Haliyal' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210211-WA0064.jpg', caption: 'Children enjoying a game of Tic-Tac-Toe' },
-  { src: 'wp-content/uploads/2021/07/3-1.jpg', caption: 'Experiential Learning — child planting a sapling' },
-  { src: 'wp-content/uploads/2021/07/IMG-20210422-WA0061.jpg', caption: 'Experiential learning through Project BoN' },
-  { src: 'wp-content/uploads/2021/11/IMG-20200812-WA0034.jpg', caption: 'Project BoN — fence making' },
-  { src: 'wp-content/uploads/2021/11/WhatsApp-Image-2021-07-09-at-18.06.37.jpg', caption: 'Project BoN evaluation — Haliyal' },
-  { src: 'wp-content/uploads/2021/07/7-1.jpg', caption: 'Child with her grown papaya tree' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210815-WA0399.jpg', caption: 'Children planting a sapling on 15 August — Green Drive' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210908-WA0010.jpg', caption: 'BoN Phase 2 — distribution of vegetable seeds' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210411-WA0042-2-1.jpg', caption: 'Creative artwork by our children' },
-  { src: 'wp-content/uploads/2021/11/IMG-20210223-WA0035.jpg', caption: 'Artwork by our children' },
-  { src: 'wp-content/uploads/2021/07/hfhdfd.jpg', caption: 'Thumb painting' },
-  { src: 'wp-content/uploads/2021/07/hggn.jpg', caption: 'Leaf art' },
-  { src: 'wp-content/uploads/2021/07/fhifd.jpg', caption: 'Paper cutting' },
+  { src: '2021/07/fghf.jpg', caption: 'Tug-of-war' },
+  { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.52.04.jpg', caption: 'Long Jump' },
+  { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.51.59-1.jpg', caption: 'High Jump — caught in action' },
+  { src: '2021/07/2.jpg', caption: 'Playing board games with family members' },
+  { src: '2021/07/ifjbknb.jpg', caption: 'Children doing Yoga' },
+  { src: '2021/11/IMG-20210308-WA0095.jpg', caption: 'Children from Haliyal performing Yoga' },
+  { src: '2021/11/IMG-20201025-WA0158.jpg', caption: 'Children performing Yoga' },
+  { src: '2021/07/4-1.jpg', caption: 'Quarterly competition at Haliyal' },
+  { src: '2021/11/IMG-20210211-WA0064.jpg', caption: 'Children enjoying a game of Tic-Tac-Toe' },
+  { src: '2021/07/3-1.jpg', caption: 'Experiential Learning — child planting a sapling' },
+  { src: '2021/07/IMG-20210422-WA0061.jpg', caption: 'Experiential learning through Project BoN' },
+  { src: '2021/11/IMG-20200812-WA0034.jpg', caption: 'Project BoN — fence making' },
+  { src: '2021/11/WhatsApp-Image-2021-07-09-at-18.06.37.jpg', caption: 'Project BoN evaluation — Haliyal' },
+  { src: '2021/07/7-1.jpg', caption: 'Child with her grown papaya tree' },
+  { src: '2021/11/IMG-20210815-WA0399.jpg', caption: 'Children planting a sapling on 15 August — Green Drive' },
+  { src: '2021/11/IMG-20210908-WA0010.jpg', caption: 'BoN Phase 2 — distribution of vegetable seeds' },
+  { src: '2021/11/IMG-20210411-WA0042-2-1.jpg', caption: 'Creative artwork by our children' },
+  { src: '2021/11/IMG-20210223-WA0035.jpg', caption: 'Artwork by our children' },
+  { src: '2021/07/hfhdfd.jpg', caption: 'Thumb painting' },
+  { src: '2021/07/hggn.jpg', caption: 'Leaf art' },
+  { src: '2021/07/fhifd.jpg', caption: 'Paper cutting' },
 ];
 ---
 
@@ -57,12 +57,12 @@ const gallery = [
         bunds to prevent top-soil loss.
       </p>
     </div>
-    <WpImage src="wp-content/uploads/2022/05/IMG_20201205_120751-1-930x620.jpg" alt="Life skills activities" class="rounded-xl w-full h-auto shadow-sm" loading="eager" />
+    <Img src="2022/05/IMG_20201205_120751-1-930x620.jpg" alt="Life skills activities" class="rounded-xl w-full h-auto shadow-sm" loading="eager" />
   </div>
 
   <section class="bg-surface-soft">
     <div class="container-content py-16 grid lg:grid-cols-2 gap-10 items-center">
-      <WpImage src="wp-content/uploads/2022/05/Untitled-design-1024x1024.png" alt="Structure and process diagram" class="rounded-xl w-full h-auto bg-white p-6 shadow-sm" />
+      <Img src="2022/05/Untitled-design-1024x1024.png" alt="Structure and process diagram" class="rounded-xl w-full h-auto bg-white p-6 shadow-sm" />
       <div>
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Structure and Process</h2>
         <ul class="space-y-3 text-lg text-ink/90">
@@ -101,7 +101,7 @@ const gallery = [
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
       {gallery.map((g) => (
         <figure class="rounded-lg overflow-hidden bg-white border border-slate-200">
-          <WpImage src={g.src} alt={g.caption} class="w-full h-56 object-cover" />
+          <Img src={g.src} alt={g.caption} class="w-full h-56 object-cover" />
           <figcaption class="px-4 py-3 text-sm text-ink/80">{g.caption}</figcaption>
         </figure>
       ))}

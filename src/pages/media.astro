@@ -1,45 +1,45 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
-import WpImage from '../components/WpImage.astro';
+import Img from '../components/Img.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../utils/url';
 
 const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare(b.id));
 
 const articles = [
-  { title: 'Gandhi Jayanthi 2024 at Dimapur', image: 'wp-content/uploads/2024/10/GJ-Dim_page-0001.jpg', link: 'https://www.morungexpress.com/navsahyog-foundation-celebrates-gandhi-jayanti-across-karnataka-tamil-nadu-and-nagaland', source: 'Morung Express' },
-  { title: 'Prakriti Prem Coverage by Nesar TV', image: 'wp-content/uploads/2024/10/PP-Nesar-TV.jpg', link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ', source: 'Nesar TV' },
-  { title: 'Prakriti Prem at Tumkur / Tiptur', image: 'wp-content/uploads/2024/09/Prakriti-Prem-Tumkur-Tiptur-1.jpeg', source: 'Regional press' },
-  { title: 'Independence Day 2024 at Dimapur', image: 'wp-content/uploads/2024/10/Dimapur_page-0001.jpg', link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/', source: 'Eastern Mirror Nagaland' },
-  { title: 'Tumkur Taluka Kho-Kho & Kabaddi Tournament', image: 'wp-content/uploads/2024/09/Praja-Pragathi-Tumkur-Edition.jpeg', source: 'Praja Pragathi (Tumkur)' },
-  { title: 'Tournament coverage — Bengaluru', image: 'wp-content/uploads/2024/10/Praja-Praga-Bengaluru-Edition.jpeg', source: 'Praja Pragathi (Bengaluru)' },
-  { title: 'Kho-Kho Finals', image: 'wp-content/uploads/2024/09/Deccan-Herald-Finals.jpeg', source: 'Deccan Herald' },
-  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Kannada-Prabha.jpeg', source: 'Kannada Prabha' },
-  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Kranthi-Deepa.jpeg', source: 'Kranthi Deepa' },
-  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Sanjevani-1.jpeg', source: 'Sanjevani' },
-  { title: 'Tournament coverage', image: 'wp-content/uploads/2024/09/Udayakala-1.jpeg', source: 'Udayakala' },
-  { title: 'Field report — July 2024', image: 'wp-content/uploads/2024/09/WhatsApp-Image-2024-07-11-at-11.45.41-e1729149195701.jpeg', source: 'Regional press' },
-  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.26-AM.jpeg', source: 'Regional press' },
-  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.23-AM.jpeg', source: 'Regional press' },
-  { title: 'Programme coverage — April 2023', image: 'wp-content/uploads/2023/07/WhatsApp-Image-2023-04-03-at-11.28.27-AM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (A)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM-2.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (B)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (C)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.18.13-PM.jpeg', source: 'Regional press' },
-  { title: 'Report clipping', image: 'wp-content/uploads/2023/11/Untitled-2.png', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (D)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.20.17-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (E)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.27.57-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (F)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-2.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (G)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-3.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (H)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (I)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM-1.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (J)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.19.03-PM-1.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (K)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-8.48.55-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (L)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-9.03.53-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (M)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.20.45-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (N)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.17.51-PM.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (O)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.26.37-PM-1.jpeg', source: 'Regional press' },
-  { title: 'Tournament day — 4 Nov 2023 (P)', image: 'wp-content/uploads/2023/11/WhatsApp-Image-2023-11-04-at-6.18.31-PM.jpeg', source: 'Regional press' },
+  { title: 'Gandhi Jayanthi 2024 at Dimapur', image: '2024/10/GJ-Dim_page-0001.jpg', link: 'https://www.morungexpress.com/navsahyog-foundation-celebrates-gandhi-jayanti-across-karnataka-tamil-nadu-and-nagaland', source: 'Morung Express' },
+  { title: 'Prakriti Prem Coverage by Nesar TV', image: '2024/10/PP-Nesar-TV.jpg', link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ', source: 'Nesar TV' },
+  { title: 'Prakriti Prem at Tumkur / Tiptur', image: '2024/09/Prakriti-Prem-Tumkur-Tiptur-1.jpeg', source: 'Regional press' },
+  { title: 'Independence Day 2024 at Dimapur', image: '2024/10/Dimapur_page-0001.jpg', link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/', source: 'Eastern Mirror Nagaland' },
+  { title: 'Tumkur Taluka Kho-Kho & Kabaddi Tournament', image: '2024/09/Praja-Pragathi-Tumkur-Edition.jpeg', source: 'Praja Pragathi (Tumkur)' },
+  { title: 'Tournament coverage — Bengaluru', image: '2024/10/Praja-Praga-Bengaluru-Edition.jpeg', source: 'Praja Pragathi (Bengaluru)' },
+  { title: 'Kho-Kho Finals', image: '2024/09/Deccan-Herald-Finals.jpeg', source: 'Deccan Herald' },
+  { title: 'Tournament coverage', image: '2024/09/Kannada-Prabha.jpeg', source: 'Kannada Prabha' },
+  { title: 'Tournament coverage', image: '2024/09/Kranthi-Deepa.jpeg', source: 'Kranthi Deepa' },
+  { title: 'Tournament coverage', image: '2024/09/Sanjevani-1.jpeg', source: 'Sanjevani' },
+  { title: 'Tournament coverage', image: '2024/09/Udayakala-1.jpeg', source: 'Udayakala' },
+  { title: 'Field report — July 2024', image: '2024/09/WhatsApp-Image-2024-07-11-at-11.45.41-e1729149195701.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.26-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.23-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.27-AM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (A)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (B)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (C)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.18.13-PM.jpeg', source: 'Regional press' },
+  { title: 'Report clipping', image: '2023/11/Untitled-2.png', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (D)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.20.17-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (E)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.27.57-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (F)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (G)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-3.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (H)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (I)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (J)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.19.03-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (K)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.48.55-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (L)', image: '2023/11/WhatsApp-Image-2023-11-04-at-9.03.53-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (M)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.20.45-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (N)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.17.51-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (O)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.26.37-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (P)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.18.31-PM.jpeg', source: 'Regional press' },
 ];
 ---
 
@@ -59,7 +59,7 @@ const articles = [
         return (
           <Tag class="group block rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden hover:border-brand transition" {...extra}>
             <div class="aspect-[4/3] bg-surface-soft overflow-hidden">
-              <WpImage src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <Img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div class="p-4">
               <p class="text-xs uppercase tracking-wide text-brand font-semibold">{a.source}</p>
