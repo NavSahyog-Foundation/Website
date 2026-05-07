@@ -95,4 +95,15 @@
   .hairline {
     @apply h-px w-full bg-line;
   }
+
+  /* Donation tier button */
+  .tier {
+    @apply relative text-left p-6 md:p-7 transition-all bg-paper-alt text-ink border border-line;
+  }
+  .tier:hover {
+    @apply border-ink;
+  }
+  .tier.is-selected {
+    @apply bg-ink text-paper border-ink;
+  }
 }

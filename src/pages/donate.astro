@@ -39,34 +39,117 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
     subtitle="80G-eligible for Indian donors. FCRA-registered for international. Audited yearly. Reported quarterly."
   />
 
-  <!-- Online giving -->
+  <!-- Choose your impact -->
   <section class="py-16 md:py-20">
     <div class="container-content">
-      <div class="eyebrow"><span>The simplest way to give</span></div>
-      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-3">Donate online.</h2>
-      <p class="text-base text-ink-2 m-0 mb-9 max-w-2xl">
-        Indian donors receive an 80G tax-exemption receipt by email. International donors should use the FCRA bank account further down.
+      <div class="eyebrow"><span>Choose your impact</span></div>
+      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-3">
+        Pick a tier — or <span class="display-italic text-accent">any amount</span>.
+      </h2>
+      <p class="text-base text-ink-2 m-0 mb-10 max-w-2xl">
+        All tiers automatically generate an 80G receipt for Indian PAN holders. International donors should use the FCRA bank account further down.
       </p>
-      <div class="flex flex-wrap gap-3">
+
+      <!-- Tier picker -->
+      <div data-tier-grid class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        {[
+          { amt: 600, label: 'Quarter year', desc: 'Sustains one child for 3 months' },
+          { amt: 2400, label: 'Full year', desc: 'One child, every day, all year', popular: true },
+          { amt: 24000, label: 'Cohort', desc: 'A 10-child village cohort for a year' },
+          { amt: 240000, label: 'Cluster', desc: 'A 100-child village cluster' },
+        ].map((t) => (
+          <button
+            type="button"
+            data-tier
+            data-amount={t.amt}
+            aria-pressed={t.popular ? 'true' : 'false'}
+            class:list={['tier', t.popular && 'is-selected']}
+          >
+            {t.popular && (
+              <div class="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-[0.1em] font-bold bg-accent text-white px-2 py-1">
+                Most given
+              </div>
+            )}
+            <div class="font-mono text-[11px] uppercase tracking-[0.12em] opacity-70 mb-3">{t.label}</div>
+            <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
+              ₹{t.amt.toLocaleString('en-IN')}
+            </div>
+            <div class="text-[13px] leading-snug opacity-80">{t.desc}</div>
+          </button>
+        ))}
+      </div>
+
+      <!-- Custom + frequency + CTA -->
+      <div class="mt-6 grid md:grid-cols-3 gap-4 items-center">
+        <div class="flex items-center border-[1.5px] border-ink rounded-full overflow-hidden">
+          <span class="px-4 py-3.5 bg-paper-alt font-semibold border-r border-ink">₹</span>
+          <input
+            data-custom-amount
+            type="text"
+            inputmode="numeric"
+            placeholder="Other amount"
+            class="flex-1 px-4 py-3.5 border-0 bg-transparent outline-none font-medium text-[15px]"
+            aria-label="Custom amount"
+          />
+        </div>
+        <div class="flex gap-6 text-sm justify-center md:justify-start">
+          <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="freq" value="onetime" checked class="accent-accent" /> One time
+          </label>
+          <label class="inline-flex items-center gap-2 cursor-pointer">
+            <input type="radio" name="freq" value="monthly" class="accent-accent" /> Monthly
+          </label>
+        </div>
         <a
+          data-cta
           href="https://navsahyog-foundation.danamojo.org/"
           target="_blank"
           rel="noopener"
-          class="btn-primary px-7 py-3.5 text-base"
+          class="btn-primary px-7 py-4 text-base"
         >
-          Donate via Danamojo →
-        </a>
-        <a
-          href="https://give.do/ngos/navsahyog-foundation"
-          target="_blank"
-          rel="noopener"
-          class="btn-outline px-6 py-[13px] text-base"
-        >
-          Donate via Give.do
+          Continue to payment →
         </a>
       </div>
+
+      <!-- Pay via -->
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-line">
+        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-ink-3">Pay via</span>
+        <a href="https://navsahyog-foundation.danamojo.org/" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Danamojo</a>
+        <a href="https://give.do/ngos/navsahyog-foundation" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Give.do</a>
+        <span class="text-sm text-ink-2">UPI</span>
+        <span class="text-sm text-ink-2">NEFT/RTGS</span>
+        <span class="text-sm text-ink-2">Cheque</span>
+      </div>
+      <p class="mt-6 text-[13px] text-ink-3 text-center max-w-2xl mx-auto">
+        Picking a tier is optional — "Continue to payment" takes you to Danamojo, where you'll confirm your amount and frequency.
+      </p>
     </div>
   </section>
+
+  <script is:inline>
+    (() => {
+      const tiers = document.querySelectorAll('[data-tier]');
+      const customAmt = document.querySelector('[data-custom-amount]');
+      const select = (btn) => {
+        tiers.forEach((t) => {
+          t.classList.remove('is-selected');
+          t.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('is-selected');
+        btn.setAttribute('aria-pressed', 'true');
+        if (customAmt) customAmt.value = '';
+      };
+      tiers.forEach((t) => t.addEventListener('click', () => select(t)));
+      customAmt?.addEventListener('input', () => {
+        if (customAmt.value.trim()) {
+          tiers.forEach((t) => {
+            t.classList.remove('is-selected');
+            t.setAttribute('aria-pressed', 'false');
+          });
+        }
+      });
+    })();
+  </script>
 
   <!-- Bank details -->
   <section class="py-16 md:py-20 border-t border-line">
