@@ -1,8 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Img from '../components/Img.astro';
-import { url } from '../utils/url';
+import Layout from '../../layouts/Layout.astro';
+import Img from '../../components/Img.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../utils/url';
 
+const events = (await getCollection('events')).sort((a, b) => a.id.localeCompare(b.id));
+
+// — Featured: Annual Impact Survey 2025–26 —————————————————————————
 const impactStudy = {
   title: 'Annual Impact Survey Report 2025–26',
   date: '02 March 2026',
@@ -24,6 +28,7 @@ const impactStudy = {
   ],
 };
 
+// — Featured story —————————————————————————————————————————————————
 const featuredPost = {
   title: 'National recognition for Water Conservation: CASCA 2026 Award of Excellence',
   date: '22 April 2026',
@@ -32,15 +37,55 @@ const featuredPost = {
   href: '/events/casca-2026-water-conservation-award/',
 };
 
-const currentPosts = [
+// — Stories from the field (videos) ——————————————————————————————————
+const stories = [
   { title: 'World Water Day, 2026', date: '22 March 2026', summary: 'Water Day celebration across 355 villages.', image: '2026/04/water.png', video: 'https://youtu.be/ANLfFqblS4k?si=ElCCNqWelVjhle5Z' },
   { title: 'Republic Day, 2026', date: '26 January 2026', summary: 'Republic Day celebration across 355 villages.', image: '2026/04/repu.png', video: 'https://youtu.be/abbMI7Era1s?si=UtLp5IQCD3ybVNlC' },
   { title: 'Testimonials — Dhan Kaushal', date: 'March 2026', summary: 'Financial Literacy Programme testimonials.', image: '2026/04/llll.png', video: 'https://youtu.be/eS7OOdDzask?si=GkvhFsQqXyHtOnmm' },
   { title: "Dhan Kaushal — Children's Roll-out at MASS, Belagavi", date: 'January–February 2026', summary: "Financial literacy children's roll-out in Belagavi.", image: '2026/04/wwww.png', video: 'https://youtu.be/Gx5fZ5LqplQ?si=pc90IP6eSm5wIk4a' },
   { title: "Dhan Kaushal — Teacher's Roll-out at MASS, Belagavi", date: 'January 2026', summary: "Financial literacy teacher's roll-out in Belagavi.", image: '2026/04/aaa-1.png', video: 'https://youtu.be/laJpn1Dtt1w?si=8UbYF7p3aPv26w_J' },
+  { title: 'A Detailed view of our Programme — Pragathi TV', date: 'October 2023', summary: 'Programme overview by Pragathi TV.', image: '2023/10/Screenshot-902.png', video: 'https://youtu.be/EfpTWtge4uc?si=uqXUIfp2-hh1AbXw' },
+  { title: 'Gandhi Jayanti Celebration in 300 Villages, 2023', date: 'October 2023', summary: 'Gandhi Jayanti across the network of villages.', image: '2023/10/Gandhi-Jayanti-0223-1536x864.jpg', video: 'https://youtu.be/1m8t5xQU8eQ?si=jhlg8KlHNHkCBYAD' },
+  { title: 'Vanya Samriddhi · Programme Launch', date: 'October 2023', summary: 'Food forests launch event.', image: '2023/10/Vanya-Samriddhi-ENG-2023-1536x864.jpg', video: 'https://youtu.be/QqhHuOMaieQ?si=rezv0zkM2ETSeWG0' },
 ];
 
-const archivePosts = [
+// — In the press ——————————————————————————————————————————————————————
+const press = [
+  { title: 'Prakriti Prem Coverage by Nesar TV', image: '2024/10/PP-Nesar-TV.jpg', link: 'https://www.facebook.com/share/v/Rbox7PuJxBeU54U7/?mibextid=xkVqcJ', source: 'Nesar TV' },
+  { title: 'Prakriti Prem at Tumkur / Tiptur', image: '2024/09/Prakriti-Prem-Tumkur-Tiptur-1.jpeg', source: 'Regional press' },
+  { title: 'Independence Day 2024 at Dimapur', image: '2024/10/Dimapur_page-0001.jpg', link: 'https://easternmirrornagaland.com/navsahyog-foundation-celebrates-i-day-in-dhansiripar-sub-division/', source: 'Eastern Mirror Nagaland' },
+  { title: 'Tumkur Taluka Kho-Kho & Kabaddi Tournament', image: '2024/09/Praja-Pragathi-Tumkur-Edition.jpeg', source: 'Praja Pragathi (Tumkur)' },
+  { title: 'Tournament coverage — Bengaluru', image: '2024/10/Praja-Praga-Bengaluru-Edition.jpeg', source: 'Praja Pragathi (Bengaluru)' },
+  { title: 'Kho-Kho Finals', image: '2024/09/Deccan-Herald-Finals.jpeg', source: 'Deccan Herald' },
+  { title: 'Tournament coverage', image: '2024/09/Kannada-Prabha.jpeg', source: 'Kannada Prabha' },
+  { title: 'Tournament coverage', image: '2024/09/Kranthi-Deepa.jpeg', source: 'Kranthi Deepa' },
+  { title: 'Tournament coverage', image: '2024/09/Sanjevani-1.jpeg', source: 'Sanjevani' },
+  { title: 'Tournament coverage', image: '2024/09/Udayakala-1.jpeg', source: 'Udayakala' },
+  { title: 'Field report — July 2024', image: '2024/09/WhatsApp-Image-2024-07-11-at-11.45.41-e1729149195701.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.26-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.23-AM.jpeg', source: 'Regional press' },
+  { title: 'Programme coverage — April 2023', image: '2023/07/WhatsApp-Image-2023-04-03-at-11.28.27-AM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (A)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (B)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.15-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (C)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.18.13-PM.jpeg', source: 'Regional press' },
+  { title: 'Report clipping', image: '2023/11/Untitled-2.png', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (D)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.20.17-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (E)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.27.57-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (F)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-2.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (G)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.16-PM-3.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (H)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (I)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.16.14-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (J)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.19.03-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (K)', image: '2023/11/WhatsApp-Image-2023-11-04-at-8.48.55-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (L)', image: '2023/11/WhatsApp-Image-2023-11-04-at-9.03.53-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (M)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.20.45-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (N)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.17.51-PM.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (O)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.26.37-PM-1.jpeg', source: 'Regional press' },
+  { title: 'Tournament day — 4 Nov 2023 (P)', image: '2023/11/WhatsApp-Image-2023-11-04-at-6.18.31-PM.jpeg', source: 'Regional press' },
+];
+
+// — Archive ———————————————————————————————————————————————————————————
+const archive = [
   { title: 'Servamangala Memorial Day', image: '2026/04/ser.png' },
   { title: 'Annual Day 2026', image: '2026/04/ann.png' },
   { title: "Children's Day celebrations", image: '2026/04/chil.png' },
@@ -76,23 +121,39 @@ const archivePosts = [
   { title: 'Programme photo — 2023', image: '2023/07/Screenshot-853.png' },
   { title: 'Boys Kabaddi — September 2021', image: '2021/07/fbfb.jpg' },
 ];
+
+const sections = [
+  { id: 'featured', label: 'Featured report' },
+  { id: 'story', label: 'Featured story' },
+  { id: 'stories', label: 'Stories from the field' },
+  { id: 'press', label: 'In the press' },
+  { id: 'events', label: 'Events' },
+  { id: 'archive', label: 'Archive' },
+];
 ---
 
-<Layout title="Blogs" description="Stories, videos, reflections and field notes from NavSahyog Foundation — from 2021 to today.">
+<Layout title="News & Stories" description="From the field, in the press, and from the team — annual reports, video stories, press clippings and events from NavSahyog Foundation.">
 
   <!-- Hero -->
   <section class="bg-paper">
     <div class="container-content pt-20 md:pt-28 pb-12">
-      <div class="eyebrow"><span>From the field</span></div>
+      <div class="eyebrow"><span>News &amp; Stories</span></div>
       <h1 class="display text-[clamp(3rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0">
-        Stories &amp; <span class="display-italic text-accent">reflections</span>.
+        From the field. <span class="display-italic text-accent">In the press.</span>
       </h1>
-      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">From our villages, our team, and the children who make this work matter.</p>
+      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
+        Annual reports, stories from the field, press clippings, and the events that mark the year — all in one place.
+      </p>
+      <nav class="mt-10 flex flex-wrap gap-x-6 gap-y-3 font-mono text-[11px] uppercase tracking-[0.14em]" aria-label="Page sections">
+        {sections.map((s) => (
+          <a href={`#${s.id}`} class="text-ink-3 hover:text-accent border-b border-line hover:border-accent pb-1">{s.label} →</a>
+        ))}
+      </nav>
     </div>
   </section>
 
   <!-- Featured impact study -->
-  <section class="py-16 md:py-20 border-t border-line">
+  <section id="featured" class="py-16 md:py-20 border-t border-line scroll-mt-20">
     <div class="container-content">
       <div class="eyebrow"><span>Featured report</span></div>
       <article class="grid md:grid-cols-2 gap-0 bg-paper-alt border border-line">
@@ -133,7 +194,7 @@ const archivePosts = [
   </section>
 
   <!-- Featured story -->
-  <section class="py-16 md:py-20">
+  <section id="story" class="py-16 md:py-20 scroll-mt-20">
     <div class="container-content">
       <div class="eyebrow"><span>Featured story</span></div>
       <a href={url(featuredPost.href)} class="group grid md:grid-cols-[1fr_2fr] gap-0 border border-line hover:border-accent transition-colors overflow-hidden">
@@ -150,15 +211,16 @@ const archivePosts = [
     </div>
   </section>
 
-  <!-- Latest videos -->
-  <section class="py-16 md:py-20 border-t border-line">
+  <!-- Stories from the field (videos) -->
+  <section id="stories" class="py-16 md:py-20 border-t border-line scroll-mt-20">
     <div class="container-content">
       <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
-        <div class="eyebrow m-0"><span>Latest videos</span></div>
+        <div class="eyebrow m-0"><span>Stories from the field</span></div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{stories.length} videos</div>
       </div>
       <div class="space-y-0">
-        {currentPosts.map((p, i) => (
-          <a href={p.video} target="_blank" rel="noopener" class:list={['group grid md:grid-cols-[260px_1fr] gap-6 md:gap-10 py-7 hover:bg-paper-alt transition-colors px-2', i === 0 ? 'border-t border-line' : 'border-t border-line']}>
+        {stories.map((p, i) => (
+          <a href={p.video} target="_blank" rel="noopener" class:list={['group grid md:grid-cols-[260px_1fr] gap-6 md:gap-10 py-7 hover:bg-paper-alt transition-colors px-2 md:px-4 -mx-2 md:-mx-4', i === 0 ? 'border-t border-line' : 'border-t border-line']}>
             <div class="aspect-video bg-paper-alt overflow-hidden">
               <Img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:opacity-90 transition" />
             </div>
@@ -175,15 +237,63 @@ const archivePosts = [
     </div>
   </section>
 
+  <!-- In the press -->
+  <section id="press" class="py-16 md:py-20 bg-paper-alt border-y border-line scroll-mt-20">
+    <div class="container-content">
+      <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>In the press</span></div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{press.length} clippings</div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {press.map((a) => {
+          const Tag = a.link ? 'a' : 'div';
+          const extra = a.link ? { href: a.link, target: '_blank', rel: 'noopener' } : {};
+          return (
+            <Tag class="group block bg-paper border border-line hover:border-accent transition-colors" {...extra}>
+              <div class="aspect-[4/3] bg-paper-alt overflow-hidden">
+                <Img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:opacity-95 transition" />
+              </div>
+              <div class="p-4">
+                <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">{a.source}</p>
+                <h3 class="display text-base tracking-display-tight font-medium text-ink mt-2 leading-snug m-0">{a.title}</h3>
+                {a.link && <p class="mt-2 text-xs text-accent font-semibold">Read article →</p>}
+              </div>
+            </Tag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  {events.length > 0 && (
+    <section id="events" class="py-16 md:py-20 border-t border-line scroll-mt-20">
+      <div class="container-content">
+        <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>Events &amp; celebrations</span></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {events.map((e) => (
+            <a href={url(`/events/${e.slug}/`)} class="block bg-paper border border-line p-6 hover:border-accent transition-colors">
+              {e.data.date && <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{e.data.date}</p>}
+              <h3 class="display text-lg tracking-display-tight font-medium text-ink mt-3 mb-2 m-0">{e.data.title}</h3>
+              {e.data.summary && <p class="text-[14px] text-ink-2 leading-relaxed m-0">{e.data.summary}</p>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <!-- Archive -->
-  <section class="py-16 md:py-20">
+  <section id="archive" class="py-16 md:py-20 border-t border-line scroll-mt-20">
     <div class="container-content">
       <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
         <div class="eyebrow m-0"><span>Archive</span></div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{archivePosts.length} entries</div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{archive.length} entries</div>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-        {archivePosts.map((p) => (
+        {archive.map((p) => (
           <figure class="m-0">
             <Img src={p.image} alt={p.title} class="w-full aspect-[4/3] object-cover bg-paper-alt" />
             <figcaption class="font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3 mt-2 leading-snug">{p.title}</figcaption>

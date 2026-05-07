@@ -1,0 +1,87 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { url } from '../../utils/url';
+
+const ways = [
+  {
+    num: '01',
+    title: 'Donate',
+    tagline: 'Fund a child\'s daily session',
+    body: 'Every gift becomes a day in a child\'s life — sports, storytelling, learning, creativity. 80G-eligible for Indian donors. FCRA-registered for international.',
+    cta: 'Make a gift',
+    href: url('/donate/'),
+  },
+  {
+    num: '02',
+    title: 'Partner',
+    tagline: 'For CSR teams &amp; foundations',
+    body: 'CSR partnerships built on transparency. Quarterly written updates. Field visits arranged for your team. Audited finances posted publicly each year.',
+    cta: 'See our partners',
+    href: url('/program/partners/'),
+  },
+  {
+    num: '03',
+    title: 'Acknowledge',
+    tagline: 'The community of givers',
+    body: 'Every individual who has stood with us, year after year — and the corporate donors who anchor our work. We publish the full list, with permission.',
+    cta: 'See our donors',
+    href: url('/program/donors/'),
+  },
+  {
+    num: '04',
+    title: 'Talk to us',
+    tagline: 'Volunteer · enquire · visit',
+    body: 'For questions about volunteering, sponsoring a village cohort, or arranging a field visit — write or call. We respond personally.',
+    cta: 'Get in touch',
+    href: url('/contact/'),
+  },
+];
+---
+
+<Layout title="Support Us" description="Four ways to support NavSahyog Foundation — donate, partner, acknowledge, or talk to us.">
+
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12">
+      <div class="eyebrow"><span>Support Us</span></div>
+      <h1 class="display text-[clamp(3rem,6.5vw,6rem)] leading-[0.95] tracking-display-tight m-0 max-w-5xl">
+        Four ways to be part of <span class="display-italic text-accent">this work</span>.
+      </h1>
+      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
+        From a one-time gift to a multi-year CSR partnership — every form of support flows directly into the daily programme that runs Monday through Saturday in 350+ villages.
+      </p>
+    </div>
+  </section>
+
+  <!-- Four ways -->
+  <section class="pb-12 md:pb-16">
+    <div class="container-content">
+      {ways.map((w, i) => (
+        <a href={w.href} class:list={['grid grid-cols-[60px_1fr_auto] gap-6 md:gap-12 py-8 md:py-10 group hover:bg-paper-alt transition-colors px-2 md:px-4 -mx-2 md:-mx-4', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
+          <div class="font-mono text-[13px] text-ink-3 pt-1.5">{w.num}</div>
+          <div>
+            <h2 class="display text-3xl md:text-[40px] font-medium tracking-display-tight m-0 mb-1 group-hover:text-accent leading-[1.05]">{w.title}</h2>
+            <p class="display-italic text-lg md:text-xl text-ink-2 m-0 mb-4">{w.tagline}</p>
+            <p class="m-0 text-[15px] md:text-base leading-relaxed text-ink-2 max-w-2xl">{w.body}</p>
+          </div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent self-center text-right whitespace-nowrap">
+            {w.cta} <span aria-hidden="true">→</span>
+          </div>
+        </a>
+      ))}
+      <div class="border-t border-line"></div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="py-14 border-t border-line">
+    <div class="container-content flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
+      <div class="font-mono uppercase text-[11px] tracking-[0.18em] text-ink-3">Audited &amp; Registered</div>
+      {['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual independent impact studies'].map((b) => (
+        <div class="text-sm font-medium text-ink-2 inline-flex items-center gap-2">
+          <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

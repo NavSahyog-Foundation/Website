@@ -17,4 +17,9 @@ export default defineConfig({
   build: {
     assets: 'assets',
   },
+  redirects: {
+    '/blogs': '/news',
+    '/media': '/news',
+    '/whats-new': '/news',
+  },
 });
