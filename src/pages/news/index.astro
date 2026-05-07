@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Img from '../../components/Img.astro';
+import Gallery from '../../components/Gallery.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../../utils/url';
 
@@ -292,14 +293,12 @@ const sections = [
         <div class="eyebrow m-0"><span>Archive</span></div>
         <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{archive.length} entries</div>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-        {archive.map((p) => (
-          <figure class="m-0">
-            <Img src={p.image} alt={p.title} class="w-full aspect-[4/3] object-cover bg-paper-alt" />
-            <figcaption class="font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3 mt-2 leading-snug">{p.title}</figcaption>
-          </figure>
-        ))}
-      </div>
+      <Gallery
+        images={archive.map((p) => p.image)}
+        captions={archive.map((p) => p.title)}
+        columns={5}
+        group="news-archive"
+      />
     </div>
   </section>
 </Layout>

@@ -5,17 +5,22 @@ import { media } from '../utils/media';
 export interface Props {
   images: string[];
   alt?: string;
-  columns?: 2 | 3 | 4;
+  columns?: 2 | 3 | 4 | 5;
   captions?: string[];
+  /** Optional explicit group id; otherwise a unique id is generated per Gallery instance. */
+  group?: string;
 }
 
-const { images, alt = '', columns = 3, captions } = Astro.props;
+const { images, alt = '', columns = 3, captions, group } = Astro.props;
 
 const colClass = {
   2: 'sm:grid-cols-2',
   3: 'sm:grid-cols-2 md:grid-cols-3',
   4: 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
+  5: 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5',
 }[columns];
+
+const groupId = group || `g-${Math.random().toString(36).slice(2, 10)}`;
 
 const resolved = images
   .map((src, i) => ({ src, img: media(src), index: i, caption: captions?.[i] }))
@@ -24,7 +29,13 @@ const resolved = images
 
 <div class={`grid grid-cols-1 ${colClass} gap-4`}>
   {resolved.map(({ src, img, index, caption }) => (
-    <a href={img.src} class="block bg-paper-alt group">
+    <a
+      href={img.src}
+      class="block bg-paper-alt group"
+      data-lightbox-src={img.src}
+      data-lightbox-group={groupId}
+      data-lightbox-caption={caption || (alt ? `${alt} — ${index + 1}` : '')}
+    >
       <Img
         src={src}
         alt={alt ? `${alt} — ${index + 1}` : caption || `Image ${index + 1}`}
