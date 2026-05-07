@@ -1,40 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageHeader from '../components/PageHeader.astro';
 import { downloads } from '../data/downloads';
 import { url } from '../utils/url';
 ---
 
 <Layout title="Downloads" description="Annual reports, audited financials, impact studies and programme literature from NavSahyog Foundation.">
-  <PageHeader
-    eyebrow="Resources"
-    title="Downloads"
-    subtitle="Find our key reports and updates in downloadable format."
-  />
 
-  <div class="container-content py-16 space-y-12">
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12">
+      <div class="eyebrow"><span>Resources</span></div>
+      <h1 class="display text-[clamp(3rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0">
+        Every report, <span class="display-italic text-accent">in your hands</span>.
+      </h1>
+      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
+        Annual reports, audited financials, impact studies and programme literature — all available, no signup required.
+      </p>
+    </div>
+  </section>
+
+  <div class="container-content py-12 md:py-16 space-y-16">
     {downloads.map((section) => (
       <section>
-        <h2 class="text-2xl font-bold mb-4">{section.heading}</h2>
-        <ul class="space-y-2">
+        <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>{section.heading}</span></div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{section.items.length} {section.items.length === 1 ? 'item' : 'items'}</div>
+        </div>
+        <ul class="grid md:grid-cols-2 gap-3 m-0 p-0 list-none">
           {section.items.map((item) => (
             <li>
               <a
                 href={item.external ? item.file : url(item.file)}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noopener' : undefined}
-                class="flex items-center justify-between gap-4 p-4 rounded-lg border border-slate-200 bg-white hover:border-brand hover:bg-brand-50 transition"
+                class="flex items-center justify-between gap-4 p-5 bg-paper border border-line hover:border-accent transition-colors group"
               >
-                <div class="flex items-center gap-3 min-w-0">
-                  <svg class="w-6 h-6 text-brand shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
+                <div class="flex items-center gap-4 min-w-0">
+                  <svg class="w-5 h-5 text-accent shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
                   </svg>
-                  <span class="font-medium text-ink truncate">{item.title}</span>
+                  <span class="text-[14px] font-medium text-ink truncate">{item.title}</span>
                 </div>
-                <span class="text-sm text-brand font-semibold shrink-0">
-                  {item.external ? 'Drive ↗' : 'Download ↓'}
-                </span>
+                <span class="font-mono text-[11px] uppercase tracking-[0.1em] text-accent shrink-0 group-hover:text-accent-deep">{item.external ? 'Drive ↗' : 'PDF ↓'}</span>
               </a>
             </li>
           ))}

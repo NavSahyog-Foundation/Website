@@ -1,50 +1,86 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import Img from '../../components/Img.astro';
+import { url } from '../../utils/url';
 
 const projects = [
   {
+    num: '01',
     name: 'Vanya Samriddhi',
+    tag: 'Adults',
     tagline: 'Food forests on barren land.',
-    body: 'Working with farmers, we turn barren one-acre plots into food forests — mixed-species plantings that restore the soil, provide food year-round, and create a durable new source of livelihood. This significantly enhances farmers\' productivity, makes them more resilient to climate change, and opens livelihood opportunities for rural youth.',
+    body: "Working with farmers, we turn barren one-acre plots into food forests — mixed-species plantings that restore the soil, provide food year-round, and create a durable new source of livelihood. This significantly enhances farmers' productivity, makes them more resilient to climate change, and opens livelihood opportunities for rural youth.",
+    img: '2021/07/Long-Jump-930x620.jpg',
   },
   {
+    num: '02',
     name: 'Jal Vriddhi',
+    tag: 'Ages 8–14',
     tagline: 'Recharging the groundwater table.',
     body: 'A village-led programme to recharge groundwater through farm ponds and bunds co-created with farmers. We teach children the value of water and build the infrastructure to preserve it. Currently running in Haliyal, Karnataka.',
+    img: '2026/04/water.png',
+    href: url('/program/jal-vriddhi/'),
   },
   {
+    num: '03',
     name: 'Yuva Samriddhi',
+    tag: 'Ages 16–24',
     tagline: 'Self-employment for rural youth.',
     body: 'In collaboration with CBD-RSETI in Haliyal, Karnataka, we train rural youth in self-employment — turning the entrepreneurship mindset our children grow up with into working businesses.',
+    img: '2022/05/IMG_20201205_120751-1-930x620.jpg',
   },
   {
+    num: '04',
     name: 'Dhan Kaushal',
+    tag: 'Ages 12+',
     tagline: 'Financial literacy for children and youth.',
     body: 'A financial-literacy curriculum delivered alongside the core programme — savings, budgeting, and the basics of running a small enterprise. Rolled out with schools in Belagavi in partnership with MASS.',
+    img: '2026/04/qq.png',
   },
   {
+    num: '05',
     name: 'Prakriti Prem',
+    tag: 'Ages 5–14',
     tagline: 'A fruit sapling for every child.',
     body: 'Every child in a NavSahyog village is given a fruit sapling to nurture and grow into a fruit tree. Clusters of villages compete to see whose trees thrive best — combining environmental learning, responsibility, and community pride.',
+    img: '2024/10/PP-Nesar-TV.jpg',
   },
 ];
 ---
 
 <Layout title="Projects" description="NavSahyog Foundation's projects that extend the core life-skills programme into livelihood, finance, and environment.">
-  <PageHeader
-    eyebrow="Our Programme"
-    title="Projects"
-    subtitle="Extensions of our core life-skills programme — each building a concrete link to livelihood, finance, or environment."
-  />
 
-  <div class="container-content py-16 grid md:grid-cols-2 gap-6">
-    {projects.map((p) => (
-      <article class="rounded-xl border border-slate-200 p-8 bg-white shadow-sm">
-        <h2 class="text-xl md:text-2xl font-bold text-brand">{p.name}</h2>
-        <p class="text-ink/80 italic mt-1 mb-4">{p.tagline}</p>
-        <p class="text-ink/90 leading-relaxed">{p.body}</p>
-      </article>
-    ))}
-  </div>
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12">
+      <div class="eyebrow"><span>Our Programme</span></div>
+      <h1 class="display text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0 max-w-5xl">
+        Five projects, one continuous arc — from <span class="display-italic text-accent">play</span> to enterprise.
+      </h1>
+    </div>
+  </section>
+
+  <!-- Project sections -->
+  {projects.map((p, i) => (
+    <section class:list={['py-20 md:py-24 border-t border-line', i % 2 === 0 ? 'bg-paper' : 'bg-paper-alt']}>
+      <div class="container-content">
+        <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class:list={[i % 2 === 0 ? '' : 'md:order-2']}>
+            <Img src={p.img} alt={p.name} class="w-full aspect-[4/5] object-cover bg-paper-alt" />
+          </div>
+          <div>
+            <div class="font-mono text-[12px] uppercase tracking-[0.16em] text-accent font-bold mb-4">{p.num} · {p.tag}</div>
+            <h2 class="display text-[clamp(2.5rem,4.5vw,4rem)] leading-[1] tracking-display-tight m-0 mb-2">{p.name}</h2>
+            <p class="display-italic text-xl md:text-2xl text-ink-2 m-0 mb-6">{p.tagline}</p>
+            <p class="text-[17px] leading-[1.6] text-ink-2 m-0 mb-7 max-w-xl">{p.body}</p>
+            {p.href && (
+              <a href={p.href} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
+                Explore Jal Vriddhi <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
 </Layout>

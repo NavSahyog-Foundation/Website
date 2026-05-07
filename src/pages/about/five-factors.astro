@@ -1,99 +1,102 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import Img from '../../components/Img.astro';
 
 const principles = [
-  { n: 1, text: 'We focus on a Big Problem.' },
-  { n: 2, text: 'We avoid re-inventing the wheel by partnering with organisations with proven solutions.' },
-  { n: 3, text: 'We ensure that our first employees come from the community we begin work in.' },
-  { n: 4, text: 'We maintain humility. We understand that the communities and the beneficiaries know best. We collaborate to adapt and co-create solutions with them.' },
-  { n: 5, text: 'We scale our operations by partnering with organizations that have a large geo presence and deep relations with the community. Thus, we are able to efficiently scale quickly, focusing on the impact.' },
+  { n: '01', text: 'We focus on a Big Problem.' },
+  { n: '02', text: 'We avoid re-inventing the wheel by partnering with organisations with proven solutions.' },
+  { n: '03', text: 'We ensure that our first employees come from the community we begin work in.' },
+  { n: '04', text: 'We maintain humility. We understand that the communities and the beneficiaries know best. We collaborate to adapt and co-create solutions with them.' },
+  { n: '05', text: 'We scale our operations by partnering with organizations that have a large geo presence and deep relations with the community.' },
 ];
 
 const values = [
-  { n: 1, title: 'INTEGRITY', text: 'Honesty and meeting our commitments. What you mean is what you say, what you say is what you do.' },
-  { n: 2, title: 'TEAMWORK', text: 'We value team play and believe that through teamwork only, we can achieve our organization and individual goals.' },
-  { n: 3, title: 'RESPECT', text: 'We treat our beneficiaries, partners, donors, the community and each other with respect and sensitivity.' },
-  { n: 4, title: 'INNOVATION', text: 'We consider every challenge as an opportunity to innovate.' },
-  { n: 5, title: 'BEST PRACTICES', text: 'We learn from others, share and embrace best practices in all our work.' },
+  { n: '01', title: 'Integrity', text: 'Honesty and meeting our commitments. What you mean is what you say, what you say is what you do.' },
+  { n: '02', title: 'Teamwork', text: 'We value team play and believe that through teamwork only, we can achieve our organization and individual goals.' },
+  { n: '03', title: 'Respect', text: 'We treat our beneficiaries, partners, donors, the community and each other with respect and sensitivity.' },
+  { n: '04', title: 'Innovation', text: 'We consider every challenge as an opportunity to innovate.' },
+  { n: '05', title: 'Best Practices', text: 'We learn from others, share and embrace best practices in all our work.' },
 ];
 
 const strengths = [
-  { n: 1, title: 'Our Team' },
-  { n: 2, title: 'Program Content' },
-  { n: 3, title: 'Delivery Structure' },
-  { n: 4, title: 'Well-documented Processes' },
-  { n: 5, title: 'Impact results in the last 3 years' },
+  { n: '01', title: 'Our Team' },
+  { n: '02', title: 'Programme Content' },
+  { n: '03', title: 'Delivery Structure' },
+  { n: '04', title: 'Well-documented Processes' },
+  { n: '05', title: 'Three years of impact results' },
 ];
 ---
 
-<Layout title="The Five Factors" description="NavSahyog Foundation's 5 principles, 5 values and 5 strengths — the factors that guide our work.">
+<Layout title="The Five Factors" description="NavSahyog Foundation's 5 Principles, 5 Values and 5 Strengths — the factors that guide our work.">
   <PageHeader
     eyebrow="About"
-    title="The Five Factors"
-    subtitle="We are driven by 5 Principles and 5 Values. We also have 5 Strengths that differentiate us in what we do."
+    title="Five principles. Five values. Five strengths."
+    accentWord="Five values."
+    subtitle="The factors that guide how we choose problems, partner with people, and run the programme on the ground."
   />
 
-  <section class="container-content py-16">
-    <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
-      <Img src="2022/05/1625724924859-1024x597.jpg" alt="NavSahyog team and children" class="rounded-xl w-full h-auto shadow-sm" />
+  <!-- Principles -->
+  <section class="py-16 md:py-20 border-t border-line">
+    <div class="container-content grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
+      <div class="md:sticky md:top-28">
+        <div class="eyebrow"><span>Five Principles</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0">
+          The principles we <span class="display-italic text-accent">begin</span> with.
+        </h2>
+        <p class="mt-6 text-base text-ink-2 leading-relaxed max-w-md">NavSahyog's entire initiative is based on these five principles.</p>
+      </div>
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">5 Principles</h2>
-        <p class="text-lg text-ink/80 leading-relaxed">
-          NavSahyog Foundation's entire initiative is based on these five principles.
-        </p>
-      </div>
-    </div>
-    <ul class="grid md:grid-cols-2 gap-4">
-      {principles.map((p) => (
-        <li class="flex gap-4 p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
-          <span class="shrink-0 w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center">
-            #{p.n}
-          </span>
-          <span class="text-ink/90 text-lg">{p.text}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="bg-surface-soft">
-    <div class="container-content py-16">
-      <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">5 Values</h2>
-          <p class="text-lg text-ink/80 leading-relaxed">
-            We as a team are deeply rooted in our values. They embody our culture and the way we do
-            everything.
-          </p>
-        </div>
-        <Img src="2022/05/192421519_296559592163787_7961964084391222623_n.jpg" alt="NavSahyog team at work" class="rounded-xl w-full h-auto shadow-sm" />
-      </div>
-      <ul class="grid md:grid-cols-2 gap-4">
-        {values.map((v) => (
-          <li class="p-6 rounded-xl bg-white border border-slate-200 shadow-sm">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="shrink-0 w-10 h-10 rounded-full bg-brand-100 text-brand font-bold flex items-center justify-center">
-                #{v.n}
-              </span>
-              <h3 class="text-xl font-bold text-brand">{v.title}</h3>
-            </div>
-            <p class="text-ink/90">{v.text}</p>
-          </li>
+        {principles.map((p, i) => (
+          <div class:list={['grid grid-cols-[60px_1fr] gap-6 py-7', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
+            <div class="font-mono text-[13px] text-ink-3 pt-1">{p.n}</div>
+            <p class="m-0 text-[18px] leading-[1.55] text-ink">{p.text}</p>
+          </div>
         ))}
-      </ul>
+        <div class="border-t border-line"></div>
+      </div>
     </div>
   </section>
 
-  <section class="container-content py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8">5 Strengths</h2>
-    <ul class="grid md:grid-cols-5 gap-4">
-      {strengths.map((s) => (
-        <li class="p-6 rounded-xl bg-brand text-white text-center">
-          <p class="text-3xl font-bold mb-2">#{s.n}</p>
-          <p class="font-semibold">{s.title}</p>
-        </li>
-      ))}
-    </ul>
+  <!-- Values -->
+  <section class="py-16 md:py-20 bg-paper-alt border-y border-line">
+    <div class="container-content grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
+      <div class="md:sticky md:top-28">
+        <div class="eyebrow"><span>Five Values</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0">
+          The values we <span class="display-italic text-accent">work</span> by.
+        </h2>
+        <p class="mt-6 text-base text-ink-2 leading-relaxed max-w-md">We as a team are deeply rooted in our values. They embody our culture and the way we do everything.</p>
+      </div>
+      <div>
+        {values.map((v, i) => (
+          <div class:list={['grid grid-cols-[60px_1fr] gap-6 py-7', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
+            <div class="font-mono text-[13px] text-ink-3 pt-1">{v.n}</div>
+            <div>
+              <h3 class="display text-2xl md:text-[28px] font-medium tracking-display-tight m-0 mb-2">{v.title}</h3>
+              <p class="m-0 text-[15px] leading-relaxed text-ink-2">{v.text}</p>
+            </div>
+          </div>
+        ))}
+        <div class="border-t border-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strengths -->
+  <section class="py-16 md:py-20">
+    <div class="container-content">
+      <div class="eyebrow"><span>Five Strengths</span></div>
+      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">
+        What sets the work <span class="display-italic text-accent">apart</span>.
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+        {strengths.map((s) => (
+          <div class="bg-ink text-paper p-7 min-h-[180px] flex flex-col justify-between">
+            <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">{s.n}</div>
+            <div class="display text-xl md:text-2xl font-medium tracking-display-tight leading-tight">{s.title}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   </section>
 </Layout>

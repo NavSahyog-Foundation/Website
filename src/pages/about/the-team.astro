@@ -12,37 +12,41 @@ const sections = [
   { heading: 'Board of Advisors', members: advisors },
   { heading: 'Founders', members: founders },
   { heading: 'Functional Leaders', members: functionalLeaders },
-  { heading: 'Program Team', members: programTeam },
+  { heading: 'Programme Team', members: programTeam },
 ];
 
 const facilitatorGroups = [
-  { heading: 'Area Facilitators — Bengaluru (Karnataka)', list: facilitatorsBengaluru },
-  { heading: 'Area Facilitators — Dimapur (Nagaland)', list: facilitatorsDimapur },
-  { heading: 'Area Facilitators — Jawadhu Hills (Tamil Nadu)', list: facilitatorsHills },
-  { heading: 'Area Facilitators — Tamil Nadu & Karnataka Roster', list: facilitatorsLegacy },
+  { heading: 'Bengaluru · Karnataka', list: facilitatorsBengaluru },
+  { heading: 'Dimapur · Nagaland', list: facilitatorsDimapur },
+  { heading: 'Jawadhu Hills · Tamil Nadu', list: facilitatorsHills },
+  { heading: 'Tamil Nadu &amp; Karnataka roster', list: facilitatorsLegacy },
 ];
 ---
 
 <Layout title="The Team" description="Advisors, founders, leaders and 150+ Area Facilitators who run NavSahyog Foundation's daily programme across Karnataka, Tamil Nadu and Nagaland.">
   <PageHeader
     eyebrow="About"
-    title="The Team"
-    subtitle="Advisors, founders, leaders and 150+ Area Facilitators — each one making the daily programme possible."
+    title="The people who make this work."
+    accentWord="people"
+    subtitle="Advisors, founders, functional leaders and 150+ Area Facilitators — almost all women from the villages they serve."
   />
 
-  <div class="container-content py-16 space-y-14">
+  <div class="container-content py-12 space-y-20">
     {sections.map((group) => (
       <section>
-        <h2 class="text-2xl md:text-3xl font-bold mb-6">{group.heading}</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>{group.heading}</span></div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{group.members.length} {group.members.length === 1 ? 'member' : 'members'}</div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
           {group.members.map((m) => (
-            <div class="rounded-xl border border-slate-200 p-5 bg-white shadow-sm flex items-start gap-4">
-              <div class="w-12 h-12 rounded-full bg-brand-50 text-brand font-semibold flex items-center justify-center shrink-0">
+            <div class="border-t border-line pt-5 flex items-start gap-4">
+              <div class="w-12 h-12 rounded-full bg-paper-alt text-accent font-semibold font-mono text-sm flex items-center justify-center shrink-0 border border-line">
                 {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
               </div>
               <div>
-                <p class="font-semibold text-ink">{m.name}</p>
-                <p class="text-sm text-ink/70 mt-0.5">{m.role}</p>
+                <div class="display text-lg leading-tight tracking-display-tight">{m.name}</div>
+                <div class="text-[13px] text-ink-3 mt-1">{m.role}</div>
               </div>
             </div>
           ))}
@@ -51,21 +55,23 @@ const facilitatorGroups = [
     ))}
 
     <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-2">Area Facilitators (AF)</h2>
-      <p class="text-ink/70 mb-8 max-w-3xl">
-        Our on-ground leaders — women, almost all from the villages they serve — who run the daily
-        programme Monday through Saturday, every week of the year.
+      <div class="flex items-end justify-between gap-6 mb-3 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Area Facilitators</span></div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">150+ across three states</div>
+      </div>
+      <p class="text-base text-ink-2 max-w-3xl mb-12 leading-relaxed">
+        Our on-ground leaders — women, almost all from the villages they serve — who run the daily programme Monday through Saturday, every week of the year.
       </p>
-      <div class="space-y-12">
+      <div class="space-y-14">
         {facilitatorGroups.map((g) => (
           <div>
-            <h3 class="text-xl font-semibold mb-5 text-brand">{g.heading}</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <h3 class="display text-xl md:text-2xl font-medium tracking-display-tight mb-6" set:html={g.heading} />
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
               {g.list.map((f) => (
                 <div class="text-center">
-                  <Img src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full border-2 border-white shadow-sm bg-brand-50" />
-                  <p class="mt-2 font-semibold text-ink text-xs">{f.name}</p>
-                  {f.village && <p class="text-[10px] text-ink/60">{f.village}</p>}
+                  <Img src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full bg-paper-alt" />
+                  <p class="mt-2.5 text-[12px] font-medium text-ink leading-tight">{f.name}</p>
+                  {f.village && <p class="text-[10px] text-ink-3 mt-0.5">{f.village}</p>}
                 </div>
               ))}
             </div>
@@ -75,10 +81,12 @@ const facilitatorGroups = [
     </section>
 
     <section>
-      <h3 class="text-xl font-semibold mb-5 text-brand">Team gatherings &amp; training</h3>
+      <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Team gatherings &amp; training</span></div>
+      </div>
       <div class="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-7 lg:grid-cols-9 gap-2">
         {teamArchivePhotos.map((p) => (
-          <Img src={p} alt="Team gathering" class="w-full aspect-square object-cover rounded-lg" />
+          <Img src={p} alt="Team gathering" class="w-full aspect-square object-cover bg-paper-alt" />
         ))}
       </div>
     </section>

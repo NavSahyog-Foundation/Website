@@ -1,6 +1,5 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import PageHeader from '../../../components/PageHeader.astro';
 import Gallery from '../../../components/Gallery.astro';
 import Img from '../../../components/Img.astro';
 import { url } from '../../../utils/url';
@@ -23,37 +22,58 @@ const d = entry.data;
 ---
 
 <Layout title={d.title} description={d.summary}>
-  <PageHeader eyebrow={`${d.region}${d.cluster ? ' · ' + d.cluster : ''}`} title={d.title} subtitle={d.summary} />
+
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-10">
+      <div class="eyebrow"><span>{d.region}{d.cluster ? ' · ' + d.cluster : ''}</span></div>
+      <h1 class="display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.98] tracking-display-tight m-0 max-w-4xl">{d.title}</h1>
+      {d.summary && <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-3xl">{d.summary}</p>}
+    </div>
+  </section>
 
   {d.heroImage && (
-    <div class="container-content py-8">
-      <Img src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
-    </div>
-  )}
-
-  <div class="container-content py-8 prose-content max-w-3xl">
-    <Content />
-
-    {d.villageNames && d.villageNames.length > 0 && (
-      <div class="not-prose mt-8">
-        <h2 class="text-2xl font-bold mb-4">Villages in this cluster</h2>
-        <ul class="grid sm:grid-cols-2 gap-2">
-          {d.villageNames.map((v) => (
-            <li class="px-4 py-3 bg-white rounded-lg border border-slate-200 text-ink font-medium">{v}</li>
-          ))}
-        </ul>
+    <section class="pb-12">
+      <div class="container-content">
+        <Img src={d.heroImage} alt={d.title} class="w-full aspect-[16/9] object-cover bg-paper-alt" loading="eager" />
       </div>
-    )}
-  </div>
-
-  {d.gallery.length > 0 && (
-    <section class="container-content py-12">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Photo Gallery</h2>
-      <Gallery images={d.gallery} alt={d.title} columns={3} />
     </section>
   )}
 
-  <section class="container-content py-12">
-    <a href={url('/program/presence/')} class="btn-outline">← All villages</a>
+  <article class="py-12">
+    <div class="container-content max-w-3xl prose-content">
+      <Content />
+    </div>
+  </article>
+
+  {d.villageNames && d.villageNames.length > 0 && (
+    <section class="py-12 border-t border-line">
+      <div class="container-content">
+        <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>Villages in this cluster</span></div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{d.villageNames.length} villages</div>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0 m-0 p-0 list-none">
+          {d.villageNames.map((v) => (
+            <li class="display text-lg tracking-display-tight text-ink py-3 border-b border-line">{v}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {d.gallery.length > 0 && (
+    <section class="py-12 border-t border-line">
+      <div class="container-content">
+        <div class="eyebrow"><span>Photo gallery</span></div>
+        <Gallery images={d.gallery} alt={d.title} columns={3} />
+      </div>
+    </section>
+  )}
+
+  <section class="py-12">
+    <div class="container-content">
+      <a href={url('/program/presence/')} class="btn-outline px-6 py-3">← All villages</a>
+    </div>
   </section>
 </Layout>

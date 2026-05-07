@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import PageHeader from '../components/PageHeader.astro';
 import Img from '../components/Img.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../utils/url';
@@ -43,46 +42,65 @@ const articles = [
 ---
 
 <Layout title="Media Coverage" description="Press clippings, events and programme highlights from NavSahyog Foundation.">
-  <PageHeader
-    eyebrow="News"
-    title="Media Coverage"
-    subtitle="Press clippings, events and programme highlights."
-  />
 
-  <section class="container-content py-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-6">Recent Coverage</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {articles.map((a) => {
-        const Tag = a.link ? 'a' : 'div';
-        const extra = a.link ? { href: a.link, target: '_blank', rel: 'noopener' } : {};
-        return (
-          <Tag class="group block rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden hover:border-brand transition" {...extra}>
-            <div class="aspect-[4/3] bg-surface-soft overflow-hidden">
-              <Img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-            </div>
-            <div class="p-4">
-              <p class="text-xs uppercase tracking-wide text-brand font-semibold">{a.source}</p>
-              <h3 class="font-bold text-ink mt-1 text-sm">{a.title}</h3>
-              {a.link && <p class="mt-2 text-xs text-brand">Read article →</p>}
-            </div>
-          </Tag>
-        );
-      })}
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12">
+      <div class="eyebrow"><span>News</span></div>
+      <h1 class="display text-[clamp(3rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0">
+        Press &amp; <span class="display-italic text-accent">field</span> coverage.
+      </h1>
+      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
+        Coverage of our work in regional and national press — from Tumkur to Dimapur, Bengaluru to New Delhi.
+      </p>
     </div>
   </section>
 
-  <section class="bg-surface-soft">
-    <div class="container-content py-16">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Events &amp; Celebrations</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {events.map((e) => (
-          <a href={url(`/events/${e.slug}/`)} class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-brand hover:bg-brand-50 transition">
-            {e.data.date && <p class="text-xs uppercase tracking-wide text-brand font-semibold">{e.data.date}</p>}
-            <h3 class="font-bold text-ink mt-1">{e.data.title}</h3>
-            {e.data.summary && <p class="mt-2 text-sm text-ink/80">{e.data.summary}</p>}
-          </a>
-        ))}
+  <!-- Recent coverage -->
+  <section class="py-16 md:py-20 border-t border-line">
+    <div class="container-content">
+      <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Recent coverage</span></div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{articles.length} clippings</div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {articles.map((a) => {
+          const Tag = a.link ? 'a' : 'div';
+          const extra = a.link ? { href: a.link, target: '_blank', rel: 'noopener' } : {};
+          return (
+            <Tag class="group block bg-paper border border-line hover:border-accent transition-colors" {...extra}>
+              <div class="aspect-[4/3] bg-paper-alt overflow-hidden">
+                <Img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:opacity-95 transition" />
+              </div>
+              <div class="p-4">
+                <p class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent">{a.source}</p>
+                <h3 class="display text-base tracking-display-tight font-medium text-ink mt-2 leading-snug m-0">{a.title}</h3>
+                {a.link && <p class="mt-2 text-xs text-accent font-semibold">Read article →</p>}
+              </div>
+            </Tag>
+          );
+        })}
       </div>
     </div>
   </section>
+
+  <!-- Events -->
+  {events.length > 0 && (
+    <section class="py-16 md:py-20 bg-paper-alt border-y border-line">
+      <div class="container-content">
+        <div class="flex items-end justify-between gap-6 mb-10 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>Events &amp; celebrations</span></div>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {events.map((e) => (
+            <a href={url(`/events/${e.slug}/`)} class="block bg-paper border border-line p-6 hover:border-accent transition-colors">
+              {e.data.date && <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">{e.data.date}</p>}
+              <h3 class="display text-lg tracking-display-tight font-medium text-ink mt-3 mb-2 m-0">{e.data.title}</h3>
+              {e.data.summary && <p class="text-[14px] text-ink-2 leading-relaxed m-0">{e.data.summary}</p>}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 </Layout>

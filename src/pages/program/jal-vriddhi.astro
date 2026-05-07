@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
 import ProgramDashboard from '../../components/ProgramDashboard.astro';
 
 const statuses = [
@@ -15,33 +14,57 @@ const statuses = [
   title="Jal Vriddhi"
   description="Jal Vriddhi is NavSahyog Foundation's village-led water-stewardship programme — recharging groundwater through farm ponds and bunds co-created with farmers."
 >
-  <PageHeader
-    eyebrow="Our Programme"
-    title="Jal Vriddhi"
-    subtitle="Village-led water stewardship — recharging groundwater, one pond at a time."
-  />
 
-  <section class="container-content py-12 grid lg:grid-cols-3 gap-10 items-start">
-    <div class="lg:col-span-2 prose-content">
-      <p>
-        <strong>Jal Vriddhi</strong> is a village-led programme to recharge groundwater through farm
-        ponds and bunds, co-created with farmers. We teach children the value of water and build the
-        infrastructure to preserve it.
-      </p>
-      <p>
-        Each pond on the map below is a real site in a partner village, classified by where it is in
-        its lifecycle — <em>planned</em>, <em>dug</em>, <em>active</em>, or <em>inactive</em>. Use
-        the status chips to focus the map; click any pond for village details.
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12">
+      <div class="eyebrow"><span>Our Programme</span></div>
+      <h1 class="display text-[clamp(3rem,6.5vw,6rem)] leading-[0.95] tracking-display-tight m-0 max-w-5xl">
+        Recharging the groundwater table, <span class="display-italic text-accent">one pond</span> at a time.
+      </h1>
+      <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
+        Jal Vriddhi is a village-led programme to recharge groundwater through farm ponds and bunds, co-created with farmers. We teach children the value of water and build the infrastructure to preserve it.
       </p>
     </div>
-    <div class="rounded-xl border border-slate-200 bg-surface-soft p-5">
-      <h3 class="text-base font-bold text-ink mb-2">What the statuses mean</h3>
-      <ul class="space-y-2 text-sm text-ink/80">
-        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#d97706"></span><strong>Planned</strong> — site identified with the village, work yet to begin.</li>
-        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#2563eb"></span><strong>Dug</strong> — pond excavated; awaiting first monsoon recharge.</li>
-        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#059669"></span><strong>Active</strong> — holding water and recharging the local table.</li>
-        <li><span class="inline-block h-2.5 w-2.5 rounded-full align-middle mr-2" style="background:#64748b"></span><strong>Inactive</strong> — currently dry or out of service.</li>
-      </ul>
+  </section>
+
+  <!-- Headline numbers + recognition -->
+  <section class="border-y border-line py-14">
+    <div class="container-content grid md:grid-cols-3 gap-10">
+      <div>
+        <div class="display text-[clamp(3rem,6vw,5rem)] leading-[0.95] tracking-[-0.045em] text-ink">280<span class="text-accent">+</span></div>
+        <p class="mt-4 text-[15px] text-ink-2 max-w-[16rem] leading-snug">Farm ponds co-created with farmers across partner villages.</p>
+      </div>
+      <div>
+        <div class="display text-[clamp(3rem,6vw,5rem)] leading-[0.95] tracking-[-0.045em] text-ink">20M L<span class="text-accent">/yr</span></div>
+        <p class="mt-4 text-[15px] text-ink-2 max-w-[16rem] leading-snug">Rainwater percolated annually back into the local water table.</p>
+      </div>
+      <div>
+        <div class="display text-[clamp(2rem,3.5vw,2.75rem)] leading-[1.05] tracking-display-tight text-ink">CASCA 2026 · Award of Excellence</div>
+        <p class="mt-4 text-[15px] text-ink-2 max-w-[16rem] leading-snug">National recognition for water conservation, presented in New Delhi on Earth Day, 22 April 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status legend + dashboard intro -->
+  <section class="py-16">
+    <div class="container-content grid lg:grid-cols-[2fr_1fr] gap-12 items-start">
+      <div>
+        <div class="eyebrow"><span>Live dashboard</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-6">Each pond on the map is a real site.</h2>
+        <p class="text-base text-ink-2 leading-relaxed max-w-2xl m-0">
+          Each pond is a real site in a partner village, classified by where it is in its lifecycle. Use the status chips to focus the map; click any pond for village details.
+        </p>
+      </div>
+      <div class="bg-paper-alt border border-line p-6">
+        <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-4">What the statuses mean</div>
+        <ul class="space-y-2.5 text-sm text-ink-2 m-0 p-0 list-none">
+          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#d97706"></span><span><strong class="text-ink">Planned</strong> — site identified with the village; work yet to begin.</span></li>
+          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#2563eb"></span><span><strong class="text-ink">Dug</strong> — pond excavated; awaiting first monsoon recharge.</span></li>
+          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#059669"></span><span><strong class="text-ink">Active</strong> — holding water and recharging the local table.</span></li>
+          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#64748b"></span><span><strong class="text-ink">Inactive</strong> — currently dry or out of service.</span></li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -52,11 +75,10 @@ const statuses = [
     unitPlural="Ponds"
   />
 
-  <section class="bg-surface-soft">
-    <div class="container-content py-12 text-center">
-      <p class="text-ink/80 max-w-2xl mx-auto">
-        Data on this page is updated regularly from the field. If you'd like to partner with us on
-        Jal Vriddhi — as a village, donor, or volunteer — please get in touch.
+  <section class="bg-paper-alt border-y border-line py-16">
+    <div class="container-content text-center max-w-2xl mx-auto">
+      <p class="text-[17px] text-ink-2 leading-relaxed m-0">
+        Data on this page is updated regularly from the field. If you'd like to partner with us on Jal Vriddhi — as a village, donor, or volunteer — please get in touch.
       </p>
     </div>
   </section>

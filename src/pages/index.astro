@@ -1,239 +1,324 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
+import StatCard from '../components/StatCard.astro';
 import { url } from '../utils/url';
+
+const heroImage = '2026/04/ww-scaled-e1775040670106-930x620.jpg';
+
+const programmes = [
+  {
+    num: '01',
+    name: 'Prakriti Prem',
+    tag: 'Ages 5–14',
+    body: 'Each child receives a fruit sapling, nurtures it into a tree, and competes across village clusters — rooted environmental learning from the youngest age.',
+    href: url('/program/intervention/'),
+  },
+  {
+    num: '02',
+    name: 'Jal Vriddhi',
+    tag: 'Ages 8–14',
+    body: 'Children co-create farm ponds and bunds with farmers — learning the value of water while addressing the depleting water table.',
+    href: url('/program/jal-vriddhi/'),
+  },
+  {
+    num: '03',
+    name: 'Dhan Kaushal',
+    tag: 'Ages 12+',
+    body: 'Financial literacy for children and youth — accounts, budgets, savings, and the basics of starting an enterprise.',
+    href: url('/program/projects/'),
+  },
+  {
+    num: '04',
+    name: 'Yuva Samriddhi',
+    tag: 'Ages 16–24',
+    body: 'Self-employment training for rural youth, in collaboration with CBD-RSETI at Haliyal, Karnataka.',
+    href: url('/program/projects/'),
+  },
+  {
+    num: '05',
+    name: 'Vanya Samriddhi',
+    tag: 'Adults',
+    body: 'Food forests on barren farmer land — climate-resilient livelihoods that close the loop from life skills to enterprise.',
+    href: url('/program/projects/'),
+  },
+];
+
+const photoEssay = [
+  { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.51.59.jpg', caption: 'High Jump · Cluster competition', col: 'span 5', ratio: 'aspect-[4/5]' },
+  { src: '2021/07/Yoga.jpg', caption: 'Daily yoga · Inapura, Tumkur', col: 'span 7', ratio: 'aspect-[16/9]' },
+  { src: '2021/07/Goat-and-Tiger-Game.jpg', caption: 'Aadu Puli · Goat and Tiger', col: 'span 4', ratio: 'aspect-square' },
+  { src: '2021/07/Capture3-1.jpg', caption: "Girls' Kabaddi", col: 'span 3', ratio: 'aspect-square' },
+];
+
+const presence = [
+  ['Karnataka', '8 clusters'],
+  ['Tamil Nadu', '8 clusters'],
+  ['Nagaland', '2 clusters'],
+  ['Districts', '12+'],
+];
+
+const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual independent impact studies'];
 ---
 
-<Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 through board games, sports, storytelling, creative activities and experiential learning.">
-  <!-- Hero -->
-  <section class="bg-white">
-    <div class="container-content pt-10 pb-6 md:pt-14 md:pb-10">
-      <div class="relative rounded-3xl overflow-hidden shadow-xl">
-        <Img
-          src="2026/04/ww-scaled-e1775040670106-930x620.jpg"
-          alt="NavSahyog children with the Foundation's logo — Life skills to Livelihood"
-          class="w-full h-auto object-cover"
-          loading="eager"
-        />
-      </div>
-    </div>
-    <div class="container-content pb-14 md:pb-16 text-center">
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-[#b83227] leading-tight tracking-tight">
-        Developing Life Skills and Creativity<br />in Village children
-      </h1>
-      <div class="mt-6 flex justify-center gap-4">
-        <a href="https://www.facebook.com/navsahyogfoundation/" target="_blank" rel="noopener" aria-label="Facebook" class="text-ink/60 hover:text-brand">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h2.8l.4-3.2H13V8.7c0-.9.3-1.6 1.6-1.6H16V4.2A22 22 0 0 0 13.9 4c-2.3 0-3.9 1.4-3.9 4v2.8H7.2V14H10v8h3Z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/navsahyogfoundation/" target="_blank" rel="noopener" aria-label="Instagram" class="text-ink/60 hover:text-brand">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.5.4 1.1.4 2.3.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.5.2-1.1.4-2.3.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.5-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 1-1.5s.9-.8 1.5-1c.5-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7 .1 5.8.1 4.9.3 4.2.6c-.8.3-1.5.7-2.1 1.4S1 3.4.7 4.2c-.3.7-.5 1.6-.6 2.8C0 8.3 0 8.7 0 12s0 3.7.1 4.9c.1 1.3.3 2.1.6 2.9.3.8.7 1.5 1.4 2.1s1.3 1.1 2.1 1.4c.8.3 1.6.5 2.8.6 1.3.1 1.7.1 5 .1s3.7 0 4.9-.1c1.3-.1 2.1-.3 2.9-.6.8-.3 1.5-.7 2.1-1.4s1.1-1.3 1.4-2.1c.3-.8.5-1.6.6-2.9.1-1.3.1-1.7.1-4.9s0-3.7-.1-4.9c-.1-1.3-.3-2.1-.6-2.9-.3-.8-.7-1.5-1.4-2.1s-1.3-1.1-2.1-1.4c-.8-.3-1.6-.5-2.9-.6C15.7 0 15.3 0 12 0zm0 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-11.8a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/channel/UCOzO0-ZWLIOWjxU2SWwr7OA" target="_blank" rel="noopener" aria-label="YouTube" class="text-ink/60 hover:text-brand">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/company/navsahyog-foundation/" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-ink/60 hover:text-brand">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1a4.2 4.2 0 0 1 3.8-2.1c4 0 4.8 2.6 4.8 6V21h-4v-5.8c0-1.4 0-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3V21h-4V9Z"/></svg>
-        </a>
+<Layout title="Home" description="NavSahyog Foundation develops life skills and creativity in village children aged 5–14 through games, sport, story and the soil of their own land — across 350+ villages in Karnataka, Tamil Nadu and Nagaland.">
+
+  <!-- Magazine hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-16 md:pt-20 pb-20">
+      <div class="grid md:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-end">
+        <div>
+          <div class="eyebrow"><span>Life skills · then livelihood</span></div>
+          <h1 class="display text-[clamp(3.25rem,7vw,6.75rem)] leading-[0.95] tracking-display-tight m-0">
+            Life skills.<br />
+            <span class="display-italic text-accent">Then</span> livelihood.
+          </h1>
+          <p class="mt-8 text-lg md:text-[21px] leading-[1.45] text-ink-2 max-w-xl">
+            Across <strong class="text-ink">350+ villages</strong> in India, we work with children aged 5–14 — daily, Monday through Saturday — through games, sport, story, and the soil of their own land.
+          </p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href={url('/donate/')} class="btn-primary px-8 py-4 text-base">Make a gift</a>
+            <a href={url('/about/our-story/')} class="btn-outline px-7 py-[14px] text-base">Read our story</a>
+          </div>
+        </div>
+        <div class="relative">
+          <Img
+            src={heroImage}
+            alt="NavSahyog children with the Foundation's logo — Life skills to Livelihood"
+            class="w-full h-auto object-cover aspect-[3/4]"
+            loading="eager"
+          />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Key stats banner -->
-  <section class="bg-brand text-white">
-    <div class="container-content py-14 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-      <div>
-        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
-          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        </div>
-        <p class="text-4xl md:text-5xl font-bold">350+</p>
-        <p class="mt-1 text-white/90 text-lg">Villages</p>
-      </div>
-      <div>
-        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
-          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M3 21v-2a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v2"/></svg>
-        </div>
-        <p class="text-4xl md:text-5xl font-bold">10,000+</p>
-        <p class="mt-1 text-white/90 text-lg">Children</p>
-      </div>
-      <div>
-        <div class="inline-flex w-14 h-14 rounded-full bg-white/15 items-center justify-center mb-3">
-          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
-        </div>
-        <p class="text-4xl md:text-5xl font-bold">6</p>
-        <p class="mt-1 text-white/90 text-lg">Days / Week</p>
-      </div>
+  <!-- Statline -->
+  <section class="bg-paper border-y border-line">
+    <div class="container-content py-16 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+      <StatCard eyebrow="Reach" value="350+" label="Villages across Karnataka, Tamil Nadu and Nagaland" />
+      <StatCard eyebrow="Children" value="10,000+" label="Engaged daily through sport, story and games" />
+      <StatCard eyebrow="Mission" value="100,000" label="Children with life skills · target by 2030" />
+      <StatCard eyebrow="Cadence" value="6/7" label="Days a week. Every week. All year." />
     </div>
   </section>
 
-  <!-- What we do -->
-  <section class="container-content py-16 md:py-20 grid lg:grid-cols-2 gap-10 items-start">
-    <div>
-      <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">What we do</p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Life skills through daily engagement.</h2>
-      <p class="text-lg text-ink/85 leading-relaxed mb-4">
-        At NavSahyog, we develop life skills and creativity in village children aged 5–14 years
-        (their most impressionable age) through traditional board games, sports, storytelling,
-        creative activities, and experiential learning.
-      </p>
-      <p class="text-lg text-ink/85 leading-relaxed mb-4">
-        We engage children on a daily basis, from Monday to Saturday, throughout the year.
-      </p>
-      <p class="text-lg text-ink/85 leading-relaxed">
-        Our experiential learning is all about children learning about the environment and climate
-        change. Here, we have two programmes:
-      </p>
-      <ul class="mt-6 space-y-4 text-lg">
-        <li class="flex gap-3">
-          <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span>
-          <span><strong>Prakriti Prem</strong> — We give a fruit sapling to each child in the village, which they nurture and grow into a fruit tree; we run a competition across clusters of villages.</span>
-        </li>
-        <li class="flex gap-3">
-          <span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span>
-          <span><strong>Jal Vriddhi</strong> — We teach children the value of water and address the depleting water table problem in villages through the co-creation of farm ponds with bunds alongside farmers.</span>
-        </li>
-      </ul>
-    </div>
-    <div class="space-y-4">
-      <Img src="2022/07/IMG-2681-1024x461.jpg" alt="NavSahyog programme in action" class="rounded-xl w-full h-auto shadow-sm" />
-      <Img src="2026/04/qq.png" alt="NavSahyog programme highlights" class="rounded-xl w-full h-auto shadow-sm" />
-    </div>
-  </section>
-
-  <!-- Linkages to Livelihood -->
-  <section class="bg-surface-soft">
-    <div class="container-content py-16 md:py-20">
-      <div class="max-w-3xl mb-10">
-        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">Linkages to Livelihood</p>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">From life skills to livelihood.</h2>
-        <p class="text-lg text-ink/85 leading-relaxed">
-          We have added extensions to our core programme of life skills development to address
-          better linkages of life skills to livelihood.
+  <!-- The Work -->
+  <section class="py-24 md:py-32">
+    <div class="container-content grid md:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-start">
+      <div class="md:sticky md:top-28">
+        <div class="eyebrow"><span>The Work</span></div>
+        <h2 class="display text-[clamp(2.5rem,4.5vw,4rem)] leading-[1] m-0 tracking-display-tight">
+          Five programmes.<br />One <span class="display-italic text-accent">arc</span>.
+        </h2>
+        <p class="mt-7 text-[17px] leading-relaxed text-ink-2 max-w-md">
+          We start with the youngest children at the most impressionable age — and don't stop until they're earning their own way as adults.
         </p>
       </div>
-      <div class="grid md:grid-cols-2 gap-5">
-        <div class="rounded-xl border border-slate-200 p-6 bg-white">
-          <h3 class="text-xl font-bold text-brand mb-2">Dhan Kaushal</h3>
-          <p class="text-ink/80">Financial literacy for children and youth.</p>
+      <div>
+        {programmes.map((p, i) => (
+          <a
+            href={p.href}
+            class:list={[
+              'grid grid-cols-[60px_1fr_auto] gap-6 md:gap-8 py-8 group',
+              i === 0 ? 'border-t border-ink' : 'border-t border-line',
+            ]}
+          >
+            <div class="font-mono text-[13px] text-ink-3 pt-1">{p.num}</div>
+            <div>
+              <h3 class="display text-2xl md:text-[28px] font-medium tracking-display-tight m-0 mb-2 group-hover:text-accent">{p.name}</h3>
+              <p class="m-0 text-[15px] leading-relaxed text-ink-2">{p.body}</p>
+            </div>
+            <div class="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3 text-right pt-1 whitespace-nowrap">{p.tag}</div>
+          </a>
+        ))}
+        <div class="border-t border-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo essay -->
+  <section class="pb-24 md:pb-32">
+    <div class="container-content grid grid-cols-12 gap-4">
+      <figure class="m-0 col-span-12 md:col-span-5">
+        <Img src={photoEssay[0].src} alt={photoEssay[0].caption} class="w-full aspect-[4/5] object-cover bg-paper-alt" />
+        <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{photoEssay[0].caption}</figcaption>
+      </figure>
+      <div class="col-span-12 md:col-span-7 flex flex-col gap-4">
+        <figure class="m-0">
+          <Img src={photoEssay[1].src} alt={photoEssay[1].caption} class="w-full aspect-video object-cover bg-paper-alt" />
+          <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{photoEssay[1].caption}</figcaption>
+        </figure>
+        <div class="grid grid-cols-2 gap-4">
+          <figure class="m-0">
+            <Img src={photoEssay[2].src} alt={photoEssay[2].caption} class="w-full aspect-square object-cover bg-paper-alt" />
+            <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{photoEssay[2].caption}</figcaption>
+          </figure>
+          <figure class="m-0">
+            <Img src={photoEssay[3].src} alt={photoEssay[3].caption} class="w-full aspect-square object-cover bg-paper-alt" />
+            <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{photoEssay[3].caption}</figcaption>
+          </figure>
         </div>
-        <div class="rounded-xl border border-slate-200 p-6 bg-white">
-          <h3 class="text-xl font-bold text-brand mb-2">Yuva Samriddhi</h3>
-          <p class="text-ink/80">Self-employment training for rural youth in collaboration with CBD-RSETI at Haliyal, Karnataka.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Independent impact study slab -->
+  <section class="bg-paper-alt border-y border-line py-24 md:py-32">
+    <div class="container-content max-w-4xl">
+      <div class="eyebrow"><span>Annual Impact Survey 2025–26</span></div>
+      <blockquote class="display-italic text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.15] m-0 mb-12 text-ink">
+        "Universal positive impact across children, parents and teachers — 74–75% rate the change as High to Very High across all 26 life-skill and non-life-skill parameters."
+      </blockquote>
+      <div class="grid grid-cols-3 gap-8 md:gap-12 mt-10 pt-10 border-t border-line">
+        <div>
+          <div class="display text-[clamp(2rem,4vw,3rem)] leading-none text-ink">18,487</div>
+          <div class="mt-3 text-sm text-ink-2 max-w-[14rem] leading-snug">Stakeholder responses across children, parents &amp; teachers</div>
         </div>
-        <div class="rounded-xl border border-slate-200 p-6 bg-white md:col-span-2">
-          <h3 class="text-xl font-bold text-brand mb-2">Vanya Samriddhi</h3>
-          <p class="text-ink/80">
-            Development of food forests on one acre or more barren land of farmers. This significantly
-            enhances farmers' productivity, makes them more resilient to climate change, opens
-            livelihood opportunities for rural youth, and leads to positive climate action in the villages.
-          </p>
+        <div>
+          <div class="display text-[clamp(2rem,4vw,3rem)] leading-none text-ink">75<span class="text-accent">%</span></div>
+          <div class="mt-3 text-sm text-ink-2 max-w-[14rem] leading-snug">High to Very High impact ratings overall</div>
+        </div>
+        <div>
+          <div class="display text-[clamp(2rem,4vw,3rem)] leading-none text-ink">3</div>
+          <div class="mt-3 text-sm text-ink-2 max-w-[14rem] leading-snug">States — Karnataka, Tamil Nadu, Nagaland</div>
         </div>
       </div>
       <div class="mt-10">
-        <a href={url('/program/projects/')} class="btn-outline">Explore our projects</a>
+        <a href={url('/blogs/')} class="text-sm font-medium text-accent inline-flex items-center gap-2 hover:gap-3 transition-all">
+          Read the full report <span aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Vision & Mission -->
-  <section class="container-content py-16 md:py-20">
-    <div class="grid md:grid-cols-2 gap-10">
-      <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-white shadow-sm">
-        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">Vision</p>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">
-          A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
-        </h3>
-        <div class="grid grid-cols-2 gap-4 mt-6">
-          <Img src="2026/04/ss.png" alt="Vision" class="rounded-xl w-full h-auto" />
-          <Img src="2021/07/Presentation1-300x276.jpg" alt="Vision illustration" class="rounded-xl w-full h-auto" />
+  <!-- Linkages to livelihood -->
+  <section class="py-24 md:py-32">
+    <div class="container-content grid md:grid-cols-[1fr_1fr] gap-16 items-start">
+      <div>
+        <div class="eyebrow"><span>Linkages to Livelihood</span></div>
+        <h2 class="display text-[clamp(2.5rem,4.5vw,4rem)] leading-[1] m-0 tracking-display-tight">
+          From life skills<br />to <span class="display-italic text-accent">livelihood</span>.
+        </h2>
+        <p class="mt-7 text-[17px] leading-relaxed text-ink-2 max-w-md">
+          We have added extensions to our core programme of life skills development to address better linkages of life skills to livelihood — culminating in food forests, financial literacy, and self-employment.
+        </p>
+        <a href={url('/program/projects/')} class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
+          Explore our projects <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="grid gap-px bg-line border border-line">
+        <div class="bg-paper p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-3">Dhan Kaushal</div>
+          <p class="m-0 text-[15px] leading-relaxed text-ink-2">Financial literacy for children and youth — accounts, budgets, and the basics of starting an enterprise.</p>
+        </div>
+        <div class="bg-paper p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-3">Yuva Samriddhi</div>
+          <p class="m-0 text-[15px] leading-relaxed text-ink-2">Self-employment training for rural youth in collaboration with CBD-RSETI at Haliyal, Karnataka.</p>
+        </div>
+        <div class="bg-paper p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mb-3">Vanya Samriddhi</div>
+          <p class="m-0 text-[15px] leading-relaxed text-ink-2">Food forests on one or more acres of barren farmer land — productivity, climate resilience, and rural livelihood opportunity.</p>
         </div>
       </div>
-      <div class="rounded-2xl border border-slate-200 p-8 md:p-10 bg-brand text-white shadow-sm">
-        <p class="text-white/80 font-semibold uppercase tracking-wide text-sm mb-3">Mission</p>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">
-          Impact 100,000 children with life skills &amp; enable superior livelihood for 3,000 youth in villages by 2030.
-        </h3>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href={url('/about/our-story/')} class="btn bg-white text-brand hover:bg-white/90">Our story</a>
-          <a href={url('/program/presence/')} class="btn border border-white/60 text-white hover:bg-white/10">Where we work</a>
+    </div>
+  </section>
+
+  <!-- Where we work -->
+  <section class="py-24 md:py-32 border-t border-line">
+    <div class="container-content grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div>
+        <div class="eyebrow"><span>Presence</span></div>
+        <h2 class="display text-[clamp(2.5rem,4.5vw,4rem)] leading-[1] m-0 tracking-display-tight">
+          Where we <span class="display-italic">work</span>.
+        </h2>
+        <p class="mt-7 text-[17px] leading-relaxed text-ink-2 max-w-md">
+          18 village clusters. Three states. Each one chosen for its remoteness and the strength of its local champions.
+        </p>
+        <div class="mt-10 grid grid-cols-2 gap-5">
+          {presence.map(([k, v]) => (
+            <div class="border-t border-line pt-4">
+              <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{k}</div>
+              <div class="display text-2xl mt-1">{v}</div>
+            </div>
+          ))}
+        </div>
+        <a href={url('/program/presence/')} class="mt-10 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
+          See all clusters <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <Img src="2023/09/NSF-Presence-v-1-768x903.png" alt="NavSahyog Foundation presence map — Karnataka, Tamil Nadu and Nagaland" class="w-full h-auto object-contain bg-paper-alt p-6" />
+    </div>
+  </section>
+
+  <!-- Donor appeal -->
+  <section class="bg-ink text-paper py-24 md:py-32">
+    <div class="container-content grid md:grid-cols-2 gap-16 lg:gap-20 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-7 h-px bg-accent"></span>
+          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Support our work</span>
+        </div>
+        <h2 class="display text-[clamp(2.5rem,5vw,4.5rem)] leading-[1] m-0 mb-7 text-paper">
+          Daily engagement, <span class="display-italic text-accent">every day</span>.
+        </h2>
+        <p class="text-lg leading-relaxed text-paper/75 max-w-md mb-9">
+          Every contribution directly funds a child's daily session — sports, storytelling, learning, creativity — Monday to Saturday, throughout the year. 80G-eligible for Indian donors. FCRA-registered for international.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href={url('/donate/')} class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all">Donate now →</a>
+          <a href={url('/contact/')} class="border-[1.5px] border-paper/35 text-paper px-7 py-[14px] rounded-full text-base font-medium hover:bg-paper hover:text-ink transition-colors">Talk to Paritosh</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Partner CTA -->
-  <section class="container-content py-14 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-3">Want to partner with us?</h2>
-    <p class="text-lg text-ink/80 max-w-2xl mx-auto mb-8">
-      Every rupee, every hour, every connection helps a village child take the first step from life
-      skills to livelihood.
-    </p>
-    <div class="flex flex-wrap justify-center gap-3">
-      <a href={url('/donate/')} class="btn-primary">Donate</a>
-      <a href={url('/downloads/')} class="btn-outline">Download our implementation document</a>
-    </div>
-    <div class="max-w-3xl mx-auto mt-12">
-      <Img src="2026/03/ooo.png" alt="Our partners and supporters" class="w-full h-auto rounded-xl" />
-    </div>
-  </section>
-
-  <!-- Photo Gallery (25 images) -->
-  <section class="container-content py-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8 text-center">Photo Gallery</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {[
-        { src: '2021/07/fbfb.jpg', caption: 'Boys Kabaddi' },
-        { src: '2021/07/Capture3-1.jpg', caption: 'Girls Kabaddi' },
-        { src: '2021/07/Capture2-1.jpg', caption: 'Kho-Kho' },
-        { src: '2021/11/IMG-20201027-WA0101-1.jpg', caption: 'Running Race' },
-        { src: '2021/07/Goat-and-Tiger-Game.jpg', caption: 'Children enjoying Goat and Tiger' },
-        { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.51.59.jpg', caption: 'High Jump' },
-        { src: '2021/07/ghg.jpg', caption: 'Children playing Board games' },
-        { src: '2021/11/IMG-20210829-WA0037.jpg', caption: 'Thaayam Board game' },
-        { src: '2021/07/2.jpg', caption: 'Board games with family' },
-        { src: '2021/07/fgf-1.jpg', caption: 'Children adhering to Covid Protocols' },
-        { src: '2021/07/Yoga.jpg', caption: 'Children performing Yoga' },
-        { src: '2021/11/IMG-20210308-WA0091-1.jpg', caption: 'Yoga, Haliyal Cluster' },
-        { src: '2021/07/IMG-20210619-WA0016.jpg', caption: 'Daily Activities — Meditation' },
-        { src: '2021/07/fgfgf.jpg', caption: 'Chakrasana — child from Inapura, Tumkur' },
-        { src: '2021/07/Capture5.jpg', caption: 'Star of the Month — with grandmother' },
-        { src: '2021/07/Girls-with-cert.jpg', caption: 'Girls with their medals' },
-        { src: '2021/07/Projetc-bon.jpg', caption: 'Girls planting saplings' },
-        { src: '2021/07/yjyj.jpg', caption: 'Reusing coconut shells to grow plants' },
-        { src: '2021/07/lllii.jpg', caption: 'Honnudikki — World Environment Day saplings' },
-        { src: '2021/07/Goat-and-Tiger-Game-1.jpg', caption: 'Drawings by girls, Haliyal Cluster' },
-        { src: '2021/07/gjfdv.jpg', caption: 'Drawings themed on nature' },
-        { src: '2021/07/yjhjhk.jpg', caption: 'Art — Happy International Yoga Day' },
-        { src: '2021/07/IMG-20210621-WA0036.jpg', caption: 'Art for International Yoga Day 2021' },
-        { src: '2022/05/192421519_296559592163787_7961964084391222623_n.jpg', caption: 'Creative activities by children' },
-        { src: '2022/07/IMG-2679.jpg', caption: 'Creative activity — World Environment Day' },
-      ].map((g) => (
-        <figure class="rounded-lg overflow-hidden bg-white border border-slate-200 group">
-          <Img src={g.src} alt={g.caption} class="w-full h-44 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
-          <figcaption class="px-3 py-2 text-xs text-ink/80 bg-white">{g.caption}</figcaption>
-        </figure>
-      ))}
+      <div class="grid gap-6">
+        <div class="border-b border-paper/15 pb-6">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">Mission · 2030</div>
+          <div class="display text-4xl md:text-5xl font-medium tracking-display-tight">100,000 children</div>
+          <p class="text-[15px] text-paper/70 mt-2">with life skills, plus 3,000 rural youth enabled for superior livelihood.</p>
+        </div>
+        <div class="border-b border-paper/15 pb-6">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">Jal Vriddhi · to date</div>
+          <div class="display text-4xl md:text-5xl font-medium tracking-display-tight">280<span class="text-accent">+</span> ponds · 20M L<span class="text-accent">/yr</span></div>
+          <p class="text-[15px] text-paper/70 mt-2">Farm ponds and bunds co-created with farmers; rainwater percolated annually.</p>
+        </div>
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">Diversity</div>
+          <div class="display text-4xl md:text-5xl font-medium tracking-display-tight">60<span class="text-accent">% girls</span> · 97<span class="text-accent">% women</span></div>
+          <p class="text-[15px] text-paper/70 mt-2">Of children in programme are girls — by intentional design. Of our team are women, almost all from the villages we serve.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- UN SDGs -->
-  <section class="bg-surface-soft">
-    <div class="container-content py-16">
-      <div class="max-w-3xl mb-10">
-        <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">UN SDG &amp; NavSahyog Foundation</p>
-        <h2 class="text-2xl md:text-3xl font-bold mb-3">Our alignment to Sustainable Development.</h2>
-        <p class="text-ink/80 text-lg leading-relaxed">
-          NavSahyog Foundation is aligned to several sub-goals of select UN SDGs.
-        </p>
+  <section class="py-20 md:py-24 border-t border-line">
+    <div class="container-content">
+      <div class="max-w-2xl mb-10">
+        <div class="eyebrow"><span>UN SDG · NavSahyog Foundation</span></div>
+        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-tight tracking-display-tight m-0">
+          Aligned with select Sustainable Development Goals.
+        </h2>
       </div>
-      <div class="flex flex-wrap items-center gap-6 mt-10">
-        <Img src="2021/07/vcvfvf-150x150.jpg" alt="UN SDG preview" class="h-20 w-auto rounded" />
-        <Img src="2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="h-24 w-24" />
-        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="h-24 w-24" />
-        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="h-24 w-24" />
-        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="h-24 w-24" />
-        <Img src="2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="h-24 w-24" />
-        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="h-24 w-24" />
+      <div class="flex flex-wrap items-center gap-6 md:gap-10">
+        <Img src="2024/09/SDG4-768x768.png" alt="UN SDG 4 — Quality Education" class="h-20 w-20 object-contain" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-05.jpg" alt="UN SDG 5 — Gender Equality" class="h-20 w-20 object-contain" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-08-1024x1024.png" alt="UN SDG 8 — Decent Work and Economic Growth" class="h-20 w-20 object-contain" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-10-300x300.png" alt="UN SDG 10 — Reduced Inequalities" class="h-20 w-20 object-contain" />
+        <Img src="2024/09/Goal-13.jpg" alt="UN SDG 13 — Climate Action" class="h-20 w-20 object-contain" />
+        <Img src="2021/07/E_SDG-goals_icons-individual-rgb-16-1024x1024.png" alt="UN SDG 16 — Peace, Justice and Strong Institutions" class="h-20 w-20 object-contain" />
       </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="py-14 border-t border-line">
+    <div class="container-content flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
+      <div class="font-mono uppercase text-[11px] tracking-[0.18em] text-ink-3">Audited &amp; Registered</div>
+      {trust.map((b) => (
+        <div class="text-sm font-medium text-ink-2 inline-flex items-center gap-2">
+          <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
+        </div>
+      ))}
     </div>
   </section>
 </Layout>

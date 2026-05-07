@@ -32,17 +32,21 @@ const acknowledgements = [
 <Layout title="Individual Donors" description="Our esteemed individual donors and corporate partners — the generosity behind our daily work.">
   <PageHeader
     eyebrow="Our Programme"
-    title="Individual Donors"
-    subtitle="We are deeply grateful to the individuals and organisations who fund our work, year after year."
+    title="The donors who fund this work, year after year."
+    accentWord="year after year"
+    subtitle="We are deeply grateful to the individuals and organisations who keep the daily programme running."
   />
 
-  <div class="container-content py-16 space-y-14">
+  <div class="container-content py-12 md:py-16 space-y-20">
+    <!-- Corporate -->
     <section>
-      <h2 class="text-2xl font-bold mb-6">Corporate Donors &amp; Partners</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Corporate donors &amp; partners</span></div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-px bg-line border border-line">
         {corporateLogos.map((c) => (
-          <div class="bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-center aspect-video">
-            <Img src={c.logo} alt={c.name} class="w-full h-full object-contain" />
+          <div class="bg-paper aspect-[4/3] flex items-center justify-center p-6">
+            <Img src={c.logo} alt={c.name} class="max-w-full max-h-full object-contain" />
           </div>
         ))}
       </div>
@@ -50,37 +54,46 @@ const acknowledgements = [
 
     {donorsByYear.map((y) => (
       <section>
-        <h2 class="text-2xl font-bold mb-6">{y.heading}</h2>
-        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2">
+        <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+          <div class="eyebrow m-0"><span>{y.heading}</span></div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{y.donors.length} donors</div>
+        </div>
+        <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0 m-0 p-0 list-none">
           {y.donors.map((d) => (
-            <li class="text-ink/90 border-b border-slate-100 py-1.5 flex items-start gap-2">
-              <span class="text-brand/60 shrink-0">—</span>
-              <span>{d}</span>
-            </li>
+            <li class="text-[15px] text-ink py-2.5 border-b border-line">{d}</li>
           ))}
         </ul>
       </section>
     ))}
 
     <section>
-      <h2 class="text-2xl font-bold mb-2">Donor Acknowledgements</h2>
-      <p class="text-ink/70 mb-6 max-w-3xl">Snapshots shared on our social channels and annual reports.</p>
+      <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Donor acknowledgements</span></div>
+      </div>
+      <p class="text-base text-ink-2 max-w-3xl mb-10 leading-relaxed">Snapshots shared on our social channels and annual reports.</p>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
         {acknowledgements.map((src, i) => (
-          <div class="rounded-lg overflow-hidden border border-slate-200 bg-white">
-            <Img src={src} alt={`Donor acknowledgement ${i + 1}`} class="w-full h-48 object-cover" />
-          </div>
+          <Img src={src} alt={`Donor acknowledgement ${i + 1}`} class="w-full aspect-[4/3] object-cover bg-paper-alt" />
         ))}
       </div>
     </section>
 
-    <section class="rounded-xl bg-brand text-white p-8">
-      <h2 class="text-2xl font-bold mb-2">Join this list</h2>
-      <p class="text-white/90 mb-6 max-w-2xl">
-        Your contribution — large or small, one-off or monthly — directly funds a child's daily
-        engagement in our programme.
-      </p>
-      <a href={url('/donate/')} class="btn bg-white text-brand hover:bg-white/90">Donate</a>
+    <section class="bg-ink text-paper p-10 md:p-14 grid md:grid-cols-[2fr_1fr] gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-7 h-px bg-accent"></span>
+          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Join this list</span>
+        </div>
+        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
+          Every gift becomes a day in a child's life.
+        </h2>
+        <p class="text-[15px] text-paper/75 leading-relaxed m-0 max-w-xl">
+          Your contribution — large or small, one-off or monthly — directly funds a child's daily engagement in our programme.
+        </p>
+      </div>
+      <div>
+        <a href={url('/donate/')} class="inline-flex items-center gap-2 bg-accent text-white px-7 py-3.5 rounded-full text-base font-semibold hover:bg-accent-deep">Donate <span aria-hidden="true">→</span></a>
+      </div>
     </section>
   </div>
 </Layout>

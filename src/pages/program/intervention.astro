@@ -1,110 +1,149 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
-import Gallery from '../../components/Gallery.astro';
 import Img from '../../components/Img.astro';
 
 const gallery = [
   { src: '2021/07/fghf.jpg', caption: 'Tug-of-war' },
   { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.52.04.jpg', caption: 'Long Jump' },
   { src: '2021/11/WhatsApp-Image-2021-09-25-at-10.51.59-1.jpg', caption: 'High Jump — caught in action' },
-  { src: '2021/07/2.jpg', caption: 'Playing board games with family members' },
+  { src: '2021/07/2.jpg', caption: 'Playing board games with family' },
   { src: '2021/07/ifjbknb.jpg', caption: 'Children doing Yoga' },
-  { src: '2021/11/IMG-20210308-WA0095.jpg', caption: 'Children from Haliyal performing Yoga' },
+  { src: '2021/11/IMG-20210308-WA0095.jpg', caption: 'Yoga · Haliyal' },
   { src: '2021/11/IMG-20201025-WA0158.jpg', caption: 'Children performing Yoga' },
-  { src: '2021/07/4-1.jpg', caption: 'Quarterly competition at Haliyal' },
-  { src: '2021/11/IMG-20210211-WA0064.jpg', caption: 'Children enjoying a game of Tic-Tac-Toe' },
-  { src: '2021/07/3-1.jpg', caption: 'Experiential Learning — child planting a sapling' },
-  { src: '2021/07/IMG-20210422-WA0061.jpg', caption: 'Experiential learning through Project BoN' },
+  { src: '2021/07/4-1.jpg', caption: 'Quarterly competition · Haliyal' },
+  { src: '2021/11/IMG-20210211-WA0064.jpg', caption: 'Tic-Tac-Toe' },
+  { src: '2021/07/3-1.jpg', caption: 'Experiential learning · planting a sapling' },
+  { src: '2021/07/IMG-20210422-WA0061.jpg', caption: 'Project BoN — experiential learning' },
   { src: '2021/11/IMG-20200812-WA0034.jpg', caption: 'Project BoN — fence making' },
-  { src: '2021/11/WhatsApp-Image-2021-07-09-at-18.06.37.jpg', caption: 'Project BoN evaluation — Haliyal' },
+  { src: '2021/11/WhatsApp-Image-2021-07-09-at-18.06.37.jpg', caption: 'Project BoN evaluation · Haliyal' },
   { src: '2021/07/7-1.jpg', caption: 'Child with her grown papaya tree' },
-  { src: '2021/11/IMG-20210815-WA0399.jpg', caption: 'Children planting a sapling on 15 August — Green Drive' },
-  { src: '2021/11/IMG-20210908-WA0010.jpg', caption: 'BoN Phase 2 — distribution of vegetable seeds' },
+  { src: '2021/11/IMG-20210815-WA0399.jpg', caption: 'Sapling planting · Green Drive 15 Aug' },
+  { src: '2021/11/IMG-20210908-WA0010.jpg', caption: 'BoN Phase 2 · vegetable seeds' },
   { src: '2021/11/IMG-20210411-WA0042-2-1.jpg', caption: 'Creative artwork by our children' },
   { src: '2021/11/IMG-20210223-WA0035.jpg', caption: 'Artwork by our children' },
   { src: '2021/07/hfhdfd.jpg', caption: 'Thumb painting' },
   { src: '2021/07/hggn.jpg', caption: 'Leaf art' },
   { src: '2021/07/fhifd.jpg', caption: 'Paper cutting' },
 ];
+
+const structure = [
+  ['Village Coordinator', 'Conducts the programme in every village.'],
+  ['Area Facilitator', 'Mobile on a scooter, supporting a cluster of 18–20 villages.'],
+  ['Mon–Sat', 'Sports, Yoga and Meditation after school.'],
+  ['Sunday', 'Creative activities (thumb painting, clay modelling) and storytelling.'],
+  ['Quarterly + Annual', 'Competitions in every village for children and the community.'],
+  ['Star of the Month', 'One girl and one boy per village, based on improvement in life-skill and non-life-skill parameters.'],
+];
 ---
 
 <Layout title="Intervention" description="NavSahyog Foundation's daily intervention: sports, storytelling, creative activities, experiential learning and emotional intelligence sessions for village children aged 5–14.">
-  <PageHeader
-    eyebrow="Our Programme"
-    title="Intervention"
-    subtitle="Life skills and creativity, every day, in every village."
-  />
 
-  <div class="container-content py-16 grid lg:grid-cols-2 gap-10 items-start">
-    <div class="prose-content">
-      <p>
-        We develop <strong>life skills and creativity</strong> in village children at their most
-        impressionable age (5–14), which will enable them to take up entrepreneurship when they
-        grow up. We facilitate this by conducting <strong>sports, storytelling, creative activities,
-        experiential learning and emotional intelligence sessions</strong>.
-      </p>
-      <p>
-        We conduct <strong>Traditional Indian Sports</strong> like Yoga, Kho-Kho, Kabaddi, long
-        jump, high jump, running races etc. We also provide the children with board games, which
-        teaches them strategy and develops their mental skills.
-      </p>
-      <p>
-        As a part of imparting experiential learning to the children, our Project <strong>Nature &amp;
-        Nutrition</strong> was born, which entails a child to plant, grow and tend to a sapling
-        provided to them. We are also rolling out a program on the <strong>Value of Water</strong>
-        and ways to address water-table depletion — by building ponds to store rainwater and making
-        bunds to prevent top-soil loss.
-      </p>
-    </div>
-    <Img src="2022/05/IMG_20201205_120751-1-930x620.jpg" alt="Life skills activities" class="rounded-xl w-full h-auto shadow-sm" loading="eager" />
-  </div>
-
-  <section class="bg-surface-soft">
-    <div class="container-content py-16 grid lg:grid-cols-2 gap-10 items-center">
-      <Img src="2022/05/Untitled-design-1024x1024.png" alt="Structure and process diagram" class="rounded-xl w-full h-auto bg-white p-6 shadow-sm" />
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12 grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-16 items-end">
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">Structure and Process</h2>
-        <ul class="space-y-3 text-lg text-ink/90">
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>A <strong>Village Coordinator</strong> who conducts the programme is appointed for every village.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>Supporting the cluster of 18–20 villages is the <strong>Area Facilitator</strong>, who is mobile on a scooter.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>We conduct <strong>Sports, Yoga and Meditation</strong> from Monday through Saturday after school.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span><strong>Creative Activities</strong> like thumb painting, clay modelling etc. and storytelling are conducted on Sundays.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>We engage with parents, teachers and the community regularly.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>We also conduct <strong>Quarterly</strong> and <strong>Annual Competitions</strong> in every village for the children and the community.</span></li>
-          <li class="flex gap-3"><span class="shrink-0 w-2 h-2 rounded-full bg-brand mt-3"></span><span>Every month, a <strong>Star of the Month</strong> title is awarded to one girl and one boy in each village, based on the maximum improvement shown on various life-skill and non-life-skill parameters.</span></li>
-        </ul>
+        <div class="eyebrow"><span>Our Programme</span></div>
+        <h1 class="display text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.95] tracking-display-tight m-0">
+          Life skills and creativity, <span class="display-italic text-accent">every day</span>, in every village.
+        </h1>
+        <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-xl">
+          We develop life skills and creativity in village children at their most impressionable age (5–14) through sport, storytelling, creative activity, experiential learning and emotional intelligence sessions.
+        </p>
+      </div>
+      <Img src="2022/05/IMG_20201205_120751-1-930x620.jpg" alt="Life skills activities" class="w-full aspect-[4/5] object-cover bg-paper-alt" />
+    </div>
+  </section>
+
+  <!-- The activities -->
+  <section class="py-20 md:py-28">
+    <div class="container-content grid md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
+      <div class="md:sticky md:top-28">
+        <div class="eyebrow"><span>Activities</span></div>
+        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-display-tight m-0">
+          Traditional sport. Indigenous games. The earth itself.
+        </h2>
+      </div>
+      <article>
+        <div class="py-7 border-t border-ink">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">01 · Traditional Indian sport</div>
+          <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Yoga, Kho-Kho, Kabaddi, long jump, high jump and running races — sport that builds confidence, teaming and resilience.</p>
+        </div>
+        <div class="py-7 border-t border-line">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">02 · Board games</div>
+          <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Strategy and mental skills — Aadu Puli (Goat and Tiger), Thaayam, Tic-Tac-Toe and more.</p>
+        </div>
+        <div class="py-7 border-t border-line">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">03 · Project Nature &amp; Nutrition</div>
+          <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Experiential learning rooted in the earth — each child plants, grows and tends a sapling provided to them.</p>
+        </div>
+        <div class="py-7 border-t border-line">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">04 · Value of Water</div>
+          <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Children co-create farm ponds and bunds with farmers — addressing water-table depletion while learning the value of water.</p>
+        </div>
+        <div class="border-t border-line"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Structure & Process -->
+  <section class="bg-paper-alt border-y border-line py-20 md:py-28">
+    <div class="container-content grid md:grid-cols-2 gap-16 items-center">
+      <Img src="2022/05/Untitled-design-1024x1024.png" alt="Structure and process diagram" class="w-full aspect-square object-contain bg-paper p-8 border border-line" />
+      <div>
+        <div class="eyebrow"><span>Structure &amp; Process</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-9">
+          A village coordinator, a cluster facilitator, a daily cadence.
+        </h2>
+        <div class="space-y-0">
+          {structure.map(([k, v], i) => (
+            <div class:list={['grid grid-cols-[180px_1fr] gap-6 py-5', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
+              <div class="font-mono text-[12px] uppercase tracking-[0.12em] text-accent">{k}</div>
+              <p class="m-0 text-[15px] leading-relaxed text-ink-2">{v}</p>
+            </div>
+          ))}
+          <div class="border-t border-line"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="container-content py-16">
-    <h2 class="text-2xl md:text-3xl font-bold mb-8">Videos</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Daily activities we conduct in every village</h3>
-        <div class="aspect-video">
-          <iframe class="w-full h-full rounded-lg" src="https://www.youtube-nocookie.com/embed/2-gfCfoTeIY" title="Daily activities" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold mb-3">Experiential Learning — Project Nature &amp; Nutrition</h3>
-        <div class="aspect-video">
-          <iframe class="w-full h-full rounded-lg" src="https://www.youtube-nocookie.com/embed/LJgXp9YJxsY" title="Project Nature and Nutrition" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="container-content py-12">
-    <h2 class="text-2xl md:text-3xl font-bold mb-6">Photo Gallery</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-      {gallery.map((g) => (
-        <figure class="rounded-lg overflow-hidden bg-white border border-slate-200">
-          <Img src={g.src} alt={g.caption} class="w-full h-56 object-cover" />
-          <figcaption class="px-4 py-3 text-sm text-ink/80">{g.caption}</figcaption>
+  <!-- Videos -->
+  <section class="py-20 md:py-28">
+    <div class="container-content">
+      <div class="eyebrow"><span>From the field</span></div>
+      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">Daily activities, in motion.</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <figure class="m-0">
+          <div class="aspect-video bg-ink overflow-hidden">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/2-gfCfoTeIY" title="Daily activities we conduct in every village" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-3">Daily activities we conduct in every village</figcaption>
         </figure>
-      ))}
+        <figure class="m-0">
+          <div class="aspect-video bg-ink overflow-hidden">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/LJgXp9YJxsY" title="Project Nature and Nutrition" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+          <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-3">Experiential learning · Project Nature &amp; Nutrition</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo gallery -->
+  <section class="pb-24 md:pb-32">
+    <div class="container-content">
+      <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
+        <div class="eyebrow m-0"><span>Photo gallery</span></div>
+        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{gallery.length} images</div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+        {gallery.map((g) => (
+          <figure class="m-0">
+            <Img src={g.src} alt={g.caption} class="w-full aspect-[4/3] object-cover bg-paper-alt" />
+            <figcaption class="font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3 mt-2">{g.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 </Layout>
