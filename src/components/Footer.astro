@@ -13,22 +13,30 @@ const cols = [
     ],
   },
   {
-    title: 'Programme',
+    title: 'Our Work',
     items: [
       { label: 'Intervention', href: url('/program/intervention/') },
+      { label: 'Projects', href: url('/program/projects/') },
       { label: 'Jal Vriddhi', href: url('/program/jal-vriddhi/') },
       { label: 'Presence', href: url('/program/presence/') },
-      { label: 'Partners', href: url('/program/partners/') },
-      { label: 'Donors', href: url('/program/donors/') },
+      { label: 'Impact', href: url('/impact/') },
     ],
   },
   {
-    title: 'Engage',
+    title: 'Support',
     items: [
       { label: 'Donate', href: url('/donate/') },
-      { label: 'Impact', href: url('/impact/') },
-      { label: 'Downloads', href: url('/downloads/') },
+      { label: 'Partners', href: url('/program/partners/') },
+      { label: 'Our Donors', href: url('/program/donors/') },
       { label: 'Contact', href: url('/contact/') },
+    ],
+  },
+  {
+    title: 'More',
+    items: [
+      { label: 'News & Stories', href: url('/news/') },
+      { label: 'Downloads', href: url('/downloads/') },
+      { label: 'Covid-19 Relief', href: url('/covid-19-relief/') },
     ],
   },
 ];
@@ -43,7 +51,7 @@ const social = [
 
 <footer class="bg-ink text-paper mt-24">
   <div class="container-content pt-20 pb-10">
-    <div class="grid md:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16">
+    <div class="grid md:grid-cols-[2fr_repeat(4,1fr)] gap-10 md:gap-12 mb-16">
       <div>
         <div class="display text-3xl font-semibold tracking-display-tight mb-4">NavSahyog Foundation</div>
         <p class="text-[15px] leading-relaxed text-paper/75 max-w-md">

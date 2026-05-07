@@ -11,15 +11,13 @@ const nav = [
     ],
   },
   {
-    label: 'Programme',
+    label: 'Our Work',
     children: [
       { label: 'The Big Problem', href: url('/program/big-problem/') },
       { label: 'Intervention', href: url('/program/intervention/') },
       { label: 'Projects', href: url('/program/projects/') },
       { label: 'Jal Vriddhi', href: url('/program/jal-vriddhi/') },
       { label: 'Presence', href: url('/program/presence/') },
-      { label: 'Partners', href: url('/program/partners/') },
-      { label: 'Donors', href: url('/program/donors/') },
     ],
   },
   {
@@ -27,17 +25,27 @@ const nav = [
     children: [
       { label: 'Impact', href: url('/impact/') },
       { label: 'Testimonials', href: url('/impact/testimonials/') },
-      { label: 'Covid-19 Relief', href: url('/covid-19-relief/') },
     ],
   },
-  { label: 'Media', href: url('/media/') },
-  { label: 'Blogs', href: url('/blogs/') },
-  { label: 'Downloads', href: url('/downloads/') },
-  { label: 'Contact', href: url('/contact/') },
+  {
+    label: 'Support Us',
+    href: url('/support/'),
+    children: [
+      { label: 'Donate', href: url('/donate/') },
+      { label: 'Partners', href: url('/program/partners/') },
+      { label: 'Our Donors', href: url('/program/donors/') },
+      { label: 'Contact', href: url('/contact/') },
+    ],
+  },
+  {
+    label: 'News & Stories',
+    href: url('/news/'),
+  },
 ];
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || (currentPath.startsWith(href) && href !== url('/'));
+const sectionActive = (item: any) => item.children?.some((c: any) => isActive(c.href)) || (item.href && isActive(item.href));
 ---
 
 <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-line">
@@ -49,13 +57,13 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
 
     <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
       {nav.map((item) =>
-        'children' in item ? (
+        item.children ? (
           <div class="relative group">
-            <button
-              type="button"
+            <a
+              href={item.href}
               class:list={[
                 'px-3.5 py-2.5 text-sm font-medium tracking-tight inline-flex items-center gap-1 border-b-[1.5px] -mb-px',
-                item.children.some((c) => isActive(c.href))
+                sectionActive(item)
                   ? 'text-accent border-accent'
                   : 'text-ink border-transparent hover:text-accent',
               ]}
@@ -65,7 +73,7 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
               <svg class="w-3 h-3" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
                 <path d="M6 8.5 1.5 4h9L6 8.5z" />
               </svg>
-            </button>
+            </a>
             <div class="absolute left-0 top-full pt-2 hidden group-hover:block group-focus-within:block">
               <div class="bg-white border border-line shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] py-2 min-w-[14rem]">
                 {item.children.map((child) => (
@@ -87,7 +95,7 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
             href={item.href}
             class:list={[
               'px-3.5 py-2.5 text-sm font-medium tracking-tight border-b-[1.5px] -mb-px',
-              isActive(item.href)
+              sectionActive(item)
                 ? 'text-accent border-accent'
                 : 'text-ink border-transparent hover:text-accent',
             ]}
@@ -125,7 +133,7 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
   <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-paper">
     <nav class="container-content py-3 space-y-1" aria-label="Mobile">
       {nav.map((item) =>
-        'children' in item ? (
+        item.children ? (
           <details class="group border-b border-line">
             <summary class="flex items-center justify-between px-2 py-3 text-sm font-semibold text-ink cursor-pointer list-none">
               {item.label}
@@ -134,6 +142,9 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
               </svg>
             </summary>
             <div class="pl-4 py-2 space-y-1">
+              {item.href && (
+                <a href={item.href} class="block px-2 py-2 text-sm font-medium text-accent">{item.label} overview →</a>
+              )}
               {item.children.map((child) => (
                 <a href={child.href} class="block px-2 py-2 text-sm text-ink-2 hover:text-accent">
                   {child.label}
