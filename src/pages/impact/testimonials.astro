@@ -5,61 +5,33 @@ import { url } from '../../utils/url';
 
 const categories = [
   {
-    heading: 'Feedback by children about our program',
+    heading: 'From the children',
     entries: [
-      {
-        label: 'Nityashree, Haralur',
-        type: 'mp4',
-        src: '/videos/untitled-design.mp4',
-      },
-      {
-        label: 'Manasa, Thottikuppam',
-        type: 'youtube',
-        id: 'AbHu8llgWIU',
-      },
+      { label: 'Nityashree, Haralur', type: 'mp4', src: '/videos/untitled-design.mp4' },
+      { label: 'Manasa, Thottikuppam', type: 'youtube', id: 'AbHu8llgWIU' },
     ],
-    summary: 'Nityashree from Haralur and Manasa from Thottikuppam share their experience of being a part of our program.',
+    summary: 'Nityashree from Haralur and Manasa from Thottikuppam describe what the programme has been to them.',
   },
   {
-    heading: 'Feedback by teachers about our program',
+    heading: 'From the teachers',
     entries: [
-      {
-        label: "A teacher's feedback",
-        type: 'youtube',
-        id: '036u-rKBua0',
-      },
+      { label: "A teacher's feedback", type: 'youtube', id: '036u-rKBua0' },
     ],
-    summary: 'A teacher from one of our village schools shares how the NavSahyog programme has shaped the children she teaches.',
+    summary: 'A teacher from one of our village schools shares how the programme has shaped the children she teaches.',
   },
   {
-    heading: 'Feedback by parents about our program',
+    heading: 'From the parents',
     entries: [
-      {
-        label: 'A parent from Samandhakottai, Denkanikottai',
-        type: 'mp4',
-        src: '/videos/story-video.mp4',
-      },
-      {
-        label: 'Anitha (parent) from Enimuchandram, Denkanikottai',
-        type: 'mp4',
-        src: '/videos/feedback-by-anitha.mp4',
-      },
+      { label: 'A parent from Samandhakottai, Denkanikottai', type: 'mp4', src: '/videos/story-video.mp4' },
+      { label: 'Anitha (parent) from Enimuchandram, Denkanikottai', type: 'mp4', src: '/videos/feedback-by-anitha.mp4' },
     ],
     summary: 'Parents from Denkanikottai describe what has changed at home — in confidence, in study habits, in how their children carry themselves.',
   },
   {
-    heading: 'Feedback by Village Coordinators about our program',
+    heading: 'From the village coordinators',
     entries: [
-      {
-        label: 'Village Coordinator Kanaka, Enimuchandram',
-        type: 'youtube',
-        id: 'OaYfepE6xVw',
-      },
-      {
-        label: 'Village Coordinator Sudha, Kowthamaranahalli',
-        type: 'mp4',
-        src: '/videos/impact-video-anitha-parent-1.mp4',
-      },
+      { label: 'Village Coordinator Kanaka, Enimuchandram', type: 'youtube', id: 'OaYfepE6xVw' },
+      { label: 'Village Coordinator Sudha, Kowthamaranahalli', type: 'mp4', src: '/videos/impact-video-anitha-parent-1.mp4' },
     ],
     summary: 'Our on-ground facilitators — almost all women from the villages themselves — describe the programme from the inside.',
   },
@@ -69,38 +41,43 @@ const categories = [
 <Layout title="Testimonials" description="Feedback from children, teachers, parents and village coordinators on NavSahyog Foundation's programme.">
   <PageHeader
     eyebrow="Impact"
-    title="Testimonials"
-    subtitle="The programme through the eyes of the people it serves — and the people who run it."
+    title="The programme through the eyes of those it serves."
+    accentWord="those"
+    subtitle="And the people who run it — children, teachers, parents and village coordinators."
   />
 
-  <div class="container-content py-16 space-y-14">
+  <div class="container-content py-12 space-y-20">
     {categories.map((c) => (
       <section>
-        <h2 class="text-2xl md:text-3xl font-bold mb-3">{c.heading}</h2>
-        <p class="text-ink/80 leading-relaxed mb-6 max-w-3xl">{c.summary}</p>
-        <div class={`grid ${c.entries.length > 1 ? 'md:grid-cols-2' : ''} gap-5`}>
-          {c.entries.map((e) => (
-            <figure class="rounded-xl overflow-hidden bg-white border border-slate-200 shadow-sm">
-              <div class="aspect-video bg-black">
-                {e.type === 'youtube' ? (
-                  <iframe
-                    class="w-full h-full"
-                    src={`https://www.youtube-nocookie.com/embed/${e.id}`}
-                    title={e.label}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    loading="lazy"
-                  ></iframe>
-                ) : (
-                  <video controls class="w-full h-full" preload="metadata">
-                    <source src={url(e.src)} />
-                    Your browser does not support embedded video.
-                  </video>
-                )}
-              </div>
-              <figcaption class="px-5 py-3 text-sm font-medium text-ink bg-white">{e.label}</figcaption>
-            </figure>
-          ))}
+        <div class="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
+          <div class="md:sticky md:top-28">
+            <div class="eyebrow"><span>{c.heading}</span></div>
+            <p class="m-0 text-[17px] leading-relaxed text-ink-2 max-w-md">{c.summary}</p>
+          </div>
+          <div class={`grid ${c.entries.length > 1 ? 'sm:grid-cols-2' : ''} gap-5`}>
+            {c.entries.map((e) => (
+              <figure class="m-0">
+                <div class="aspect-video bg-ink overflow-hidden">
+                  {e.type === 'youtube' ? (
+                    <iframe
+                      class="w-full h-full"
+                      src={`https://www.youtube-nocookie.com/embed/${e.id}`}
+                      title={e.label}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                      loading="lazy"
+                    ></iframe>
+                  ) : (
+                    <video controls class="w-full h-full" preload="metadata">
+                      <source src={url(e.src)} />
+                      Your browser does not support embedded video.
+                    </video>
+                  )}
+                </div>
+                <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{e.label}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
     ))}

@@ -6,9 +6,10 @@ export interface Props {
   images: string[];
   alt?: string;
   columns?: 2 | 3 | 4;
+  captions?: string[];
 }
 
-const { images, alt = '', columns = 3 } = Astro.props;
+const { images, alt = '', columns = 3, captions } = Astro.props;
 
 const colClass = {
   2: 'sm:grid-cols-2',
@@ -17,18 +18,23 @@ const colClass = {
 }[columns];
 
 const resolved = images
-  .map((src, i) => ({ src, img: media(src), index: i }))
-  .filter((entry): entry is { src: string; img: NonNullable<ReturnType<typeof media>>; index: number } => entry.img !== null);
+  .map((src, i) => ({ src, img: media(src), index: i, caption: captions?.[i] }))
+  .filter((entry): entry is { src: string; img: NonNullable<ReturnType<typeof media>>; index: number; caption: string | undefined } => entry.img !== null);
 ---
 
-<div class={`grid grid-cols-1 ${colClass} gap-3`}>
-  {resolved.map(({ src, img, index }) => (
-    <a href={img.src} class="block rounded-lg overflow-hidden bg-surface-soft group">
+<div class={`grid grid-cols-1 ${colClass} gap-4`}>
+  {resolved.map(({ src, img, index, caption }) => (
+    <a href={img.src} class="block bg-paper-alt group">
       <Img
         src={src}
-        alt={alt ? `${alt} — ${index + 1}` : `Image ${index + 1}`}
-        class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+        alt={alt ? `${alt} — ${index + 1}` : caption || `Image ${index + 1}`}
+        class="w-full aspect-[4/3] object-cover group-hover:opacity-90 transition-opacity duration-300"
       />
+      {caption && (
+        <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5 px-1">
+          {caption}
+        </figcaption>
+      )}
     </a>
   ))}
 </div>

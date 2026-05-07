@@ -1,7 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
-import StatCard from '../../components/StatCard.astro';
 import Img from '../../components/Img.astro';
 import { url } from '../../utils/url';
 
@@ -19,88 +17,121 @@ const stories = [
 ];
 
 const studies = [
-  { label: 'NavSahyog Foundation — Impact Study March 2025', link: 'https://drive.google.com/file/d/1ib0VvGRVmP-Tn62fq_ZR3hXAF6rj1Kio/view?usp=sharing', external: true },
-  { label: 'NavSahyog Foundation — Impact Study March 2024', link: 'https://drive.google.com/file/d/1OVK8ZJr5DHFV5l5lDaxd1vMP1bFaMZiW/view?usp=sharing', external: true },
-  { label: 'NavSahyog Foundation — Impact Study March 2023', link: 'https://drive.google.com/file/d/1To2qM-_vXOnH8qxr_jb9bO4MCD4xbSDB/view?usp=drive_link', external: true },
-  { label: 'NavSahyog Foundation — Impact Study March 2022', link: '/downloads/impact-study-mar-2022.pdf' },
-  { label: 'NavSahyog Foundation — Impact Study March 2021', link: '/downloads/impact-study-mar-2021.pdf' },
-  { label: 'NavSahyog Foundation — Impact Study January 2020', link: '/downloads/impact-study-jan-2020.pdf' },
-  { label: 'NavSahyog Foundation — Impact Study September 2019', link: '/downloads/impact-study-sep-2019.pdf' },
+  { label: 'Annual Impact Survey Report 2025–26', date: 'March 2026', link: '/downloads/impact-study-2026.pdf', external: false },
+  { label: 'NavSahyog Impact Study — March 2025', date: 'March 2025', link: 'https://drive.google.com/file/d/1ib0VvGRVmP-Tn62fq_ZR3hXAF6rj1Kio/view?usp=sharing', external: true },
+  { label: 'NavSahyog Impact Study — March 2024', date: 'March 2024', link: 'https://drive.google.com/file/d/1OVK8ZJr5DHFV5l5lDaxd1vMP1bFaMZiW/view?usp=sharing', external: true },
+  { label: 'NavSahyog Impact Study — March 2023', date: 'March 2023', link: 'https://drive.google.com/file/d/1To2qM-_vXOnH8qxr_jb9bO4MCD4xbSDB/view?usp=drive_link', external: true },
+  { label: 'NavSahyog Impact Study — March 2022', date: 'March 2022', link: '/downloads/impact-study-mar-2022.pdf', external: false },
+  { label: 'NavSahyog Impact Study — March 2021', date: 'March 2021', link: '/downloads/impact-study-mar-2021.pdf', external: false },
+  { label: 'NavSahyog Impact Study — January 2020', date: 'January 2020', link: '/downloads/impact-study-jan-2020.pdf', external: false },
+  { label: 'NavSahyog Impact Study — September 2019', date: 'September 2019', link: '/downloads/impact-study-sep-2019.pdf', external: false },
 ];
 ---
 
 <Layout title="Impact" description="NavSahyog Foundation's measured impact — by numbers, by independent studies, and by the children whose lives have changed.">
-  <PageHeader
-    eyebrow="Impact"
-    title="Impact"
-    subtitle="At NavSahyog Foundation, we value diversity and inclusiveness."
-  />
 
-  <div class="container-content py-16 space-y-16">
-    <section class="grid lg:grid-cols-2 gap-10 items-center">
-      <Img src="2021/07/IMG_20181125_103406741_BURST000_COVER_TOP-930x620.jpg" alt="Children in a NavSahyog programme" class="rounded-xl w-full h-auto" loading="eager" />
+  <!-- Editorial hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-10">
+      <div class="eyebrow"><span>Impact</span></div>
+      <h1 class="display text-[clamp(3rem,7vw,7rem)] leading-[0.95] tracking-display-tight m-0">
+        Measured by <span class="display-italic text-accent">independent</span> studies.<br />
+        Felt in the children's voices.
+      </h1>
+    </div>
+  </section>
+
+  <!-- Diversity stats -->
+  <section class="py-14 border-y border-line">
+    <div class="container-content grid md:grid-cols-3 gap-10 md:gap-14">
       <div>
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">Diversity at the core</h2>
-        <p class="text-lg text-ink/80 leading-relaxed mb-4">
-          At NavSahyog Foundation, we value diversity and inclusiveness. We encourage the
-          participation of girls and women in our programme.
-        </p>
-        <p class="text-lg text-ink/80 leading-relaxed">
-          We conduct impact studies to understand the development of life skills and non-life
-          skills.
-        </p>
+        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">60<span class="text-accent">%</span></div>
+        <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of children in our programme are girls — by intentional design.</p>
       </div>
-    </section>
-
-    <section>
-      <div class="grid sm:grid-cols-3 gap-5">
-        <StatCard value="60%" label="Children in our programme are girls" />
-        <StatCard value="97%" label="Of our team members are women" />
-        <StatCard value="97%" label="Of those women live in villages" />
+      <div>
+        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
+        <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of our team members are women.</p>
       </div>
-    </section>
+      <div>
+        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
+        <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of those women live in the very villages we serve.</p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Stories of Change</h2>
-      <p class="text-ink/80 text-lg max-w-3xl mb-8">
-        Children who grew up in the NavSahyog programme, now pursuing their dreams.
-      </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+  <!-- Annual Impact Survey 2025–26 highlights -->
+  <section class="py-24 md:py-32">
+    <div class="container-content grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
+      <div class="md:sticky md:top-28">
+        <div class="eyebrow"><span>Annual Impact Survey · 2025–26</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-5">
+          The largest stakeholder survey we've ever run.
+        </h2>
+        <p class="text-base text-ink-2 leading-relaxed max-w-md">
+          18,487 responses across children, parents and teachers — covering 26 life-skill and non-life-skill parameters across Karnataka, Tamil Nadu and Nagaland.
+        </p>
+        <a href={url('/blogs/')} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">Read the full report <span aria-hidden="true">→</span></a>
+      </div>
+      <div>
+        {[
+          { v: '75%', l: 'High to Very High impact ratings overall — universal positive impact across children, parents and teachers.' },
+          { v: '80.3%', l: 'Children rate Values impact as High — programme strength leader, alongside Water Awareness (~80%) and Sports Interest (80%).' },
+          { v: '80.6%', l: 'Tamil Nadu shows the strongest regional impact at High; girls (75.5%) marginally outperform boys (73.6%).' },
+          { v: '93%', l: 'Of children attend regularly — and report 74.9% High outcomes. Irregular attendance drops to 58.6%.' },
+          { v: '76.7%', l: 'Peak High rating in the 1–2-year tenure cohort — every cohort exceeds 74%, suggesting tenure compounds.' },
+          { v: '11% / 21.7%', l: 'Discipline is the top new habit (11%); TV watching is the biggest habit stopped (21.7%), followed by mobile usage (20%) and fighting (13.2%).' },
+        ].map((r) => (
+          <div class="grid grid-cols-[140px_1fr] gap-6 md:gap-10 py-6 border-b border-line">
+            <div class="display text-3xl md:text-[40px] leading-none tracking-[-0.04em] text-ink">{r.v}</div>
+            <p class="m-0 text-[15px] leading-relaxed text-ink-2">{r.l}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stories of change -->
+  <section class="py-24 md:py-32 border-t border-line">
+    <div class="container-content">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
+        <div>
+          <div class="eyebrow"><span>Stories of change</span></div>
+          <h2 class="display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-display-tight m-0">The children who grew up here.</h2>
+        </div>
+        <a href={url('/impact/testimonials/')} class="text-sm font-semibold text-accent hover:gap-3 transition-all inline-flex items-center gap-2">Watch their testimonials <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5">
         {stories.map((s) => (
-          <figure class="rounded-xl overflow-hidden border border-slate-200 bg-white">
-            <Img src={s.image} alt={s.name} class="w-full aspect-[3/4] object-cover" />
-            <figcaption class="px-4 py-3 text-center">
-              <p class="font-semibold text-ink text-sm">{s.name}</p>
-            </figcaption>
+          <figure class="m-0">
+            <Img src={s.image} alt={s.name} class="w-full aspect-[3/4] object-cover bg-paper-alt" />
+            <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{s.name}</figcaption>
           </figure>
         ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Impact Studies</h2>
-      <p class="text-ink/80 text-lg max-w-3xl mb-8">
-        We commission independent impact studies periodically and publish the full reports.
-      </p>
-      <ul class="grid md:grid-cols-2 gap-4">
+  <!-- Studies -->
+  <section class="py-24 md:py-32 bg-paper-alt border-y border-line">
+    <div class="container-content">
+      <div class="eyebrow"><span>Independent impact studies</span></div>
+      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">Every study we've commissioned. All public.</h2>
+      <div class="grid md:grid-cols-2 gap-3">
         {studies.map((s) => (
-          <li class="rounded-xl border border-slate-200 p-5 bg-white">
-            <a
-              href={s.external ? s.link : url(s.link)}
-              target={s.external ? '_blank' : undefined}
-              rel={s.external ? 'noopener' : undefined}
-              class="font-semibold text-brand hover:underline"
-            >
-              {s.label}
-            </a>
-            <p class="text-sm text-ink/70 mt-1">{s.external ? 'Google Drive ↗' : 'PDF ↓'}</p>
-          </li>
+          <a
+            href={s.external ? s.link : url(s.link)}
+            target={s.external ? '_blank' : undefined}
+            rel={s.external ? 'noopener' : undefined}
+            class="bg-paper border border-line p-6 flex items-center justify-between gap-6 hover:border-accent transition-colors group"
+          >
+            <div>
+              <div class="text-[15px] font-semibold text-ink leading-snug">{s.label}</div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 mt-1.5">{s.date}</div>
+            </div>
+            <span class="text-accent text-sm font-semibold whitespace-nowrap">{s.external ? 'Drive ↗' : 'PDF ↓'}</span>
+          </a>
         ))}
-      </ul>
-    </section>
-
-    <section class="text-center">
-      <a href={url('/impact/testimonials/')} class="btn-outline">Read testimonial videos →</a>
-    </section>
-  </div>
+      </div>
+    </div>
+  </section>
 </Layout>

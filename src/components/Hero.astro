@@ -10,26 +10,45 @@ export interface Props {
   imageAlt?: string;
   ctaPrimary?: { label: string; href: string };
   ctaSecondary?: { label: string; href: string };
+  accentWord?: string;
 }
 
-const { eyebrow, title, subtitle, image, imageAlt = '', ctaPrimary, ctaSecondary } = Astro.props;
+const { eyebrow, title, subtitle, image, imageAlt = '', ctaPrimary, ctaSecondary, accentWord } = Astro.props;
+
+let split: { before: string; word: string; after: string } | null = null;
+if (accentWord) {
+  const idx = title.toLowerCase().indexOf(accentWord.toLowerCase());
+  if (idx !== -1) {
+    split = {
+      before: title.slice(0, idx),
+      word: title.slice(idx, idx + accentWord.length),
+      after: title.slice(idx + accentWord.length),
+    };
+  }
+}
 ---
 
-<section class="relative bg-gradient-to-br from-brand-50 via-white to-brand-50">
-  <div class="container-content py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+<section class="bg-paper">
+  <div class="container-content pt-16 md:pt-24 pb-16 md:pb-24 grid md:grid-cols-[1.3fr_1fr] gap-12 md:gap-16 items-end">
     <div>
       {eyebrow && (
-        <p class="text-brand font-semibold tracking-wide uppercase text-sm mb-3">{eyebrow}</p>
+        <div class="eyebrow">
+          <span>{eyebrow}</span>
+        </div>
       )}
-      <h1 class="text-3xl md:text-5xl font-bold leading-tight text-ink">{title}</h1>
-      {subtitle && <p class="mt-5 text-lg md:text-xl text-ink/80 leading-relaxed">{subtitle}</p>}
+      <h1 class="display text-[clamp(3rem,7vw,6.75rem)] leading-[0.95] tracking-display-tight text-ink m-0">
+        {split ? (<><Fragment set:html={split.before} /><span class="display-italic text-accent">{split.word}</span><Fragment set:html={split.after} /></>) : title}
+      </h1>
+      {subtitle && (
+        <p class="mt-8 text-lg md:text-[21px] leading-[1.45] text-ink-2 max-w-xl">{subtitle}</p>
+      )}
       {(ctaPrimary || ctaSecondary) && (
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-9 flex flex-wrap gap-3">
           {ctaPrimary && (
-            <a href={ctaPrimary.href} class="btn-primary">{ctaPrimary.label}</a>
+            <a href={ctaPrimary.href} class="btn-primary px-8 py-4 text-base">{ctaPrimary.label}</a>
           )}
           {ctaSecondary && (
-            <a href={ctaSecondary.href} class="btn-outline">{ctaSecondary.label}</a>
+            <a href={ctaSecondary.href} class="btn-outline px-7 py-[14px] text-base">{ctaSecondary.label}</a>
           )}
         </div>
       )}
@@ -39,7 +58,7 @@ const { eyebrow, title, subtitle, image, imageAlt = '', ctaPrimary, ctaSecondary
         <Image
           src={image}
           alt={imageAlt}
-          class="rounded-2xl shadow-xl w-full h-auto object-cover"
+          class="w-full h-auto object-cover aspect-[3/4]"
           loading="eager"
         />
       </div>

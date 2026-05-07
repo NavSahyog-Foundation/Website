@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
 import Gallery from '../../components/Gallery.astro';
 import Img from '../../components/Img.astro';
 import { url } from '../../utils/url';
@@ -23,39 +22,57 @@ const d = entry.data;
 ---
 
 <Layout title={d.title} description={d.summary}>
-  <PageHeader eyebrow={d.date || 'Event'} title={d.title} subtitle={d.summary} />
+
+  <!-- Hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-10">
+      <div class="eyebrow"><span>{d.date || 'Event'}</span></div>
+      <h1 class="display text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.98] tracking-display-tight m-0 max-w-4xl">{d.title}</h1>
+      {d.summary && <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-3xl">{d.summary}</p>}
+    </div>
+  </section>
 
   {d.heroImage && (
-    <div class="container-content py-8">
-      <Img src={d.heroImage} alt={d.title} class="w-full rounded-xl shadow-sm" loading="eager" />
-    </div>
+    <section class="pb-12">
+      <div class="container-content">
+        <Img src={d.heroImage} alt={d.title} class="w-full aspect-[16/9] object-cover bg-paper-alt" loading="eager" />
+      </div>
+    </section>
   )}
 
-  <article class="container-content py-8 prose-content max-w-3xl">
-    <Content />
+  <article class="py-12">
+    <div class="container-content max-w-3xl prose-content">
+      <Content />
+    </div>
   </article>
 
   {d.videos.length > 0 && (
-    <section class="container-content py-8">
-      <h2 class="text-2xl font-bold mb-4">Videos</h2>
-      <div class="grid md:grid-cols-2 gap-4">
-        {d.videos.map((v) => (
-          <video controls class="w-full rounded-lg bg-black">
-            <source src={url(v)} />
-          </video>
-        ))}
+    <section class="py-12 border-t border-line">
+      <div class="container-content">
+        <div class="eyebrow"><span>Videos</span></div>
+        <div class="grid md:grid-cols-2 gap-5">
+          {d.videos.map((v) => (
+            <video controls class="w-full bg-ink aspect-video">
+              <source src={url(v)} />
+            </video>
+          ))}
+        </div>
       </div>
     </section>
   )}
 
   {d.gallery.length > 0 && (
-    <section class="container-content py-12">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6">Photo Gallery</h2>
-      <Gallery images={d.gallery} alt={d.title} columns={3} />
+    <section class="py-12 border-t border-line">
+      <div class="container-content">
+        <div class="eyebrow"><span>Photo gallery</span></div>
+        <Gallery images={d.gallery} alt={d.title} columns={3} />
+      </div>
     </section>
   )}
 
-  <section class="container-content py-12">
-    <a href={url('/media/')} class="btn-outline">← All events</a>
+  <section class="py-12">
+    <div class="container-content">
+      <a href={url('/media/')} class="btn-outline px-6 py-3">← All events</a>
+    </div>
   </section>
 </Layout>

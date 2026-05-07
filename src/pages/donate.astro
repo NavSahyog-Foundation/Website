@@ -2,100 +2,193 @@
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import { url } from '../utils/url';
+
+const domestic = [
+  ['Name', 'Navsahyog Foundation'],
+  ['Bank', 'ICICI Bank'],
+  ['Account Number', '107505003198'],
+  ['IFSC Code', 'ICIC0001075'],
+  ['Google Pay / UPI', 'navsahyog01@icici'],
+];
+
+const foreign = [
+  ['Name', 'Navsahyog Foundation'],
+  ['Bank', 'State Bank of India'],
+  ['Account Number', '42219241823'],
+  ['Branch', 'New Delhi Main Branch'],
+  ['Branch Address', '11, Parliament Street, New Delhi, NCT of Delhi – 110001'],
+  ['IFSC Code', 'SBIN0000691'],
+  ['MICR Code', '110002087'],
+  ['SWIFT Code', 'SBININBB104'],
+];
+
+const cheque = [
+  ['Email', 'donations.navsahyog@gmail.com'],
+  ['Subject', 'Donations to Navsahyog'],
+  ['Include', 'Name, address, PAN number, amount'],
+];
+
+const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 ---
 
 <Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children. 80G-eligible for Indian donors; FCRA-registered for international giving.">
   <PageHeader
     eyebrow="Support our work"
-    title="Donate"
-    subtitle="Every contribution directly funds a child's daily engagement — sports, storytelling, learning, creativity — Monday to Saturday, throughout the year."
+    title="Every gift becomes a day in a child's life."
+    accentWord="a day"
+    subtitle="80G-eligible for Indian donors. FCRA-registered for international. Audited yearly. Reported quarterly."
   />
 
-  <div class="container-content py-16 grid lg:grid-cols-5 gap-10">
-    <section class="lg:col-span-3 space-y-8">
-      <!-- Online donation platforms -->
-      <div class="rounded-xl border border-slate-200 p-8 bg-white">
-        <h2 class="text-2xl font-bold mb-2">Donate online</h2>
-        <p class="text-ink/80 mb-6">
-          The simplest way to give. Indian donors receive an 80G tax-exemption receipt by email.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://navsahyog-foundation.danamojo.org/" target="_blank" rel="noopener" class="btn-primary">Donate via Danamojo</a>
-          <a href="https://give.do/ngos/navsahyog-foundation" target="_blank" rel="noopener" class="btn-outline">Donate via Give.do</a>
+  <!-- Online giving -->
+  <section class="py-16 md:py-20">
+    <div class="container-content">
+      <div class="eyebrow"><span>The simplest way to give</span></div>
+      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-3">Donate online.</h2>
+      <p class="text-base text-ink-2 m-0 mb-9 max-w-2xl">
+        Indian donors receive an 80G tax-exemption receipt by email. International donors should use the FCRA bank account further down.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="https://navsahyog-foundation.danamojo.org/"
+          target="_blank"
+          rel="noopener"
+          class="btn-primary px-7 py-3.5 text-base"
+        >
+          Donate via Danamojo →
+        </a>
+        <a
+          href="https://give.do/ngos/navsahyog-foundation"
+          target="_blank"
+          rel="noopener"
+          class="btn-outline px-6 py-[13px] text-base"
+        >
+          Donate via Give.do
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bank details -->
+  <section class="py-16 md:py-20 border-t border-line">
+    <div class="container-content grid lg:grid-cols-[1.4fr_1fr] gap-16">
+      <div>
+        <div class="eyebrow"><span>Direct transfer</span></div>
+        <h3 class="display text-3xl md:text-[32px] tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
+
+        <div class="border-t border-line">
+          <!-- Domestic -->
+          <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">Domestic — INR</div>
+              <div class="display text-lg font-semibold">ICICI Bank</div>
+            </div>
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+              {domestic.map(([k, v]) => (
+                <div class="contents">
+                  <dt class="text-ink-3">{k}</dt>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <!-- FCRA -->
+          <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">International — FCRA</div>
+              <div class="display text-lg font-semibold">State Bank of India</div>
+            </div>
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+              {foreign.map(([k, v]) => (
+                <div class="contents">
+                  <dt class="text-ink-3">{k}</dt>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <!-- Cheque -->
+          <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
+            <div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">By cheque</div>
+              <div class="display text-lg font-semibold">Email us first</div>
+            </div>
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+              {cheque.map(([k, v]) => (
+                <div class="contents">
+                  <dt class="text-ink-3">{k}</dt>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>
+                    {k === 'Email' ? <a href={`mailto:${v}`} class="hover:text-accent">{v}</a> : v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
       </div>
 
-      <!-- Alternate Payment Details -->
-      <div class="rounded-xl border border-slate-200 p-8 bg-white">
-        <h2 class="text-2xl font-bold mb-4">Alternate Payment Details</h2>
+      <aside class="space-y-4">
+        <div class="bg-accent text-white p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] mb-3 text-white/85">Section 80G</div>
+          <p class="text-[14px] leading-relaxed m-0 mb-3 text-white/95">
+            Indian donors receive a tax-deduction receipt under Section 80G of the Income Tax Act, 1961.
+          </p>
+          <p class="font-mono text-[11px] tracking-wider text-white/80 m-0">
+            Provisional Approval: AAGCN8813PF20206<br />
+            Valid AY 2022-23 to AY 2026-27
+          </p>
+        </div>
+        <div class="bg-white border border-line p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">FCRA Registration</div>
+          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+            Authorized to receive foreign contributions. As per Government of India regulations, please make
+            international donations <strong>only to the FCRA bank account</strong> — they cannot be accepted via
+            domestic bank, UPI, or Google Pay.
+          </p>
+          <p class="font-mono text-[11px] tracking-wider text-ink-3 m-0">FCRA #094421912</p>
+        </div>
+        <div class="bg-white border border-line p-7">
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">Major gifts &amp; CSR</div>
+          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+            For corporate CSR, large donations, or partnership conversations, please write to Paritosh.
+          </p>
+          <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-[12px] tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-        <h3 class="text-lg font-bold mt-6 mb-3 text-brand">Bank Details — Domestic</h3>
-        <dl class="grid sm:grid-cols-[12rem_1fr] gap-y-2 gap-x-4 text-ink/90">
-          <dt class="font-semibold">Name</dt><dd>Navsahyog Foundation</dd>
-          <dt class="font-semibold">Bank</dt><dd>ICICI Bank</dd>
-          <dt class="font-semibold">Account Number</dt><dd class="font-mono">107505003198</dd>
-          <dt class="font-semibold">IFSC Code</dt><dd class="font-mono">ICIC0001075</dd>
-          <dt class="font-semibold">Google Pay / UPI</dt><dd class="font-mono">navsahyog01@icici</dd>
-        </dl>
-
-        <h3 class="text-lg font-bold mt-8 mb-3 text-brand">Bank Details — Foreign Contributions (FCRA)</h3>
-        <dl class="grid sm:grid-cols-[12rem_1fr] gap-y-2 gap-x-4 text-ink/90">
-          <dt class="font-semibold">Name</dt><dd>Navsahyog Foundation</dd>
-          <dt class="font-semibold">Bank</dt><dd>State Bank of India</dd>
-          <dt class="font-semibold">Account Number</dt><dd class="font-mono">42219241823</dd>
-          <dt class="font-semibold">Branch</dt><dd>New Delhi Main Branch, State Bank of India</dd>
-          <dt class="font-semibold">Branch Address</dt><dd>11, Parliament Street, New Delhi, NCT of Delhi – 110001</dd>
-          <dt class="font-semibold">IFSC Code</dt><dd class="font-mono">SBIN0000691</dd>
-          <dt class="font-semibold">MICR Code</dt><dd class="font-mono">110002087</dd>
-          <dt class="font-semibold">SWIFT Code</dt><dd class="font-mono">SBININBB104</dd>
-        </dl>
-
-        <h3 class="text-lg font-bold mt-8 mb-3 text-brand">Donate by Cheque</h3>
-        <p class="text-ink/90">
-          Leave a message with your name, address, PAN number and amount at
-          <a href="mailto:donations.navsahyog@gmail.com?subject=Donations to Navsahyog" class="text-brand hover:underline">donations.navsahyog@gmail.com</a>
-          (subject line: <em>Donations to Navsahyog</em>) and we'll share the mailing address.
+  <!-- Transparency -->
+  <section class="py-24 md:py-32 bg-paper-alt border-t border-line">
+    <div class="container-content grid md:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
+      <div>
+        <div class="eyebrow"><span>Transparency</span></div>
+        <h2 class="display text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.02] tracking-display-tight m-0 mb-7">
+          Every rupee, accounted for.
+        </h2>
+        <p class="text-base leading-relaxed text-ink-2 max-w-md">
+          Each year we publish audited finances and an independent annual impact study. All available for download — no signup required.
         </p>
       </div>
-    </section>
-
-    <aside class="lg:col-span-2 space-y-6">
-      <div class="rounded-xl bg-brand text-white p-6">
-        <p class="text-white/80 uppercase tracking-wide text-sm font-semibold mb-2">Section 80G</p>
-        <p class="leading-relaxed text-white/95 text-sm">
-          NavSahyog Foundation is registered as a Section 8, not-for-profit company. Donations are
-          eligible for tax deduction under Section 80G of the Income Tax Act, 1960.
-        </p>
-        <p class="mt-3 text-xs text-white/80 font-mono">
-          Provisional Approval: AAGCN8813PF20206<br />
-          Dated 31/05/2021 · Valid AY 2022-23 to AY 2026-27
-        </p>
-      </div>
-      <div class="rounded-xl bg-surface-soft p-6 border border-slate-200">
-        <p class="text-brand uppercase tracking-wide text-sm font-semibold mb-2">FCRA Registration</p>
-        <p class="text-ink/85 text-sm leading-relaxed mb-3">
-          NavSahyog Foundation is registered under the Foreign Contribution (Regulation) Act (FCRA),
-          2010, Government of India, which authorizes us to receive donations from supporters
-          outside India.
-        </p>
-        <p class="text-ink/85 text-sm leading-relaxed">
-          If you are a non-Indian citizen, NRI, OCI, or an international supporter and would like
-          to contribute to our work, we warmly welcome your support. As per Government of India
-          regulations, kindly make your donation <strong>only to our designated FCRA bank account</strong>.
-          Foreign contributions cannot be accepted through our domestic bank account, Google Pay,
-          or UPI details.
-        </p>
-        <p class="mt-3 text-xs text-ink/70 font-mono">FCRA Registration Number: 094421912</p>
-      </div>
-      <div class="rounded-xl bg-white p-6 border border-slate-200">
-        <p class="text-brand uppercase tracking-wide text-sm font-semibold mb-2">Questions?</p>
-        <p class="text-ink/80 text-sm leading-relaxed mb-4">
-          For CSR gifts, large donations, or partnership conversations, please write to Paritosh.
-        </p>
-        <a href="mailto:paritosh.segal@gmail.com" class="text-brand font-semibold hover:underline">
-          paritosh.segal@gmail.com
+      <div>
+        <div class="grid gap-3 mb-10">
+          {[
+            ['Annual Reports', '2024-25, 2023-24, 2022-23, 2021-22'],
+            ['Audited Financials', 'Same years, side-by-side'],
+            ['Impact Studies', '2026, 2025, 2024, 2023, 2022, 2021'],
+            ['Research Reports', 'Sport · Storytelling · Music & Art'],
+          ].map(([k, v]) => (
+            <div class="flex items-baseline gap-6 py-4 border-b border-line">
+              <div class="display text-xl md:text-2xl tracking-display-tight min-w-[180px]">{k}</div>
+              <div class="text-sm text-ink-2">{v}</div>
+            </div>
+          ))}
+        </div>
+        <a href={url('/downloads/')} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
+          Browse all downloads <span aria-hidden="true">→</span>
         </a>
       </div>
-    </aside>
-  </div>
+    </div>
+  </section>
 </Layout>

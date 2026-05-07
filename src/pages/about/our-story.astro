@@ -1,92 +1,96 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import PageHeader from '../../components/PageHeader.astro';
 import Img from '../../components/Img.astro';
 import { url } from '../../utils/url';
+
+const sections = [
+  {
+    h: 'The starting question',
+    p: 'A group of like-minded individuals came together in early 2016 to address a big problem in the social sector. They chose education as their domain — and started exploring what could be the biggest, most under-addressed problem within it.',
+  },
+  {
+    h: 'What we found',
+    p: 'Nearly 70% of school-going children in India are in villages. More than 90% of them drop out before completing schooling. Beyond an incomplete education, they lacked essential life skills — self-esteem, communication, confidence, teaming, resilience and values.',
+  },
+  {
+    h: 'The insight',
+    p: 'Job opportunities in villages are limited. The only path to superior livelihood is entrepreneurship — but well-developed life skills are the prerequisite. So we work with children at their most impressionable age (5–14) so that, ten years later, the skills are there when the opportunities are.',
+  },
+  {
+    h: 'For girl children, in particular',
+    p: 'In villages, girl children also face the pressure of being forced to drop out and into early marriage. The development of life skills — confidence, voice, self-esteem — addresses these issues at their root.',
+  },
+  {
+    h: 'Our journey',
+    p: 'Our initiative started in November 2016, under the aegis of Sahyog Foundation, a trust registered with 12A and 80G certifications. We were kindly let to carry out our initiative by the Managing Trustee, Mr. Anish Kumar, with the understanding that once we were ready to grow, we would set up a separate entity. NavSahyog Foundation was that entity.',
+  },
+];
 ---
 
 <Layout title="Our Story" description="NavSahyog Foundation's origin: a 2016 exploration of India's rural education problem and the insight that life skills are the missing link.">
-  <PageHeader eyebrow="About" title="Our Story" subtitle="How NavSahyog began, and the insight that set us on this path." />
 
-  <article class="container-content py-16 grid lg:grid-cols-3 gap-12">
-    <div class="lg:col-span-2 prose-content">
-      <p>
-        A group of like-minded individuals came together in early 2016 to address a big problem in
-        the social sector. They chose education as their domain. They then started to explore what
-        could be the big problem in the education domain.
-      </p>
-      <p>
-        Upon studying secondary data related to education in India, they uncovered that nearly 70%
-        of school-going children in India are in the villages. They then started connecting with
-        various organizations doing stellar work in education, rural development etc. They also
-        travelled to villages to understand first hand, the issues and challenges the children in
-        the villages face.
-      </p>
-      <p>
-        It was a collective knowledge that gave the pointer to them that more than 90% of the
-        children in the villages drop out before completing schooling. Besides an incomplete
-        education, they also lack essential life skills like self esteem, communication, confidence,
-        teaming, resilience, values etc.
-      </p>
-      <p>
-        The impact of this is described in <a href={url('/program/big-problem/')}>The Big Problem</a> section.
-      </p>
-      <p>
-        The job opportunities in the villages are highly limited. The only way for the youth in the
-        villages to achieve superior livelihood is to take up entrepreneurship. There are many
-        unmet needs in the villages which are waiting for good quality solutions to be provided at
-        affordable prices.
-      </p>
-      <p>
-        Even if today the youth are told about these possibilities they are unable to take them up
-        because they lack well-developed life skills like self-esteem, confidence, teaming, value
-        etc. Thus, the team decided to develop their life skills at their most impressionable age
-        (5–14 years), which will enable them to take up entrepreneurship creating superior
-        livelihood.
-      </p>
-      <p>
-        In villages, another challenge that the girl children face is, being forced to drop out of
-        school and early childhood marriages. These issues also get addressed through the
-        development of life skills in girl children.
-      </p>
-      <p>
-        The team decided to follow <a href={url('/about/five-factors/')}>5 Principles</a> on which
-        they based their entire initiative.
-      </p>
-
-      <h2>Our Journey</h2>
-      <p>
-        Our initiative started in November 2016, under the aegis of Sahyog Foundation, a trust
-        registered with 12A &amp; 80G certifications. We were kindly let to carry out our
-        initiative by the Managing Trustee, Mr. Anish Kumar, with an understanding that once we
-        are ready to grow our initiative, we will set up a separate entity.
-      </p>
-
-      <div class="grid sm:grid-cols-3 gap-4 mt-8 not-prose">
-        <Img src="2021/07/IMG-20210201-WA0048-2-930x620.jpg" alt="Village programme" class="rounded-lg w-full h-auto" />
-        <Img src="2021/07/IMG-20210710-WA0062-930x620.jpg" alt="Children learning" class="rounded-lg w-full h-auto" />
-        <Img src="2021/07/Long-Jump-930x620.jpg" alt="Long jump at an annual competition" class="rounded-lg w-full h-auto" />
-      </div>
-
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href={url('/about/five-factors/')} class="btn-outline">The Five Factors</a>
-        <a href={url('/about/the-team/')} class="btn-outline">Meet the Team</a>
-      </div>
+  <!-- Editorial hero -->
+  <section class="bg-paper">
+    <div class="container-content pt-20 md:pt-28 pb-12 max-w-4xl mx-auto">
+      <div class="eyebrow"><span>Our Story</span></div>
+      <h1 class="display text-[clamp(3rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0">
+        We started with one question:<br />
+        <span class="display-italic text-accent">where is the gap?</span>
+      </h1>
     </div>
+  </section>
 
-    <aside class="space-y-6">
-      <div class="rounded-xl bg-brand-50 border border-brand-100 p-6">
-        <p class="text-sm uppercase tracking-wide text-brand font-semibold mb-2">Our Vision</p>
-        <p class="text-ink/90 leading-relaxed">
-          A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
-        </p>
-      </div>
-      <div class="rounded-xl bg-brand text-white p-6">
-        <p class="text-sm uppercase tracking-wide text-white/80 font-semibold mb-2">Our Mission</p>
-        <p class="leading-relaxed">
-          Impact 100,000 children with life skills &amp; enable superior livelihood for 3,000 youth in villages by 2030.
-        </p>
-      </div>
-    </aside>
-  </article>
+  <!-- Two-column long form -->
+  <section class="py-16 md:py-20">
+    <div class="container-content grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
+      <aside class="md:sticky md:top-28 space-y-6">
+        <div>
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-4">Timeline</div>
+          {[
+            ['2016', 'Founded under Sahyog Foundation'],
+            ['2020', 'Section 8 registered'],
+            ['2021', '80G + FCRA certified'],
+            ['2026', 'Today'],
+          ].map(([y, l]) => (
+            <div class="flex gap-4 py-2 border-t border-line">
+              <div class="font-mono text-[13px] text-accent min-w-[3.5rem]">{y}</div>
+              <div class="text-sm text-ink leading-snug">{l}</div>
+            </div>
+          ))}
+        </div>
+        <div class="bg-paper-alt border border-line p-5">
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-2.5">Our Vision</div>
+          <p class="m-0 text-[14px] leading-relaxed text-ink">
+            A world where children in villages pursue their dreams and create superior livelihoods for themselves and others.
+          </p>
+        </div>
+        <div class="bg-ink text-paper p-5">
+          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-2.5">Our Mission · 2030</div>
+          <p class="m-0 text-[14px] leading-relaxed">
+            Impact 100,000 children with life skills &amp; enable superior livelihood for 3,000 youth in villages.
+          </p>
+        </div>
+      </aside>
+
+      <article>
+        {sections.map((s) => (
+          <section class="py-10 border-b border-line first:pt-0">
+            <h2 class="display text-2xl md:text-3xl tracking-display-tight m-0 mb-4">{s.h}</h2>
+            <p class="m-0 text-[18px] leading-[1.6] text-ink-2">{s.p}</p>
+          </section>
+        ))}
+
+        <div class="grid grid-cols-3 gap-3 md:gap-4 mt-10">
+          <Img src="2021/07/IMG-20210201-WA0048-2-930x620.jpg" alt="Village programme" class="w-full aspect-[3/4] object-cover bg-paper-alt" />
+          <Img src="2021/07/IMG-20210710-WA0062-930x620.jpg" alt="Children learning" class="w-full aspect-[3/4] object-cover bg-paper-alt" />
+          <Img src="2021/07/Long-Jump-930x620.jpg" alt="Long jump at an annual competition" class="w-full aspect-[3/4] object-cover bg-paper-alt" />
+        </div>
+
+        <div class="mt-12 flex flex-wrap gap-3">
+          <a href={url('/about/five-factors/')} class="btn-outline">The Five Factors</a>
+          <a href={url('/about/the-team/')} class="btn-outline">Meet the Team</a>
+        </div>
+      </article>
+    </div>
+  </section>
 </Layout>

@@ -9,32 +9,42 @@ import { url } from '../../utils/url';
 <Layout title="Partners" description="The partners who make NavSahyog Foundation's work possible.">
   <PageHeader
     eyebrow="Our Programme"
-    title="Partners"
-    subtitle="We are grateful to every organisation that has stood alongside us."
+    title="The organisations who make this work possible."
+    accentWord="possible"
+    subtitle="We are grateful to every organisation that has stood alongside us — through programme content, geography, expertise and capital."
   />
 
-  <div class="container-content py-16">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
+  <div class="container-content py-12 md:py-16">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-line border border-line">
       {partnerLogos.map((p) => (
-        <div class="bg-white border border-slate-200 rounded-lg p-4 flex items-center justify-center aspect-video">
+        <div class="bg-paper aspect-[4/3] flex items-center justify-center p-7">
           {p.url ? (
-            <a href={p.url} target="_blank" rel="noopener" class="block w-full h-full">
-              <Img src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+            <a href={p.url} target="_blank" rel="noopener" class="block w-full h-full flex items-center justify-center">
+              <Img src={p.logo} alt={p.name} class="max-w-full max-h-full object-contain" />
             </a>
           ) : (
-            <Img src={p.logo} alt={p.name} class="w-full h-full object-contain" />
+            <Img src={p.logo} alt={p.name} class="max-w-full max-h-full object-contain" />
           )}
         </div>
       ))}
     </div>
 
-    <section class="mt-16 rounded-xl bg-brand-50 border border-brand-100 p-8">
-      <h2 class="text-2xl font-bold mb-2">Become a partner</h2>
-      <p class="text-ink/80 mb-6 max-w-2xl">
-        Whether you're a CSR team, a family foundation, or an individual donor — we'd love to hear
-        from you.
-      </p>
-      <a href={url('/contact/')} class="btn-primary">Get in touch</a>
+    <section class="mt-20 bg-ink text-paper p-10 md:p-14 grid md:grid-cols-[2fr_1fr] gap-10 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-7 h-px bg-accent"></span>
+          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Become a partner</span>
+        </div>
+        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
+          For CSR, family foundations, individuals.
+        </h2>
+        <p class="text-[15px] text-paper/75 leading-relaxed m-0 max-w-xl">
+          Whether you're a CSR team, a family foundation, or an individual donor — we'd love to hear from you.
+        </p>
+      </div>
+      <div>
+        <a href={url('/contact/')} class="inline-flex items-center gap-2 bg-accent text-white px-7 py-3.5 rounded-full text-base font-semibold hover:bg-accent-deep">Get in touch <span aria-hidden="true">→</span></a>
+      </div>
     </section>
   </div>
 </Layout>

@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/images/logo-tagline.png';
 import { url } from '../utils/url';
 
 const nav = [
@@ -13,7 +11,7 @@ const nav = [
     ],
   },
   {
-    label: 'Our Program',
+    label: 'Programme',
     children: [
       { label: 'The Big Problem', href: url('/program/big-problem/') },
       { label: 'Intervention', href: url('/program/intervention/') },
@@ -32,7 +30,7 @@ const nav = [
       { label: 'Covid-19 Relief', href: url('/covid-19-relief/') },
     ],
   },
-  { label: 'Media Coverage', href: url('/media/') },
+  { label: 'Media', href: url('/media/') },
   { label: 'Blogs', href: url('/blogs/') },
   { label: 'Downloads', href: url('/downloads/') },
   { label: 'Contact', href: url('/contact/') },
@@ -42,10 +40,11 @@ const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || (currentPath.startsWith(href) && href !== url('/'));
 ---
 
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-slate-200">
-  <div class="container-content flex items-center justify-between gap-4 py-3">
-    <a href={url('/')} class="flex items-center gap-3 shrink-0" aria-label="NavSahyog Foundation — Home">
-      <Image src={logo} alt="NavSahyog Foundation" class="h-12 w-auto" loading="eager" />
+<header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-line">
+  <div class="container-content flex items-center justify-between gap-4 py-4 md:py-5">
+    <a href={url('/')} class="flex items-baseline gap-2 shrink-0" aria-label="NavSahyog Foundation — Home">
+      <span class="display text-2xl md:text-[26px] font-semibold text-ink leading-none tracking-display-tight">NavSahyog</span>
+      <span class="display-italic text-2xl md:text-[26px] text-accent leading-none">Foundation</span>
     </a>
 
     <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
@@ -54,7 +53,12 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
           <div class="relative group">
             <button
               type="button"
-              class="px-3 py-2 text-sm font-medium text-ink hover:text-brand inline-flex items-center gap-1"
+              class:list={[
+                'px-3.5 py-2.5 text-sm font-medium tracking-tight inline-flex items-center gap-1 border-b-[1.5px] -mb-px',
+                item.children.some((c) => isActive(c.href))
+                  ? 'text-accent border-accent'
+                  : 'text-ink border-transparent hover:text-accent',
+              ]}
               aria-haspopup="true"
             >
               {item.label}
@@ -62,14 +66,14 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
                 <path d="M6 8.5 1.5 4h9L6 8.5z" />
               </svg>
             </button>
-            <div class="absolute left-0 top-full pt-1 hidden group-hover:block group-focus-within:block">
-              <div class="bg-white border border-slate-200 rounded-md shadow-lg py-2 min-w-[12rem]">
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block group-focus-within:block">
+              <div class="bg-white border border-line shadow-[0_12px_40px_-12px_rgba(0,0,0,0.15)] py-2 min-w-[14rem]">
                 {item.children.map((child) => (
                   <a
                     href={child.href}
                     class:list={[
-                      'block px-4 py-2 text-sm hover:bg-brand-50 hover:text-brand',
-                      isActive(child.href) ? 'text-brand font-semibold' : 'text-ink',
+                      'block px-4 py-2.5 text-[13.5px] font-medium hover:bg-paper-alt hover:text-accent',
+                      isActive(child.href) ? 'text-accent' : 'text-ink-2',
                     ]}
                   >
                     {child.label}
@@ -82,27 +86,34 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
           <a
             href={item.href}
             class:list={[
-              'px-3 py-2 text-sm font-medium hover:text-brand',
-              isActive(item.href) ? 'text-brand' : 'text-ink',
+              'px-3.5 py-2.5 text-sm font-medium tracking-tight border-b-[1.5px] -mb-px',
+              isActive(item.href)
+                ? 'text-accent border-accent'
+                : 'text-ink border-transparent hover:text-accent',
             ]}
           >
             {item.label}
           </a>
         ),
       )}
+      <a href={url('/donate/')} class="ml-3 inline-flex items-center gap-1.5 bg-accent text-white px-4 py-2.5 rounded-full text-[13.5px] font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all">
+        Donate <span aria-hidden="true">→</span>
+      </a>
     </nav>
 
-    <div class="flex items-center gap-2">
-      <a href={url('/donate/')} class="btn-primary hidden sm:inline-flex">Donate</a>
+    <div class="flex items-center gap-2 lg:hidden">
+      <a href={url('/donate/')} class="inline-flex items-center gap-1.5 bg-accent text-white px-4 py-2 rounded-full text-[13px] font-semibold">
+        Donate
+      </a>
       <button
         type="button"
         id="mobile-menu-toggle"
-        class="lg:hidden p-2 text-ink hover:text-brand"
+        class="p-2 text-ink hover:text-accent"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
           <line x1="3" y1="6" x2="21" y2="6" />
           <line x1="3" y1="12" x2="21" y2="12" />
           <line x1="3" y1="18" x2="21" y2="18" />
@@ -111,32 +122,31 @@ const isActive = (href: string) => currentPath === href || (currentPath.startsWi
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white">
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-paper">
     <nav class="container-content py-3 space-y-1" aria-label="Mobile">
       {nav.map((item) =>
         'children' in item ? (
-          <details class="group">
-            <summary class="flex items-center justify-between px-2 py-2 text-sm font-semibold text-ink cursor-pointer list-none">
+          <details class="group border-b border-line">
+            <summary class="flex items-center justify-between px-2 py-3 text-sm font-semibold text-ink cursor-pointer list-none">
               {item.label}
               <svg class="w-3 h-3 group-open:rotate-180 transition" viewBox="0 0 12 12" fill="currentColor">
                 <path d="M6 8.5 1.5 4h9L6 8.5z" />
               </svg>
             </summary>
-            <div class="pl-4 py-1 space-y-1">
+            <div class="pl-4 py-2 space-y-1">
               {item.children.map((child) => (
-                <a href={child.href} class="block px-2 py-1.5 text-sm text-ink/80 hover:text-brand">
+                <a href={child.href} class="block px-2 py-2 text-sm text-ink-2 hover:text-accent">
                   {child.label}
                 </a>
               ))}
             </div>
           </details>
         ) : (
-          <a href={item.href} class="block px-2 py-2 text-sm font-semibold text-ink hover:text-brand">
+          <a href={item.href} class="block px-2 py-3 text-sm font-semibold text-ink hover:text-accent border-b border-line">
             {item.label}
           </a>
         ),
       )}
-      <a href={url('/donate/')} class="btn-primary w-full mt-2">Donate</a>
     </nav>
   </div>
 </header>

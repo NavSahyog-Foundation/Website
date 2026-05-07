@@ -4,16 +4,18 @@ import { url } from '../utils/url';
 ---
 
 <Layout title="Page Not Found">
-  <section class="container-content py-24 text-center">
-    <p class="text-brand font-semibold uppercase tracking-wide text-sm mb-3">404</p>
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Page Not Found</h1>
-    <p class="text-lg text-ink/80 max-w-xl mx-auto mb-8">
+  <section class="container-content py-32 md:py-40 text-center">
+    <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-accent mb-6">404</div>
+    <h1 class="display text-[clamp(3rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight m-0 mb-7">
+      We couldn't find <span class="display-italic text-accent">that page</span>.
+    </h1>
+    <p class="text-lg text-ink-2 max-w-xl mx-auto mb-10 leading-relaxed">
       The page you're looking for has moved, or never existed. Try one of these instead.
     </p>
     <div class="flex flex-wrap justify-center gap-3">
-      <a href={url('/')} class="btn-primary">Home</a>
-      <a href={url('/about/our-story/')} class="btn-outline">Our Story</a>
-      <a href={url('/donate/')} class="btn-outline">Donate</a>
+      <a href={url('/')} class="btn-primary px-6 py-3">Home</a>
+      <a href={url('/about/our-story/')} class="btn-outline px-6 py-3">Our Story</a>
+      <a href={url('/donate/')} class="btn-outline px-6 py-3">Donate</a>
     </div>
   </section>
 </Layout>
