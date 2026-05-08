@@ -262,8 +262,8 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             ['Impact Studies', '2026, 2025, 2024, 2023, 2022, 2021'],
             ['Research Reports', 'Sport · Storytelling · Music & Art'],
           ].map(([k, v]) => (
-            <div class="flex items-baseline gap-6 py-4 border-b border-line">
-              <div class="display text-xl md:text-2xl tracking-display-tight min-w-[180px]">{k}</div>
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-4 border-b border-line">
+              <div class="display text-xl md:text-2xl tracking-display-tight sm:min-w-[180px]">{k}</div>
               <div class="text-sm text-ink-2">{v}</div>
             </div>
           ))}

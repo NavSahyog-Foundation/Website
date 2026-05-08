@@ -49,10 +49,10 @@ const sectionActive = (item: any) => item.children?.some((c: any) => isActive(c.
 ---
 
 <header class="sticky top-0 z-40 bg-paper/90 backdrop-blur-md border-b border-line">
-  <div class="container-content flex items-center justify-between gap-4 py-4 md:py-5">
-    <a href={url('/')} class="flex items-baseline gap-2 shrink-0" aria-label="NavSahyog Foundation — Home">
-      <span class="display text-2xl md:text-[26px] font-semibold text-ink leading-none tracking-display-tight">NavSahyog</span>
-      <span class="display-italic text-2xl md:text-[26px] text-accent leading-none">Foundation</span>
+  <div class="container-content flex items-center justify-between gap-3 md:gap-4 py-4 md:py-5">
+    <a href={url('/')} class="flex items-baseline gap-1.5 sm:gap-2 min-w-0" aria-label="NavSahyog Foundation — Home">
+      <span class="display text-[19px] sm:text-2xl md:text-[26px] font-semibold text-ink leading-none tracking-display-tight">NavSahyog</span>
+      <span class="display-italic text-[19px] sm:text-2xl md:text-[26px] text-accent leading-none">Foundation</span>
     </a>
 
     <nav class="hidden lg:flex items-center gap-1" aria-label="Primary">
@@ -109,14 +109,14 @@ const sectionActive = (item: any) => item.children?.some((c: any) => isActive(c.
       </a>
     </nav>
 
-    <div class="flex items-center gap-2 lg:hidden">
-      <a href={url('/donate/')} class="inline-flex items-center gap-1.5 bg-accent text-white px-4 py-2 rounded-full text-[13px] font-semibold">
+    <div class="flex items-center gap-1 sm:gap-2 lg:hidden shrink-0">
+      <a href={url('/donate/')} class="inline-flex items-center gap-1.5 bg-accent text-white px-3.5 py-2 sm:px-4 sm:py-2 rounded-full text-[12.5px] sm:text-[13px] font-semibold">
         Donate
       </a>
       <button
         type="button"
         id="mobile-menu-toggle"
-        class="p-2 text-ink hover:text-accent"
+        class="p-2 -mr-1 sm:mr-0 text-ink hover:text-accent"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"

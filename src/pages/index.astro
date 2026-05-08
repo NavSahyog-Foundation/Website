@@ -120,16 +120,19 @@ const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual
           <a
             href={p.href}
             class:list={[
-              'grid grid-cols-[60px_1fr_auto] gap-6 md:gap-8 py-8 group',
+              'block md:grid md:grid-cols-[60px_1fr_auto] md:gap-8 py-7 md:py-8 group',
               i === 0 ? 'border-t border-ink' : 'border-t border-line',
             ]}
           >
-            <div class="font-mono text-[13px] text-ink-3 pt-1">{p.num}</div>
+            <div class="flex items-center justify-between mb-3 md:mb-0 md:block md:pt-1">
+              <div class="font-mono text-[13px] text-ink-3">{p.num}</div>
+              <div class="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3 whitespace-nowrap md:hidden">{p.tag}</div>
+            </div>
             <div>
               <h3 class="display text-2xl md:text-[28px] font-medium tracking-display-tight m-0 mb-2 group-hover:text-accent">{p.name}</h3>
               <p class="m-0 text-[15px] leading-relaxed text-ink-2">{p.body}</p>
             </div>
-            <div class="font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3 text-right pt-1 whitespace-nowrap">{p.tag}</div>
+            <div class="hidden md:block font-mono text-[11px] uppercase tracking-[0.1em] text-ink-3 text-right pt-1 whitespace-nowrap">{p.tag}</div>
           </a>
         ))}
         <div class="border-t border-line"></div>
@@ -170,7 +173,7 @@ const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual
       <blockquote class="display-italic text-[clamp(2.25rem,4.5vw,3.75rem)] leading-[1.15] m-0 mb-12 text-ink">
         "Universal positive impact across children, parents and teachers — 74–75% rate the change as High to Very High across all 26 life-skill and non-life-skill parameters."
       </blockquote>
-      <div class="grid grid-cols-3 gap-8 md:gap-12 mt-10 pt-10 border-t border-line">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-7 sm:gap-8 md:gap-12 mt-10 pt-10 border-t border-line">
         <div>
           <div class="display text-[clamp(2rem,4vw,3rem)] leading-none text-ink">18,487</div>
           <div class="mt-3 text-sm text-ink-2 max-w-[14rem] leading-snug">Stakeholder responses across children, parents &amp; teachers</div>
