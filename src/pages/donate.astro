@@ -39,8 +39,67 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
     subtitle="80G-eligible for Indian donors. FCRA-registered for international. Audited yearly. Reported quarterly."
   />
 
+  <!-- Call for donation -->
+  <section class="bg-ink text-paper py-24 md:py-32">
+    <div class="container-content">
+      <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20">
+        <div class="inline-flex items-center gap-2.5 mb-5">
+          <span class="block w-7 h-px bg-accent"></span>
+          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Why give</span>
+          <span class="block w-7 h-px bg-accent"></span>
+        </div>
+        <h2 class="display text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
+          A child needs<br />
+          <span class="display-italic text-accent">₹6.57 a day</span><br />
+          to change their life.
+        </h2>
+        <p class="text-[17px] md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
+          That is the full cost of one child's year-round programme — sport, storytelling, creativity, and life skills, six days a week, every week. Our 2025–26 impact survey of 18,487 stakeholders found <strong class="text-paper">75% rate the change as High to Very High</strong>. No school fees. No conditions. Just daily presence in the village.
+        </p>
+        <a href="#choose-your-impact" class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all inline-block">
+          Give today →
+        </a>
+      </div>
+
+      <!-- Three impact stats -->
+      <div class="grid sm:grid-cols-3 gap-px bg-paper/10 border border-paper/10">
+        <div class="bg-ink px-8 py-10">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Reach · today</div>
+          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
+            350<span class="text-accent">+</span>
+          </div>
+          <p class="text-[14px] text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
+        </div>
+        <div class="bg-ink px-8 py-10">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Children · engaged daily</div>
+          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
+            10,000<span class="text-accent">+</span>
+          </div>
+          <p class="text-[14px] text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
+        </div>
+        <div class="bg-ink px-8 py-10">
+          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Mission · 2030</div>
+          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
+            1,00,000
+          </div>
+          <p class="text-[14px] text-paper/65 leading-snug m-0">Children with life skills — our target by 2030. Every gift closes the gap between here and there.</p>
+        </div>
+      </div>
+
+      <!-- Trust strip -->
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-paper/10">
+        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-paper/40">Giving assurance</span>
+        {['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Audited annually', 'Reported quarterly'].map((b) => (
+          <span class="text-sm text-paper/60 inline-flex items-center gap-2">
+            <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- Choose your impact -->
-  <section class="py-16 md:py-20">
+  <section id="choose-your-impact" class="py-16 md:py-20">
     <div class="container-content">
       <div class="eyebrow"><span>Choose your impact</span></div>
       <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-3">
