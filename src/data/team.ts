@@ -21,7 +21,7 @@ export const advisors: TeamMember[] = [
 export const founders: TeamMember[] = [
   { name: 'Mary Dolly', role: 'Chief Executive Officer' },
   { name: 'Paritosh Segal', role: 'Strategy & Growth' },
-  { name: 'Shekhar Nayadu', role: 'People & Process' },
+  { name: 'Shekhar Nayudu', role: 'People & Process' },
   { name: 'Sunil Giridhar', role: 'Finance & Compliance' },
 ];
 
