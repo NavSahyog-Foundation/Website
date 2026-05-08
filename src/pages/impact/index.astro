@@ -81,8 +81,8 @@ const studies = [
           { v: '76.7%', l: 'Peak High rating in the 1–2-year tenure cohort — every cohort exceeds 74%, suggesting tenure compounds.' },
           { v: '11% / 21.7%', l: 'Discipline is the top new habit (11%); TV watching is the biggest habit stopped (21.7%), followed by mobile usage (20%) and fighting (13.2%).' },
         ].map((r) => (
-          <div class="grid grid-cols-[140px_1fr] gap-6 md:gap-10 py-6 border-b border-line">
-            <div class="display text-3xl md:text-[40px] leading-none tracking-[-0.04em] text-ink">{r.v}</div>
+          <div class="sm:grid sm:grid-cols-[120px_1fr] md:grid-cols-[140px_1fr] sm:gap-6 md:gap-10 py-6 border-b border-line">
+            <div class="display text-3xl md:text-[40px] leading-none tracking-[-0.04em] text-ink mb-3 sm:mb-0">{r.v}</div>
             <p class="m-0 text-[15px] leading-relaxed text-ink-2">{r.l}</p>
           </div>
         ))}

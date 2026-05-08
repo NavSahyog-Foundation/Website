@@ -96,8 +96,8 @@ const structure = [
         </h2>
         <div class="space-y-0">
           {structure.map(([k, v], i) => (
-            <div class:list={['grid grid-cols-[180px_1fr] gap-6 py-5', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
-              <div class="font-mono text-[12px] uppercase tracking-[0.12em] text-accent">{k}</div>
+            <div class:list={['sm:grid sm:grid-cols-[160px_1fr] md:grid-cols-[180px_1fr] sm:gap-6 py-5', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
+              <div class="font-mono text-[12px] uppercase tracking-[0.12em] text-accent mb-2 sm:mb-0">{k}</div>
               <p class="m-0 text-[15px] leading-relaxed text-ink-2">{v}</p>
             </div>
           ))}
