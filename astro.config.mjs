@@ -8,7 +8,7 @@ const githubPagesSite = `https://${repoOwner.toLowerCase()}.github.io`;
 const githubPagesBase = `/${repoName}`;
 
 export default defineConfig({
-  site: PREVIEW ? githubPagesSite : 'https://www.navsahyog.org',
+  site: PREVIEW ? githubPagesSite : 'https://navsahyog.org',
   base: PREVIEW ? githubPagesBase : '/',
   trailingSlash: 'always',
   integrations: [
