@@ -63,9 +63,15 @@ async function capture(outDir) {
       deviceScaleFactor: 1,
       reducedMotion: 'reduce',
     });
-    // Block the one un-allowlisted external dependency (Leaflet on unpkg) so
-    // dashboard pages settle instead of hanging on a request that never resolves.
-    await context.route('**://unpkg.com/**', (r) => r.abort());
+    // Stub the program-dashboard's external dependencies so its async state is
+    // identical on every run. Aborting would cancel the whole navigation (the
+    // Leaflet CSS is render-blocking); empty/erroring stubs let the page load
+    // and settle deterministically (KPIs blank + a fixed "could not load"
+    // banner) instead of racing the live API/Leaflet.
+    await context.route('**://unpkg.com/**', (r) => r.fulfill({ status: 200, body: '' }));
+    await context.route('**://*.workers.dev/**', (r) =>
+      r.fulfill({ status: 503, contentType: 'application/json', body: '{}' }),
+    );
     const page = await context.newPage();
     for (const [name, route] of ROUTES) {
       const url = `${BASE}${route}`;
