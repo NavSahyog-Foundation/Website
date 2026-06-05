@@ -3,8 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import ProgramDashboard from '../../components/ProgramDashboard.astro';
 
 const statuses = [
-  { key: 'planned',  label: 'Planned',  color: '#d97706' },
-  { key: 'dug',      label: 'Dug',      color: '#2563eb' },
   { key: 'active',   label: 'Active',   color: '#059669' },
   { key: 'inactive', label: 'Inactive', color: '#64748b' },
 ];
@@ -53,14 +51,12 @@ const statuses = [
         <div class="eyebrow"><span>Live dashboard</span></div>
         <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-6">Each pond on the map is a real site.</h2>
         <p class="text-base text-ink-2 leading-relaxed max-w-2xl m-0">
-          Each pond is a real site in a partner village, classified by where it is in its lifecycle. Use the status chips to focus the map; click any pond for village details.
+          Each pond is a real site in a partner village. Drill down by state, district and village, or toggle status — nearby ponds group into clusters that open up as you zoom in. Click any pond for village details.
         </p>
       </div>
       <div class="bg-paper-alt border border-line p-6">
         <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-4">What the statuses mean</div>
         <ul class="space-y-2.5 text-sm text-ink-2 m-0 p-0 list-none">
-          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#d97706"></span><span><strong class="text-ink">Planned</strong> — site identified with the village; work yet to begin.</span></li>
-          <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#2563eb"></span><span><strong class="text-ink">Dug</strong> — pond excavated; awaiting first monsoon recharge.</span></li>
           <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#059669"></span><span><strong class="text-ink">Active</strong> — holding water and recharging the local table.</span></li>
           <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style="background:#64748b"></span><span><strong class="text-ink">Inactive</strong> — currently dry or out of service.</span></li>
         </ul>
