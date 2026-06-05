@@ -28,6 +28,7 @@ const {
 const endpoint = `${apiBase}/api/programs/${programSlug}`;
 const config = {
   endpoint,
+  apiBase,
   statuses,
   unitSingular,
   unitPlural,
@@ -159,6 +160,9 @@ const config = {
     latitude: number;
     longitude: number;
     status: string;
+    donor?: string | null;
+    construction_date?: string | null;
+    completed_pond_image_url?: string | null;
     village?: string;
     cluster?: string;
     district?: string;
@@ -185,6 +189,7 @@ const config = {
 
   const config = JSON.parse(configEl.textContent || '{}') as {
     endpoint: string;
+    apiBase: string;
     statuses: StatusConfig[];
     unitSingular: string;
     unitPlural: string;
@@ -239,6 +244,28 @@ const config = {
     return [...new Set(values.filter((v): v is string => !!v))].sort((a, b) =>
       a.localeCompare(b),
     );
+  }
+
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  // Format a YYYY-MM-DD string without timezone drift (no Date() round-trip).
+  function formatDate(iso?: string | null): string | null {
+    if (!iso) return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+    if (!m) return iso;
+    const month = Number(m[2]) - 1;
+    if (month < 0 || month > 11) return iso;
+    return `${Number(m[3])} ${MONTHS[month]} ${m[1]}`;
+  }
+
+  // Image URLs from the API are relative (e.g. /api/...); resolve against apiBase.
+  function resolveImageUrl(rel?: string | null): string | null {
+    if (!rel) return null;
+    try {
+      return new URL(rel, config.apiBase).href;
+    } catch {
+      return null;
+    }
   }
 
   function loadScript(src: string, integrity?: string): Promise<void> {
@@ -414,18 +441,51 @@ const config = {
       );
     }
 
-    function buildMarker(p: Pond) {
+    function detailRow(label: string, value: string) {
+      return `<div class="flex justify-between gap-3 py-0.5">
+        <dt class="text-ink/60">${escapeHtml(label)}</dt>
+        <dd class="font-medium text-ink text-right">${escapeHtml(value)}</dd>
+      </div>`;
+    }
+
+    function buildPopupHtml(p: Pond): string {
       const color = colorByStatus.get(p.status) || '#64748b';
       const statusLabel = labelByStatus.get(p.status) || p.status;
-      const marker = L.marker([p.latitude, p.longitude], { icon: pondPinIcon(color) });
-      const lines: string[] = [];
-      if (p.village) lines.push(`<strong>${escapeHtml(p.village)}</strong>`);
+      const parts: string[] = [];
+
+      const imgSrc = resolveImageUrl(p.completed_pond_image_url);
+      if (imgSrc) {
+        const alt = p.village ? `Completed pond in ${p.village}` : 'Completed pond';
+        // onerror removes the figure so a broken image link leaves no gap.
+        parts.push(
+          `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(alt)}" loading="lazy"
+            class="block w-full h-32 object-cover rounded-lg mb-2"
+            onerror="this.remove()" />`,
+        );
+      }
+
+      if (p.village) parts.push(`<strong class="text-ink">${escapeHtml(p.village)}</strong>`);
       const placeText = [p.cluster, p.district, p.state].filter(Boolean).map(escapeHtml).join(', ');
-      if (placeText) lines.push(`<div class="text-ink/70">${placeText}</div>`);
-      lines.push(
-        `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
+      if (placeText) parts.push(`<div class="text-ink/70">${placeText}</div>`);
+      parts.push(
+        `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full align-middle" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
       );
-      marker.bindPopup(lines.join(''));
+
+      const rows: string[] = [];
+      if (p.donor) rows.push(detailRow('Donor', p.donor));
+      const built = formatDate(p.construction_date);
+      if (built) rows.push(detailRow('Constructed', built));
+      if (rows.length) {
+        parts.push(`<dl class="mt-2 pt-2 border-t border-slate-200 text-xs">${rows.join('')}</dl>`);
+      }
+
+      return `<div class="min-w-[12rem]">${parts.join('')}</div>`;
+    }
+
+    function buildMarker(p: Pond) {
+      const color = colorByStatus.get(p.status) || '#64748b';
+      const marker = L.marker([p.latitude, p.longitude], { icon: pondPinIcon(color) });
+      marker.bindPopup(() => buildPopupHtml(p), { maxWidth: 260, minWidth: 200 });
       return marker;
     }
 
