@@ -88,8 +88,9 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 3 — Config / token hygiene (invisible refactor)
 
-- [ ] **3.1** Collapse the duplicate `paper`/`surface` color families in
-  `tailwind.config.mjs` (same hexes under two names) to one, alias the other.
+- [x] **3.1** ✅ Removed the redundant `surface` color family (its hexes
+  duplicated `paper`/`ink`). Migrated its single use (`bg-surface-soft` in
+  `ProgramDashboard`) to `bg-paper-alt` (identical color). `✓ NO PIXEL DRIFT`.
 - [ ] **3.2** Extract the shared `accentWord` title-splitting logic out of
   `PageHeader.astro` and `Hero.astro` into `utils/accentWord.ts` (drop the
   `set:html` path while there).

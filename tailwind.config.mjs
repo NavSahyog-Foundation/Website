@@ -35,11 +35,6 @@ export default {
           800: '#69261a',
           900: '#3f1610',
         },
-        surface: {
-          DEFAULT: '#f7f2e8', // cream
-          soft: '#efe7d3',
-          dark: '#1a1815',
-        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
