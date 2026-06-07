@@ -109,10 +109,14 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 5 — Visual decisions (NOT pixel-identical — flag for sign-off)
 
-- [ ] **5.1** Restyle `ProgramDashboard.astro` to match the editorial system
-  (square corners, `border-line`, no shadows, `ink`/`accent` tokens instead of
-  `slate`/`amber`/`brand`). **Changes appearance on the 2 dashboard pages only.**
-  Requires before/after review rather than a zero-drift diff.
+- [x] **5.1** ✅ Restyled `ProgramDashboard.astro` to the editorial system:
+  square corners (dropped `rounded-xl/lg`), hairline `border-line` grid, no
+  shadows, Fraunces `display` KPI numerals, terracotta `accent-soft` error
+  banner (was amber), and `ink`/`accent`/`paper-alt` tokens instead of
+  `slate`/`amber`/`brand` — including the JS-generated filter chips and state
+  bars. Affects the Jal Vriddhi page only. Intentional visual change; before/after
+  reviewed (build clean). *(Live map/KPIs render the error state in-sandbox since
+  the API + Leaflet are blocked; chrome restyle verified.)*
 
 ### 6 — Correctness / a11y / perf (separate from the visual refactor)
 
