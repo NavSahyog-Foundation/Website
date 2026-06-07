@@ -59,8 +59,9 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
   174 arbitrary values replaced — and added a `.label-mono` class, extracted into
   78 `class="…"` sites carrying the `font-mono uppercase text-eyebrow` trio.
   Tracking/color/spacing kept inline since they vary. `✓ NO PIXEL DRIFT`.
-- [ ] **1.3** Tokenize the section rhythm `py-24 md:py-32` into a `.section-y`
-  class (or `spacing` token); swap usages.
+- [x] **1.3** ✅ Added a section vertical-rhythm scale (`.section-y{,-md,-sm,-xs}`)
+  for the recurring responsive `py` pairs and swapped 33 occurrences. One-off
+  pairs left inline. `✓ NO PIXEL DRIFT`.
 - [ ] **1.4** Move the remaining one-off letter-spacings / sizes
   (`tracking-[0.16em]`, `text-[15px]`, `text-[17px]`, `py-[14px]`) onto theme
   tokens.
