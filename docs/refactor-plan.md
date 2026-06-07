@@ -122,8 +122,16 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
   params couldn't be confirmed (docs are access-restricted), but unknown query
   params are ignored, so this is a safe strict improvement. Visually
   `✓ NO PIXEL DRIFT` (only the href changes).
-- [ ] **6.2** Nudge `ink-3` (#807a6e) ~10% darker — it fails WCAG AA (4.5:1) on
-  the 11px captions it is most used on. *(Tiny, intentional visual change.)*
+- [x] **6.2** ✅ Darkened `ink-3` `#807a6e` → `#6d675d` — the lightest value that
+  clears WCAG AA (≥4.5:1) on all light backgrounds (paper 5.02, paper-alt 4.55,
+  white 5.60); the old value failed all three. Intentional ~13% darkening of
+  muted text/captions only; headings/body unchanged. Footprint reviewed via
+  build-based before/after.
+  > Harness note: discovered `pixelmatch`'s default `includeAA:false` masked this
+  > subtle glyph-edge change as anti-aliasing. Hardened the diff to
+  > `threshold:0 + includeAA:true` (strict exact) and re-validated §1–§4 + §6.1
+  > against the pre-refactor original — **0 differing pixels**, confirming all
+  > "zero-drift" refactors are byte-for-byte identical.
 - [ ] **6.3** Self-host fonts via `@fontsource` to drop the render-blocking
   Google Fonts request and remove a third-party runtime dependency. *(Aims for
   identical rendering; verify with the harness.)*

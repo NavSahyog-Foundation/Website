@@ -12,7 +12,7 @@ export default {
         ink: {
           DEFAULT: '#1a1815', // primary text
           2: '#4d4940',       // secondary text
-          3: '#807a6e',       // muted text / captions
+          3: '#6d675d',       // muted text / captions (WCAG AA ≥4.5:1 on paper/paper-alt/white)
         },
         line: '#e3dac3',
         accent: {
