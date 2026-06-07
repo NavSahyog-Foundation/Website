@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cache:program-dashboard": "node scripts/cache-program-dashboard.mjs",
+    "cache:jal-vriddhi": "node scripts/cache-program-dashboard.mjs jal-vriddhi"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

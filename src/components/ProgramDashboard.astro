@@ -13,6 +13,32 @@ export interface Props {
   unitPlural: string;
   initialCenter?: [number, number];
   initialZoom?: number;
+  initialData?: {
+    program: string;
+    stats: {
+      total: number;
+      by_status: Record<string, number>;
+      by_state: { state: string; count: number }[];
+      villages: number;
+      districts: number;
+      states: number;
+    };
+    ponds: Array<{
+      id: number | string;
+      latitude: number;
+      longitude: number;
+      status: string;
+      donor?: string | null;
+      construction_date?: string | null;
+      completed_pond_image_url?: string | null;
+      village?: string;
+      cluster?: string;
+      district?: string;
+      state?: string;
+      zone?: string;
+      created_at?: number;
+    }>;
+  };
 }
 
 const {
@@ -23,6 +49,7 @@ const {
   unitPlural,
   initialCenter = [22.5, 79],
   initialZoom = 4,
+  initialData,
 } = Astro.props;
 
 const endpoint = `${apiBase}/api/programs/${programSlug}`;
@@ -152,6 +179,7 @@ const config = {
 </section>
 
 <script type="application/json" data-program-dashboard-config set:html={JSON.stringify(config)} />
+<script type="application/json" data-program-dashboard-data set:html={JSON.stringify(initialData ?? null)} />
 
 <script>
   type LatLng = [number, number];
@@ -185,7 +213,8 @@ const config = {
 
   const root = document.querySelector<HTMLElement>('[data-program-dashboard]');
   const configEl = document.querySelector<HTMLScriptElement>('[data-program-dashboard-config]');
-  if (!root || !configEl) throw new Error('Dashboard root not found');
+  const dataEl = document.querySelector<HTMLScriptElement>('[data-program-dashboard-data]');
+  if (!root || !configEl || !dataEl) throw new Error('Dashboard root not found');
 
   const config = JSON.parse(configEl.textContent || '{}') as {
     endpoint: string;
@@ -196,6 +225,8 @@ const config = {
     initialCenter: LatLng;
     initialZoom: number;
   };
+
+  const bundledData = JSON.parse(dataEl.textContent || 'null') as ApiResponse | null;
 
   const errorEl = root.querySelector<HTMLElement>('[data-error]')!;
   const filtersEl = root.querySelector<HTMLElement>('[data-filters]')!;
@@ -379,12 +410,8 @@ const config = {
   }
 
   async function init() {
-    let data: ApiResponse;
-    try {
-      const res = await fetch(config.endpoint, { headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      data = (await res.json()) as ApiResponse;
-    } catch (err) {
+    const data: ApiResponse | null = bundledData;
+    if (!data) {
       showError(`Could not load ${config.unitPlural} data. Please try again later.`);
       return;
     }
