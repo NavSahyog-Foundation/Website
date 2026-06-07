@@ -50,9 +50,10 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 1 — Tokenize magic numbers (invisible refactor)
 
-- [ ] **1.1** Add a fluid display type scale to `tailwind.config.mjs`
-  (`fontSize.display-1/2/3`, `fontSize.eyebrow`) replacing inline
-  `text-[clamp(...)]` in `Hero`, `PageHeader`, `StatCard`, `index`, `donate`.
+- [x] **1.1** ✅ Added a fluid display type scale (`fontSize.fluid-*`) to
+  `tailwind.config.mjs` — a faithful 1:1 capture of all 21 distinct inline
+  `clamp()` sizes (59 occurrences across 20 files). Near-duplicates kept
+  distinct; flagged for later consolidation. `✓ NO PIXEL DRIFT`.
 - [ ] **1.2** Promote the mono eyebrow label (`font-mono text-[11px] uppercase
   tracking-[…]`, ~80 occurrences) to a `.label-mono` component class in
   `global.css`; swap usages.

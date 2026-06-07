@@ -31,7 +31,7 @@ const t = renderTitle();
       </div>
     )}
     <h1
-      class={`display text-[clamp(2.75rem,6vw,5.5rem)] leading-[0.98] tracking-display-tight text-ink m-0 ${align === 'center' ? 'mx-auto max-w-4xl' : 'max-w-5xl'}`}
+      class={`display text-fluid-5xl leading-[0.98] tracking-display-tight text-ink m-0 ${align === 'center' ? 'mx-auto max-w-4xl' : 'max-w-5xl'}`}
     >
       {typeof t === 'string' ? title : (<><Fragment set:html={t.before} /><span class="display-italic text-accent">{t.word}</span><Fragment set:html={t.after} /></>)}
     </h1>

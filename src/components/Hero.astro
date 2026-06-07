@@ -36,7 +36,7 @@ if (accentWord) {
           <span>{eyebrow}</span>
         </div>
       )}
-      <h1 class="display text-[clamp(3rem,7vw,6.75rem)] leading-[0.95] tracking-display-tight text-ink m-0">
+      <h1 class="display text-fluid-hero2 leading-[0.95] tracking-display-tight text-ink m-0">
         {split ? (<><Fragment set:html={split.before} /><span class="display-italic text-accent">{split.word}</span><Fragment set:html={split.after} /></>) : title}
       </h1>
       {subtitle && (
