@@ -9,6 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "visual:shot": "node scripts/visual.mjs shot",
+    "visual:diff": "node scripts/visual.mjs diff",
     "cache:program-dashboard": "node scripts/cache-program-dashboard.mjs",
     "cache:jal-vriddhi": "node scripts/cache-program-dashboard.mjs jal-vriddhi"
   },
@@ -17,5 +19,10 @@
     "@astrojs/tailwind": "^5.1.4",
     "astro": "^4.16.18",
     "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "pixelmatch": "^7.2.0",
+    "playwright": "^1.60.0",
+    "pngjs": "^7.0.0"
   }
 }

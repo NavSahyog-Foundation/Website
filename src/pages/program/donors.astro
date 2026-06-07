@@ -37,7 +37,7 @@ const acknowledgements = [
     subtitle="We are deeply grateful to the individuals and organisations who keep the daily programme running."
   />
 
-  <div class="container-content py-12 md:py-16 space-y-20">
+  <div class="container-content section-y-xs space-y-20">
     <!-- Corporate -->
     <section>
       <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
@@ -56,11 +56,11 @@ const acknowledgements = [
       <section>
         <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
           <div class="eyebrow m-0"><span>{y.heading}</span></div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{y.donors.length} donors</div>
+          <div class="label-mono tracking-label-12 text-ink-3">{y.donors.length} donors</div>
         </div>
         <ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-0 m-0 p-0 list-none">
           {y.donors.map((d) => (
-            <li class="text-[15px] text-ink py-2.5 border-b border-line">{d}</li>
+            <li class="text-15 text-ink py-2.5 border-b border-line">{d}</li>
           ))}
         </ul>
       </section>
@@ -80,14 +80,11 @@ const acknowledgements = [
 
     <section class="bg-ink text-paper p-10 md:p-14 grid md:grid-cols-[2fr_1fr] gap-10 items-center">
       <div>
-        <div class="inline-flex items-center gap-2.5 mb-4">
-          <span class="block w-7 h-px bg-accent"></span>
-          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Join this list</span>
-        </div>
-        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
+        <div class="eyebrow"><span>Join this list</span></div>
+        <h2 class="display text-fluid-xs leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
           Every gift becomes a day in a child's life.
         </h2>
-        <p class="text-[15px] text-paper/75 leading-relaxed m-0 max-w-xl">
+        <p class="text-15 text-paper/75 leading-relaxed m-0 max-w-xl">
           Your contribution — large or small, one-off or monthly — directly funds a child's daily engagement in our programme.
         </p>
       </div>

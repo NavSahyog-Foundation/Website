@@ -29,6 +29,12 @@ const cheque = [
 ];
 
 const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
+
+const impactStats = [
+  { eyebrow: 'Reach · today', value: '350', plus: true, desc: 'Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.' },
+  { eyebrow: 'Children · engaged daily', value: '10,000', plus: true, desc: 'Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.' },
+  { eyebrow: 'Mission · 2030', value: '1,00,000', plus: false, desc: 'Children with life skills — our target by 2030. Every gift closes the gap between here and there.' },
+];
 ---
 
 <Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children. 80G-eligible for Indian donors; FCRA-registered for international giving.">
@@ -40,20 +46,16 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
   />
 
   <!-- Call for donation -->
-  <section class="bg-ink text-paper py-24 md:py-32">
+  <section class="bg-ink text-paper section-y">
     <div class="container-content">
       <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20">
-        <div class="inline-flex items-center gap-2.5 mb-5">
-          <span class="block w-7 h-px bg-accent"></span>
-          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Why give</span>
-          <span class="block w-7 h-px bg-accent"></span>
-        </div>
-        <h2 class="display text-[clamp(2.5rem,5.5vw,5rem)] leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
+        <div class="eyebrow eyebrow-center mb-5"><span>Why give</span></div>
+        <h2 class="display text-fluid-4xl2 leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
           A child needs<br />
           <span class="display-italic text-accent">₹6.57 a day</span><br />
           to change their life.
         </h2>
-        <p class="text-[17px] md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
+        <p class="text-17 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
           That is the full cost of one child's year-round programme — sport, storytelling, creativity, and life skills, six days a week, every week. Our 2025–26 impact survey of 18,487 stakeholders found <strong class="text-paper">75% rate the change as High to Very High</strong>. No school fees. No conditions. Just daily presence in the village.
         </p>
         <a href="#choose-your-impact" class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all inline-block">
@@ -63,46 +65,32 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <!-- Three impact stats -->
       <div class="grid sm:grid-cols-3 gap-px bg-paper/10 border border-paper/10">
-        <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Reach · today</div>
-          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
-            350<span class="text-accent">+</span>
+        {impactStats.map((s) => (
+          <div class="bg-ink px-8 py-10">
+            <div class="label-mono tracking-label-16 text-accent mb-4">{s.eyebrow}</div>
+            <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
+              {s.value}{s.plus && <span class="text-accent">+</span>}
+            </div>
+            <p class="text-14 text-paper/65 leading-snug m-0">{s.desc}</p>
           </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
-        </div>
-        <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Children · engaged daily</div>
-          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
-            10,000<span class="text-accent">+</span>
-          </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
-        </div>
-        <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Mission · 2030</div>
-          <div class="display text-[clamp(3rem,5vw,4.5rem)] leading-none tracking-display-tighter text-paper mb-3">
-            1,00,000
-          </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Children with life skills — our target by 2030. Every gift closes the gap between here and there.</p>
-        </div>
+        ))}
       </div>
 
       <!-- Trust strip -->
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-paper/10">
-        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-paper/40">Giving assurance</span>
+        <span class="label-mono tracking-label-16 text-paper/40">Giving assurance</span>
         {['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Audited annually', 'Reported quarterly'].map((b) => (
-          <span class="text-sm text-paper/60 inline-flex items-center gap-2">
-            <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
-          </span>
+          <span class="chip text-paper/60">{b}</span>
         ))}
       </div>
     </div>
   </section>
 
   <!-- Choose your impact -->
-  <section id="choose-your-impact" class="py-16 md:py-20">
+  <section id="choose-your-impact" class="section-y-sm">
     <div class="container-content">
       <div class="eyebrow"><span>Choose your impact</span></div>
-      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-3">
+      <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-3">
         Pick a tier — or <span class="display-italic text-accent">any amount</span>.
       </h2>
       <p class="text-base text-ink-2 m-0 mb-10 max-w-2xl">
@@ -125,15 +113,15 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             class:list={['tier', t.popular && 'is-selected']}
           >
             {t.popular && (
-              <div class="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-[0.1em] font-bold bg-accent text-white px-2 py-1">
+              <div class="absolute top-3 right-3 font-mono text-eyebrow-sm uppercase tracking-label-10 font-bold bg-accent text-white px-2 py-1">
                 Most given
               </div>
             )}
-            <div class="font-mono text-[11px] uppercase tracking-[0.12em] opacity-70 mb-3">{t.label}</div>
+            <div class="label-mono tracking-label-12 opacity-70 mb-3">{t.label}</div>
             <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
               ₹{t.amt.toLocaleString('en-IN')}
             </div>
-            <div class="text-[13px] leading-snug opacity-80">{t.desc}</div>
+            <div class="text-13 leading-snug opacity-80">{t.desc}</div>
           </button>
         ))}
       </div>
@@ -147,7 +135,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             type="text"
             inputmode="numeric"
             placeholder="Other amount"
-            class="flex-1 px-4 py-3.5 border-0 bg-transparent outline-none font-medium text-[15px]"
+            class="flex-1 px-4 py-3.5 border-0 bg-transparent outline-none font-medium text-15"
             aria-label="Custom amount"
           />
         </div>
@@ -172,14 +160,14 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <!-- Pay via -->
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-line">
-        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-ink-3">Pay via</span>
+        <span class="label-mono tracking-label-16 text-ink-3">Pay via</span>
         <a href="https://navsahyog-foundation.danamojo.org/" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Danamojo</a>
         <a href="https://give.do/ngos/navsahyog-foundation" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Give.do</a>
         <span class="text-sm text-ink-2">UPI</span>
         <span class="text-sm text-ink-2">NEFT/RTGS</span>
         <span class="text-sm text-ink-2">Cheque</span>
       </div>
-      <p class="mt-6 text-[13px] text-ink-3 text-center max-w-2xl mx-auto">
+      <p class="mt-6 text-13 text-ink-3 text-center max-w-2xl mx-auto">
         Picking a tier is optional — "Continue to payment" takes you to Danamojo, where you'll confirm your amount and frequency.
       </p>
     </div>
@@ -189,6 +177,30 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
     (() => {
       const tiers = document.querySelectorAll('[data-tier]');
       const customAmt = document.querySelector('[data-custom-amount]');
+      const cta = document.querySelector('[data-cta]');
+      const base = cta ? cta.href.split('?')[0] : '';
+
+      // Reflect the chosen amount + frequency in the payment link so the
+      // selection isn't discarded. Danamojo ignores params it doesn't use, so
+      // this is harmless even if it doesn't pre-fill from the query string.
+      const currentAmount = () => {
+        const custom = (customAmt?.value || '').replace(/[^0-9]/g, '');
+        if (custom) return custom;
+        const sel = document.querySelector('[data-tier].is-selected');
+        return sel ? sel.getAttribute('data-amount') || '' : '';
+      };
+      const currentFreq = () =>
+        document.querySelector('input[name="freq"]:checked')?.value || 'onetime';
+      const updateCta = () => {
+        if (!cta) return;
+        const params = new URLSearchParams();
+        const amount = currentAmount();
+        if (amount) params.set('amount', amount);
+        params.set('frequency', currentFreq());
+        const qs = params.toString();
+        cta.href = qs ? `${base}?${qs}` : base;
+      };
+
       const select = (btn) => {
         tiers.forEach((t) => {
           t.classList.remove('is-selected');
@@ -197,6 +209,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
         btn.classList.add('is-selected');
         btn.setAttribute('aria-pressed', 'true');
         if (customAmt) customAmt.value = '';
+        updateCta();
       };
       tiers.forEach((t) => t.addEventListener('click', () => select(t)));
       customAmt?.addEventListener('input', () => {
@@ -206,29 +219,34 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             t.setAttribute('aria-pressed', 'false');
           });
         }
+        updateCta();
       });
+      document
+        .querySelectorAll('input[name="freq"]')
+        .forEach((r) => r.addEventListener('change', updateCta));
+      updateCta();
     })();
   </script>
 
   <!-- Bank details -->
-  <section class="py-16 md:py-20 border-t border-line">
+  <section class="section-y-sm border-t border-line">
     <div class="container-content grid lg:grid-cols-[1.4fr_1fr] gap-16">
       <div>
         <div class="eyebrow"><span>Direct transfer</span></div>
-        <h3 class="display text-3xl md:text-[32px] tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
+        <h3 class="display text-3xl md:text-32 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
 
         <div class="border-t border-line">
           <!-- Domestic -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">Domestic — INR</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">Domestic — INR</div>
               <div class="display text-lg font-semibold">ICICI Bank</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {domestic.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -237,14 +255,14 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <!-- FCRA -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">International — FCRA</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">International — FCRA</div>
               <div class="display text-lg font-semibold">State Bank of India</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {foreign.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -253,14 +271,14 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <!-- Cheque -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">By cheque</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">By cheque</div>
               <div class="display text-lg font-semibold">Email us first</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {cheque.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>
                     {k === 'Email' ? <a href={`mailto:${v}`} class="hover:text-accent">{v}</a> : v}
                   </dd>
                 </div>
@@ -272,41 +290,41 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <aside class="space-y-4">
         <div class="bg-accent text-white p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] mb-3 text-white/85">Section 80G</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-white/95">
+          <div class="label-mono tracking-label-14 mb-3 text-white/85">Section 80G</div>
+          <p class="text-14 leading-relaxed m-0 mb-3 text-white/95">
             Indian donors receive a tax-deduction receipt under Section 80G of the Income Tax Act, 1961.
           </p>
-          <p class="font-mono text-[11px] tracking-wider text-white/80 m-0">
+          <p class="font-mono text-eyebrow tracking-wider text-white/80 m-0">
             Provisional Approval: AAGCN8813PF20206<br />
             Valid AY 2022-23 to AY 2026-27
           </p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">FCRA Registration</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+          <div class="label-mono tracking-label-14 text-accent mb-3">FCRA Registration</div>
+          <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             Authorized to receive foreign contributions. As per Government of India regulations, please make
             international donations <strong>only to the FCRA bank account</strong> — they cannot be accepted via
             domestic bank, UPI, or Google Pay.
           </p>
-          <p class="font-mono text-[11px] tracking-wider text-ink-3 m-0">FCRA #094421912</p>
+          <p class="font-mono text-eyebrow tracking-wider text-ink-3 m-0">FCRA #094421912</p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">Major gifts &amp; CSR</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+          <div class="label-mono tracking-label-14 text-accent mb-3">Major gifts &amp; CSR</div>
+          <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             For corporate CSR, large donations, or partnership conversations, please write to Paritosh.
           </p>
-          <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-[12px] tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>
+          <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-eyebrow-lg tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>
         </div>
       </aside>
     </div>
   </section>
 
   <!-- Transparency -->
-  <section class="py-24 md:py-32 bg-paper-alt border-t border-line">
+  <section class="section-y bg-paper-alt border-t border-line">
     <div class="container-content grid md:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
       <div>
         <div class="eyebrow"><span>Transparency</span></div>
-        <h2 class="display text-[clamp(2rem,3.5vw,3.25rem)] leading-[1.02] tracking-display-tight m-0 mb-7">
+        <h2 class="display text-fluid-lg leading-[1.02] tracking-display-tight m-0 mb-7">
           Every rupee, accounted for.
         </h2>
         <p class="text-base leading-relaxed text-ink-2 max-w-md">
@@ -327,7 +345,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             </div>
           ))}
         </div>
-        <a href={url('/downloads/')} class="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">
+        <a href={url('/downloads/')} class="link-arrow font-semibold">
           Browse all downloads <span aria-hidden="true">→</span>
         </a>
       </div>

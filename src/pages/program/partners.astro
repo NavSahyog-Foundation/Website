@@ -14,7 +14,7 @@ import { url } from '../../utils/url';
     subtitle="We are grateful to every organisation that has stood alongside us — through programme content, geography, expertise and capital."
   />
 
-  <div class="container-content py-12 md:py-16">
+  <div class="container-content section-y-xs">
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-line border border-line">
       {partnerLogos.map((p) => (
         <div class="bg-paper aspect-[4/3] flex items-center justify-center p-7">
@@ -31,14 +31,11 @@ import { url } from '../../utils/url';
 
     <section class="mt-20 bg-ink text-paper p-10 md:p-14 grid md:grid-cols-[2fr_1fr] gap-10 items-center">
       <div>
-        <div class="inline-flex items-center gap-2.5 mb-4">
-          <span class="block w-7 h-px bg-accent"></span>
-          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Become a partner</span>
-        </div>
-        <h2 class="display text-[clamp(1.75rem,3vw,2.5rem)] leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
+        <div class="eyebrow"><span>Become a partner</span></div>
+        <h2 class="display text-fluid-xs leading-[1.05] tracking-display-tight m-0 mb-3 text-paper">
           For CSR, family foundations, individuals.
         </h2>
-        <p class="text-[15px] text-paper/75 leading-relaxed m-0 max-w-xl">
+        <p class="text-15 text-paper/75 leading-relaxed m-0 max-w-xl">
           Whether you're a CSR team, a family foundation, or an individual donor — we'd love to hear from you.
         </p>
       </div>

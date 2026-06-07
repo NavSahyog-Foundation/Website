@@ -34,7 +34,7 @@ const studies = [
   <section class="bg-paper">
     <div class="container-content pt-20 md:pt-28 pb-10">
       <div class="eyebrow"><span>Impact</span></div>
-      <h1 class="display text-[clamp(3rem,7vw,7rem)] leading-[0.95] tracking-display-tight m-0">
+      <h1 class="display text-fluid-7xl leading-[0.95] tracking-display-tight m-0">
         Measured by <span class="display-italic text-accent">independent</span> studies.<br />
         Felt in the children's voices.
       </h1>
@@ -45,32 +45,32 @@ const studies = [
   <section class="py-14 border-y border-line">
     <div class="container-content grid md:grid-cols-3 gap-10 md:gap-14">
       <div>
-        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">60<span class="text-accent">%</span></div>
+        <div class="display text-fluid-mega leading-[0.95] tracking-[-0.045em] text-ink">60<span class="text-accent">%</span></div>
         <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of children in our programme are girls — by intentional design.</p>
       </div>
       <div>
-        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
+        <div class="display text-fluid-mega leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
         <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of our team members are women.</p>
       </div>
       <div>
-        <div class="display text-[clamp(4rem,9vw,8.75rem)] leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
+        <div class="display text-fluid-mega leading-[0.95] tracking-[-0.045em] text-ink">97<span class="text-accent">%</span></div>
         <p class="mt-4 text-sm text-ink-2 max-w-[18rem] leading-snug">Of those women live in the very villages we serve.</p>
       </div>
     </div>
   </section>
 
   <!-- Annual Impact Survey 2025–26 highlights -->
-  <section class="py-24 md:py-32">
+  <section class="section-y">
     <div class="container-content grid md:grid-cols-[1fr_1.4fr] gap-12 md:gap-20 items-start">
       <div class="md:sticky md:top-28">
         <div class="eyebrow"><span>Annual Impact Survey · 2025–26</span></div>
-        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-5">
+        <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-5">
           The largest stakeholder survey we've ever run.
         </h2>
         <p class="text-base text-ink-2 leading-relaxed max-w-md">
           18,487 responses across children, parents and teachers — covering 26 life-skill and non-life-skill parameters across Karnataka, Tamil Nadu and Nagaland.
         </p>
-        <a href={url('/news/')} class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all">Read the full report <span aria-hidden="true">→</span></a>
+        <a href={url('/news/')} class="mt-6 link-arrow font-semibold">Read the full report <span aria-hidden="true">→</span></a>
       </div>
       <div>
         {[
@@ -82,8 +82,8 @@ const studies = [
           { v: '11% / 21.7%', l: 'Discipline is the top new habit (11%); TV watching is the biggest habit stopped (21.7%), followed by mobile usage (20%) and fighting (13.2%).' },
         ].map((r) => (
           <div class="sm:grid sm:grid-cols-[120px_1fr] md:grid-cols-[140px_1fr] sm:gap-6 md:gap-10 py-6 border-b border-line">
-            <div class="display text-3xl md:text-[40px] leading-none tracking-[-0.04em] text-ink mb-3 sm:mb-0">{r.v}</div>
-            <p class="m-0 text-[15px] leading-relaxed text-ink-2">{r.l}</p>
+            <div class="display text-3xl md:text-40 leading-none tracking-[-0.04em] text-ink mb-3 sm:mb-0">{r.v}</div>
+            <p class="m-0 text-15 leading-relaxed text-ink-2">{r.l}</p>
           </div>
         ))}
       </div>
@@ -91,20 +91,20 @@ const studies = [
   </section>
 
   <!-- Stories of change -->
-  <section class="py-24 md:py-32 border-t border-line">
+  <section class="section-y border-t border-line">
     <div class="container-content">
       <div class="flex flex-wrap items-end justify-between gap-6 mb-14">
         <div>
           <div class="eyebrow"><span>Stories of change</span></div>
-          <h2 class="display text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.02] tracking-display-tight m-0">The children who grew up here.</h2>
+          <h2 class="display text-fluid-xl2 leading-[1.02] tracking-display-tight m-0">The children who grew up here.</h2>
         </div>
-        <a href={url('/impact/testimonials/')} class="text-sm font-semibold text-accent hover:gap-3 transition-all inline-flex items-center gap-2">Watch their testimonials <span aria-hidden="true">→</span></a>
+        <a href={url('/impact/testimonials/')} class="link-arrow font-semibold">Watch their testimonials <span aria-hidden="true">→</span></a>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5">
         {stories.map((s) => (
           <figure class="m-0">
             <Img src={s.image} alt={s.name} class="w-full aspect-[3/4] object-cover bg-paper-alt" />
-            <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{s.name}</figcaption>
+            <figcaption class="label-mono tracking-label-08 text-ink-3 mt-2.5">{s.name}</figcaption>
           </figure>
         ))}
       </div>
@@ -112,10 +112,10 @@ const studies = [
   </section>
 
   <!-- Studies -->
-  <section class="py-24 md:py-32 bg-paper-alt border-y border-line">
+  <section class="section-y bg-paper-alt border-y border-line">
     <div class="container-content">
       <div class="eyebrow"><span>Independent impact studies</span></div>
-      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">Every study we've commissioned. All public.</h2>
+      <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">Every study we've commissioned. All public.</h2>
       <div class="grid md:grid-cols-2 gap-3">
         {studies.map((s) => (
           <a
@@ -125,8 +125,8 @@ const studies = [
             class="bg-paper border border-line p-6 flex items-center justify-between gap-6 hover:border-accent transition-colors group"
           >
             <div>
-              <div class="text-[15px] font-semibold text-ink leading-snug">{s.label}</div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 mt-1.5">{s.date}</div>
+              <div class="text-15 font-semibold text-ink leading-snug">{s.label}</div>
+              <div class="label-mono tracking-label-06 text-ink-3 mt-1.5">{s.date}</div>
             </div>
             <span class="text-accent text-sm font-semibold whitespace-nowrap">{s.external ? 'Drive ↗' : 'PDF ↓'}</span>
           </a>

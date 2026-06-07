@@ -36,11 +36,11 @@ const strengths = [
   />
 
   <!-- Principles -->
-  <section class="py-16 md:py-20 border-t border-line">
+  <section class="section-y-sm border-t border-line">
     <div class="container-content grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
       <div class="md:sticky md:top-28">
         <div class="eyebrow"><span>Five Principles</span></div>
-        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0">
+        <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0">
           The principles we <span class="display-italic text-accent">begin</span> with.
         </h2>
         <p class="mt-6 text-base text-ink-2 leading-relaxed max-w-md">NavSahyog's entire initiative is based on these five principles.</p>
@@ -48,8 +48,8 @@ const strengths = [
       <div>
         {principles.map((p, i) => (
           <div class:list={['grid grid-cols-[60px_1fr] gap-6 py-7', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
-            <div class="font-mono text-[13px] text-ink-3 pt-1">{p.n}</div>
-            <p class="m-0 text-[18px] leading-[1.55] text-ink">{p.text}</p>
+            <div class="font-mono text-13 text-ink-3 pt-1">{p.n}</div>
+            <p class="m-0 text-18 leading-[1.55] text-ink">{p.text}</p>
           </div>
         ))}
         <div class="border-t border-line"></div>
@@ -58,11 +58,11 @@ const strengths = [
   </section>
 
   <!-- Values -->
-  <section class="py-16 md:py-20 bg-paper-alt border-y border-line">
+  <section class="section-y-sm bg-paper-alt border-y border-line">
     <div class="container-content grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
       <div class="md:sticky md:top-28">
         <div class="eyebrow"><span>Five Values</span></div>
-        <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0">
+        <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0">
           The values we <span class="display-italic text-accent">work</span> by.
         </h2>
         <p class="mt-6 text-base text-ink-2 leading-relaxed max-w-md">We as a team are deeply rooted in our values. They embody our culture and the way we do everything.</p>
@@ -70,10 +70,10 @@ const strengths = [
       <div>
         {values.map((v, i) => (
           <div class:list={['grid grid-cols-[60px_1fr] gap-6 py-7', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
-            <div class="font-mono text-[13px] text-ink-3 pt-1">{v.n}</div>
+            <div class="font-mono text-13 text-ink-3 pt-1">{v.n}</div>
             <div>
-              <h3 class="display text-2xl md:text-[28px] font-medium tracking-display-tight m-0 mb-2">{v.title}</h3>
-              <p class="m-0 text-[15px] leading-relaxed text-ink-2">{v.text}</p>
+              <h3 class="display text-2xl md:text-28 font-medium tracking-display-tight m-0 mb-2">{v.title}</h3>
+              <p class="m-0 text-15 leading-relaxed text-ink-2">{v.text}</p>
             </div>
           </div>
         ))}
@@ -83,16 +83,16 @@ const strengths = [
   </section>
 
   <!-- Strengths -->
-  <section class="py-16 md:py-20">
+  <section class="section-y-sm">
     <div class="container-content">
       <div class="eyebrow"><span>Five Strengths</span></div>
-      <h2 class="display text-[clamp(2rem,3.5vw,3rem)] leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">
+      <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-12 max-w-2xl">
         What sets the work <span class="display-italic text-accent">apart</span>.
       </h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
         {strengths.map((s) => (
           <div class="bg-ink text-paper p-7 min-h-[180px] flex flex-col justify-between">
-            <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent">{s.n}</div>
+            <div class="label-mono tracking-label-16 text-accent">{s.n}</div>
             <div class="display text-xl md:text-2xl font-medium tracking-display-tight leading-tight">{s.title}</div>
           </div>
         ))}

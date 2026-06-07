@@ -27,6 +27,20 @@
     @apply mx-auto max-w-content px-5 sm:px-8 lg:px-10;
   }
 
+  /* Section vertical rhythm — the recurring responsive py pairs. */
+  .section-y {
+    @apply py-24 md:py-32;
+  }
+  .section-y-md {
+    @apply py-20 md:py-28;
+  }
+  .section-y-sm {
+    @apply py-16 md:py-20;
+  }
+  .section-y-xs {
+    @apply py-12 md:py-16;
+  }
+
   /* Editorial display headings */
   .display {
     @apply font-display tracking-display-tight;
@@ -38,7 +52,12 @@
     letter-spacing: -0.01em;
   }
   .mono-eyebrow {
-    @apply font-mono uppercase text-[11px] tracking-[0.18em];
+    @apply font-mono uppercase text-eyebrow tracking-label-18;
+  }
+  /* Mono eyebrow / caption label — the font-mono + uppercase + 11px stem.
+     Tracking, color and spacing stay inline since they vary per use. */
+  .label-mono {
+    @apply font-mono uppercase text-eyebrow;
   }
 
   /* Eyebrow with terracotta rule */
@@ -50,7 +69,22 @@
     @apply block w-7 h-px bg-accent;
   }
   .eyebrow > span {
-    @apply font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium;
+    @apply font-mono uppercase text-eyebrow tracking-label-18 text-accent font-medium;
+  }
+  /* Centered variant — adds a matching rule after the label (rule on both sides). */
+  .eyebrow-center::after {
+    content: '';
+    @apply block w-7 h-px bg-accent;
+  }
+
+  /* Trust chip — a terracotta dot (::before) followed by a label. Text colour
+     and weight stay inline since they vary by background. */
+  .chip {
+    @apply inline-flex items-center gap-2 text-sm;
+  }
+  .chip::before {
+    content: '';
+    @apply block w-1.5 h-1.5 rounded-full bg-accent;
   }
 
   /* Prose for legacy long-form content */
@@ -70,6 +104,12 @@
   }
   .prose-content a {
     @apply text-accent underline underline-offset-2 hover:text-accent-deep;
+  }
+
+  /* Inline "… →" link whose arrow gap widens on hover. Font-weight and any
+     leading margin stay inline since they vary per use. */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all;
   }
 
   /* Buttons */

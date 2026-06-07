@@ -90,89 +90,89 @@ const config = {
   <div
     role="status"
     aria-live="polite"
-    class="hidden rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 mb-6"
+    class="hidden border border-accent bg-accent-soft px-4 py-3 text-sm text-accent-deep mb-6"
     data-error
   ></div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-kpi>
-    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-total>—</p>
-      <p class="mt-1 text-sm font-semibold text-ink" data-kpi-total-label>{unitPlural}</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-line border border-line" data-kpi>
+    <div class="bg-white p-6">
+      <p class="display text-4xl md:text-5xl text-ink leading-none" data-kpi-total>—</p>
+      <p class="mt-2 text-sm text-ink-2" data-kpi-total-label>{unitPlural}</p>
     </div>
-    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-villages>—</p>
-      <p class="mt-1 text-sm font-semibold text-ink">Villages</p>
+    <div class="bg-white p-6">
+      <p class="display text-4xl md:text-5xl text-ink leading-none" data-kpi-villages>—</p>
+      <p class="mt-2 text-sm text-ink-2">Villages</p>
     </div>
-    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-districts>—</p>
-      <p class="mt-1 text-sm font-semibold text-ink">Districts</p>
+    <div class="bg-white p-6">
+      <p class="display text-4xl md:text-5xl text-ink leading-none" data-kpi-districts>—</p>
+      <p class="mt-2 text-sm text-ink-2">Districts</p>
     </div>
-    <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <p class="text-3xl md:text-4xl font-bold text-brand" data-kpi-states>—</p>
-      <p class="mt-1 text-sm font-semibold text-ink">States</p>
+    <div class="bg-white p-6">
+      <p class="display text-4xl md:text-5xl text-ink leading-none" data-kpi-states>—</p>
+      <p class="mt-2 text-sm text-ink-2">States</p>
     </div>
   </div>
 
   <div class="mt-8 grid lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2">
-      <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div class="border border-line bg-white p-4">
         <div class="flex flex-col gap-3 mb-3">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-place-filters>
-            <label class="flex flex-col gap-1 text-xs font-semibold text-ink/70">
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
               State
               <select
                 data-filter-state
-                class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               >
                 <option value="">All states</option>
               </select>
             </label>
-            <label class="flex flex-col gap-1 text-xs font-semibold text-ink/70">
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
               District
               <select
                 data-filter-district
-                class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               >
                 <option value="">All districts</option>
               </select>
             </label>
-            <label class="flex flex-col gap-1 text-xs font-semibold text-ink/70">
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
               Village
               <select
                 data-filter-village
-                class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
               >
                 <option value="">All villages</option>
               </select>
             </label>
           </div>
           <div class="flex flex-wrap items-center gap-2" data-filters aria-label="Filter by status">
-            <span class="text-sm font-semibold text-ink/70 mr-1">Status:</span>
+            <span class="text-sm text-ink-2 mr-1">Status:</span>
           </div>
         </div>
         <div
-          class="w-full h-[420px] md:h-[520px] rounded-lg overflow-hidden bg-surface-soft"
+          class="w-full h-[420px] md:h-[520px] overflow-hidden bg-paper-alt"
           data-map
           aria-label={`Map of ${unitPlural}`}
         ></div>
         <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
-          <p class="text-xs text-ink/70" data-result-count aria-live="polite"></p>
+          <p class="text-xs text-ink-2" data-result-count aria-live="polite"></p>
           <button
             type="button"
             data-reset
-            class="hidden text-xs font-semibold text-brand underline underline-offset-2 hover:text-brand-700"
+            class="hidden text-xs font-semibold text-accent underline underline-offset-2 hover:text-accent-deep"
           >Reset filters</button>
         </div>
-        <p class="mt-2 text-xs text-ink/60">
+        <p class="mt-2 text-xs text-ink-3">
           Tiles &copy; <a href="https://www.openstreetmap.org/copyright" class="underline">OpenStreetMap</a> contributors.
         </p>
       </div>
     </div>
 
-    <aside class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-      <h3 class="text-lg font-bold text-ink mb-3">By state</h3>
+    <aside class="border border-line bg-white p-6">
+      <h3 class="display text-xl tracking-display-tight text-ink mb-3">By state</h3>
       <ul class="space-y-3" data-state-breakdown>
-        <li class="text-sm text-ink/60">Loading…</li>
+        <li class="text-sm text-ink-3">Loading…</li>
       </ul>
     </aside>
   </div>
@@ -334,8 +334,8 @@ const config = {
       btn.dataset.status = cfg.key;
       btn.setAttribute('aria-pressed', 'true');
       btn.className =
-        'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition border-slate-300 bg-white text-ink hover:border-brand';
-      btn.innerHTML = `<span class="inline-block h-2.5 w-2.5 rounded-full" style="background:${cfg.color}"></span>${escapeHtml(cfg.label)} <span class="text-ink/60">(${fmt(count)})</span>`;
+        'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium transition border-line bg-white text-ink hover:border-accent';
+      btn.innerHTML = `<span class="inline-block h-2.5 w-2.5 rounded-full" style="background:${cfg.color}"></span>${escapeHtml(cfg.label)} <span class="text-ink-3">(${fmt(count)})</span>`;
       filtersEl.appendChild(btn);
     }
   }
@@ -364,7 +364,7 @@ const config = {
     stateListEl.innerHTML = '';
     if (!byState.length) {
       const li = document.createElement('li');
-      li.className = 'text-sm text-ink/60';
+      li.className = 'text-sm text-ink-3';
       li.textContent = 'No data yet.';
       stateListEl.appendChild(li);
       return;
@@ -377,10 +377,10 @@ const config = {
       li.innerHTML = `
         <div class="flex items-baseline justify-between gap-3">
           <span class="text-sm font-semibold text-ink">${escapeHtml(row.state)}</span>
-          <span class="text-sm text-ink/70">${fmt(row.count)} <span class="text-ink/50">· ${share}%</span></span>
+          <span class="text-sm text-ink-2">${fmt(row.count)} <span class="text-ink-3">· ${share}%</span></span>
         </div>
-        <div class="mt-1 h-2 w-full rounded-full bg-slate-100 overflow-hidden">
-          <div class="h-full bg-brand" style="width:${pct}%"></div>
+        <div class="mt-1 h-2 w-full bg-paper-alt overflow-hidden">
+          <div class="h-full bg-accent" style="width:${pct}%"></div>
         </div>`;
       stateListEl.appendChild(li);
     }
@@ -470,7 +470,7 @@ const config = {
 
     function detailRow(label: string, value: string) {
       return `<div class="flex justify-between gap-3 py-0.5">
-        <dt class="text-ink/60">${escapeHtml(label)}</dt>
+        <dt class="text-ink-3">${escapeHtml(label)}</dt>
         <dd class="font-medium text-ink text-right">${escapeHtml(value)}</dd>
       </div>`;
     }
@@ -486,14 +486,14 @@ const config = {
         // onerror removes the figure so a broken image link leaves no gap.
         parts.push(
           `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(alt)}" loading="lazy"
-            class="block w-full h-32 object-cover rounded-lg mb-2"
+            class="block w-full h-32 object-cover mb-2"
             onerror="this.remove()" />`,
         );
       }
 
       if (p.village) parts.push(`<strong class="text-ink">${escapeHtml(p.village)}</strong>`);
       const placeText = [p.cluster, p.district, p.state].filter(Boolean).map(escapeHtml).join(', ');
-      if (placeText) parts.push(`<div class="text-ink/70">${placeText}</div>`);
+      if (placeText) parts.push(`<div class="text-ink-2">${placeText}</div>`);
       parts.push(
         `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full align-middle" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
       );
@@ -503,7 +503,7 @@ const config = {
       const built = formatDate(p.construction_date);
       if (built) rows.push(detailRow('Constructed', built));
       if (rows.length) {
-        parts.push(`<dl class="mt-2 pt-2 border-t border-slate-200 text-xs">${rows.join('')}</dl>`);
+        parts.push(`<dl class="mt-2 pt-2 border-t border-line text-xs">${rows.join('')}</dl>`);
       }
 
       return `<div class="min-w-[12rem]">${parts.join('')}</div>`;
