@@ -71,6 +71,11 @@
   .eyebrow > span {
     @apply font-mono uppercase text-eyebrow tracking-label-18 text-accent font-medium;
   }
+  /* Centered variant — adds a matching rule after the label (rule on both sides). */
+  .eyebrow-center::after {
+    content: '';
+    @apply block w-7 h-px bg-accent;
+  }
 
   /* Prose for legacy long-form content */
   .prose-content h2 {

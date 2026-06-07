@@ -69,8 +69,9 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 2 — Extract repeated component patterns (invisible refactor)
 
-- [ ] **2.1** `.eyebrow` variants: add centered + on-dark modifiers; replace the
-  hand-inlined copies in `index.astro:261`, `donate.astro:46,90`.
+- [x] **2.1** ✅ Added an `.eyebrow-center` modifier (rule on both sides) and
+  replaced the 4 hand-inlined eyebrow copies (`index`, `donate`, `partners`,
+  `donors`) with `.eyebrow` / `.eyebrow-center`. `✓ NO PIXEL DRIFT`.
 - [ ] **2.2** `.link-arrow` class for the "… →" hover-gap links (7 occurrences:
   `index` ×3, `impact` ×2, `donate`, `projects`).
 - [ ] **2.3** `.chip` class for the bullet-dot trust chips
