@@ -62,9 +62,10 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 - [x] **1.3** ✅ Added a section vertical-rhythm scale (`.section-y{,-md,-sm,-xs}`)
   for the recurring responsive `py` pairs and swapped 33 occurrences. One-off
   pairs left inline. `✓ NO PIXEL DRIFT`.
-- [ ] **1.4** Move the remaining one-off letter-spacings / sizes
-  (`tracking-[0.16em]`, `text-[15px]`, `text-[17px]`, `py-[14px]`) onto theme
-  tokens.
+- [x] **1.4** ✅ Tokenized the fixed-px text scale (`text-13`…`text-40`, bare px
+  strings) — 97 replacements — and mapped `py-[14px]`→`py-3.5`, `py-[10px]`→`py-2.5`
+  onto the existing spacing scale. 3 one-off `text-[13.5px]` left inline. Arbitrary
+  leading-[…] values noted as a future candidate. `✓ NO PIXEL DRIFT`.
 
 ### 2 — Extract repeated component patterns (invisible refactor)
 

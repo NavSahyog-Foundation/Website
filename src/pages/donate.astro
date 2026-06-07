@@ -53,7 +53,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <span class="display-italic text-accent">₹6.57 a day</span><br />
           to change their life.
         </h2>
-        <p class="text-[17px] md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
+        <p class="text-17 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
           That is the full cost of one child's year-round programme — sport, storytelling, creativity, and life skills, six days a week, every week. Our 2025–26 impact survey of 18,487 stakeholders found <strong class="text-paper">75% rate the change as High to Very High</strong>. No school fees. No conditions. Just daily presence in the village.
         </p>
         <a href="#choose-your-impact" class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all inline-block">
@@ -68,21 +68,21 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             350<span class="text-accent">+</span>
           </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
+          <p class="text-14 text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
         </div>
         <div class="bg-ink px-8 py-10">
           <div class="label-mono tracking-label-16 text-accent mb-4">Children · engaged daily</div>
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             10,000<span class="text-accent">+</span>
           </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
+          <p class="text-14 text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
         </div>
         <div class="bg-ink px-8 py-10">
           <div class="label-mono tracking-label-16 text-accent mb-4">Mission · 2030</div>
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             1,00,000
           </div>
-          <p class="text-[14px] text-paper/65 leading-snug m-0">Children with life skills — our target by 2030. Every gift closes the gap between here and there.</p>
+          <p class="text-14 text-paper/65 leading-snug m-0">Children with life skills — our target by 2030. Every gift closes the gap between here and there.</p>
         </div>
       </div>
 
@@ -133,7 +133,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
               ₹{t.amt.toLocaleString('en-IN')}
             </div>
-            <div class="text-[13px] leading-snug opacity-80">{t.desc}</div>
+            <div class="text-13 leading-snug opacity-80">{t.desc}</div>
           </button>
         ))}
       </div>
@@ -147,7 +147,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             type="text"
             inputmode="numeric"
             placeholder="Other amount"
-            class="flex-1 px-4 py-3.5 border-0 bg-transparent outline-none font-medium text-[15px]"
+            class="flex-1 px-4 py-3.5 border-0 bg-transparent outline-none font-medium text-15"
             aria-label="Custom amount"
           />
         </div>
@@ -179,7 +179,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
         <span class="text-sm text-ink-2">NEFT/RTGS</span>
         <span class="text-sm text-ink-2">Cheque</span>
       </div>
-      <p class="mt-6 text-[13px] text-ink-3 text-center max-w-2xl mx-auto">
+      <p class="mt-6 text-13 text-ink-3 text-center max-w-2xl mx-auto">
         Picking a tier is optional — "Continue to payment" takes you to Danamojo, where you'll confirm your amount and frequency.
       </p>
     </div>
@@ -215,7 +215,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
     <div class="container-content grid lg:grid-cols-[1.4fr_1fr] gap-16">
       <div>
         <div class="eyebrow"><span>Direct transfer</span></div>
-        <h3 class="display text-3xl md:text-[32px] tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
+        <h3 class="display text-3xl md:text-32 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
 
         <div class="border-t border-line">
           <!-- Domestic -->
@@ -224,11 +224,11 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
               <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">Domestic — INR</div>
               <div class="display text-lg font-semibold">ICICI Bank</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {domestic.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -240,11 +240,11 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
               <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">International — FCRA</div>
               <div class="display text-lg font-semibold">State Bank of India</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {foreign.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -256,11 +256,11 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
               <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">By cheque</div>
               <div class="display text-lg font-semibold">Email us first</div>
             </div>
-            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
+            <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {cheque.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-[13px]' : ''}`}>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>
                     {k === 'Email' ? <a href={`mailto:${v}`} class="hover:text-accent">{v}</a> : v}
                   </dd>
                 </div>
@@ -273,7 +273,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
       <aside class="space-y-4">
         <div class="bg-accent text-white p-7">
           <div class="label-mono tracking-label-14 mb-3 text-white/85">Section 80G</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-white/95">
+          <p class="text-14 leading-relaxed m-0 mb-3 text-white/95">
             Indian donors receive a tax-deduction receipt under Section 80G of the Income Tax Act, 1961.
           </p>
           <p class="font-mono text-eyebrow tracking-wider text-white/80 m-0">
@@ -283,7 +283,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
         </div>
         <div class="bg-white border border-line p-7">
           <div class="label-mono tracking-label-14 text-accent mb-3">FCRA Registration</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+          <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             Authorized to receive foreign contributions. As per Government of India regulations, please make
             international donations <strong>only to the FCRA bank account</strong> — they cannot be accepted via
             domestic bank, UPI, or Google Pay.
@@ -292,7 +292,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
         </div>
         <div class="bg-white border border-line p-7">
           <div class="label-mono tracking-label-14 text-accent mb-3">Major gifts &amp; CSR</div>
-          <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
+          <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             For corporate CSR, large donations, or partnership conversations, please write to Paritosh.
           </p>
           <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-eyebrow-lg tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>

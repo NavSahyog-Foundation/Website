@@ -82,6 +82,19 @@ export default {
         'eyebrow': '11px',
         'eyebrow-sm': '10px',
         'eyebrow-lg': '12px',
+        // Fixed-px body / UI scale (were text-[Npx]). Bare strings set font-size
+        // only — line-height stays on the existing leading-* classes.
+        '13': '13px',
+        '14': '14px',
+        '15': '15px',
+        '17': '17px',
+        '18': '18px',
+        '19': '19px',
+        '21': '21px',
+        '26': '26px',
+        '28': '28px',
+        '32': '32px',
+        '40': '40px',
       },
       letterSpacing: {
         'display-tight': '-0.02em',

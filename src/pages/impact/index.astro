@@ -82,8 +82,8 @@ const studies = [
           { v: '11% / 21.7%', l: 'Discipline is the top new habit (11%); TV watching is the biggest habit stopped (21.7%), followed by mobile usage (20%) and fighting (13.2%).' },
         ].map((r) => (
           <div class="sm:grid sm:grid-cols-[120px_1fr] md:grid-cols-[140px_1fr] sm:gap-6 md:gap-10 py-6 border-b border-line">
-            <div class="display text-3xl md:text-[40px] leading-none tracking-[-0.04em] text-ink mb-3 sm:mb-0">{r.v}</div>
-            <p class="m-0 text-[15px] leading-relaxed text-ink-2">{r.l}</p>
+            <div class="display text-3xl md:text-40 leading-none tracking-[-0.04em] text-ink mb-3 sm:mb-0">{r.v}</div>
+            <p class="m-0 text-15 leading-relaxed text-ink-2">{r.l}</p>
           </div>
         ))}
       </div>
@@ -125,7 +125,7 @@ const studies = [
             class="bg-paper border border-line p-6 flex items-center justify-between gap-6 hover:border-accent transition-colors group"
           >
             <div>
-              <div class="text-[15px] font-semibold text-ink leading-snug">{s.label}</div>
+              <div class="text-15 font-semibold text-ink leading-snug">{s.label}</div>
               <div class="label-mono tracking-label-06 text-ink-3 mt-1.5">{s.date}</div>
             </div>
             <span class="text-accent text-sm font-semibold whitespace-nowrap">{s.external ? 'Drive ↗' : 'PDF ↓'}</span>

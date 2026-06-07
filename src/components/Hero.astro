@@ -40,7 +40,7 @@ if (accentWord) {
         {split ? (<><Fragment set:html={split.before} /><span class="display-italic text-accent">{split.word}</span><Fragment set:html={split.after} /></>) : title}
       </h1>
       {subtitle && (
-        <p class="mt-8 text-lg md:text-[21px] leading-[1.45] text-ink-2 max-w-xl">{subtitle}</p>
+        <p class="mt-8 text-lg md:text-21 leading-[1.45] text-ink-2 max-w-xl">{subtitle}</p>
       )}
       {(ctaPrimary || ctaSecondary) && (
         <div class="mt-9 flex flex-wrap gap-3">
@@ -48,7 +48,7 @@ if (accentWord) {
             <a href={ctaPrimary.href} class="btn-primary px-8 py-4 text-base">{ctaPrimary.label}</a>
           )}
           {ctaSecondary && (
-            <a href={ctaSecondary.href} class="btn-outline px-7 py-[14px] text-base">{ctaSecondary.label}</a>
+            <a href={ctaSecondary.href} class="btn-outline px-7 py-3.5 text-base">{ctaSecondary.label}</a>
           )}
         </div>
       )}
