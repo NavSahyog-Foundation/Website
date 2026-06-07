@@ -36,7 +36,7 @@ const facilitatorGroups = [
       <section>
         <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
           <div class="eyebrow m-0"><span>{group.heading}</span></div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{group.members.length} {group.members.length === 1 ? 'member' : 'members'}</div>
+          <div class="label-mono tracking-label-12 text-ink-3">{group.members.length} {group.members.length === 1 ? 'member' : 'members'}</div>
         </div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
           {group.members.map((m) => (
@@ -57,7 +57,7 @@ const facilitatorGroups = [
     <section>
       <div class="flex items-end justify-between gap-6 mb-3 pb-4 border-b border-ink">
         <div class="eyebrow m-0"><span>Area Facilitators</span></div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">150+ across three states</div>
+        <div class="label-mono tracking-label-12 text-ink-3">150+ across three states</div>
       </div>
       <p class="text-base text-ink-2 max-w-3xl mb-12 leading-relaxed">
         Our on-ground leaders — women, almost all from the villages they serve — who run the daily programme Monday through Saturday, every week of the year.
@@ -70,8 +70,8 @@ const facilitatorGroups = [
               {g.list.map((f) => (
                 <div class="text-center">
                   <Img src={f.photo} alt={f.name} class="w-full aspect-square object-cover rounded-full bg-paper-alt" />
-                  <p class="mt-2.5 text-[12px] font-medium text-ink leading-tight">{f.name}</p>
-                  {f.village && <p class="text-[10px] text-ink-3 mt-0.5">{f.village}</p>}
+                  <p class="mt-2.5 text-eyebrow-lg font-medium text-ink leading-tight">{f.name}</p>
+                  {f.village && <p class="text-eyebrow-sm text-ink-3 mt-0.5">{f.village}</p>}
                 </div>
               ))}
             </div>

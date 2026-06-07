@@ -38,7 +38,12 @@
     letter-spacing: -0.01em;
   }
   .mono-eyebrow {
-    @apply font-mono uppercase text-[11px] tracking-[0.18em];
+    @apply font-mono uppercase text-eyebrow tracking-label-18;
+  }
+  /* Mono eyebrow / caption label — the font-mono + uppercase + 11px stem.
+     Tracking, color and spacing stay inline since they vary per use. */
+  .label-mono {
+    @apply font-mono uppercase text-eyebrow;
   }
 
   /* Eyebrow with terracotta rule */
@@ -50,7 +55,7 @@
     @apply block w-7 h-px bg-accent;
   }
   .eyebrow > span {
-    @apply font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium;
+    @apply font-mono uppercase text-eyebrow tracking-label-18 text-accent font-medium;
   }
 
   /* Prose for legacy long-form content */

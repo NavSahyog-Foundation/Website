@@ -78,10 +78,23 @@ export default {
         'fluid-sm': 'clamp(2rem, 3.5vw, 2.75rem)',      // jal-vriddhi
         'fluid-xs': 'clamp(1.75rem, 3vw, 2.5rem)',      // small section h2 (×5)
         'fluid-stat': 'clamp(2rem, 8.5vw, 5.5rem)',     // StatCard value
+        // Mono eyebrow / caption label sizes (were text-[10px|11px|12px]).
+        'eyebrow': '11px',
+        'eyebrow-sm': '10px',
+        'eyebrow-lg': '12px',
       },
       letterSpacing: {
         'display-tight': '-0.02em',
         'display-tighter': '-0.035em',
+        // Mono eyebrow / label tracking scale (were tracking-[0.0Nem]). Several
+        // near-duplicate steps kept distinct to guarantee zero visual drift.
+        'label-06': '0.06em',
+        'label-08': '0.08em',
+        'label-10': '0.1em',
+        'label-12': '0.12em',
+        'label-14': '0.14em',
+        'label-16': '0.16em',
+        'label-18': '0.18em',
         'mono-wide': '0.16em',
       },
     },

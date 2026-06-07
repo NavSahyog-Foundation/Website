@@ -24,7 +24,7 @@ import { url } from '../utils/url';
       <section>
         <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
           <div class="eyebrow m-0"><span>{section.heading}</span></div>
-          <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{section.items.length} {section.items.length === 1 ? 'item' : 'items'}</div>
+          <div class="label-mono tracking-label-12 text-ink-3">{section.items.length} {section.items.length === 1 ? 'item' : 'items'}</div>
         </div>
         <ul class="grid md:grid-cols-2 gap-3 m-0 p-0 list-none">
           {section.items.map((item) => (
@@ -42,7 +42,7 @@ import { url } from '../utils/url';
                   </svg>
                   <span class="text-[14px] font-medium text-ink truncate">{item.title}</span>
                 </div>
-                <span class="font-mono text-[11px] uppercase tracking-[0.1em] text-accent shrink-0 group-hover:text-accent-deep">{item.external ? 'Drive ↗' : 'PDF ↓'}</span>
+                <span class="label-mono tracking-label-10 text-accent shrink-0 group-hover:text-accent-deep">{item.external ? 'Drive ↗' : 'PDF ↓'}</span>
               </a>
             </li>
           ))}

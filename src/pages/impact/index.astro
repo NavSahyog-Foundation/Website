@@ -104,7 +104,7 @@ const studies = [
         {stories.map((s) => (
           <figure class="m-0">
             <Img src={s.image} alt={s.name} class="w-full aspect-[3/4] object-cover bg-paper-alt" />
-            <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-2.5">{s.name}</figcaption>
+            <figcaption class="label-mono tracking-label-08 text-ink-3 mt-2.5">{s.name}</figcaption>
           </figure>
         ))}
       </div>
@@ -126,7 +126,7 @@ const studies = [
           >
             <div>
               <div class="text-[15px] font-semibold text-ink leading-snug">{s.label}</div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 mt-1.5">{s.date}</div>
+              <div class="label-mono tracking-label-06 text-ink-3 mt-1.5">{s.date}</div>
             </div>
             <span class="text-accent text-sm font-semibold whitespace-nowrap">{s.external ? 'Drive ↗' : 'PDF ↓'}</span>
           </a>

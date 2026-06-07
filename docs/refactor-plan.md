@@ -54,9 +54,11 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
   `tailwind.config.mjs` — a faithful 1:1 capture of all 21 distinct inline
   `clamp()` sizes (59 occurrences across 20 files). Near-duplicates kept
   distinct; flagged for later consolidation. `✓ NO PIXEL DRIFT`.
-- [ ] **1.2** Promote the mono eyebrow label (`font-mono text-[11px] uppercase
-  tracking-[…]`, ~80 occurrences) to a `.label-mono` component class in
-  `global.css`; swap usages.
+- [x] **1.2** ✅ Tokenized the mono-label primitives — eyebrow sizes
+  (`text-eyebrow{,-sm,-lg}`) and the 7 letter-spacings (`tracking-label-NN`),
+  174 arbitrary values replaced — and added a `.label-mono` class, extracted into
+  78 `class="…"` sites carrying the `font-mono uppercase text-eyebrow` trio.
+  Tracking/color/spacing kept inline since they vary. `✓ NO PIXEL DRIFT`.
 - [ ] **1.3** Tokenize the section rhythm `py-24 md:py-32` into a `.section-y`
   class (or `spacing` token); swap usages.
 - [ ] **1.4** Move the remaining one-off letter-spacings / sizes

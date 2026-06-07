@@ -65,19 +65,19 @@ const structure = [
       </div>
       <article>
         <div class="py-7 border-t border-ink">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">01 · Traditional Indian sport</div>
+          <div class="label-mono tracking-label-16 text-accent mb-3">01 · Traditional Indian sport</div>
           <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Yoga, Kho-Kho, Kabaddi, long jump, high jump and running races — sport that builds confidence, teaming and resilience.</p>
         </div>
         <div class="py-7 border-t border-line">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">02 · Board games</div>
+          <div class="label-mono tracking-label-16 text-accent mb-3">02 · Board games</div>
           <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Strategy and mental skills — Aadu Puli (Goat and Tiger), Thaayam, Tic-Tac-Toe and more.</p>
         </div>
         <div class="py-7 border-t border-line">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">03 · Project Nature &amp; Nutrition</div>
+          <div class="label-mono tracking-label-16 text-accent mb-3">03 · Project Nature &amp; Nutrition</div>
           <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Experiential learning rooted in the earth — each child plants, grows and tends a sapling provided to them.</p>
         </div>
         <div class="py-7 border-t border-line">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-3">04 · Value of Water</div>
+          <div class="label-mono tracking-label-16 text-accent mb-3">04 · Value of Water</div>
           <p class="m-0 text-[17px] leading-[1.6] text-ink-2">Children co-create farm ponds and bunds with farmers — addressing water-table depletion while learning the value of water.</p>
         </div>
         <div class="border-t border-line"></div>
@@ -97,7 +97,7 @@ const structure = [
         <div class="space-y-0">
           {structure.map(([k, v], i) => (
             <div class:list={['sm:grid sm:grid-cols-[160px_1fr] md:grid-cols-[180px_1fr] sm:gap-6 py-5', i === 0 ? 'border-t border-ink' : 'border-t border-line']}>
-              <div class="font-mono text-[12px] uppercase tracking-[0.12em] text-accent mb-2 sm:mb-0">{k}</div>
+              <div class="font-mono text-eyebrow-lg uppercase tracking-label-12 text-accent mb-2 sm:mb-0">{k}</div>
               <p class="m-0 text-[15px] leading-relaxed text-ink-2">{v}</p>
             </div>
           ))}
@@ -117,13 +117,13 @@ const structure = [
           <div class="aspect-video bg-ink overflow-hidden">
             <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/2-gfCfoTeIY" title="Daily activities we conduct in every village" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           </div>
-          <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-3">Daily activities we conduct in every village</figcaption>
+          <figcaption class="label-mono tracking-label-08 text-ink-3 mt-3">Daily activities we conduct in every village</figcaption>
         </figure>
         <figure class="m-0">
           <div class="aspect-video bg-ink overflow-hidden">
             <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/LJgXp9YJxsY" title="Project Nature and Nutrition" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
-          <figcaption class="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3 mt-3">Experiential learning · Project Nature &amp; Nutrition</figcaption>
+          <figcaption class="label-mono tracking-label-08 text-ink-3 mt-3">Experiential learning · Project Nature &amp; Nutrition</figcaption>
         </figure>
       </div>
     </div>
@@ -134,13 +134,13 @@ const structure = [
     <div class="container-content">
       <div class="flex items-end justify-between gap-6 mb-8 pb-4 border-b border-ink">
         <div class="eyebrow m-0"><span>Photo gallery</span></div>
-        <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{gallery.length} images</div>
+        <div class="label-mono tracking-label-12 text-ink-3">{gallery.length} images</div>
       </div>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
         {gallery.map((g) => (
           <figure class="m-0">
             <Img src={g.src} alt={g.caption} class="w-full aspect-[4/3] object-cover bg-paper-alt" />
-            <figcaption class="font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3 mt-2">{g.caption}</figcaption>
+            <figcaption class="font-mono text-eyebrow-sm uppercase tracking-label-06 text-ink-3 mt-2">{g.caption}</figcaption>
           </figure>
         ))}
       </div>

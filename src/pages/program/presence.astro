@@ -30,7 +30,7 @@ import { url } from '../../utils/url';
           class="w-full h-auto bg-paper-alt"
           loading="eager"
         />
-        <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">
+        <p class="label-mono mt-4 tracking-label-08 text-ink-3">
           Click cluster names below to see the villages.
         </p>
       </div>
@@ -42,7 +42,7 @@ import { url } from '../../utils/url';
               <div>
                 <div class="eyebrow m-0"><span>{region}</span></div>
               </div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">{clusters.length} {clusters.length === 1 ? 'cluster' : 'clusters'}</div>
+              <div class="label-mono tracking-label-12 text-ink-3">{clusters.length} {clusters.length === 1 ? 'cluster' : 'clusters'}</div>
             </div>
             <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-0 m-0 p-0 list-none">
               {clusters.map((c) => (

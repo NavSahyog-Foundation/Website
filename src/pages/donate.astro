@@ -45,7 +45,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
       <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20">
         <div class="inline-flex items-center gap-2.5 mb-5">
           <span class="block w-7 h-px bg-accent"></span>
-          <span class="font-mono uppercase text-[11px] tracking-[0.18em] text-accent font-medium">Why give</span>
+          <span class="label-mono tracking-label-18 text-accent font-medium">Why give</span>
           <span class="block w-7 h-px bg-accent"></span>
         </div>
         <h2 class="display text-fluid-4xl2 leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
@@ -64,21 +64,21 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
       <!-- Three impact stats -->
       <div class="grid sm:grid-cols-3 gap-px bg-paper/10 border border-paper/10">
         <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Reach · today</div>
+          <div class="label-mono tracking-label-16 text-accent mb-4">Reach · today</div>
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             350<span class="text-accent">+</span>
           </div>
           <p class="text-[14px] text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
         </div>
         <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Children · engaged daily</div>
+          <div class="label-mono tracking-label-16 text-accent mb-4">Children · engaged daily</div>
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             10,000<span class="text-accent">+</span>
           </div>
           <p class="text-[14px] text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
         </div>
         <div class="bg-ink px-8 py-10">
-          <div class="font-mono text-[11px] uppercase tracking-[0.16em] text-accent mb-4">Mission · 2030</div>
+          <div class="label-mono tracking-label-16 text-accent mb-4">Mission · 2030</div>
           <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
             1,00,000
           </div>
@@ -88,7 +88,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <!-- Trust strip -->
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-paper/10">
-        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-paper/40">Giving assurance</span>
+        <span class="label-mono tracking-label-16 text-paper/40">Giving assurance</span>
         {['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Audited annually', 'Reported quarterly'].map((b) => (
           <span class="text-sm text-paper/60 inline-flex items-center gap-2">
             <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
@@ -125,11 +125,11 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
             class:list={['tier', t.popular && 'is-selected']}
           >
             {t.popular && (
-              <div class="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-[0.1em] font-bold bg-accent text-white px-2 py-1">
+              <div class="absolute top-3 right-3 font-mono text-eyebrow-sm uppercase tracking-label-10 font-bold bg-accent text-white px-2 py-1">
                 Most given
               </div>
             )}
-            <div class="font-mono text-[11px] uppercase tracking-[0.12em] opacity-70 mb-3">{t.label}</div>
+            <div class="label-mono tracking-label-12 opacity-70 mb-3">{t.label}</div>
             <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
               ₹{t.amt.toLocaleString('en-IN')}
             </div>
@@ -172,7 +172,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <!-- Pay via -->
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-line">
-        <span class="font-mono uppercase text-[11px] tracking-[0.16em] text-ink-3">Pay via</span>
+        <span class="label-mono tracking-label-16 text-ink-3">Pay via</span>
         <a href="https://navsahyog-foundation.danamojo.org/" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Danamojo</a>
         <a href="https://give.do/ngos/navsahyog-foundation" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-accent">Give.do</a>
         <span class="text-sm text-ink-2">UPI</span>
@@ -221,7 +221,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <!-- Domestic -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">Domestic — INR</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">Domestic — INR</div>
               <div class="display text-lg font-semibold">ICICI Bank</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
@@ -237,7 +237,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <!-- FCRA -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">International — FCRA</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">International — FCRA</div>
               <div class="display text-lg font-semibold">State Bank of India</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
@@ -253,7 +253,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
           <!-- Cheque -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3 mb-1.5">By cheque</div>
+              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">By cheque</div>
               <div class="display text-lg font-semibold">Email us first</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-[14px]">
@@ -272,30 +272,30 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <aside class="space-y-4">
         <div class="bg-accent text-white p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] mb-3 text-white/85">Section 80G</div>
+          <div class="label-mono tracking-label-14 mb-3 text-white/85">Section 80G</div>
           <p class="text-[14px] leading-relaxed m-0 mb-3 text-white/95">
             Indian donors receive a tax-deduction receipt under Section 80G of the Income Tax Act, 1961.
           </p>
-          <p class="font-mono text-[11px] tracking-wider text-white/80 m-0">
+          <p class="font-mono text-eyebrow tracking-wider text-white/80 m-0">
             Provisional Approval: AAGCN8813PF20206<br />
             Valid AY 2022-23 to AY 2026-27
           </p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">FCRA Registration</div>
+          <div class="label-mono tracking-label-14 text-accent mb-3">FCRA Registration</div>
           <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
             Authorized to receive foreign contributions. As per Government of India regulations, please make
             international donations <strong>only to the FCRA bank account</strong> — they cannot be accepted via
             domestic bank, UPI, or Google Pay.
           </p>
-          <p class="font-mono text-[11px] tracking-wider text-ink-3 m-0">FCRA #094421912</p>
+          <p class="font-mono text-eyebrow tracking-wider text-ink-3 m-0">FCRA #094421912</p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="font-mono text-[11px] uppercase tracking-[0.14em] text-accent mb-3">Major gifts &amp; CSR</div>
+          <div class="label-mono tracking-label-14 text-accent mb-3">Major gifts &amp; CSR</div>
           <p class="text-[14px] leading-relaxed m-0 mb-3 text-ink-2">
             For corporate CSR, large donations, or partnership conversations, please write to Paritosh.
           </p>
-          <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-[12px] tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>
+          <a href="mailto:paritosh.segal@gmail.com" class="font-mono text-eyebrow-lg tracking-wide text-accent hover:text-accent-deep">paritosh.segal@gmail.com</a>
         </div>
       </aside>
     </div>
