@@ -1,4 +1,6 @@
 ---
+import { splitAccentWord } from '../utils/accentWord';
+
 export interface Props {
   eyebrow?: string;
   title: string;
@@ -9,18 +11,7 @@ export interface Props {
 }
 const { eyebrow, title, subtitle, align = 'left', accentWord } = Astro.props;
 
-const renderTitle = () => {
-  if (!accentWord) return title;
-  // Wrap the first occurrence of `accentWord` in <em class="display-italic text-accent">…</em>
-  const idx = title.toLowerCase().indexOf(accentWord.toLowerCase());
-  if (idx === -1) return title;
-  return {
-    before: title.slice(0, idx),
-    word: title.slice(idx, idx + accentWord.length),
-    after: title.slice(idx + accentWord.length),
-  };
-};
-const t = renderTitle();
+const t = splitAccentWord(title, accentWord);
 ---
 
 <section class={`bg-paper ${align === 'center' ? 'text-center' : ''}`}>
@@ -33,7 +24,7 @@ const t = renderTitle();
     <h1
       class={`display text-fluid-5xl leading-[0.98] tracking-display-tight text-ink m-0 ${align === 'center' ? 'mx-auto max-w-4xl' : 'max-w-5xl'}`}
     >
-      {typeof t === 'string' ? title : (<><Fragment set:html={t.before} /><span class="display-italic text-accent">{t.word}</span><Fragment set:html={t.after} /></>)}
+      {t ? (<>{t.before}<span class="display-italic text-accent">{t.word}</span>{t.after}</>) : title}
     </h1>
     {subtitle && (
       <p class={`mt-7 text-lg md:text-xl leading-relaxed text-ink-2 ${align === 'center' ? 'mx-auto max-w-3xl' : 'max-w-3xl'}`}>

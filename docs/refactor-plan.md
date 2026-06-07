@@ -91,9 +91,10 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 - [x] **3.1** ✅ Removed the redundant `surface` color family (its hexes
   duplicated `paper`/`ink`). Migrated its single use (`bg-surface-soft` in
   `ProgramDashboard`) to `bg-paper-alt` (identical color). `✓ NO PIXEL DRIFT`.
-- [ ] **3.2** Extract the shared `accentWord` title-splitting logic out of
-  `PageHeader.astro` and `Hero.astro` into `utils/accentWord.ts` (drop the
-  `set:html` path while there).
+- [x] **3.2** ✅ Extracted the duplicated accent-word splitter into
+  `utils/accentWord.ts` (`splitAccentWord`), used by both `PageHeader` and
+  `Hero`, and dropped the `set:html` path in favour of plain text expressions
+  (titles are plain text). Build clean. `✓ NO PIXEL DRIFT`.
 - [ ] **3.3** Converge `index.astro`'s hand-rolled hero onto the `Hero`
   component (or document why it stays bespoke).
 

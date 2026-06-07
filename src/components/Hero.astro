@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { splitAccentWord } from '../utils/accentWord';
 
 export interface Props {
   eyebrow?: string;
@@ -15,17 +16,7 @@ export interface Props {
 
 const { eyebrow, title, subtitle, image, imageAlt = '', ctaPrimary, ctaSecondary, accentWord } = Astro.props;
 
-let split: { before: string; word: string; after: string } | null = null;
-if (accentWord) {
-  const idx = title.toLowerCase().indexOf(accentWord.toLowerCase());
-  if (idx !== -1) {
-    split = {
-      before: title.slice(0, idx),
-      word: title.slice(idx, idx + accentWord.length),
-      after: title.slice(idx + accentWord.length),
-    };
-  }
-}
+const split = splitAccentWord(title, accentWord);
 ---
 
 <section class="bg-paper">
@@ -37,7 +28,7 @@ if (accentWord) {
         </div>
       )}
       <h1 class="display text-fluid-hero2 leading-[0.95] tracking-display-tight text-ink m-0">
-        {split ? (<><Fragment set:html={split.before} /><span class="display-italic text-accent">{split.word}</span><Fragment set:html={split.after} /></>) : title}
+        {split ? (<>{split.before}<span class="display-italic text-accent">{split.word}</span>{split.after}</>) : title}
       </h1>
       {subtitle && (
         <p class="mt-8 text-lg md:text-21 leading-[1.45] text-ink-2 max-w-xl">{subtitle}</p>
