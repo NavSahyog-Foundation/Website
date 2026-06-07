@@ -155,7 +155,13 @@ async function diff(dirA, dirB, outDir) {
     }
     const { width, height } = a;
     const out = new PNG({ width, height });
-    const n = pixelmatch(a.data, b.data, out.data, width, height, { threshold: 0.1 });
+    // Strict, exact comparison: include anti-aliased pixels and use threshold 0
+    // so ANY rendered-pixel difference is counted (a subtle text-colour shift on
+    // glyph edges must not be masked as "anti-aliasing").
+    const n = pixelmatch(a.data, b.data, out.data, width, height, {
+      threshold: 0,
+      includeAA: true,
+    });
     if (n > 0) {
       await writeFile(path.join(outDir, f), PNG.sync.write(out));
       rows.push(`DIFF ${String(n).padStart(8)}px  ${f}`);
