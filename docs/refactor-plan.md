@@ -35,7 +35,15 @@ node scripts/visual.mjs diff docs/visual/before docs/visual/after docs/visual/di
 A passing item prints `✓ NO PIXEL DRIFT`. If drift is detected, the per-route
 diff images land in `docs/visual/diff/` (magenta = changed pixels) for
 inspection. The `docs/visual/` captures are git-ignored — they are scratch
-artifacts, not committed.
+artifacts, not committed. The diff is **strict** (pixelmatch `threshold:0`,
+`includeAA:true`) so any rendered-pixel difference is caught.
+
+> **Caveat — config-only changes:** the Astro dev server serves cached CSS and
+> does **not** recompile when only `tailwind.config.mjs` changes (no `.astro`
+> file touched). For those, verify against a fresh **production build**
+> (`astro build` → `astro preview`) instead of `astro dev`, or clear
+> `node_modules/.vite node_modules/.astro .astro` before capturing. Changes that
+> also edit markup recompile normally.
 
 > Note: `unpkg.com` (Leaflet) is blocked by the network policy, so the two map
 > dashboard pages render without the map in this environment. Their non-map
