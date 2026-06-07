@@ -177,6 +177,30 @@ const impactStats = [
     (() => {
       const tiers = document.querySelectorAll('[data-tier]');
       const customAmt = document.querySelector('[data-custom-amount]');
+      const cta = document.querySelector('[data-cta]');
+      const base = cta ? cta.href.split('?')[0] : '';
+
+      // Reflect the chosen amount + frequency in the payment link so the
+      // selection isn't discarded. Danamojo ignores params it doesn't use, so
+      // this is harmless even if it doesn't pre-fill from the query string.
+      const currentAmount = () => {
+        const custom = (customAmt?.value || '').replace(/[^0-9]/g, '');
+        if (custom) return custom;
+        const sel = document.querySelector('[data-tier].is-selected');
+        return sel ? sel.getAttribute('data-amount') || '' : '';
+      };
+      const currentFreq = () =>
+        document.querySelector('input[name="freq"]:checked')?.value || 'onetime';
+      const updateCta = () => {
+        if (!cta) return;
+        const params = new URLSearchParams();
+        const amount = currentAmount();
+        if (amount) params.set('amount', amount);
+        params.set('frequency', currentFreq());
+        const qs = params.toString();
+        cta.href = qs ? `${base}?${qs}` : base;
+      };
+
       const select = (btn) => {
         tiers.forEach((t) => {
           t.classList.remove('is-selected');
@@ -185,6 +209,7 @@ const impactStats = [
         btn.classList.add('is-selected');
         btn.setAttribute('aria-pressed', 'true');
         if (customAmt) customAmt.value = '';
+        updateCta();
       };
       tiers.forEach((t) => t.addEventListener('click', () => select(t)));
       customAmt?.addEventListener('input', () => {
@@ -194,7 +219,12 @@ const impactStats = [
             t.setAttribute('aria-pressed', 'false');
           });
         }
+        updateCta();
       });
+      document
+        .querySelectorAll('input[name="freq"]')
+        .forEach((r) => r.addEventListener('change', updateCta));
+      updateCta();
     })();
   </script>
 

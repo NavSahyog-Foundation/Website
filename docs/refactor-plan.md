@@ -116,9 +116,12 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 6 — Correctness / a11y / perf (separate from the visual refactor)
 
-- [ ] **6.1** Donate tier picker is decorative — the CTA link never reflects the
-  selected amount/frequency (`donate.astro:162`). Wire selection into the
-  outgoing URL, or relabel as illustrative. *(Behavior fix, not visual.)*
+- [x] **6.1** ✅ The donate CTA now reflects the selection — the script writes
+  `?amount=<n>&frequency=<onetime|monthly>` onto the payment link from the active
+  tier / custom amount / frequency radio (functionally probed). Danamojo's prefill
+  params couldn't be confirmed (docs are access-restricted), but unknown query
+  params are ignored, so this is a safe strict improvement. Visually
+  `✓ NO PIXEL DRIFT` (only the href changes).
 - [ ] **6.2** Nudge `ink-3` (#807a6e) ~10% darker — it fails WCAG AA (4.5:1) on
   the 11px captions it is most used on. *(Tiny, intentional visual change.)*
 - [ ] **6.3** Self-host fonts via `@fontsource` to drop the render-blocking
