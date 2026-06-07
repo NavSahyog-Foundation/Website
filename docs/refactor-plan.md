@@ -95,8 +95,10 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
   `utils/accentWord.ts` (`splitAccentWord`), used by both `PageHeader` and
   `Hero`, and dropped the `set:html` path in favour of plain text expressions
   (titles are plain text). Build clean. `✓ NO PIXEL DRIFT`.
-- [ ] **3.3** Converge `index.astro`'s hand-rolled hero onto the `Hero`
-  component (or document why it stays bespoke).
+- [x] **3.3** ✅ Documented (code comment) why the homepage hero stays bespoke:
+  rich-markup title (`<br>`) and lede (`<strong>`), a larger fluid size, and
+  tighter padding than interior-page heroes — none expressible through `Hero`'s
+  plain-string props without making it a leaky abstraction. `✓ NO PIXEL DRIFT`.
 
 ### 4 — Centralize duplicated data (invisible refactor)
 
