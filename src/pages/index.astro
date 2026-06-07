@@ -315,9 +315,7 @@ const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual
     <div class="container-content flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
       <div class="label-mono tracking-label-18 text-ink-3">Audited &amp; Registered</div>
       {trust.map((b) => (
-        <div class="text-sm font-medium text-ink-2 inline-flex items-center gap-2">
-          <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
-        </div>
+        <div class="chip font-medium text-ink-2">{b}</div>
       ))}
     </div>
   </section>

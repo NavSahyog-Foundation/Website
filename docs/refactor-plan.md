@@ -75,8 +75,9 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 - [x] **2.2** ✅ Added a `.link-arrow` class and swapped all 7 "… →" hover-gap
   links (`index` ×3, `impact` ×2, `donate`, `projects`). Font-weight/margin kept
   inline. `✓ NO PIXEL DRIFT`.
-- [ ] **2.3** `.chip` class for the bullet-dot trust chips
-  (`index`, `donate`, `support`).
+- [x] **2.3** ✅ Added a `.chip` class (terracotta dot via `::before`) and
+  replaced the 3 bullet-dot trust chips in `index`, `donate`, `support` — the
+  inner dot `<span>` is now generated. `✓ NO PIXEL DRIFT`.
 - [ ] **2.4** Route the dark stat blocks in `index.astro:277-291` and
   `donate.astro:66-86` through the existing `StatCard` component.
 

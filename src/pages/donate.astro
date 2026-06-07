@@ -86,9 +86,7 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
       <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 items-center justify-center pt-8 border-t border-paper/10">
         <span class="label-mono tracking-label-16 text-paper/40">Giving assurance</span>
         {['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Audited annually', 'Reported quarterly'].map((b) => (
-          <span class="text-sm text-paper/60 inline-flex items-center gap-2">
-            <span class="block w-1.5 h-1.5 rounded-full bg-accent"></span>{b}
-          </span>
+          <span class="chip text-paper/60">{b}</span>
         ))}
       </div>
     </div>
