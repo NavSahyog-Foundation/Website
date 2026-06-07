@@ -96,6 +96,12 @@
     @apply text-accent underline underline-offset-2 hover:text-accent-deep;
   }
 
+  /* Inline "… →" link whose arrow gap widens on hover. Font-weight and any
+     leading margin stay inline since they vary per use. */
+  .link-arrow {
+    @apply inline-flex items-center gap-2 text-sm text-accent hover:gap-3 transition-all;
+  }
+
   /* Buttons */
   .btn {
     @apply inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all;
