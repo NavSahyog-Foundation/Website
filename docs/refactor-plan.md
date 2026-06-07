@@ -102,10 +102,10 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 
 ### 4 — Centralize duplicated data (invisible refactor)
 
-- [ ] **4.1** Move the Jal Vriddhi status colors (`#d97706`, `#2563eb`,
-  `#059669`, `#64748b`) into one shared `statuses.ts`, consumed by both the
-  `jal-vriddhi.astro` legend and `ProgramDashboard` config — they are currently
-  duplicated and can drift.
+- [x] **4.1** ✅ Created `src/data/statuses.ts` (`jalVriddhiStatuses`, with
+  colour + legend description) as the single source. The `jal-vriddhi.astro`
+  legend now maps over it instead of hardcoding hexes, and the same array still
+  feeds the `ProgramDashboard` config. `✓ NO PIXEL DRIFT`.
 
 ### 5 — Visual decisions (NOT pixel-identical — flag for sign-off)
 
