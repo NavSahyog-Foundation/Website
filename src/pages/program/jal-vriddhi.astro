@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import ProgramDashboard from '../../components/ProgramDashboard.astro';
 import { jalVriddhiStatuses as statuses } from '../../data/statuses';
+import jalVriddhiDashboard from '../../data/program-dashboards/jal-vriddhi.json';
 ---
 
 <Layout
@@ -44,10 +45,10 @@ import { jalVriddhiStatuses as statuses } from '../../data/statuses';
   <section class="py-16">
     <div class="container-content grid lg:grid-cols-[2fr_1fr] gap-12 items-start">
       <div>
-        <div class="eyebrow"><span>Live dashboard</span></div>
+        <div class="eyebrow"><span>Programme dashboard</span></div>
         <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-6">Each pond on the map is a real site.</h2>
         <p class="text-base text-ink-2 leading-relaxed max-w-2xl m-0">
-          Each pond is a real site in a partner village, classified by where it is in its lifecycle. Use the status chips to focus the map; click any pond for village details.
+          Each pond is a real site in a partner village. Drill down by state, district and village, or toggle status — nearby ponds group into clusters that open up as you zoom in. Click any pond for its photo, donor and construction details.
         </p>
       </div>
       <div class="bg-paper-alt border border-line p-6">
@@ -66,12 +67,13 @@ import { jalVriddhiStatuses as statuses } from '../../data/statuses';
     statuses={statuses}
     unitSingular="Pond"
     unitPlural="Ponds"
+    initialData={jalVriddhiDashboard}
   />
 
   <section class="bg-paper-alt border-y border-line py-16">
     <div class="container-content text-center max-w-2xl mx-auto">
       <p class="text-17 text-ink-2 leading-relaxed m-0">
-        Data on this page is updated regularly from the field. If you'd like to partner with us on Jal Vriddhi — as a village, donor, or volunteer — please get in touch.
+        Data on this page is refreshed regularly from our programme systems and field records. If you'd like to partner with us on Jal Vriddhi — as a village, donor, or volunteer — please get in touch.
       </p>
     </div>
   </section>

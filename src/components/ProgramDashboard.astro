@@ -13,6 +13,32 @@ export interface Props {
   unitPlural: string;
   initialCenter?: [number, number];
   initialZoom?: number;
+  initialData?: {
+    program: string;
+    stats: {
+      total: number;
+      by_status: Record<string, number>;
+      by_state: { state: string; count: number }[];
+      villages: number;
+      districts: number;
+      states: number;
+    };
+    ponds: Array<{
+      id: number | string;
+      latitude: number;
+      longitude: number;
+      status: string;
+      donor?: string | null;
+      construction_date?: string | null;
+      completed_pond_image_url?: string | null;
+      village?: string;
+      cluster?: string;
+      district?: string;
+      state?: string;
+      zone?: string;
+      created_at?: number;
+    }>;
+  };
 }
 
 const {
@@ -23,11 +49,13 @@ const {
   unitPlural,
   initialCenter = [22.5, 79],
   initialZoom = 4,
+  initialData,
 } = Astro.props;
 
 const endpoint = `${apiBase}/api/programs/${programSlug}`;
 const config = {
   endpoint,
+  apiBase,
   statuses,
   unitSingular,
   unitPlural,
@@ -40,6 +68,21 @@ const config = {
   rel="stylesheet"
   href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+<!--
+  Leaflet.markercluster has no pinned SRI hash here: the build container has no
+  outbound access to the CDN to compute one. It is pinned to an exact version
+  (1.5.3) on the same origin as Leaflet to keep the dependency stable.
+-->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  crossorigin=""
+/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
   crossorigin=""
 />
 
@@ -73,15 +116,54 @@ const config = {
   <div class="mt-8 grid lg:grid-cols-3 gap-6">
     <div class="lg:col-span-2">
       <div class="border border-line bg-white p-4">
-        <div class="flex flex-wrap items-center gap-2 mb-3" data-filters aria-label="Filter by status">
-          <span class="text-sm text-ink-2 mr-1">Status:</span>
+        <div class="flex flex-col gap-3 mb-3">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-place-filters>
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
+              State
+              <select
+                data-filter-state
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              >
+                <option value="">All states</option>
+              </select>
+            </label>
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
+              District
+              <select
+                data-filter-district
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              >
+                <option value="">All districts</option>
+              </select>
+            </label>
+            <label class="flex flex-col gap-1 text-xs font-semibold text-ink-2">
+              Village
+              <select
+                data-filter-village
+                class="border border-line bg-white px-3 py-2 text-sm font-medium text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
+              >
+                <option value="">All villages</option>
+              </select>
+            </label>
+          </div>
+          <div class="flex flex-wrap items-center gap-2" data-filters aria-label="Filter by status">
+            <span class="text-sm text-ink-2 mr-1">Status:</span>
+          </div>
         </div>
         <div
           class="w-full h-[420px] md:h-[520px] overflow-hidden bg-paper-alt"
           data-map
           aria-label={`Map of ${unitPlural}`}
         ></div>
-        <p class="mt-3 text-xs text-ink-3">
+        <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
+          <p class="text-xs text-ink-2" data-result-count aria-live="polite"></p>
+          <button
+            type="button"
+            data-reset
+            class="hidden text-xs font-semibold text-accent underline underline-offset-2 hover:text-accent-deep"
+          >Reset filters</button>
+        </div>
+        <p class="mt-2 text-xs text-ink-3">
           Tiles &copy; <a href="https://www.openstreetmap.org/copyright" class="underline">OpenStreetMap</a> contributors.
         </p>
       </div>
@@ -97,6 +179,7 @@ const config = {
 </section>
 
 <script type="application/json" data-program-dashboard-config set:html={JSON.stringify(config)} />
+<script type="application/json" data-program-dashboard-data set:html={JSON.stringify(initialData ?? null)} />
 
 <script>
   type LatLng = [number, number];
@@ -105,6 +188,9 @@ const config = {
     latitude: number;
     longitude: number;
     status: string;
+    donor?: string | null;
+    construction_date?: string | null;
+    completed_pond_image_url?: string | null;
     village?: string;
     cluster?: string;
     district?: string;
@@ -127,10 +213,12 @@ const config = {
 
   const root = document.querySelector<HTMLElement>('[data-program-dashboard]');
   const configEl = document.querySelector<HTMLScriptElement>('[data-program-dashboard-config]');
-  if (!root || !configEl) throw new Error('Dashboard root not found');
+  const dataEl = document.querySelector<HTMLScriptElement>('[data-program-dashboard-data]');
+  if (!root || !configEl || !dataEl) throw new Error('Dashboard root not found');
 
   const config = JSON.parse(configEl.textContent || '{}') as {
     endpoint: string;
+    apiBase: string;
     statuses: StatusConfig[];
     unitSingular: string;
     unitPlural: string;
@@ -138,8 +226,15 @@ const config = {
     initialZoom: number;
   };
 
+  const bundledData = JSON.parse(dataEl.textContent || 'null') as ApiResponse | null;
+
   const errorEl = root.querySelector<HTMLElement>('[data-error]')!;
   const filtersEl = root.querySelector<HTMLElement>('[data-filters]')!;
+  const stateSel = root.querySelector<HTMLSelectElement>('[data-filter-state]')!;
+  const districtSel = root.querySelector<HTMLSelectElement>('[data-filter-district]')!;
+  const villageSel = root.querySelector<HTMLSelectElement>('[data-filter-village]')!;
+  const resetBtn = root.querySelector<HTMLButtonElement>('[data-reset]')!;
+  const resultCountEl = root.querySelector<HTMLElement>('[data-result-count]')!;
   const mapEl = root.querySelector<HTMLElement>('[data-map]')!;
   const stateListEl = root.querySelector<HTMLElement>('[data-state-breakdown]')!;
   const totalEl = root.querySelector<HTMLElement>('[data-kpi-total]')!;
@@ -150,7 +245,13 @@ const config = {
 
   const colorByStatus = new Map(config.statuses.map((s) => [s.key, s.color]));
   const labelByStatus = new Map(config.statuses.map((s) => [s.key, s.label]));
+  // Only statuses listed in config are ever shown — this is what hides
+  // Planned/Dug ponds, since Jal Vriddhi only configures Active/Inactive.
+  const knownStatuses = new Set(config.statuses.map((s) => s.key));
   const visible = new Set(config.statuses.map((s) => s.key));
+
+  // Place filter state. Empty string means "all".
+  const place = { state: '', district: '', village: '' };
 
   function showError(msg: string) {
     errorEl.textContent = msg;
@@ -170,20 +271,62 @@ const config = {
       .replace(/'/g, '&#39;');
   }
 
-  function loadLeaflet(): Promise<void> {
-    if (typeof L !== 'undefined') return Promise.resolve();
+  function uniqueSorted(values: (string | undefined)[]): string[] {
+    return [...new Set(values.filter((v): v is string => !!v))].sort((a, b) =>
+      a.localeCompare(b),
+    );
+  }
+
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  // Format a YYYY-MM-DD string without timezone drift (no Date() round-trip).
+  function formatDate(iso?: string | null): string | null {
+    if (!iso) return null;
+    const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(iso);
+    if (!m) return iso;
+    const month = Number(m[2]) - 1;
+    if (month < 0 || month > 11) return iso;
+    return `${Number(m[3])} ${MONTHS[month]} ${m[1]}`;
+  }
+
+  // Image URLs from the API are relative (e.g. /api/...); resolve against apiBase.
+  function resolveImageUrl(rel?: string | null): string | null {
+    if (!rel) return null;
+    try {
+      return new URL(rel, config.apiBase).href;
+    } catch {
+      return null;
+    }
+  }
+
+  function loadScript(src: string, integrity?: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const s = document.createElement('script');
-      s.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      s.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+      s.src = src;
+      if (integrity) s.integrity = integrity;
       s.crossOrigin = '';
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error('Failed to load map library'));
+      s.onerror = () => reject(new Error(`Failed to load ${src}`));
       document.head.appendChild(s);
     });
   }
 
-  function renderFilters(byStatus: Record<string, number>) {
+  async function loadMapLibraries(): Promise<void> {
+    if (typeof L === 'undefined') {
+      await loadScript(
+        'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
+        'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=',
+      );
+    }
+    // markercluster augments the global L and must load after Leaflet.
+    if (!(L as any).markerClusterGroup) {
+      await loadScript(
+        'https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js',
+      );
+    }
+  }
+
+  function renderStatusFilters(byStatus: Record<string, number>) {
     for (const cfg of config.statuses) {
       const count = byStatus[cfg.key] ?? 0;
       const btn = document.createElement('button');
@@ -195,6 +338,26 @@ const config = {
       btn.innerHTML = `<span class="inline-block h-2.5 w-2.5 rounded-full" style="background:${cfg.color}"></span>${escapeHtml(cfg.label)} <span class="text-ink-3">(${fmt(count)})</span>`;
       filtersEl.appendChild(btn);
     }
+  }
+
+  function fillSelect(
+    sel: HTMLSelectElement,
+    values: string[],
+    selected: string,
+    allLabel: string,
+  ) {
+    sel.innerHTML = '';
+    const all = document.createElement('option');
+    all.value = '';
+    all.textContent = allLabel;
+    sel.appendChild(all);
+    for (const v of values) {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    }
+    sel.value = selected;
   }
 
   function renderStateBreakdown(byState: { state: string; count: number }[], total: number) {
@@ -223,31 +386,57 @@ const config = {
     }
   }
 
+  function pondPinIcon(color: string) {
+    return L.divIcon({
+      className: '',
+      html: `<span style="display:block;width:14px;height:14px;border-radius:9999px;background:${color};border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.18);"></span>`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -9],
+    });
+  }
+
+  function clusterIcon(cluster: any) {
+    const count = cluster.getChildCount();
+    let size = 38;
+    if (count >= 100) size = 56;
+    else if (count >= 25) size = 46;
+    const fontSize = count >= 100 ? 15 : 13;
+    return L.divIcon({
+      className: '',
+      html: `<div style="width:${size}px;height:${size}px;display:flex;align-items:center;justify-content:center;border-radius:9999px;background:rgba(196,74,46,.92);box-shadow:0 0 0 5px rgba(196,74,46,.28);color:#fff;font-weight:700;font-size:${fontSize}px;">${fmt(count)}</div>`,
+      iconSize: [size, size],
+    });
+  }
+
   async function init() {
-    let data: ApiResponse;
-    try {
-      const res = await fetch(config.endpoint, { headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      data = (await res.json()) as ApiResponse;
-    } catch (err) {
+    const data: ApiResponse | null = bundledData;
+    if (!data) {
       showError(`Could not load ${config.unitPlural} data. Please try again later.`);
       return;
     }
 
-    const { stats, ponds } = data;
-    totalEl.textContent = fmt(stats.total);
-    totalLabelEl.textContent = stats.total === 1 ? config.unitSingular : config.unitPlural;
-    villagesEl.textContent = fmt(stats.villages);
-    districtsEl.textContent = fmt(stats.districts);
-    statesEl.textContent = fmt(stats.states);
+    // Source of truth for the map: ponds with valid coords and a status we show.
+    const basePonds = (data.ponds || []).filter(
+      (p) =>
+        Number.isFinite(p.latitude) &&
+        Number.isFinite(p.longitude) &&
+        knownStatuses.has(p.status),
+    );
 
-    renderFilters(stats.by_status || {});
-    renderStateBreakdown(stats.by_state || [], stats.total);
+    // Status chip counts come from the base set (stable as place filters change).
+    const baseByStatus: Record<string, number> = {};
+    for (const p of basePonds) baseByStatus[p.status] = (baseByStatus[p.status] ?? 0) + 1;
+
+    renderStatusFilters(baseByStatus);
+    fillSelect(stateSel, uniqueSorted(basePonds.map((p) => p.state)), '', 'All states');
+    fillSelect(districtSel, uniqueSorted(basePonds.map((p) => p.district)), '', 'All districts');
+    fillSelect(villageSel, uniqueSorted(basePonds.map((p) => p.village)), '', 'All villages');
 
     try {
-      await loadLeaflet();
+      await loadMapLibraries();
     } catch (err) {
-      showError('Map failed to load. Stats above are still accurate.');
+      showError('Map failed to load. Filters above still work for the figures shown.');
       return;
     }
 
@@ -260,47 +449,147 @@ const config = {
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
 
-    const layers: { marker: any; status: string }[] = [];
-    const validPonds = ponds.filter(
-      (p) => Number.isFinite(p.latitude) && Number.isFinite(p.longitude),
-    );
+    const clusterGroup = L.markerClusterGroup({
+      maxClusterRadius: 60,
+      showCoverageOnHover: false,
+      spiderfyOnMaxZoom: true,
+      chunkedLoading: true,
+      iconCreateFunction: clusterIcon,
+    });
+    map.addLayer(clusterGroup);
 
-    for (const p of validPonds) {
+    function getFiltered(): Pond[] {
+      return basePonds.filter(
+        (p) =>
+          visible.has(p.status) &&
+          (!place.state || p.state === place.state) &&
+          (!place.district || p.district === place.district) &&
+          (!place.village || p.village === place.village),
+      );
+    }
+
+    function detailRow(label: string, value: string) {
+      return `<div class="flex justify-between gap-3 py-0.5">
+        <dt class="text-ink-3">${escapeHtml(label)}</dt>
+        <dd class="font-medium text-ink text-right">${escapeHtml(value)}</dd>
+      </div>`;
+    }
+
+    function buildPopupHtml(p: Pond): string {
       const color = colorByStatus.get(p.status) || '#64748b';
       const statusLabel = labelByStatus.get(p.status) || p.status;
-      const marker = L.circleMarker([p.latitude, p.longitude], {
-        radius: 7,
-        color: '#ffffff',
-        weight: 2,
-        fillColor: color,
-        fillOpacity: 0.9,
-      });
-      const lines: string[] = [];
-      if (p.village) lines.push(`<strong>${escapeHtml(p.village)}</strong>`);
-      const place = [p.cluster, p.district, p.state].filter(Boolean).map(escapeHtml).join(', ');
-      if (place) lines.push(`<div class="text-ink-2">${place}</div>`);
-      lines.push(
-        `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
+      const parts: string[] = [];
+
+      const imgSrc = resolveImageUrl(p.completed_pond_image_url);
+      if (imgSrc) {
+        const alt = p.village ? `Completed pond in ${p.village}` : 'Completed pond';
+        // onerror removes the figure so a broken image link leaves no gap.
+        parts.push(
+          `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(alt)}" loading="lazy"
+            class="block w-full h-32 object-cover mb-2"
+            onerror="this.remove()" />`,
+        );
+      }
+
+      if (p.village) parts.push(`<strong class="text-ink">${escapeHtml(p.village)}</strong>`);
+      const placeText = [p.cluster, p.district, p.state].filter(Boolean).map(escapeHtml).join(', ');
+      if (placeText) parts.push(`<div class="text-ink-2">${placeText}</div>`);
+      parts.push(
+        `<div class="mt-1"><span class="inline-block h-2 w-2 rounded-full align-middle" style="background:${color}"></span> ${escapeHtml(statusLabel)}</div>`,
       );
-      marker.bindPopup(lines.join(''));
-      marker.addTo(map);
-      layers.push({ marker, status: p.status });
+
+      const rows: string[] = [];
+      if (p.donor) rows.push(detailRow('Donor', p.donor));
+      const built = formatDate(p.construction_date);
+      if (built) rows.push(detailRow('Constructed', built));
+      if (rows.length) {
+        parts.push(`<dl class="mt-2 pt-2 border-t border-line text-xs">${rows.join('')}</dl>`);
+      }
+
+      return `<div class="min-w-[12rem]">${parts.join('')}</div>`;
     }
 
-    if (validPonds.length) {
-      const bounds = L.latLngBounds(validPonds.map((p) => [p.latitude, p.longitude]));
-      map.fitBounds(bounds, { padding: [30, 30], maxZoom: 7 });
+    function buildMarker(p: Pond) {
+      const color = colorByStatus.get(p.status) || '#64748b';
+      const marker = L.marker([p.latitude, p.longitude], { icon: pondPinIcon(color) });
+      marker.bindPopup(() => buildPopupHtml(p), { maxWidth: 260, minWidth: 200 });
+      return marker;
     }
 
-    function applyFilter() {
-      for (const { marker, status } of layers) {
-        if (visible.has(status)) {
-          if (!map.hasLayer(marker)) marker.addTo(map);
-        } else if (map.hasLayer(marker)) {
-          map.removeLayer(marker);
-        }
+    function isFiltered() {
+      return (
+        !!place.state ||
+        !!place.district ||
+        !!place.village ||
+        visible.size !== knownStatuses.size
+      );
+    }
+
+    function render(fit: boolean) {
+      const filtered = getFiltered();
+
+      // Live KPIs reflect the current selection.
+      totalEl.textContent = fmt(filtered.length);
+      totalLabelEl.textContent =
+        filtered.length === 1 ? config.unitSingular : config.unitPlural;
+      villagesEl.textContent = fmt(uniqueSorted(filtered.map((p) => p.village)).length);
+      districtsEl.textContent = fmt(uniqueSorted(filtered.map((p) => p.district)).length);
+      statesEl.textContent = fmt(uniqueSorted(filtered.map((p) => p.state)).length);
+
+      // State breakdown, recomputed from the current selection.
+      const byStateMap = new Map<string, number>();
+      for (const p of filtered) {
+        if (!p.state) continue;
+        byStateMap.set(p.state, (byStateMap.get(p.state) ?? 0) + 1);
+      }
+      const byState = [...byStateMap.entries()]
+        .map(([state, count]) => ({ state, count }))
+        .sort((a, b) => b.count - a.count);
+      renderStateBreakdown(byState, filtered.length);
+
+      // Rebuild map markers.
+      clusterGroup.clearLayers();
+      clusterGroup.addLayers(filtered.map(buildMarker));
+
+      resultCountEl.textContent = `Showing ${fmt(filtered.length)} of ${fmt(basePonds.length)} ${
+        basePonds.length === 1 ? config.unitSingular.toLowerCase() : config.unitPlural.toLowerCase()
+      }`;
+      resetBtn.classList.toggle('hidden', !isFiltered());
+
+      if (fit && filtered.length) {
+        const bounds = L.latLngBounds(filtered.map((p) => [p.latitude, p.longitude]));
+        map.fitBounds(bounds, { padding: [30, 30], maxZoom: 12 });
       }
     }
+
+    // Cascading place filters: choosing a level resets and repopulates the
+    // levels below it from the ponds available within the current selection.
+    stateSel.addEventListener('change', () => {
+      place.state = stateSel.value;
+      place.district = '';
+      place.village = '';
+      const inState = basePonds.filter((p) => !place.state || p.state === place.state);
+      fillSelect(districtSel, uniqueSorted(inState.map((p) => p.district)), '', 'All districts');
+      fillSelect(villageSel, uniqueSorted(inState.map((p) => p.village)), '', 'All villages');
+      render(true);
+    });
+
+    districtSel.addEventListener('change', () => {
+      place.district = districtSel.value;
+      place.village = '';
+      const inDistrict = basePonds.filter(
+        (p) =>
+          (!place.state || p.state === place.state) &&
+          (!place.district || p.district === place.district),
+      );
+      fillSelect(villageSel, uniqueSorted(inDistrict.map((p) => p.village)), '', 'All villages');
+      render(true);
+    });
+
+    villageSel.addEventListener('change', () => {
+      place.village = villageSel.value;
+      render(true);
+    });
 
     filtersEl.querySelectorAll<HTMLButtonElement>('button[data-status]').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -315,9 +604,26 @@ const config = {
           btn.setAttribute('aria-pressed', 'true');
           btn.classList.remove('opacity-50');
         }
-        applyFilter();
+        render(false);
       });
     });
+
+    resetBtn.addEventListener('click', () => {
+      place.state = '';
+      place.district = '';
+      place.village = '';
+      fillSelect(stateSel, uniqueSorted(basePonds.map((p) => p.state)), '', 'All states');
+      fillSelect(districtSel, uniqueSorted(basePonds.map((p) => p.district)), '', 'All districts');
+      fillSelect(villageSel, uniqueSorted(basePonds.map((p) => p.village)), '', 'All villages');
+      for (const key of knownStatuses) visible.add(key);
+      filtersEl.querySelectorAll<HTMLButtonElement>('button[data-status]').forEach((btn) => {
+        btn.setAttribute('aria-pressed', 'true');
+        btn.classList.remove('opacity-50');
+      });
+      render(true);
+    });
+
+    render(true);
   }
 
   init();
