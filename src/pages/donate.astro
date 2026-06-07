@@ -29,6 +29,12 @@ const cheque = [
 ];
 
 const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
+
+const impactStats = [
+  { eyebrow: 'Reach · today', value: '350', plus: true, desc: 'Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.' },
+  { eyebrow: 'Children · engaged daily', value: '10,000', plus: true, desc: 'Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.' },
+  { eyebrow: 'Mission · 2030', value: '1,00,000', plus: false, desc: 'Children with life skills — our target by 2030. Every gift closes the gap between here and there.' },
+];
 ---
 
 <Layout title="Donate" description="Donate to NavSahyog Foundation — life skills to livelihood for village children. 80G-eligible for Indian donors; FCRA-registered for international giving.">
@@ -59,27 +65,15 @@ const monoKeys = /Account|IFSC|SWIFT|MICR|UPI|Email/;
 
       <!-- Three impact stats -->
       <div class="grid sm:grid-cols-3 gap-px bg-paper/10 border border-paper/10">
-        <div class="bg-ink px-8 py-10">
-          <div class="label-mono tracking-label-16 text-accent mb-4">Reach · today</div>
-          <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
-            350<span class="text-accent">+</span>
+        {impactStats.map((s) => (
+          <div class="bg-ink px-8 py-10">
+            <div class="label-mono tracking-label-16 text-accent mb-4">{s.eyebrow}</div>
+            <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
+              {s.value}{s.plus && <span class="text-accent">+</span>}
+            </div>
+            <p class="text-14 text-paper/65 leading-snug m-0">{s.desc}</p>
           </div>
-          <p class="text-14 text-paper/65 leading-snug m-0">Villages across Karnataka, Tamil Nadu and Nagaland — each one chosen for its remoteness.</p>
-        </div>
-        <div class="bg-ink px-8 py-10">
-          <div class="label-mono tracking-label-16 text-accent mb-4">Children · engaged daily</div>
-          <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
-            10,000<span class="text-accent">+</span>
-          </div>
-          <p class="text-14 text-paper/65 leading-snug m-0">Girls and boys, ages 5–14, receiving life-skills sessions Monday through Saturday, all year.</p>
-        </div>
-        <div class="bg-ink px-8 py-10">
-          <div class="label-mono tracking-label-16 text-accent mb-4">Mission · 2030</div>
-          <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
-            1,00,000
-          </div>
-          <p class="text-14 text-paper/65 leading-snug m-0">Children with life skills — our target by 2030. Every gift closes the gap between here and there.</p>
-        </div>
+        ))}
       </div>
 
       <!-- Trust strip -->

@@ -78,8 +78,13 @@ Legend: ⬜ todo · 🔄 in progress · ✅ done (with `✓ NO PIXEL DRIFT`)
 - [x] **2.3** ✅ Added a `.chip` class (terracotta dot via `::before`) and
   replaced the 3 bullet-dot trust chips in `index`, `donate`, `support` — the
   inner dot `<span>` is now generated. `✓ NO PIXEL DRIFT`.
-- [ ] **2.4** Route the dark stat blocks in `index.astro:277-291` and
-  `donate.astro:66-86` through the existing `StatCard` component.
+- [x] **2.4** ✅ Revised: the existing `StatCard` is light-mode-specific
+  (terracotta-rule eyebrow, `text-ink`, fluid-stat size) and is the wrong
+  abstraction for the dark blocks — forcing it would bloat the component and risk
+  drift. Instead data-drove `donate`'s three identical dark cards via a local
+  `.map()`. The `index` donor blocks have heterogeneous accent-fragment values
+  (not cleanly mappable without `set:html`) and stay bespoke; a unified dark-mode
+  stat component is deferred to the §5 visual-sign-off pass. `✓ NO PIXEL DRIFT`.
 
 ### 3 — Config / token hygiene (invisible refactor)
 
