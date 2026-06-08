@@ -20,21 +20,6 @@ export default {
           deep: '#8a3220',
           soft: '#f1d9cf',
         },
-        gold: '#b08a3e',
-        // Repurposed brand scale = terracotta (keeps existing utility classes working)
-        brand: {
-          DEFAULT: '#c44a2e',
-          50: '#fbeee8',
-          100: '#f6d8cc',
-          200: '#edb39c',
-          300: '#e28d6c',
-          400: '#d56a47',
-          500: '#c44a2e',
-          600: '#a93b22',
-          700: '#8a3220',
-          800: '#69261a',
-          900: '#3f1610',
-        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
