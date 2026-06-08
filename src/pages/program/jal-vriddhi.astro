@@ -52,7 +52,7 @@ import jalVriddhiDashboard from '../../data/program-dashboards/jal-vriddhi.json'
         </p>
       </div>
       <div class="bg-paper-alt border border-line p-6">
-        <div class="label-mono tracking-label-14 text-accent mb-4">What the statuses mean</div>
+        <div class="label-mono tracking-label-12 text-accent mb-4">What the statuses mean</div>
         <ul class="space-y-2.5 text-sm text-ink-2 m-0 p-0 list-none">
           {statuses.map((s) => (
             <li class="flex gap-2.5"><span class="inline-block h-2.5 w-2.5 rounded-full mt-1.5 shrink-0" style={`background:${s.color}`}></span><span><strong class="text-ink">{s.label}</strong> — {s.desc}</span></li>

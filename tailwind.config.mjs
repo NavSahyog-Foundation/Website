@@ -69,16 +69,11 @@ export default {
       letterSpacing: {
         'display-tight': '-0.02em',
         'display-tighter': '-0.035em',
-        // Mono eyebrow / label tracking scale (were tracking-[0.0Nem]). Several
-        // near-duplicate steps kept distinct to guarantee zero visual drift.
-        'label-06': '0.06em',
+        // Mono eyebrow / label tracking — rationalized to three bands (0.02em
+        // steps below were sub-pixel on 10-12px labels). Names encode the em value.
         'label-08': '0.08em',
-        'label-10': '0.1em',
         'label-12': '0.12em',
-        'label-14': '0.14em',
         'label-16': '0.16em',
-        'label-18': '0.18em',
-        'mono-wide': '0.16em',
       },
     },
   },

@@ -128,13 +128,13 @@ const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual
           >
             <div class="flex items-center justify-between mb-3 md:mb-0 md:block md:pt-1">
               <div class="font-mono text-13 text-ink-3">{p.num}</div>
-              <div class="label-mono tracking-label-10 text-ink-3 whitespace-nowrap md:hidden">{p.tag}</div>
+              <div class="label-mono tracking-label-12 text-ink-3 whitespace-nowrap md:hidden">{p.tag}</div>
             </div>
             <div>
               <h3 class="display text-2xl md:text-28 font-medium tracking-display-tight m-0 mb-2 group-hover:text-accent">{p.name}</h3>
               <p class="m-0 text-15 leading-relaxed text-ink-2">{p.body}</p>
             </div>
-            <div class="label-mono hidden md:block tracking-label-10 text-ink-3 text-right pt-1 whitespace-nowrap">{p.tag}</div>
+            <div class="label-mono hidden md:block tracking-label-12 text-ink-3 text-right pt-1 whitespace-nowrap">{p.tag}</div>
           </a>
         ))}
         <div class="border-t border-line"></div>
@@ -315,7 +315,7 @@ const trust = ['Section 8 Company', '80G tax-exempt', 'FCRA #094421912', 'Annual
   <!-- Trust strip -->
   <section class="py-14 border-t border-line">
     <div class="container-content flex flex-wrap items-center justify-between gap-x-12 gap-y-4">
-      <div class="label-mono tracking-label-18 text-ink-3">Audited &amp; Registered</div>
+      <div class="label-mono tracking-label-16 text-ink-3">Audited &amp; Registered</div>
       {trust.map((b) => (
         <div class="chip font-medium text-ink-2">{b}</div>
       ))}

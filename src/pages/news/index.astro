@@ -145,7 +145,7 @@ const sections = [
       <p class="mt-7 text-lg md:text-xl leading-[1.5] text-ink-2 max-w-2xl">
         Annual reports, stories from the field, press clippings, and the events that mark the year — all in one place.
       </p>
-      <nav class="label-mono mt-10 flex flex-wrap gap-x-6 gap-y-3 tracking-label-14" aria-label="Page sections">
+      <nav class="label-mono mt-10 flex flex-wrap gap-x-6 gap-y-3 tracking-label-12" aria-label="Page sections">
         {sections.map((s) => (
           <a href={`#${s.id}`} class="text-ink-3 hover:text-accent border-b border-line hover:border-accent pb-1">{s.label} →</a>
         ))}
@@ -164,7 +164,7 @@ const sections = [
           </div>
         </a>
         <div class="p-8 md:p-10 flex flex-col">
-          <p class="label-mono tracking-label-14 text-accent">{impactStudy.date} · Impact study</p>
+          <p class="label-mono tracking-label-12 text-accent">{impactStudy.date} · Impact study</p>
           <h3 class="display text-2xl md:text-3xl tracking-display-tight mt-3 mb-5 m-0">{impactStudy.title}</h3>
           <p class="text-15 leading-relaxed text-ink-2 m-0 mb-7">
             Our largest impact survey to date — independent ratings from <strong class="text-ink">6,388 children, 6,294 parents and 5,805 teachers</strong>. The headline: the programme delivers <strong class="text-ink">universal, consistent, age-resilient positive change</strong>.
@@ -203,7 +203,7 @@ const sections = [
           <Img src={featuredPost.image} alt={featuredPost.title} class="w-full h-full object-cover group-hover:opacity-95 transition" loading="eager" />
         </div>
         <div class="p-8 md:p-10 bg-paper">
-          <p class="label-mono tracking-label-14 text-accent">{featuredPost.date} · Award</p>
+          <p class="label-mono tracking-label-12 text-accent">{featuredPost.date} · Award</p>
           <h3 class="display text-xl md:text-3xl tracking-display-tight mt-3 mb-3 m-0">{featuredPost.title}</h3>
           <p class="text-15 leading-relaxed text-ink-2 m-0">{featuredPost.summary}</p>
           <p class="mt-5 text-sm font-semibold text-accent">Read the story →</p>
@@ -226,7 +226,7 @@ const sections = [
               <Img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:opacity-90 transition" />
             </div>
             <div>
-              <p class="label-mono tracking-label-14 text-accent">{p.date}</p>
+              <p class="label-mono tracking-label-12 text-accent">{p.date}</p>
               <h3 class="display text-xl md:text-2xl tracking-display-tight mt-2 mb-2 m-0">{p.title}</h3>
               <p class="text-14 leading-relaxed text-ink-2 m-0">{p.summary}</p>
               <p class="mt-3 text-sm font-semibold text-accent">Watch on YouTube →</p>
@@ -276,7 +276,7 @@ const sections = [
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {events.map((e) => (
             <a href={url(`/events/${e.slug}/`)} class="block bg-paper border border-line p-6 hover:border-accent transition-colors">
-              {e.data.date && <p class="label-mono tracking-label-14 text-accent">{e.data.date}</p>}
+              {e.data.date && <p class="label-mono tracking-label-12 text-accent">{e.data.date}</p>}
               <h3 class="display text-lg tracking-display-tight font-medium text-ink mt-3 mb-2 m-0">{e.data.title}</h3>
               {e.data.summary && <p class="text-14 text-ink-2 leading-relaxed m-0">{e.data.summary}</p>}
             </a>
