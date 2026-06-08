@@ -35,29 +35,19 @@ export default {
         // were previously inlined as text-[clamp(...)] across the site. Bare
         // strings set font-size only (line-height stays on the existing
         // leading-* classes), so rendering is unchanged. Several entries are
-        // near-duplicates kept distinct to guarantee zero visual drift; they are
-        // candidates for a later, intentional consolidation pass.
-        'fluid-hero': 'clamp(3.25rem, 7vw, 6.75rem)',   // home hero
-        'fluid-hero2': 'clamp(3rem, 7vw, 6.75rem)',     // Hero.astro
-        'fluid-mega': 'clamp(4rem, 9vw, 8.75rem)',      // impact giant stats
-        'fluid-7xl': 'clamp(3rem, 7vw, 7rem)',          // impact hero
-        'fluid-6xl': 'clamp(3rem, 6.5vw, 6rem)',        // page heroes
-        'fluid-5xl': 'clamp(2.75rem, 6vw, 5.5rem)',     // PageHeader + sections
-        'fluid-5xl2': 'clamp(3rem, 6vw, 5.5rem)',       // page heroes (alt min)
-        'fluid-4xl': 'clamp(3rem, 6vw, 5rem)',          // big section h2
-        'fluid-4xl2': 'clamp(2.5rem, 5.5vw, 5rem)',     // donate why-give
-        'fluid-3xl': 'clamp(2.5rem, 5vw, 4.5rem)',      // donor appeal
-        'fluid-3xl2': 'clamp(3rem, 5vw, 4.5rem)',       // donate impact stats
-        'fluid-3xl3': 'clamp(2.5rem, 5.5vw, 4.5rem)',   // villages/events hero
-        'fluid-2xl': 'clamp(2.5rem, 4.5vw, 4rem)',      // section h2
-        'fluid-xl': 'clamp(2.25rem, 4.5vw, 3.75rem)',   // blockquotes
-        'fluid-xl2': 'clamp(2.25rem, 4vw, 3.5rem)',     // impact h2
-        'fluid-lg': 'clamp(2rem, 3.5vw, 3.25rem)',      // donate transparency
-        'fluid-md': 'clamp(2rem, 4vw, 3rem)',           // index stat numbers
-        'fluid-md2': 'clamp(2rem, 3.5vw, 3rem)',        // common subheads
-        'fluid-sm': 'clamp(2rem, 3.5vw, 2.75rem)',      // jal-vriddhi
-        'fluid-xs': 'clamp(1.75rem, 3vw, 2.5rem)',      // small section h2 (×5)
-        'fluid-stat': 'clamp(2rem, 8.5vw, 5.5rem)',     // StatCard value
+        // rationalized step scale (largest → smallest). `stat` keeps its own
+        // aggressive vw curve for the homepage statline numbers.
+        'fluid-1': 'clamp(4rem, 9vw, 8.75rem)',    // impact giant stats
+        'fluid-2': 'clamp(3rem, 7vw, 6.75rem)',    // hero headings
+        'fluid-3': 'clamp(3rem, 6.5vw, 6rem)',     // page heroes
+        'fluid-4': 'clamp(2.75rem, 6vw, 5.5rem)',  // PageHeader + large heroes
+        'fluid-5': 'clamp(3rem, 6vw, 5rem)',       // big section h2
+        'fluid-6': 'clamp(2.5rem, 5vw, 4.5rem)',   // section h2 (large)
+        'fluid-7': 'clamp(2.5rem, 4.5vw, 4rem)',   // section h2
+        'fluid-8': 'clamp(2.25rem, 4vw, 3.5rem)',  // blockquotes / sub-headings
+        'fluid-9': 'clamp(2rem, 3.5vw, 3rem)',     // sub-headings / stat numbers
+        'fluid-10': 'clamp(1.75rem, 3vw, 2.5rem)', // small section h2
+        'fluid-stat': 'clamp(2rem, 8.5vw, 5.5rem)', // StatCard value
         // Mono eyebrow / caption label sizes (were text-[10px|11px|12px]).
         'eyebrow': '11px',
         'eyebrow-sm': '10px',
