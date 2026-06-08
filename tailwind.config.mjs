@@ -52,19 +52,14 @@ export default {
         'eyebrow': '11px',
         'eyebrow-sm': '10px',
         'eyebrow-lg': '12px',
-        // Fixed-px body / UI scale (were text-[Npx]). Bare strings set font-size
-        // only — line-height stays on the existing leading-* classes.
-        '13': '13px',
-        '14': '14px',
-        '15': '15px',
-        '17': '17px',
-        '18': '18px',
-        '19': '19px',
-        '21': '21px',
-        '26': '26px',
-        '28': '28px',
-        '32': '32px',
-        '40': '40px',
+        // Fixed-px body / UI scale (were text-[Npx]) — rationalized to six steps.
+        // Bare strings set font-size only; line-height stays on leading-* classes.
+        '14': '14px', // small text / captions (was 13, 14)
+        '15': '15px', // body
+        '18': '18px', // sub-lead (was 17, 18, 19)
+        '21': '21px', // lead
+        '28': '28px', // small display (was 26, 28, 32)
+        '40': '40px', // display
       },
       letterSpacing: {
         'display-tight': '-0.02em',

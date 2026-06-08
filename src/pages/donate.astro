@@ -55,7 +55,7 @@ const impactStats = [
           <span class="display-italic text-accent">₹6.57 a day</span><br />
           to change their life.
         </h2>
-        <p class="text-17 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
+        <p class="text-18 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
           That is the full cost of one child's year-round programme — sport, storytelling, creativity, and life skills, six days a week, every week. Our 2025–26 impact survey of 18,487 stakeholders found <strong class="text-paper">75% rate the change as High to Very High</strong>. No school fees. No conditions. Just daily presence in the village.
         </p>
         <a href="#choose-your-impact" class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all inline-block">
@@ -121,7 +121,7 @@ const impactStats = [
             <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
               ₹{t.amt.toLocaleString('en-IN')}
             </div>
-            <div class="text-13 leading-snug opacity-80">{t.desc}</div>
+            <div class="text-14 leading-snug opacity-80">{t.desc}</div>
           </button>
         ))}
       </div>
@@ -167,7 +167,7 @@ const impactStats = [
         <span class="text-sm text-ink-2">NEFT/RTGS</span>
         <span class="text-sm text-ink-2">Cheque</span>
       </div>
-      <p class="mt-6 text-13 text-ink-3 text-center max-w-2xl mx-auto">
+      <p class="mt-6 text-14 text-ink-3 text-center max-w-2xl mx-auto">
         Picking a tier is optional — "Continue to payment" takes you to Danamojo, where you'll confirm your amount and frequency.
       </p>
     </div>
@@ -233,7 +233,7 @@ const impactStats = [
     <div class="container-content grid lg:grid-cols-[1.4fr_1fr] gap-16">
       <div>
         <div class="eyebrow"><span>Direct transfer</span></div>
-        <h3 class="display text-3xl md:text-32 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
+        <h3 class="display text-3xl md:text-28 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
 
         <div class="border-t border-line">
           <!-- Domestic -->
@@ -246,7 +246,7 @@ const impactStats = [
               {domestic.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -262,7 +262,7 @@ const impactStats = [
               {foreign.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -278,7 +278,7 @@ const impactStats = [
               {cheque.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>
                     {k === 'Email' ? <a href={`mailto:${v}`} class="hover:text-accent">{v}</a> : v}
                   </dd>
                 </div>
