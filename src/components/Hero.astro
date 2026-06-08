@@ -27,7 +27,7 @@ const split = splitAccentWord(title, accentWord);
           <span>{eyebrow}</span>
         </div>
       )}
-      <h1 class="display text-fluid-hero2 leading-[0.95] tracking-display-tight text-ink m-0">
+      <h1 class="display text-fluid-2 leading-[0.95] tracking-display-tight text-ink m-0">
         {split ? (<>{split.before}<span class="display-italic text-accent">{split.word}</span>{split.after}</>) : title}
       </h1>
       {subtitle && (

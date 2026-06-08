@@ -50,12 +50,12 @@ const impactStats = [
     <div class="container-content">
       <div class="max-w-4xl mx-auto text-center mb-16 md:mb-20">
         <div class="eyebrow eyebrow-center mb-5"><span>Why give</span></div>
-        <h2 class="display text-fluid-4xl2 leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
+        <h2 class="display text-fluid-5 leading-[0.97] tracking-display-tight m-0 mb-8 text-paper">
           A child needs<br />
           <span class="display-italic text-accent">₹6.57 a day</span><br />
           to change their life.
         </h2>
-        <p class="text-17 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
+        <p class="text-18 md:text-lg leading-relaxed text-paper/75 max-w-2xl mx-auto mb-10">
           That is the full cost of one child's year-round programme — sport, storytelling, creativity, and life skills, six days a week, every week. Our 2025–26 impact survey of 18,487 stakeholders found <strong class="text-paper">75% rate the change as High to Very High</strong>. No school fees. No conditions. Just daily presence in the village.
         </p>
         <a href="#choose-your-impact" class="bg-accent text-white px-8 py-4 rounded-full text-base font-semibold hover:bg-accent-deep hover:-translate-y-px transition-all inline-block">
@@ -68,7 +68,7 @@ const impactStats = [
         {impactStats.map((s) => (
           <div class="bg-ink px-8 py-10">
             <div class="label-mono tracking-label-16 text-accent mb-4">{s.eyebrow}</div>
-            <div class="display text-fluid-3xl2 leading-none tracking-display-tighter text-paper mb-3">
+            <div class="display text-fluid-6 leading-none tracking-display-tighter text-paper mb-3">
               {s.value}{s.plus && <span class="text-accent">+</span>}
             </div>
             <p class="text-14 text-paper/65 leading-snug m-0">{s.desc}</p>
@@ -90,7 +90,7 @@ const impactStats = [
   <section id="choose-your-impact" class="section-y-sm">
     <div class="container-content">
       <div class="eyebrow"><span>Choose your impact</span></div>
-      <h2 class="display text-fluid-md2 leading-[1.05] tracking-display-tight m-0 mb-3">
+      <h2 class="display text-fluid-9 leading-[1.05] tracking-display-tight m-0 mb-3">
         Pick a tier — or <span class="display-italic text-accent">any amount</span>.
       </h2>
       <p class="text-base text-ink-2 m-0 mb-10 max-w-2xl">
@@ -113,7 +113,7 @@ const impactStats = [
             class:list={['tier', t.popular && 'is-selected']}
           >
             {t.popular && (
-              <div class="absolute top-3 right-3 font-mono text-eyebrow-sm uppercase tracking-label-10 font-bold bg-accent text-white px-2 py-1">
+              <div class="absolute top-3 right-3 font-mono text-eyebrow-sm uppercase tracking-label-12 font-bold bg-accent text-white px-2 py-1">
                 Most given
               </div>
             )}
@@ -121,7 +121,7 @@ const impactStats = [
             <div class="display text-3xl md:text-4xl font-medium tracking-display-tight leading-none mb-2">
               ₹{t.amt.toLocaleString('en-IN')}
             </div>
-            <div class="text-13 leading-snug opacity-80">{t.desc}</div>
+            <div class="text-14 leading-snug opacity-80">{t.desc}</div>
           </button>
         ))}
       </div>
@@ -167,7 +167,7 @@ const impactStats = [
         <span class="text-sm text-ink-2">NEFT/RTGS</span>
         <span class="text-sm text-ink-2">Cheque</span>
       </div>
-      <p class="mt-6 text-13 text-ink-3 text-center max-w-2xl mx-auto">
+      <p class="mt-6 text-14 text-ink-3 text-center max-w-2xl mx-auto">
         Picking a tier is optional — "Continue to payment" takes you to Danamojo, where you'll confirm your amount and frequency.
       </p>
     </div>
@@ -233,20 +233,20 @@ const impactStats = [
     <div class="container-content grid lg:grid-cols-[1.4fr_1fr] gap-16">
       <div>
         <div class="eyebrow"><span>Direct transfer</span></div>
-        <h3 class="display text-3xl md:text-32 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
+        <h3 class="display text-3xl md:text-28 tracking-display-tight m-0 mb-10">Wire / UPI / Cheque</h3>
 
         <div class="border-t border-line">
           <!-- Domestic -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">Domestic — INR</div>
+              <div class="label-mono tracking-label-12 text-ink-3 mb-1.5">Domestic — INR</div>
               <div class="display text-lg font-semibold">ICICI Bank</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {domestic.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -255,14 +255,14 @@ const impactStats = [
           <!-- FCRA -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">International — FCRA</div>
+              <div class="label-mono tracking-label-12 text-ink-3 mb-1.5">International — FCRA</div>
               <div class="display text-lg font-semibold">State Bank of India</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {foreign.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>{v}</dd>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>{v}</dd>
                 </div>
               ))}
             </dl>
@@ -271,14 +271,14 @@ const impactStats = [
           <!-- Cheque -->
           <div class="py-7 border-b border-line grid sm:grid-cols-[200px_1fr] gap-6 sm:gap-8">
             <div>
-              <div class="label-mono tracking-label-14 text-ink-3 mb-1.5">By cheque</div>
+              <div class="label-mono tracking-label-12 text-ink-3 mb-1.5">By cheque</div>
               <div class="display text-lg font-semibold">Email us first</div>
             </div>
             <dl class="grid sm:grid-cols-2 gap-y-2 gap-x-6 m-0 text-14">
               {cheque.map(([k, v]) => (
                 <div class="contents">
                   <dt class="text-ink-3">{k}</dt>
-                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-13' : ''}`}>
+                  <dd class={`text-ink font-medium m-0 ${monoKeys.test(k) ? 'font-mono text-14' : ''}`}>
                     {k === 'Email' ? <a href={`mailto:${v}`} class="hover:text-accent">{v}</a> : v}
                   </dd>
                 </div>
@@ -290,7 +290,7 @@ const impactStats = [
 
       <aside class="space-y-4">
         <div class="bg-accent text-white p-7">
-          <div class="label-mono tracking-label-14 mb-3 text-white/85">Section 80G</div>
+          <div class="label-mono tracking-label-12 mb-3 text-white/85">Section 80G</div>
           <p class="text-14 leading-relaxed m-0 mb-3 text-white/95">
             Indian donors receive a tax-deduction receipt under Section 80G of the Income Tax Act, 1961.
           </p>
@@ -300,7 +300,7 @@ const impactStats = [
           </p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="label-mono tracking-label-14 text-accent mb-3">FCRA Registration</div>
+          <div class="label-mono tracking-label-12 text-accent mb-3">FCRA Registration</div>
           <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             Authorized to receive foreign contributions. As per Government of India regulations, please make
             international donations <strong>only to the FCRA bank account</strong> — they cannot be accepted via
@@ -309,7 +309,7 @@ const impactStats = [
           <p class="font-mono text-eyebrow tracking-wider text-ink-3 m-0">FCRA #094421912</p>
         </div>
         <div class="bg-white border border-line p-7">
-          <div class="label-mono tracking-label-14 text-accent mb-3">Major gifts &amp; CSR</div>
+          <div class="label-mono tracking-label-12 text-accent mb-3">Major gifts &amp; CSR</div>
           <p class="text-14 leading-relaxed m-0 mb-3 text-ink-2">
             For corporate CSR, large donations, or partnership conversations, please write to Paritosh.
           </p>
@@ -324,7 +324,7 @@ const impactStats = [
     <div class="container-content grid md:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
       <div>
         <div class="eyebrow"><span>Transparency</span></div>
-        <h2 class="display text-fluid-lg leading-[1.02] tracking-display-tight m-0 mb-7">
+        <h2 class="display text-fluid-9 leading-[1.02] tracking-display-tight m-0 mb-7">
           Every rupee, accounted for.
         </h2>
         <p class="text-base leading-relaxed text-ink-2 max-w-md">
